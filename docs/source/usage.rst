@@ -1,34 +1,20 @@
-Usage
-=====
+``idPIE`` profile description
+==============================
 
-.. _installation:
+.. _dPIE_summary:
 
-Installation
-------------
+``dPIE`` summary
+-----------------
 
-To use Lumache, first install it using pip:
+A summary on the **dual Pseudo-Isothermal Elliptical** matter distribution (``dPIE``) may be found `here <https://projets.lam.fr/projects/lenstool/wiki/PIEMD>`_, and this type of gravitational potential is described at length in `Elìasdòttir et al. (2007, Appendix A) <https://ui.adsabs.harvard.edu/abs/2007arXiv0710.5636E/abstract>`_
+. It is identified in ``lenstool`` by id: ``81``.
 
-.. code-block:: console
+Assuming we neglect ellipticity in this documentation, ``dPIE`` profiles write:
 
-   (.venv) $ pip install lumache
+.. math::
 
-Creating recipes
-----------------
-
-To retrieve a list of random ingredients,
-you can use the ``lumache.get_random_ingredients()`` function:
-
-.. autofunction:: lumache.get_random_ingredients
-
-The ``kind`` parameter should be either ``"meat"``, ``"fish"``,
-or ``"veggies"``. Otherwise, :py:func:`lumache.get_random_ingredients`
-will raise an exception.
-
-.. autoexception:: lumache.InvalidKindError
-
-For example:
-
->>> import lumache
->>> lumache.get_random_ingredients()
-['shells', 'gorgonzola', 'parsley']
+   \rho(r) = \frac{\rho_0}{\left[ 1 + \left( \frac{r}{s} \right)^2 \right] \left[ 1 + \left( \frac{r}{a} \right)^2 \right]}
+   
+where 
+:math:`\rho_0` is the density normalisation, 
 

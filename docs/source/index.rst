@@ -1,22 +1,28 @@
-Welcome to Lumache's documentation!
-===================================
+Welcome to the Lenstool documentation!
+=======================================
 
-**Lumache** (/lu'make/) is a Python library for cooks and food lovers
-that creates recipes mixing random ingredients.
-It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
-and offers a *simple* and *intuitive* API.
+**Lenstool** is a gravitational lensing software for modeling mass distribution of galaxies and clusters (strong and weak regime).
 
-Check out the :doc:`usage` section for further information, including
-how to :ref:`installation` the project.
+Further information may be found in the `Lenstool WikiStart <https://projets.lam.fr/projects/lenstool/wiki>`_.
 
 .. note::
 
-   This project is under active development.
+   This tutorial is only focusing on the introduction of ``idPIE`` potentials to perform the joint X-ray and lensing optimisation model of the density of dark matter and intra-cluster medium.
+
+Check out the :doc:`usage` section for further information on ``idPIE`` profiles, and :doc:`tutorial` for a short tutorial on their usage in ``lenstool``.
+
+.. how to :ref:`installation` the project.
+
+.. note::
+
+   This project is under active development. It is compatible with v8 of ``lenstool``.
 
 Contents
 --------
 
 .. toctree::
 
+   installation
    usage
+   tutorial
    api

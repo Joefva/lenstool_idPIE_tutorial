@@ -2,9 +2,9 @@
 
 # -- Project information
 
-project = 'Lumache'
-copyright = '2021, Graziella'
-author = 'Graziella'
+project = 'Lenstool idPIE'
+copyright = '2023, Allingham'
+author = 'Allingham'
 
 release = '0.1'
 version = '0.1.0'
