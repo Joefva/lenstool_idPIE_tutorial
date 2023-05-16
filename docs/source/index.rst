@@ -25,4 +25,5 @@ Contents
    installation
    usage
    tutorial
+   potfile
    api
