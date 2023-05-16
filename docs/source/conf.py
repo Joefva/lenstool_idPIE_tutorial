@@ -3,11 +3,11 @@
 # -- Project information
 
 project = 'Lenstool idPIE'
-copyright = '2023, Allingham'
+copyright = '2023, Allingham et al. (add your names)'
 author = 'Allingham'
 
-release = '0.1'
-version = '0.1.0'
+release = '8.1'
+version = '8.1.0'
 
 # -- General configuration
 

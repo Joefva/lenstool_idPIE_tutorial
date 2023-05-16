@@ -33,14 +33,22 @@ Thus the profile of the gravitational potential
 
 .. math::
 
-   \Phi(r) = - 4 \pi G \sum_i \int_0^r \mathrm{d}s s^{-2} \int_0^s \mathrm{d}t t^2 \rho_{\mathrm{dPIE}, i}(r).
+   \Phi(r) = - 4 \pi G \sum_i \int_0^r \mathrm{d}s s^{-2} \int_0^s \mathrm{d}t t^2 \rho_{\mathrm{dPIE}, i}(t).
 
 For one ``dPIE`` profile 
 :math:`\rho_{\mathrm{dPIE}}(r)`, the potential writes:
 
 .. math::
 
-   \Phi_{\mathm{dPIE}}(r) = \frac{a^2 s^2}{a^2 - s^2} \left[ \frac{s}{r} \arctan \frac{r}{s} - \frac{a}{r} \arctan \frac{r}{a} + \frac{1}{2} \ln \left( \frac{r^2 + s^2}{r^2 + a^2} \right) \right].
+   \Phi_{\mathrm{dPIE}}(r) = \frac{a^2 s^2}{a^2 - s^2} \left[ \frac{s}{r} \arctan \frac{r}{s} - \frac{a}{r} \arctan \frac{r}{a} + \frac{1}{2} \ln \left( \frac{r^2 + s^2}{r^2 + a^2} \right) \right].
+
+
+-------------------------------------------------------
+.. _idPIE_profile:
+
+Hydrostatic ``idPIE`` :math:`n_e` ICM density profile
+-------------------------------------------------------
+
 
 If we assume the intra-cluster medium (ICM) to be in hydrostatic equilibrium, we may simplify the Navier-Stokes equation to:
 
@@ -74,6 +82,39 @@ Bijections being invertible functions, we may revert the previous equation, thus
 
    n_e = \mathcal{J}^{-1}_z  \left( \frac{\mu_g m_a}{k_B} \Phi (r) \right).
 
+
+------------------------------------------------
+.. _Xray_opt_idPIE:
+
+ICM profile optimisation with ``idPIE`` profile
+------------------------------------------------
+
+Given the 
+:math:`n_e` ICM electron density, we can compute
+:math:`S_X`, the X-ray surface brightness:
+
+.. math::
+
+   S_X (x, y, \Delta E) = \frac{1}{4 \pi (1 + z)^4} \frac{\mu_e}{\mu_H} \int_{\mathrm{l.o.s.}} n_e^2 (x, y, l) \Lambda (\Delta E (1 + z), T_e, Z) \mathrm{d}l,
+	
+where
+:math:`\Delta E` is the observed energy band,
+:math:`z` is the cosmological redshift of the lens,
+:math:`\mu_e` and
+:math:`\mu_H` are respectively the mean molecular weight of electron and hydrogen, and
+:math:`\Lambda` is the normalised cooling function (in 
+:math:`\mathrm{J.m}^3.\mathrm{s}^{-1}`) for an ICM electron temperature
+:math:`T_e` and metallicity
+:math:`Z`.
+Here, we assume the metallicity to be constant throughout the cluster 
+:math:`Z = 0.3 Z_{\odot}`.
+
+Once the model surface brightness map computed, it is compared to observations of *Chandra* or *XMM-Newton* X-ray satellites.
+
+.. note::
+
+   TODO: See section on statistics for more details.
+   
 
 
 
