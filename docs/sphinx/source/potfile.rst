@@ -4,7 +4,7 @@ Potfile
 .. _potfile:
 
 Use ``potfile`` keyword for file of potentials optimised together (following a scaling relationship).
------------------------------
+---------------------------------------------------------------------------------------------------------
 
 .. To use ``idPIE`` profiles, one must choose which ``dPIE`` profiles are considered to trace the X-ray signal.
 .. The ``idPIE`` profiles use the same parameters as the ``dPIE`` profiles, but convert them into their corresponding hydrostatic ICM density, and computes the expected X-ray signal. The joint optimisation of selected profiles yields additional constraints.
