@@ -7,7 +7,7 @@ Further information may be found in the `Lenstool WikiStart <https://projets.lam
 
 .. note::
 
-   This tutorial is only focusing on the introduction of ``idPIE`` potentials to perform the joint X-ray and lensing optimisation model of the density of dark matter and intra-cluster medium.
+   For the moment, this tutorial is only focusing on the introduction of ``idPIE`` potentials to perform the joint X-ray and lensing optimisation model of the density of dark matter and intra-cluster medium.
 
 Check out the :doc:`usage` section for further information on ``idPIE`` profiles, and :doc:`tutorial` for a short tutorial on their usage in ``lenstool``.
 

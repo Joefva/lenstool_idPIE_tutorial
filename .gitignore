@@ -1,3 +1,16 @@
+# Addition by Joseph Allingham:
+
+docs/sphinx/build/latex/{*.sty,*.log,*.out,*.ist,*.aux,*.xdy,*.fls,*.fdb_latexmk,*.toc,*.cls,*.ind,*.ilg,*.idx}
+
+
+
+
+
+
+
+
+
+
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,jupyternotebooks
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,jupyternotebooks

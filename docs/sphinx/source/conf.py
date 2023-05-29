@@ -17,9 +17,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Lenstool idPIE'
+project = 'Lenstool'
 copyright = '2023, Allingham et al. (add your names)'
-author = 'Allingham'
+author = 'Allingham et al.'
 
 release = '8.1'
 version = '8.1.0'
@@ -81,8 +81,8 @@ if False:
     subprocess.call('make clean', shell=True)
     subprocess.call('cd ../../doxygen ; doxygen', shell=True)
 
-    breathe_projects = { "lenstool_idPIE": "../../../docs/doxygen/build/xml/" }
-    breathe_default_project = "lenstool_idPIE"
+    breathe_projects = { "lenstool": "../../../docs/doxygen/build/xml/" }
+    breathe_default_project = "lenstool"
     breathe_projects_source = {
         "o_chi" : ( "../../../../src", ["o_chi.c"] )
     }
