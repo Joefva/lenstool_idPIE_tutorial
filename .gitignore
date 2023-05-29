@@ -1,11 +1,19 @@
 # Addition by Joseph Allingham:
 
-docs/sphinx/build/latex/{*.sty,*.log,*.out,*.ist,*.aux,*.xdy,*.fls,*.fdb_latexmk,*.toc,*.cls,*.ind,*.ilg,*.idx}
-
 docs/sphinx/build/latex/*.sty
-
-
-
+docs/sphinx/build/latex/*.log
+docs/sphinx/build/latex/*.out
+docs/sphinx/build/latex/*.ist
+docs/sphinx/build/latex/*.aux
+docs/sphinx/build/latex/*.xdy
+docs/sphinx/build/latex/*.fls
+docs/sphinx/build/latex/*.fdb_latexmk
+docs/sphinx/build/latex/*.toc
+docs/sphinx/build/latex/*.cls
+docs/sphinx/build/latex/*.ind
+docs/sphinx/build/latex/*.ilg
+docs/sphinx/build/latex/*.idx
+docs/sphinx/build/latex/.doctrees/*
 
 
 
