@@ -37,7 +37,7 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.imgmath', 
     'sphinx.ext.todo',
-    'breathe',
+#    'breathe',   # add it if doing C api. Requires to install breathe.
 #    'sphinx.ext.duration',
 #    'sphinx.ext.autosummary',
 #    'sphinx.ext.intersphinx',

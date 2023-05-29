@@ -1,7 +1,7 @@
 Welcome to the Lenstool documentation!
 =======================================
 
-**Lenstool** is a gravitational lensing software for modeling mass distribution of galaxies and clusters (strong and weak regime).
+**Lenstool** is a gravitational lensing software for modelling mass distribution of galaxies and clusters (strong and weak regime).
 
 Further information may be found in the `Lenstool WikiStart <https://projets.lam.fr/projects/lenstool/wiki>`_.
 
@@ -26,4 +26,6 @@ Contents
    usage
    tutorial
    potfile
-   api
+   
+
+..  api

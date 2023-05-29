@@ -1,8 +1,8 @@
 [build-system]
-requires = ["flit_core >=3.2,<4"]
+requires = ["flit_core >=3.2,<4"]      # change this accordingly
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "lumache"
-authors = [{name = "Graziella", email = "graziella@lumache"}]
+name = "lenstool"
+authors = [{name = "Allingham et al.", email = "ajoseph@campus.technion.ac.il"}]  # lenstool@googlegroups.com , gitlab: https://git-cral.univ-lyon1.fr/lenstool/lenstool
 dynamic = ["version", "description"]
