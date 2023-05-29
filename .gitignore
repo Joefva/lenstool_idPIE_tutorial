@@ -2,7 +2,7 @@
 
 docs/sphinx/build/latex/{*.sty,*.log,*.out,*.ist,*.aux,*.xdy,*.fls,*.fdb_latexmk,*.toc,*.cls,*.ind,*.ilg,*.idx}
 
-
+docs/sphinx/build/latex/*.sty
 
 
 
