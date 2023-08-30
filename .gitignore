@@ -1,5 +1,16 @@
 # Addition by Joseph Allingham:
 
+
+# Redmine archive:
+Redmine_doc/*
+Redmine_doc/*/*
+Redmine_doc/*/*/*
+Redmine_doc/*/*/*/*
+
+
+
+
+
 docs/sphinx/build/latex/*.sty
 docs/sphinx/build/latex/*.log
 docs/sphinx/build/latex/*.out

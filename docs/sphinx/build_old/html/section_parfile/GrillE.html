@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>grid &mdash; Lenstool 8.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+        <script src="../_static/documentation_options.js?v=1f41a3ab"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="potential" href="PoTential.html" />
+    <link rel="prev" title="DYNFILE" href="Dynfile.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Lenstool
+          </a>
+              <div class="version">
+                8.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation of Lenstool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../method.html">Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../InputOutput.html">Input/Output files</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../parameter_file.html">Parameter file: Section details</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="RunMode.html"><code class="docutils literal notranslate"><span class="pre">runmode</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ImagE.html"><code class="docutils literal notranslate"><span class="pre">image</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SourcE.html"><code class="docutils literal notranslate"><span class="pre">source</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="CleanLens.html"><code class="docutils literal notranslate"><span class="pre">Cleanlens</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ShapeModel.html"><code class="docutils literal notranslate"><span class="pre">shapemodel</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ShapeLimit.html"><code class="docutils literal notranslate"><span class="pre">shapelimit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ObserV.html"><code class="docutils literal notranslate"><span class="pre">observ</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="Dynfile.html"><code class="docutils literal notranslate"><span class="pre">DYNFILE</span></code></a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">grid</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#number-int"><code class="docutils literal notranslate"><span class="pre">number</span> <span class="pre">int</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polar-int"><code class="docutils literal notranslate"><span class="pre">polar</span> <span class="pre">int</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nlens-int"><code class="docutils literal notranslate"><span class="pre">nlens</span> <span class="pre">int</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nlens-opt-int"><code class="docutils literal notranslate"><span class="pre">nlens_opt</span> <span class="pre">int</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nlens-crit-int"><code class="docutils literal notranslate"><span class="pre">nlens_crit</span> <span class="pre">int</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="PoTential.html"><code class="docutils literal notranslate"><span class="pre">potential</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="LimiT.html"><code class="docutils literal notranslate"><span class="pre">limit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PotFile.html"><code class="docutils literal notranslate"><span class="pre">potfile</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ClinE.html"><code class="docutils literal notranslate"><span class="pre">cline</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="CosmoloGie.html"><code class="docutils literal notranslate"><span class="pre">Cosmologie</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../misc_file.html">Auxiliary files and tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Supported_pot.html">Supported Potentials</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pywrap.html">Python wrapper</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Lenstool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../InputOutput.html">Input/Output files</a> &raquo;</li>
+          <li><a href="../parameter_file.html">Parameter file: Section details</a> &raquo;</li>
+      <li><code class="docutils literal notranslate"><span class="pre">grid</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/section_parfile/GrillE.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="grid">
+<h1><code class="docutils literal notranslate"><span class="pre">grid</span></code><a class="headerlink" href="#grid" title="Link to this heading"></a></h1>
+<p>Defines some parameters such has the number of potential mode, the total number of potential mode that are going to be tested, the grid mode, and the number of rows and columns in the grid.</p>
+<p>If no counter image is found for an image defined in the runmode section with the <a class="reference internal" href="#"><span class="xref myst">image</span></a> or <a class="reference internal" href="#"><span class="xref myst">source</span></a> keywords, then the following warning message is printed out: “WARN: There were missed images probably due to the grid resolution.”
+In this case, you can try to increase the grid resolution with the <a class="reference internal" href="#"><span class="xref myst">nombre</span></a> keyword, or adopt a polar geometry for the grid with the <a class="reference internal" href="#"><span class="xref myst">polaire</span></a> keyword.</p>
+<section id="number-int">
+<h2><code class="docutils literal notranslate"><span class="pre">number</span> <span class="pre">int</span></code><a class="headerlink" href="#number-int" title="Link to this heading"></a></h2>
+<p>Represents the number of points of the grid used to invert the lens equation (from Source Plane to Image Plane).  An even number,   between 10 and 128 is required. Default: <code class="docutils literal notranslate"><span class="pre">int=</span> <span class="pre">30</span></code>.</p>
+</section>
+<section id="polar-int">
+<h2><code class="docutils literal notranslate"><span class="pre">polar</span> <span class="pre">int</span></code><a class="headerlink" href="#polar-int" title="Link to this heading"></a></h2>
+<p>Set the grid to a polar shape if <code class="docutils literal notranslate"><span class="pre">int=</span> <span class="pre">1</span></code>, else it takes a rectangular shape. Polar shape is advised if the main clump is centered on (0,0). Default: int=0 meaning that the program will used a rectangular grid. Interest: used to predict radial images in axi-symetrical lens model.</p>
+</section>
+<section id="nlens-int">
+<h2><code class="docutils literal notranslate"><span class="pre">nlens</span> <span class="pre">int</span></code><a class="headerlink" href="#nlens-int" title="Link to this heading"></a></h2>
+<p>Set the number of clumps that defines the Lens Potential. The number of first identifier potential must be equal or larger than this number. If the  number of potentials is lower than nlentille then nlentille is set to the effectively read number of potentials. Default: <code class="docutils literal notranslate"><span class="pre">int=0</span></code>.</p>
+</section>
+<section id="nlens-opt-int">
+<h2><code class="docutils literal notranslate"><span class="pre">nlens_opt</span> <span class="pre">int</span></code><a class="headerlink" href="#nlens-opt-int" title="Link to this heading"></a></h2>
+<p>Set the number of clumps that will be optimized in the inverse mode. The number of first identifiers potential and limit must be equal or larger than this number otherwise nlens_opt is set to the number of limit identifier read. Moreover one should have nlens_opt ≤ nlentille. Default: <code class="docutils literal notranslate"><span class="pre">int=0</span></code>.</p>
+</section>
+<section id="nlens-crit-int">
+<h2><code class="docutils literal notranslate"><span class="pre">nlens_crit</span> <span class="pre">int</span></code><a class="headerlink" href="#nlens-crit-int" title="Link to this heading"></a></h2>
+<p>Set the number of clumps for which the critical lines must be calculated. Only used for the snake algorithm (defined in section <a class="reference internal" href="#"><span class="xref myst">cline</span></a>).</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Dynfile.html" class="btn btn-neutral float-left" title="DYNFILE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="PoTential.html" class="btn btn-neutral float-right" title="potential" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Allingham et al. (add your names).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

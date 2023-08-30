@@ -1,0 +1,89 @@
+# `DYNFILE`
+
+
+
+## `dyntype`  
+
+Set the type of profile used to do the calculations. In the current version of the code, this optimization procedure is only working with the NFW profile. Then you need to use 12.
+
+## `dynnumber`
+
+Can be 1, 2 or 3. See below. 
+
+## `velocity`
+
+The measure velocity dispersion of the cluster 
+
+## `e_velocity`
+
+The associated error of the velocity dispersion.
+
+## `indmass`
+
+The mass of cluster. Can be the 2D mass, or the 3D mass, see below. 
+
+## `e_indmass`
+
+The associated error of the mass. 
+
+## `refradius_kpc`
+
+The radius at which the mass is measured. In kiloparsec.
+
+
+## Additional remarks on the dynfile identifier
+
+
+To constrain a model using strong lensing and dynamical data, we can proceed in diferent ways, but in any case we need to define a new likelihood. In the code we have implemented two forms to do the task.
+
+### First method (`dynnumber 1` and `dynnumber 2`)
+
+Given the observed velocity dispersion of a galaxy cluster,  $\sigma_{obs}$, and the velocity dispersion associated with the NFW profile, $\sigma_s$, we have the likelihood:
+
+
+$$\mathcal{L}_{velocity}(\sigma_{obs},\rho_s,r_s)\propto\exp\left\{-\frac{1}{2}[\frac{\sigma_{obs}-\tilde{\sigma_s}(\rho_s,r_s)}{\Delta_{\sigma}}]^{2}\right\}$$    
+$$\mathcal{L}_{velocity}(\sigma_{obs},\rho_s,r_s)\propto\exp\left\{-\frac{1}{2}\chi^2_{\sigma_s}\right\}$$
+
+where $\Delta_{\sigma}$ is the uncertainty in the measurement of the velocity. This is direct because in the code:
+
+
+$$\sigma_{s,code}^{2}=\frac{8}{3}Gr_s^{2}\rho_s$$
+
+
+and can be related with the observed velocity dispersion if we define (see [Verdugo et al. 2007]()):
+
+
+$$\sigma_{s,V}^{2}=4\ (1+\ln{1/2})G r_s^{2}\rho_s$$
+
+thus
+
+$$ \tilde{\sigma_s} = \sigma_{s,V} = \sigma_{s,code} / 1.473972264$$
+
+Therefore, since the two techniques are independent, the total likelihood for a given set of free parameters is just the product of the lensing ($\mathcal{L}_{image}$) and velocity dispersion likelihoods:
+
+
+
+$$ln\mathcal{L}_{total} = ln(\mathcal{L}_{image}+\mathcal{L}_{velocity})= -0.5(\chi^2_{image}+\chi^2_{\sigma_s})+\text{Some terms}$$
+
+
+If in addition we have an independent measurement of the 2D mass of the cluster (for example, WL or X-ray), we can define a new likelihood in terms of the 2D mass of the NFW profile, which can be obtained analitically (see for example [Verdugo et al. 2011]()). 
+
+
+$$\mathcal{L}_{mass}(M_{I,2D},\rho_s,r_s)\propto\exp\left\{-\frac{1}{2}[\frac{M_{I,2D}-M_{2D}^{NFW}(\rho_s,r_s)}{\Delta_M}]^2\right\}\propto\exp\left\{-\frac{1}{2}\chi^2_{mass}\right\}$$
+
+where $\Delta_M$ is the uncertainty in the measurement of the mass. Similarly
+
+$$\ln\mathcal{L}_{total}=ln(\mathcal{L}_{image}+\mathcal{L}_{velocity}+\mathcal{L}_{mass}$$
+
+Caveats: With dynnumber=1 the code uses only the velocity dispersion to do the optimization. With `dynnumber=2`, the code uses both likelihoods, you need to give the observed velocity and the independent measurement of the mass. With the use of this identifier (i.e., `dynnumber = 3`) the code works very slow, for every set of parameters the 2D mass is computed and the calculations involve the solution of two integrals. To use only the mass as constraint see the next method.
+
+### Second method (`dynnumber 3`).
+
+In this case we have an independent measurement of the 3D mass of the cluster that could be calculated with the velocity dispersion of the galaxies, or WL or X-ray. Thus,
+
+$$\mathcal{L}_{mass}(M_{I,3D},\rho_s,r_s)\propto\exp\left\{-\frac{1}{2}[\frac{M_{I,3D}-M_{3D}^{NFW}(\rho_s,r_s)}{\Delta_M}]^2\right\}\propto\exp\left\{-\frac{1}{2}\chi^2_{mass} \right\}$$
+
+and 
+$$\ln\mathcal{L}_{total}=ln(\mathcal{L}_{image}+\mathcal{L}_{mass})$$
+
+In this case the code works faster since the 3D mass of the NFW profile is easy to compute.

@@ -37,6 +37,7 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.imgmath', 
     'sphinx.ext.todo',
+    'myst_parser',
 #    'breathe',   # add it if doing C api. Requires to install breathe.
 #    'sphinx.ext.duration',
 #    'sphinx.ext.autosummary',
@@ -49,6 +50,7 @@ intersphinx_mapping = {
 }
 intersphinx_disabled_domains = ['std']
 
+myst_enable_extensions = ["dollarmath", "amsmath"]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

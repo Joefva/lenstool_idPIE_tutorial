@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mass sheet &mdash; Lenstool 8.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+        <script src="../_static/documentation_options.js?v=1f41a3ab"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SIE" href="SIS.html" />
+    <link rel="prev" title="External maps" href="External_maps.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Lenstool
+          </a>
+              <div class="version">
+                8.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation of Lenstool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../method.html">Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../InputOutput.html">Input/Output files</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../parameter_file.html">Parameter file: Section details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc_file.html">Auxiliary files and tools</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../Supported_pot.html">Supported Potentials</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="NFW.html">NFW Potential</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ExternalShear.html">ExternalShear</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EinastoPotential.html">Einasto potential (Work-in-progress)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="External_maps.html">External maps</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Mass sheet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SIS.html">SIE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PIEMD.html">PIEMD</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pywrap.html">Python wrapper</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Lenstool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../InputOutput.html">Input/Output files</a> &raquo;</li>
+          <li><a href="../Supported_pot.html">Supported Potentials</a> &raquo;</li>
+      <li>Mass sheet</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/potentials/Mass_sheet.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="mass-sheet">
+<h1>Mass sheet<a class="headerlink" href="#mass-sheet" title="Link to this heading"></a></h1>
+<p>In <code class="docutils literal notranslate"><span class="pre">set_lens.c:set_dynamics()</span></code>, the impact parameter is computed as such:</p>
+<div class="math">
+<p><img src="../_images/math/fc72fb2bb2a3297fc51be74cc5e5f5f7267381d9.png" alt="b_0 = \frac{1}{2} \frac{\Sigma_0}{\Sigma_{\rm crit}}"/></p>
+</div><p>with <img class="math" src="../_images/math/5587d9ba34c6000b0f69913fcce53739c01d8080.png" alt="\Sigma_0"/> in <img class="math" src="../_images/math/708d42b7d83824b17d015d1dd13acbcef13e98a7.png" alt="\rm g/cm^2"/>, and <img class="math" src="../_images/math/5aec1f0295c6dc77535c50118ed702748a0e16c1.png" alt="\Sigma_{\rm crit} = \frac{c^2}{4 \pi G}\frac{D_{\rm OS}}{D_{\rm OL} D_{\rm LS}} \,{\rm g/cm^2}"/>.</p>
+<p>Note that the factor <img class="math" src="../_images/math/59440f6bd400a4c3cb0727479349ef14a6cbd2c9.png" alt="1/2"/> makes the estimated density to be half the true value.</p>
+<p>In file <code class="docutils literal notranslate"><span class="pre">e_grad2.c</span></code>, the 2nd derivatives of the potential are computed as such:</p>
+<p><img class="math" src="../_images/math/aacfbde48f96f714e2a224595181576643bd11dd.png" alt="\partial_{xx} \phi = \partial_{yy} \phi = b_0"/></p>
+<p><img class="math" src="../_images/math/608f3eb8414f7f76fcc97a7071101f9b6a44ebfd.png" alt="\partial_{xy} \phi = \partial_{yx} \phi = 0"/></p>
+<p>In file <code class="docutils literal notranslate"><span class="pre">e_grad.c</span></code>, the 1st derivates of the potential are computed as such:</p>
+<p><img class="math" src="../_images/math/d2dd39c3e78474fcfbe0a3a22f89b2c71c28a3c9.png" alt="\partial_x \phi = b_0 (x_{\rm img} -x_{\rm lens})"/></p>
+<p><img class="math" src="../_images/math/9be461646fd3bc01365b322da97e55b32ed4781f.png" alt="\partial_y \phi = b_0 (y_{\rm img} -y_{\rm lens})"/></p>
+<p>This profile is not well tested.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="External_maps.html" class="btn btn-neutral float-left" title="External maps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="SIS.html" class="btn btn-neutral float-right" title="SIE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Allingham et al. (add your names).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
