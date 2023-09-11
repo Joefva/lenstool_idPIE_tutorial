@@ -38,6 +38,7 @@ extensions = [
     'sphinx.ext.imgmath', 
     'sphinx.ext.todo',
     'myst_parser',
+    'sphinx.ext.extlinks',
 #    'breathe',   # add it if doing C api. Requires to install breathe.
 #    'sphinx.ext.duration',
 #    'sphinx.ext.autosummary',

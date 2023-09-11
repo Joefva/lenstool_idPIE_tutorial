@@ -15,7 +15,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="ExternalShear" href="ExternalShear.html" />
-    <link rel="prev" title="Supported Potentials" href="../Supported_pot.html" /> 
+    <link rel="prev" title="SIE" href="SIS.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -48,13 +48,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../parameter_file.html">Parameter file: Section details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../misc_file.html">Auxiliary files and tools</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../Supported_pot.html">Supported Potentials</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="SIS.html">SIE</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">NFW Potential</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ExternalShear.html">ExternalShear</a></li>
-<li class="toctree-l3"><a class="reference internal" href="EinastoPotential.html">Einasto potential (Work-in-progress)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="External_maps.html">External maps</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Mass_sheet.html">Mass sheet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="SIS.html">SIE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EinastoPotential.html">Einasto potential (Work-in-progress)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PIEMD.html">PIEMD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Mass_sheet.html">Mass sheet</a></li>
 </ul>
 </li>
 </ul>
@@ -98,27 +98,29 @@
 <p>alpha = 1.0 corresponds to a regular NFW profile.</p>
 <p>e.g. of lenstool NFW parametrization.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">potential</span>  <span class="mi">1</span>
-        <span class="n">profil</span>     <span class="mi">12</span>
-        <span class="n">x_centre</span>     <span class="mf">0.00</span>
-        <span class="n">y_centre</span>     <span class="mf">0.00</span>
-        <span class="n">ellipticite</span>     <span class="mf">0.0</span>
-        <span class="n">angle_pos</span>     <span class="mf">0.0</span>
-        <span class="n">alpha</span>         <span class="mf">1.0</span>
-        <span class="n">scale_radius_kpc</span>     <span class="mf">30.0</span>
-        <span class="n">concentration</span>  <span class="mf">5.5</span>
-        <span class="n">z_lens</span>     <span class="mf">0.2</span>
+        <span class="n">profil</span>               <span class="mi">12</span>
+        <span class="n">x_centre</span>             <span class="mf">0.</span>
+        <span class="n">y_centre</span>             <span class="mf">0.</span>
+        <span class="n">ellipticite</span>          <span class="mf">0.</span>
+        <span class="n">angle_pos</span>            <span class="mf">0.</span>
+        <span class="n">alpha</span>                <span class="mf">1.</span>
+        <span class="n">scale_radius_kpc</span>     <span class="mf">30.</span>
+        <span class="n">concentration</span>        <span class="mf">5.5</span>
+        <span class="n">z_lens</span>               <span class="mf">0.2</span>
         <span class="n">end</span>
 </pre></div>
 </div>
-<p>NOTE: If you want to use the generalized NFW profile, you need to prepare the lenstool.tab lookup table with this command:
-make table</p>
+<p>NOTE: If you want to use the generalized NFW profile, you need to prepare the lenstool.tab lookup table with this command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">table</span> 
+</pre></div>
+</div>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../Supported_pot.html" class="btn btn-neutral float-left" title="Supported Potentials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="SIS.html" class="btn btn-neutral float-left" title="SIE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="ExternalShear.html" class="btn btn-neutral float-right" title="ExternalShear" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

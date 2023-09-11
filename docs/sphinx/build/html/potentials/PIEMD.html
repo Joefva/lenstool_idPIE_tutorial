@@ -14,8 +14,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Python wrapper" href="../pywrap.html" />
-    <link rel="prev" title="SIE" href="SIS.html" /> 
+    <link rel="next" title="Mass sheet" href="Mass_sheet.html" />
+    <link rel="prev" title="Einasto potential (Work-in-progress)" href="EinastoPotential.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -48,13 +48,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../parameter_file.html">Parameter file: Section details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../misc_file.html">Auxiliary files and tools</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../Supported_pot.html">Supported Potentials</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="SIS.html">SIE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NFW.html">NFW Potential</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ExternalShear.html">ExternalShear</a></li>
-<li class="toctree-l3"><a class="reference internal" href="EinastoPotential.html">Einasto potential (Work-in-progress)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="External_maps.html">External maps</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Mass_sheet.html">Mass sheet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="SIS.html">SIE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EinastoPotential.html">Einasto potential (Work-in-progress)</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">PIEMD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Mass_sheet.html">Mass sheet</a></li>
 </ul>
 </li>
 </ul>
@@ -93,7 +93,7 @@
              
   <section class="tex2jax_ignore mathjax_ignore" id="piemd">
 <h1>PIEMD<a class="headerlink" href="#piemd" title="Link to this heading"></a></h1>
-<p>Set the potential profile to the type dPIE described in “Eliasdottir et al. 2007”:http://arxiv.org/abs/0710.5636 .</p>
+<p>Set the potential profile to the type dPIE described in <a class="reference external" href="http://arxiv.org/abs/0710.5636">Eliasdottir et al. 2007</a>.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">set_lens.c:set_dynamics()</span></code>, the impact parameter is computed as such:</p>
 <div class="math">
 <p><img src="../_images/math/da36627c8a8ac4f97a7aee347b7703ece81f66e6.png" alt="b_0 = \frac{6 \pi \sigma_0^2}{c^2}"/></p>
@@ -113,14 +113,16 @@
 <p><img src="../_images/math/d8549b59f64920004714ff8710a2ef92d5e20670.png" alt="\partial^2_{xy} = b_0 \frac{s}{s - a} \left( p\frac{x\ y}{R^2} - z \frac{x\ y}{R^4} \right)"/></p>
 </div><p>From the 2nd derivatives, the convergence is computed in <code class="docutils literal notranslate"><span class="pre">g_mass.c:computeKmass()</span></code></p>
 <div class="math">
-<p><img src="../_images/math/a4bff44dc47feaee9eb54af8db673440fe16333f.png" alt="\text{To fill the equation}"/></p>
-</div><p>The theoretical expression taken from Eq. 7 in <a class="reference external" href="http://arxiv.org/abs/astro-ph/0405607">Limousin et al. 2005</a>  is</p>
+<p><img src="../_images/math/073861dd018bd5a8b190f4a82cebfbb9151b736c.png" alt="\text{To fill the equation} -&gt; why?"/></p>
+</div><div class="math">
+<p><img src="../_images/math/71e2db927bc7f9302eb37e053d1806462cf8b7b2.png" alt="\Sigma(R) = \frac{\sigma_0^2}{2 G} \frac{s}{s -a} \left(\frac{1}{\sqrt{R^2 + a^2}} - \frac{1}{\sqrt{R^2 + s^2}} \right)"/></p>
+</div><p>The theoretical expression taken from Eq. 7 in <a class="reference external" href="http://arxiv.org/abs/astro-ph/0405607">Limousin et al. 2005</a> is</p>
 <div class="math">
 <p><img src="../_images/math/71e2db927bc7f9302eb37e053d1806462cf8b7b2.png" alt="\Sigma(R) = \frac{\sigma_0^2}{2 G} \frac{s}{s -a} \left(\frac{1}{\sqrt{R^2 + a^2}} - \frac{1}{\sqrt{R^2 + s^2}} \right)"/></p>
 </div><p>and the critical mass is</p>
 <div class="math">
 <p><img src="../_images/math/c4d9ed71d5b1b14f7d0382381e9bbc35b3eaaf09.png" alt="\Sigma_{crit} = \frac{c^2}{4 \pi G} \frac{D_{OS}}{D_{OL} D_{LS}}"/></p>
-</div><p>By taking the ratio with $<img class="math" src="../_images/math/20434c67691485f1cdf95940a0fc211c960eefab.png" alt="\Sigma_0 = \frac{\sigma_0^2}{2G}"/>$, we find</p>
+</div><p>By taking the ratio with <img class="math" src="../_images/math/20434c67691485f1cdf95940a0fc211c960eefab.png" alt="\Sigma_0 = \frac{\sigma_0^2}{2G}"/>, we find</p>
 <div class="math">
 <p><img src="../_images/math/f3e1470f30b1bba53d799792d8e615cfb1dca801.png" alt="\kappa_{th} = \frac{\Sigma_0}{\Sigma_{crit}} = \frac{2 \pi \sigma_0^2}{c^2} \frac{D_{OL} D_{LS}}{D_{OS}}"/></p>
 </div><p>Therefore the relation between Lenstool and the theory is</p>
@@ -128,16 +130,30 @@
 <p><img src="../_images/math/2b45ac9d2a5775663fd15d3ebd8b4342c0efee62.png" alt="\kappa_{th} = \frac{2}{3}\ \kappa_{lt}"/></p>
 </div><p>Which translates in velocity dispersion as</p>
 <div class="math">
-<p><img src="../_images/math/bf44167fae23a5cf0c18722a6ec91c4ea7802636.png" alt="\sigma_{0\ th} = \sqrt{\frac{3}{2}}\ \sigma_{0\ lt}"/></p>
+<p><img src="../_images/math/6c5495acb55af4c25fa6dd500236065282d8d1ff.png" alt="\sigma_{\rm 0\ th} = \sqrt{\frac{3}{2}}\ \sigma_{\rm 0\ lt}"/></p>
 </div><p>Note that the  <a class="reference internal" href="#"><span class="xref myst">mass</span></a> keyword corrects for this factor internally, and returns the theoretical convergence map.</p>
+<p>We give an instance of dPIE potential:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">potential</span>  <span class="mi">1</span>
+        <span class="n">profil</span>           <span class="mi">81</span>
+        <span class="n">x_centre</span>         <span class="mf">0.</span>
+        <span class="n">y_centre</span>         <span class="mf">0.</span>
+        <span class="n">ellipticite</span>      <span class="mf">0.</span>
+        <span class="n">angle_pos</span>        <span class="mf">0.</span>
+	<span class="n">core_radius_kpc</span>  <span class="mf">100.</span>
+	<span class="n">cut_radius_kpc</span>   <span class="mf">1500.</span>
+	<span class="n">v_disp</span>           <span class="mf">1000.</span>
+        <span class="n">z_lens</span>           <span class="mf">0.2</span>
+        <span class="n">end</span>
+</pre></div>
+</div>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="SIS.html" class="btn btn-neutral float-left" title="SIE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../pywrap.html" class="btn btn-neutral float-right" title="Python wrapper" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="EinastoPotential.html" class="btn btn-neutral float-left" title="Einasto potential (Work-in-progress)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Mass_sheet.html" class="btn btn-neutral float-right" title="Mass sheet" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

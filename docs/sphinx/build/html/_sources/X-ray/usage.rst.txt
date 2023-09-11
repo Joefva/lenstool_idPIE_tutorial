@@ -4,7 +4,7 @@
 .. _dPIE_summary:
 
 ``dPIE`` summary
--------------------------------------------------------
+-----------------
 
 A summary on the **dual Pseudo-Isothermal Elliptical** matter distribution (``dPIE``) may be found `here <https://projets.lam.fr/projects/lenstool/wiki/PIEMD>`_, and this type of gravitational potential is described at length in `Elìasdòttir et al. (2007, Appendix A) <https://ui.adsabs.harvard.edu/abs/2007arXiv0710.5636E/abstract>`_
 . It is identified in ``lenstool`` by id: ``81``.
@@ -83,11 +83,11 @@ Bijections being invertible functions, we may revert the previous equation, thus
    n_e = \mathcal{J}^{-1}_z  \left( \frac{\mu_g m_a}{k_B} \Phi (r) \right).
 
 
--------------------------------------------------------
+------------------------------------------------
 .. _Xray_opt_idPIE:
 
 ICM profile optimisation with ``idPIE`` profile
--------------------------------------------------------
+------------------------------------------------
 
 Given the 
 :math:`n_e` ICM electron density, we can compute

@@ -4,7 +4,7 @@
 
 ## `profile int`
 
-Set the type of profile. You can find the list of potentials.
+Set the type of profile. You can find the list of potentials [here](../Supported_pot.rst).
 
 ## `x_centre float`
 
