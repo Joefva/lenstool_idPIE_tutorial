@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>idPIE: Joint baryon and DM modelling &mdash; Lenstool 8.1 documentation</title>
+  <title>Potfile &mdash; Lenstool 8.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
@@ -14,8 +14,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="idPIE profile description" href="usage.html" />
-    <link rel="prev" title="X-ray extension: Basics" href="general_method_X.html" /> 
+    <link rel="next" title="Weak Lensing" href="../weak_lensing.html" />
+    <link rel="prev" title="calculations" href="Chi2.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -40,18 +40,17 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation of Lenstool</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../method.html">Method</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../strong_lensing.html">Strong Lensing</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../strong_lensing.html">Strong Lensing</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Chi2.html"><img class="math" src="../_images/math/1cbe49dd16598c0550b8a7477dd597e6bc04367e.png" alt="\chi^2"/> calculations</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Potfile</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#use-potfile-keyword-for-file-of-potentials-optimised-together-following-a-scaling-relationship">Use <code class="docutils literal notranslate"><span class="pre">potfile</span></code> keyword for file of potentials optimised together (following a scaling relationship).</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../weak_lensing.html">Weak Lensing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../image_reconstruction.html">Image reconstruction</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="X-ray.html">X-ray extension</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="general_method_X.html">X-ray extension: Basics</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">idPIE: Joint baryon and DM modelling</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="usage.html"><code class="docutils literal notranslate"><span class="pre">idPIE</span></code> profile description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tutorial_idpie.html">Tutorial</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../X-ray/X-ray.html">X-ray extension</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
@@ -80,10 +79,10 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../method.html">Method</a> &raquo;</li>
-          <li><a href="X-ray.html">X-ray extension</a> &raquo;</li>
-      <li>idPIE: Joint baryon and DM modelling</li>
+          <li><a href="../strong_lensing.html">Strong Lensing</a> &raquo;</li>
+      <li>Potfile</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/X-ray/idpie.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/method_SL/potfile.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -91,22 +90,39 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="idpie-joint-baryon-and-dm-modelling">
-<h1>idPIE: Joint baryon and DM modelling<a class="headerlink" href="#idpie-joint-baryon-and-dm-modelling" title="Link to this heading"></a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="usage.html"><code class="docutils literal notranslate"><span class="pre">idPIE</span></code> profile description</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_idpie.html">Tutorial</a></li>
-</ul>
+  <section id="potfile">
+<h1>Potfile<a class="headerlink" href="#potfile" title="Link to this heading"></a></h1>
+<section id="use-potfile-keyword-for-file-of-potentials-optimised-together-following-a-scaling-relationship">
+<span id="id1"></span><h2>Use <code class="docutils literal notranslate"><span class="pre">potfile</span></code> keyword for file of potentials optimised together (following a scaling relationship).<a class="headerlink" href="#use-potfile-keyword-for-file-of-potentials-optimised-together-following-a-scaling-relationship" title="Link to this heading"></a></h2>
+<p>For instance:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">potfile 1</span>
+<span class="go">        filein        9 potfile.cat</span>
+<span class="go">        zlens         0.3</span>
+<span class="go">        type          81</span>
+<span class="go">        mag0          20.</span>
+<span class="go">        corekpc       0.15</span>
+<span class="go">        sigma         3 190. 5.</span>
+<span class="go">        cutkpc        3 10. 3.</span>
+<span class="go">        slope_FJ      3 1. 0.1</span>
+<span class="go">        Zero_point_FP 3 -0.6 0.03</span>
+<span class="go">        slope_SB      3 0.30 0.02</span>
+<span class="go">        Factor_Re     3 2. 0.35</span>
+<span class="go">        vdscatter     0 0. 0.</span>
+<span class="go">        rcutscatter   0 0. 0.</span>
+<span class="go">        pivot_sigma   2.</span>
+<span class="go">        pivot_mu      20.</span>
+<span class="go">        end</span>
+</pre></div>
 </div>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="general_method_X.html" class="btn btn-neutral float-left" title="X-ray extension: Basics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="usage.html" class="btn btn-neutral float-right" title="idPIE profile description" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Chi2.html" class="btn btn-neutral float-left" title="calculations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../weak_lensing.html" class="btn btn-neutral float-right" title="Weak Lensing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
