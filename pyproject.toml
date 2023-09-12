@@ -4,5 +4,5 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "lenstool"
-authors = [{name = "Allingham et al.", email = "ajoseph@campus.technion.ac.il"}]  # lenstool@googlegroups.com , gitlab: https://git-cral.univ-lyon1.fr/lenstool/lenstool
+authors = [{name = "Lenstool group", email = "lenstool@googlegroups.com"}] # [{name = "Allingham et al.", email = "ajoseph@campus.technion.ac.il"}]  # lenstool@googlegroups.com , gitlab: https://git-cral.univ-lyon1.fr/lenstool/lenstool
 dynamic = ["version", "description"]

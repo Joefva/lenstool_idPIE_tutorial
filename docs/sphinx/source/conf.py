@@ -18,8 +18,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Lenstool'
-copyright = '2023, Allingham et al. (add your names)'
-author = 'Allingham et al.'
+copyright = '2023, Lenstool group'  
+author = 'Lenstool group' # Allingham, Beauchesne, Jullo, Richard (add your names)
 
 release = '8.1'
 version = '8.1.0'
