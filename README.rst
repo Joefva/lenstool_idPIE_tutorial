@@ -8,12 +8,16 @@ https://docs.readthedocs.io/en/stable/tutorial/
 https://smobsc.readthedocs.io/en/stable/usage/installation.html
 
 * Compile html (may also do latex or xml): 
-sphinx-build -b html docs/sphinx/source docs/sphinx/build/html
+
+.. code-block:: console
+	sphinx-build -b html docs/sphinx/source docs/sphinx/build/html
 
 * If some .md files are included, use myst_parser:
-pip install myst-parser
+
+.. code-block:: console
+	pip install myst-parser
 
 * You can open the compiled ReadTheDocs files in docs/sphinx/build/html/
 
-* For the "API", one can refer to the full code of Lenstool, if this is in this directory.
-And see: https://leimao.github.io/blog/CPP-Documentation-Using-Sphinx/ for the API in C/C++.
+* For the "API", we do not have documentation yet. One can refer to the full code of Lenstool, if it is in this directory, but Sphinx favours Python code.
+To create an API with C/C++, see: https://leimao.github.io/blog/CPP-Documentation-Using-Sphinx/.

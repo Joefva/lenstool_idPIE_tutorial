@@ -95,8 +95,13 @@
 <h1>NFW Potential<a class="headerlink" href="#nfw-potential" title="Link to this heading"></a></h1>
 <p>NFW potential of gNFW need the following parameters:
 <code class="docutils literal notranslate"><span class="pre">x_centre</span></code>, <code class="docutils literal notranslate"><span class="pre">y_centre</span></code>, <code class="docutils literal notranslate"><span class="pre">ellipticite</span></code>, <code class="docutils literal notranslate"><span class="pre">angle_pos</span></code>, <code class="docutils literal notranslate"><span class="pre">alpha</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_radius_kpc</span></code>, <code class="docutils literal notranslate"><span class="pre">concentration</span></code>, <code class="docutils literal notranslate"><span class="pre">z_lens</span></code> .</p>
-<p>alpha = 1.0 corresponds to a regular NFW profile.</p>
-<p>e.g. of lenstool NFW parametrization.</p>
+<p>The Newtonian (spherical) gNFW potential is:</p>
+<div class="math">
+<p><img src="../_images/math/61f911bb33f38a143450b4400762d19ff4d087a2.png" alt="\Phi (x)  = \rho_S x^{-\alpha} (1 + x)^{- (3 - \alpha)}"/></p>
+</div><p>where <img class="math" src="../_images/math/81ff96f43073dbcf1db1b8970eda731051657782.png" alt="x = r / r_S"/> is a redimensionned radius.</p>
+<p>/!\ The above must be checked, and is not certain.</p>
+<p><img class="math" src="../_images/math/f2a7a69c0938cb55d7f005a32df3c48673911bff.png" alt="\alpha = 1.0"/> corresponds to a regular NFW profile.</p>
+<p>Example of lenstool NFW parametrisation:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">potential</span>  <span class="mi">1</span>
         <span class="n">profil</span>               <span class="mi">12</span>
         <span class="n">x_centre</span>             <span class="mf">0.</span>

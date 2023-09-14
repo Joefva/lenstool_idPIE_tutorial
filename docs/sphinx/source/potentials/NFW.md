@@ -3,10 +3,18 @@
 NFW potential of gNFW need the following parameters:
 `x_centre`, `y_centre`, `ellipticite`, `angle_pos`, `alpha`, `scale_radius_kpc`, `concentration`, `z_lens` .
 
-alpha = 1.0 corresponds to a regular NFW profile.
+The Newtonian (spherical) gNFW potential is:
+
+$$\Phi (x)  = \rho_S x^{-\alpha} (1 + x)^{- (3 - \alpha)}$$
+
+where $x = r / r_S$ is a redimensionned radius.
+
+/!\ The above must be checked, and is not certain.
+
+$\alpha = 1.0$ corresponds to a regular NFW profile.
 
 
-e.g. of lenstool NFW parametrization.
+Example of lenstool NFW parametrisation:
 ```
 potential  1
         profil               12
