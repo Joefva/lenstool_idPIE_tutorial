@@ -21,5 +21,4 @@ https://smobsc.readthedocs.io/en/stable/usage/installation.html
 
 * You can open the compiled ReadTheDocs files in docs/sphinx/build/html/
 
-* For the "API", we do not have documentation yet. One can refer to the full code of Lenstool, if it is in this directory, but Sphinx favours Python code.
-To create an API with C/C++, see: https://leimao.github.io/blog/CPP-Documentation-Using-Sphinx/.
+* For the "API", we do not have documentation yet. One can refer to the full code of Lenstool, if it is in this directory, but Sphinx favours Python code. To create an API with C/C++, see: https://leimao.github.io/blog/CPP-Documentation-Using-Sphinx/.
