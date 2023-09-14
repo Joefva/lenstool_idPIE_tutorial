@@ -10,11 +10,13 @@ https://smobsc.readthedocs.io/en/stable/usage/installation.html
 * Compile html (may also do latex or xml): 
 
 .. code-block:: console
+
 	sphinx-build -b html docs/sphinx/source docs/sphinx/build/html
 
 * If some .md files are included, use myst_parser:
 
 .. code-block:: console
+
 	pip install myst-parser
 
 * You can open the compiled ReadTheDocs files in docs/sphinx/build/html/
