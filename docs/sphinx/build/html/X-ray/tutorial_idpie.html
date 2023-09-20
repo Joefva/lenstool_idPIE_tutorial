@@ -15,7 +15,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Tutorial" href="../tutorial.html" />
-    <link rel="prev" title="Potfile" href="potfile.html" /> 
+    <link rel="prev" title="idPIE profile description" href="usage.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,7 +47,6 @@
 <li class="toctree-l3"><a class="reference internal" href="general_method_X.html">X-ray extension: Basics</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="idpie.html">idPIE: Joint baryon and DM modelling</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="usage.html"><code class="docutils literal notranslate"><span class="pre">idPIE</span></code> profile description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="potfile.html">Potfile</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Tutorial</a></li>
 </ul>
 </li>
@@ -119,6 +118,43 @@ In practice, <code class="docutils literal notranslate"><span class="pre">dPIE</
 <span class="go">        end</span>
 </pre></div>
 </div>
+<p>This requires to format include the <code class="docutils literal notranslate"><span class="pre">X-ray</span></code> section:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">X-ray</span>
+<span class="go">        pixel_area      0.00107584</span>
+<span class="go">        Chandra         1</span>
+<span class="go">        Optimization    1</span>
+<span class="go">        Optimization_z  0.4</span>
+<span class="go">        Temp0           13.4        # in keV</span>
+<span class="go">        Jz_array        1 polyE Jz_polyE_z0.4000.csv</span>
+<span class="go">        Type_factor_likelihood   1</span>
+<span class="go">        factor_cash     252.2</span>
+<span class="go">        constant_cash   0.</span>
+<span class="go">        bkg_map         3 bkg_map.fits</span>
+<span class="go">        count_map       3 count_map.fits</span>
+<span class="go">        exposure_map    3 exposure_map.fits</span>
+<span class="go">        end</span>
+</pre></div>
+</div>
+<p>where keywords <code class="docutils literal notranslate"><span class="pre">Temp0</span></code> and <code class="docutils literal notranslate"><span class="pre">Jz_array</span></code> are proper to these hydrostatic X-ray profiles.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Temp0</span></code> is the pivot temperature model, eq. (17) in
+<a class="reference external" href="https://arxiv.org/abs/2309.07076">Allingham+23b</a>:
+<img class="math" src="../_images/math/42f056a59aee38a3d4aec26f91281d0037cdf2fe.png" alt="T_0(z) = T_{500,c} (z) T_{\rm ref}"/>.
+It may be computed using routine <code class="docutils literal notranslate"><span class="pre">predT</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">predT0 &lt;redshift&gt; &lt;model_type&gt; &lt;M_500,c&gt;</span>
+</pre></div>
+</div>
+<p>where the mass
+<img class="math" src="../_images/math/96c6326cada6077c28a747f544e864cbba55c84c.png" alt="M_{500,c}"/> is in
+<img class="math" src="../_images/math/ff0e573cc61eb74d35f469b1124988be4aeaaffb.png" alt="M_{\odot}"/>, and the <code class="docutils literal notranslate"><span class="pre">&lt;model_type&gt;</span></code> corresponds to the regression used for
+<img class="math" src="../_images/math/a239fbcc905bcf1e47bf813641b02f218dadc49a.png" alt="P_e (n_e)"/>. By defult, use <code class="docutils literal notranslate"><span class="pre">polyEv1</span></code> for the latter.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Jz_array</span></code> indicates how to compute the Jz function, relating the potential to the ICM density
+<img class="math" src="../_images/math/13af008a4fd5becfa43736ebf9a15c461fa2efae.png" alt="n_e"/>.
+It takes three arguments:</p>
+<ul class="simple">
+<li><p>An integer. <code class="docutils literal notranslate"><span class="pre">0</span></code>: do not perform the computation. <code class="docutils literal notranslate"><span class="pre">1</span></code>: perform it.</p></li>
+<li><p>A string for the model type. By default, use <code class="docutils literal notranslate"><span class="pre">polyE</span></code>.</p></li>
+<li><p>A second string for the name of the output array. If the array is not computed (<code class="docutils literal notranslate"><span class="pre">0</span></code>), this array must already exist.</p></li>
+</ul>
 </section>
 </section>
 
@@ -126,7 +162,7 @@ In practice, <code class="docutils literal notranslate"><span class="pre">dPIE</
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="potfile.html" class="btn btn-neutral float-left" title="Potfile" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="usage.html" class="btn btn-neutral float-left" title="idPIE profile description" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../tutorial.html" class="btn btn-neutral float-right" title="Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
