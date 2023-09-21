@@ -51,7 +51,7 @@ float is $r_c^*$ in arc seconds. It is used to compute the core radius of the ga
 
 ## `cut int float1 float2`
  
-`float1` is $r_{cut}^*$ in arc seconds. The cut radius in arc seconds of a galaxy is $\r_{\rm cut} = r_{\rm cut}^*\ \left( \frac{L}{L^*} \right)^{\frac{2}{\rm slope}}$.
+`float1` is $r_{cut}^*$ in arc seconds. The cut radius in arc seconds of a galaxy is $r_{\rm cut} = r_{\rm cut}^*\ \left( \frac{L}{L^*} \right)^{\frac{2}{\rm slope}}$.
 
 `int` and `float2` are used for the potfile optimisation. (see [sigma]() keyword and [inverse]() section).
 
