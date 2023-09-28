@@ -7,9 +7,7 @@ The Newtonian (spherical) gNFW potential is:
 
 $$\Phi (x)  = \rho_S x^{-\alpha} (1 + x)^{- (3 - \alpha)}$$
 
-where $x = r / r_S$ is a redimensionned radius.
-
-/!\ The above must be checked, and is not certain.
+where $x = r / r_S$ is a redimensionned radius (see [Limousin et al. 2008 eq. 1](https://ui.adsabs.harvard.edu/abs/2008A%26A...489...23L/abstract)).
 
 $\alpha = 1.0$ corresponds to a regular NFW profile.
 
