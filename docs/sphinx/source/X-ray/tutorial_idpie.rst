@@ -73,7 +73,7 @@ It takes three arguments:
 
 - An integer. ``0``: do not perform the computation. ``1``: perform it.
 
-- A string for the model type. By default, use ``polyE``.
+- A string for the model type. By default, use ``polyE``. Other option is ``polyA``, which should be more up-to-date.
 
 - A second string for the name of the output array. If the array is not computed (``0``), this array must already exist.
 
