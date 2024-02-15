@@ -37,18 +37,20 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.imgmath', 
     'sphinx.ext.todo',
+    'myst_nb',
 #    'breathe',   # add it if doing C api. Requires to install breathe.
 #    'sphinx.ext.duration',
 #    'sphinx.ext.autosummary',
 #    'sphinx.ext.intersphinx',
 ]
-
+#nb_kernel_rgx_aliases = {"python3"}
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),
     'sphinx': ('https://www.sphinx-doc.org/en/master/', None),
 }
 intersphinx_disabled_domains = ['std']
 
+myst_enable_extensions = ["dollarmath", "amsmath"]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -58,7 +60,7 @@ templates_path = ['_templates']
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
 
-
+nb_kernel_rgx_aliases = {"lt_test": "python"}
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for

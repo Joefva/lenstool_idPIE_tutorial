@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>potfile &mdash; Lenstool 8.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=1f41a3ab"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="observ" href="ObserV.html" />
+    <link rel="prev" title="Other sections:" href="../Other_sect.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Lenstool
+          </a>
+              <div class="version">
+                8.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation of Lenstool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../method.html">Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../parameter_file.html">Parameter file: Section details</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Mandatory_section.html">Mandatory sections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Mandatory_opt.html">Mandatory sections for lensing optimisation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../Other_sect.html">Other sections:</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">potfile</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#filein-int-filename">filein int filename</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#type-int">type int</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mag0-float">mag0 float</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zlens-float">zlens float</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sigma-int-float1-float2">sigma int float1 float2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#core-float">core float</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#corekpc-float">corekpc float</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cut-int-float1-float2">cut int float1 float2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cutkpc-int-float1-float2">cutkpc int float1 float2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#slope-int-float1-float2">slope int float1 float2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vdslope-int-float1-float2">vdslope int float1 float2</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ObserV.html">observ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CleanLens.html">Cleanlens</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ClinE.html">cline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="X-ray.html">X-ray</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ShapeModel.html">shapemodel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ShapeLimit.html">shapelimit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SourcE.html">source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Dynfile.html">DYNFILE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="large.html">large</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cosmolimit.html">cosmolimit</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../InputOutput.html">Input/Output files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Supported_pot.html">Supported Potentials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pywrap.html">Python wrapper</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Lenstool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../parameter_file.html">Parameter file: Section details</a></li>
+          <li class="breadcrumb-item"><a href="../Other_sect.html">Other sections:</a></li>
+      <li class="breadcrumb-item active">potfile</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/section_parfile/PotFile.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="potfile">
+<h1>potfile<a class="headerlink" href="#potfile" title="Link to this heading"></a></h1>
+<p>Under this identifier are defined the default parameters for all the galaxy scale mass components that account for perturbations to the cluster potential by the galaxies. By default, the mass distribution model for the galaxies is <a class="reference internal" href="#"><span class="xref myst">PIEMD</span></a>.</p>
+<section id="filein-int-filename">
+<h2>filein int filename<a class="headerlink" href="#filein-int-filename" title="Link to this heading"></a></h2>
+<p>If <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">=</span> <span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">3</span></code> the galaxy catalog format is <img class="math" src="../_images/math/91aba99342de9951e9901fbbc7230f456a1d4a10.png" alt="\rm (id\, x_c \,y_c \,a \,b\, \theta\, mag\, lum)"/>.
+If <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">=</span> <span class="pre">3</span></code>, <img class="math" src="../_images/math/0c1ab4c9fef731f80fd6c5177f8885f6e753acd5.png" alt="x_c"/> and <img class="math" src="../_images/math/b84597d4bdac2ffee45446d36cfb70021c330959.png" alt="y_c"/> are given in degrees in the equatorial coordinates.
+If <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">=</span> <span class="pre">1</span></code>, <img class="math" src="../_images/math/0c1ab4c9fef731f80fd6c5177f8885f6e753acd5.png" alt="x_c"/> and <img class="math" src="../_images/math/b84597d4bdac2ffee45446d36cfb70021c330959.png" alt="y_c"/> are given in arcseconds relative to the reference point given in the <a class="reference internal" href="#"><span class="xref myst">runmode</span></a> section.
+Note that the keyword <code class="docutils literal notranslate"><span class="pre">#REFERENCE</span></code> in the header of the catalog overrides this behavior in all cases.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">=</span> <span class="pre">2</span></code>, the galaxy catalog format is <img class="math" src="../_images/math/59ddab82b3c214c0bd3d7a8ef63d282e52faf640.png" alt="\rm (ftype\, x_c\, y_c\, \epsilon\, \theta\, r_{core}(kpc)\, r_{cut}(kpc)\, \sigma(km/s)\, z)"/>.</p>
+<p>The <a class="reference internal" href="#"><span class="xref myst">ellipticity</span></a> <img class="math" src="../_images/math/0ad7b30534898f253002222f998f38001e604648.png" alt="\epsilon"/> parameter is linked to <img class="math" src="../_images/math/b3e65e3b6408fcfa00452530b73f55d1755f9965.png" alt="a"/> and <img class="math" src="../_images/math/68c7c8c65602677ab56cf7fd88002023f0edc575.png" alt="b"/> by : <img class="math" src="../_images/math/dbc7cae2ce25548299b32dec0d2bb00d6abe8e30.png" alt="\epsilon = (a^2-b^2)/(a ^2 +b ^2)"/> . The ellipticity ε of the galaxies is then computed again according to their potential type ([type]).</p>
+</section>
+<section id="type-int">
+<h2>type int<a class="headerlink" href="#type-int" title="Link to this heading"></a></h2>
+<p>All the galaxies have the same mass profile set by <code class="docutils literal notranslate"><span class="pre">int</span></code>. Default value is <code class="docutils literal notranslate"><span class="pre">81</span></code>, i.e. <a class="reference internal" href="#"><span class="xref myst">PIEMD</span></a> potential.
+In the current version, the last column in the catalog (Luminosity) is not used. The dynamical parameters <img class="math" src="../_images/math/15c52b02a94d481f1c19d3a2a5080ae85b3d16fc.png" alt="(r_{core},\, r_{cut},\,\sigma)"/> of the potfile galaxies are scaled with the scaling relations described below.</p>
+</section>
+<section id="mag0-float">
+<h2>mag0 float<a class="headerlink" href="#mag0-float" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">float</span></code> is the <img class="math" src="../_images/math/017b733a2d7f149286c8457c3f7799ab33d1e483.png" alt="m^*"/> parameter of the reference galaxy for the scaling relations below. It can be in absolute or in relative magnitudes according to the magnitude you give in your potfile. <img class="math" src="../_images/math/017b733a2d7f149286c8457c3f7799ab33d1e483.png" alt="m^*"/> default value is 17 mag.</p>
+</section>
+<section id="zlens-float">
+<h2>zlens float<a class="headerlink" href="#zlens-float" title="Link to this heading"></a></h2>
+<p>All the galaxies with no specified redshift (Catalog format 3) have the same redshift <code class="docutils literal notranslate"><span class="pre">float</span></code>. This is used to compute the  diameter angular distance.</p>
+</section>
+<section id="sigma-int-float1-float2">
+<h2>sigma int float1 float2<a class="headerlink" href="#sigma-int-float1-float2" title="Link to this heading"></a></h2>
+<p>float1 is <img class="math" src="../_images/math/533df90dc94eddfbf1daa0cc639fda16b0aec6a8.png" alt="\sigma^*"/>  in km/s. The velocity dispersion of the galaxies is given by <img class="math" src="../_images/math/de6f48d0d7f465af7c509c9ba7cd0e092ca42b65.png" alt="\sigma = \sigma^*\, \left( \frac{L}{L^*} \right)^{\frac{1}{\rm vdslope}}"/></p>
+<p>In the inverse 3 bayesian optimisation method, int can be either 1 or 3 for the uniform or Gaussian prior respectively.
+If <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">=</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">float1</span></code> and <code class="docutils literal notranslate"><span class="pre">float2</span></code> are the min and max limits respectively.
+If <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">=</span> <span class="pre">3</span></code>, <code class="docutils literal notranslate"><span class="pre">float1</span></code> and <code class="docutils literal notranslate"><span class="pre">float2</span></code> are the mean and stddev parameters of the Gaussian pdf.</p>
+<p>In the inverse 2 optimisation mode (deprecated), int sets the number of bins for the potfile optimisation in the range (min,max) = (float1, float2).</p>
+</section>
+<section id="core-float">
+<h2>core float<a class="headerlink" href="#core-float" title="Link to this heading"></a></h2>
+<p>float is <img class="math" src="../_images/math/b726e83652349a246cdaa07a4058ed76746d870c.png" alt="r_c^*"/> in arc seconds. It is used to compute the core radius of the galaxies using the scaling relation <img class="math" src="../_images/math/b8e364439ccbb3c1c256b14409e0f9dd613900d7.png" alt="r_c= r_c^*\ \left( \frac{L}{L^*} \right)^{\frac{1}{2}}"/>.</p>
+</section>
+<section id="corekpc-float">
+<h2>corekpc float<a class="headerlink" href="#corekpc-float" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">float</span></code> is <img class="math" src="../_images/math/937d2dd6ed453e894690c0f7eced573dffce57ff.png" alt="r_c"/> in kpc. It is used to compute the core radius in kpc of the galaxies. The cosmological parameters defined in the <a class="reference internal" href="#"><span class="xref myst">cosmologie</span></a> Section are used to convert from kpc to arc seconds. <a class="reference internal" href="#"><span class="xref myst">core</span></a> parameter defined in arc second takes precedence over <a class="reference internal" href="#"><span class="xref myst">corekpc</span></a>.</p>
+</section>
+<section id="cut-int-float1-float2">
+<h2>cut int float1 float2<a class="headerlink" href="#cut-int-float1-float2" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">float1</span></code> is <img class="math" src="../_images/math/c767c6e9fa6f5a0d06248885da08e2b7ae252646.png" alt="r_{cut}^*"/> in arc seconds. The cut radius in arc seconds of a galaxy is <aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">\r_{\rm cut} = r_{\rm cut}^*\ \left( \frac{L}{L^*} \right)^{\frac{2}{\rm slope}}</span>)</p>
+<p>latex exited with error
+[stdout]
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./math.tex
+LaTeX2e &lt;2022-11-01&gt; patch level 1
+L3 programming layer &lt;2023-01-16&gt;
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/anyfontsize/anyfontsize.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-dvips.def)
+(./math.aux) (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
+
+LaTeX Warning: Command \r invalid in math mode on input line 13.
+
+! Missing $ inserted.
+&lt;inserted text&gt; 
+                $
+l.13 \fontsize{12}{14}\selectfont $\r_
+                                      {\rm cut} = r_{\rm cut}^*\ \left( \fra...
+
+! Missing { inserted.
+&lt;to be read again&gt; 
+                   \global 
+l.13 \fontsize{12}{14}\selectfont $\r_
+                                      {\rm cut} = r_{\rm cut}^*\ \left( \fra...
+
+! Improper \spacefactor.
+&lt;recently read&gt; \spacefactor 
+                             
+l.13 \fontsize{12}{14}\selectfont $\r_
+                                      {\rm cut} = r_{\rm cut}^*\ \left( \fra...
+
+! Please use \mathaccent for accents in math mode.
+\add&#64;accent ... \let \ignorespaces \relax \accent 
+                                                  #1 #2\egroup \ifmmode \els...
+l.13 \fontsize{12}{14}\selectfont $\r_
+                                      {\rm cut} = r_{\rm cut}^*\ \left( \fra...
+
+! Missing { inserted.
+&lt;to be read again&gt; 
+                   _
+l.13 \fontsize{12}{14}\selectfont $\r_
+                                      {\rm cut} = r_{\rm cut}^*\ \left( \fra...
+
+! Missing { inserted.
+&lt;to be read again&gt; 
+                   \egroup 
+l.13 \fontsize{12}{14}\selectfont $\r_
+                                      {\rm cut} = r_{\rm cut}^*\ \left( \fra...
+
+! Missing } inserted.
+&lt;inserted text&gt; 
+                }
+l.13 ...rac{L}{L^*} \right)^{\frac{2}{\rm slope}}$
+                                                  
+! Improper \prevdepth.
+\newpage ...everypar {}\fi \par \ifdim \prevdepth 
+                                                  &gt;\z&#64; \vskip -\ifdim \prevd...
+l.14 \end{document}
+                   
+! Missing } inserted.
+&lt;inserted text&gt; 
+                }
+l.14 \end{document}
+                   
+! Missing $ inserted.
+&lt;inserted text&gt; 
+                $
+l.14 \end{document}
+                   
+! Missing } inserted.
+&lt;inserted text&gt; 
+                }
+l.14 \end{document}
+                   
+[1] (./math.aux) )
+(see the transcript file for additional information)
+Output written on math.dvi (1 page, 188 bytes).
+Transcript written on math.log.
+</p>
+</aside>
+.</p>
+<p><code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">float2</span></code> are used for the potfile optimisation. (see <a class="reference internal" href="#"><span class="xref myst">sigma</span></a> keyword and <a class="reference internal" href="#"><span class="xref myst">inverse</span></a> section).</p>
+</section>
+<section id="cutkpc-int-float1-float2">
+<h2>cutkpc int float1 float2<a class="headerlink" href="#cutkpc-int-float1-float2" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">float1</span></code> is <img class="math" src="../_images/math/c767c6e9fa6f5a0d06248885da08e2b7ae252646.png" alt="r_{cut}^*"/> in kpc and is used to compute the cut radius of the galaxies in kpc. The cosmological parameters defined in the <a class="reference internal" href="#"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">cosmologie</span></code></span></a> section are then used to convert from kpc to arc seconds. Arguments <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float1</span></code> and <code class="docutils literal notranslate"><span class="pre">float2</span></code> work in the same way as for the <a class="reference internal" href="#"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">cut</span></code></span></a> parameter. <a class="reference internal" href="#"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">cut</span></code></span></a> parameter defined in arc second takes precedence over <a class="reference internal" href="#"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">cutkpc</span></code></span></a>.</p>
+</section>
+<section id="slope-int-float1-float2">
+<h2>slope int float1 float2<a class="headerlink" href="#slope-int-float1-float2" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">float1</span></code> is the slope value used in the cut radius computation. int and float2 are used in the potfile optimisation.  Slope default value is 4, i.e. a constant M/L ratio. To reproduce the fundamental plane, you need to set slope to 2.5.</p>
+</section>
+<section id="vdslope-int-float1-float2">
+<h2>vdslope int float1 float2<a class="headerlink" href="#vdslope-int-float1-float2" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">float1</span></code> is the velocity dispersion slope value used in the σ computation (see <a class="reference internal" href="#"><span class="xref myst">sigma</span></a> parameter). <code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">float2</span></code> are used in the potfile optimisation. vdslope default value is 4.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../Other_sect.html" class="btn btn-neutral float-left" title="Other sections:" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ObserV.html" class="btn btn-neutral float-right" title="observ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Allingham et al. (add your names).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

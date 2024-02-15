@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lenstool &mdash; Lenstool 8.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=1f41a3ab"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Lenstool
+          </a>
+              <div class="version">
+                8.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation of Lenstool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../method.html">Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../parameter_file.html">Parameter file: Section details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../InputOutput.html">Input/Output files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Supported_pot.html">Supported Potentials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pywrap.html">Python wrapper</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Lenstool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">lenstool</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for lenstool</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">ctypes</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">ctypes.util</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">structure</span>
+<span class="kn">import</span> <span class="nn">signal</span>
+
+<span class="c1"># Search in LD_LIBRARY_PATH (unix), DYLD_LIBRARY_PATH (osx) or </span>
+<span class="c1"># other standard places. Also appends prefix and suffix according to system</span>
+<span class="c1"># https://docs.python.org/3/library/html#finding-shared-libraries</span>
+<span class="n">lib_file</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">find_library</span><span class="p">(</span><span class="s1">&#39;lenstool&#39;</span><span class="p">)</span>
+
+<span class="n">_lib</span> <span class="o">=</span> <span class="n">CDLL</span><span class="p">(</span><span class="n">lib_file</span><span class="p">)</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">get_version</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_char_p</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">get_version</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">create_string_buffer</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> 
+<span class="n">_lib</span><span class="o">.</span><span class="n">get_version</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">p</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">init_grille</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_char_p</span><span class="p">,</span> <span class="n">c_char_p</span><span class="p">,</span> <span class="n">c_int</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">init_grille</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">c_int</span>
+
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">init_cosmoratio</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_int</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">structure</span><span class="o">.</span><span class="n">cpoint</span><span class="p">)]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">init_cosmoratio</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">checkpar</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">checkpar</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">readConstraints</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">readConstraints</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">readConstraints_X_ray</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">readConstraints_X_ray</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">getNParameters</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">getNParameters</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">c_int</span>
+
+<span class="n">square_double_t</span> <span class="o">=</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">))</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">free_square_double</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">square_double_t</span><span class="p">,</span> <span class="n">c_int</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">free_square_double</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">alloc_square_double</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_int</span><span class="p">,</span> <span class="n">c_int</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">alloc_square_double</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">square_double_t</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">alloc_cubic_double</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_int</span><span class="p">,</span> <span class="n">c_int</span><span class="p">,</span> <span class="n">c_int</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">alloc_cubic_double</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">POINTER</span><span class="p">(</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">)))</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">free_cubic_double</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">POINTER</span><span class="p">(</span><span class="n">POINTER</span><span class="p">(</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">))),</span> <span class="n">c_int</span><span class="p">,</span> <span class="n">c_int</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">free_cubic_double</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">readBayesModels</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_int</span><span class="p">),</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">c_long</span><span class="p">)]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">readBayesModels</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">square_double_t</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">setBayesModel</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_long</span><span class="p">,</span> <span class="n">c_long</span><span class="p">,</span> <span class="n">square_double_t</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">setBayesModel</span><span class="o">.</span><span class="n">restypes</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">o_chires</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_char_p</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">o_chires</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">o_chi_lhood0</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">),</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">),</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">)]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">o_chi_lhood0</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">c_int</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">rescaleCube_1Atom</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">),</span> <span class="n">c_int</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">rescaleCube_1Atom</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">c_int</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">bayesHeader</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">bayesHeader</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">c_int</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">write_bayes_line</span><span class="o">.</span><span class="n">argtype</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_void_p</span><span class="p">,</span> <span class="n">c_double</span><span class="p">,</span> <span class="n">c_double</span><span class="p">,</span> <span class="n">c_long</span><span class="p">,</span> <span class="n">c_void_p</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">write_bayes_line</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">open_mcmc_files</span><span class="o">.</span><span class="n">argtype</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_double</span><span class="p">,</span> <span class="n">c_char_p</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">open_mcmc_files</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">c_void_p</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">close_mcmc_files</span><span class="o">.</span><span class="n">argtype</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_void_p</span><span class="p">,</span> <span class="n">c_void_p</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">close_mcmc_files</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">userCommon_init</span><span class="o">.</span><span class="n">argstype</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_int</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">userCommon_init</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">c_void_p</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">userCommon_free</span><span class="o">.</span><span class="n">argstype</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_void_p</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">userCommon_free</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">o_print_res</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_double</span><span class="p">,</span><span class="n">c_double</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">o_print_res</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">set_res_par</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">set_res_par</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">o_set_lens_bayes</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_int</span><span class="p">,</span><span class="n">c_int</span><span class="p">,</span><span class="n">c_double</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">o_set_lens_bayes</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">Circular_total_mass</span><span class="o">.</span><span class="n">argstype</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_double</span><span class="p">,</span><span class="n">c_double</span><span class="p">,</span><span class="n">c_int</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">Circular_total_mass</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">c_double</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">Mass_at_rad</span><span class="o">.</span><span class="n">argstype</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_double</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">Mass_at_rad</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">c_double</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">Mass_inside_rad</span><span class="o">.</span><span class="n">argstype</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_double</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">Mass_inside_rad</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">c_double</span>
+
+
+<span class="n">path_libc</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">find_library</span><span class="p">(</span><span class="s2">&quot;c&quot;</span><span class="p">)</span>
+<span class="n">libc</span> <span class="o">=</span> <span class="n">CDLL</span><span class="p">(</span><span class="n">path_libc</span><span class="p">)</span>
+
+
+<span class="n">fopen</span> <span class="o">=</span> <span class="n">libc</span><span class="o">.</span><span class="n">fopen</span>
+<span class="n">fopen</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="n">c_char_p</span><span class="p">,</span> <span class="n">c_char_p</span><span class="p">,</span>
+<span class="n">fopen</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">c_void_p</span>
+
+<span class="n">fwrite</span> <span class="o">=</span> <span class="n">libc</span><span class="o">.</span><span class="n">fwrite</span>
+<span class="n">fwrite</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="n">c_void_p</span><span class="p">,</span> <span class="n">c_size_t</span><span class="p">,</span> <span class="n">c_size_t</span><span class="p">,</span> <span class="n">c_void_p</span>
+<span class="n">fwrite</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">c_size_t</span>
+
+<span class="n">fclose</span> <span class="o">=</span> <span class="n">libc</span><span class="o">.</span><span class="n">fclose</span>
+<span class="n">fclose</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="n">c_void_p</span><span class="p">,</span>
+<span class="n">fclose</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">c_int</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">o_global_free</span><span class="o">.</span><span class="n">argtypes</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">o_global_free</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">o_get_lens</span><span class="o">.</span><span class="n">argstype</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_int</span><span class="p">,</span> <span class="n">c_int</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">o_get_lens</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">c_double</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">o_set_lens</span><span class="o">.</span><span class="n">argstype</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_int</span><span class="p">,</span> <span class="n">c_int</span><span class="p">,</span> <span class="n">c_double</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">o_set_lens</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">getParName</span><span class="o">.</span><span class="n">argstype</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_int</span><span class="p">,</span> <span class="n">c_char_p</span><span class="p">,</span> <span class="n">c_int</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">getParName</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">c_char_p</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">s_source</span><span class="o">.</span><span class="n">argstype</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">s_source</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">computeKmap</span><span class="o">.</span><span class="n">argstype</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_int</span><span class="p">,</span> <span class="n">c_int</span><span class="p">,</span> <span class="n">c_double</span><span class="p">,</span> <span class="n">c_double</span><span class="p">,</span> <span class="n">square_double_t</span><span class="p">,</span> <span class="n">c_double</span><span class="p">,</span> <span class="n">c_double</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">computeKmap</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">dratio</span><span class="o">.</span><span class="n">argstype</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_double</span><span class="p">,</span> <span class="n">c_double</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">dratio</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">c_double</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">distcosmo1</span><span class="o">.</span><span class="n">argstype</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_double</span><span class="p">,]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">distcosmo1</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">c_double</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">distcosmo2</span><span class="o">.</span><span class="n">argstype</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_double</span><span class="p">,</span> <span class="n">c_double</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">distcosmo2</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">c_double</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">g_ampli_implane</span><span class="o">.</span><span class="n">argstype</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_int</span><span class="p">,</span> <span class="n">square_double_t</span><span class="p">,</span> <span class="n">c_int</span><span class="p">,</span> <span class="n">c_double</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">g_ampli_implane</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">g_dpl_tmp</span><span class="o">.</span><span class="n">argstype</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_int</span><span class="p">,</span> <span class="n">c_double</span><span class="p">,</span> <span class="n">square_double_t</span><span class="p">,</span> <span class="n">square_double_t</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">g_dpl_tmp</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">o_pixel</span><span class="o">.</span><span class="n">argstype</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">square_double_t</span><span class="p">,</span> <span class="n">c_int</span><span class="p">,</span> <span class="n">c_int</span><span class="p">,</span> <span class="n">c_double</span><span class="p">,</span> 
+    <span class="n">c_double</span><span class="p">,</span> <span class="n">c_double</span><span class="p">,</span> <span class="n">c_double</span><span class="p">,</span> <span class="n">c_double</span><span class="p">,</span> 
+    <span class="n">POINTER</span><span class="p">(</span><span class="n">c_int</span><span class="p">),</span> <span class="n">square_double_t</span><span class="p">,</span> <span class="n">square_double_t</span>  <span class="c1"># POINTER(c_int) is for the pointer on struct galaxie *source</span>
+<span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">o_pixel</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">o_pixel_source</span><span class="o">.</span><span class="n">argstype</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">square_double_t</span><span class="p">,</span> <span class="n">c_int</span><span class="p">,</span> <span class="n">c_int</span><span class="p">,</span> 
+    <span class="n">c_double</span><span class="p">,</span> <span class="n">c_double</span><span class="p">,</span> <span class="n">c_double</span><span class="p">,</span> <span class="n">c_double</span><span class="p">,</span> 
+    <span class="n">c_int</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">c_int</span><span class="p">)</span>
+<span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">o_pixel_source</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<span class="c1"># Some function to communicate with python and JAX</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">rescale_cube_and_fill_lens</span><span class="o">.</span><span class="n">argstype</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">POINTER</span><span class="p">(</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">)),</span><span class="n">POINTER</span><span class="p">(</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">)),</span><span class="n">POINTER</span><span class="p">(</span><span class="n">POINTER</span><span class="p">(</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">))),</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">),</span>
+    <span class="n">c_int</span><span class="p">,</span><span class="n">c_int</span><span class="p">,</span><span class="n">c_int</span>
+<span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">rescale_cube_and_fill_lens</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">c_int</span><span class="p">)</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">expose_lens_structure_param_num</span><span class="o">.</span><span class="n">argstype</span> <span class="o">=</span><span class="p">[]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">expose_lens_structure_param_num</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">c_int</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">expose_lens_structure_type</span><span class="o">.</span><span class="n">argstype</span> <span class="o">=</span><span class="p">[</span><span class="n">c_int</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">expose_lens_structure_type</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_int</span><span class="p">)</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">expose_lens_structure_index</span><span class="o">.</span><span class="n">argstype</span> <span class="o">=</span><span class="p">[</span><span class="n">c_int</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">expose_lens_structure_index</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_int</span><span class="p">)</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">expose_lens_structure</span><span class="o">.</span><span class="n">argstype</span><span class="o">=</span><span class="p">[</span><span class="n">POINTER</span><span class="p">(</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">))]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">expose_lens_structure</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span><span class="kc">None</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">expose_Bspline_structure</span><span class="o">.</span><span class="n">argstype</span><span class="o">=</span><span class="p">[</span><span class="n">c_int</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">expose_Bspline_structure</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_int</span><span class="p">)</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">expose_Bspline_structure_ky</span><span class="o">.</span><span class="n">argstype</span><span class="o">=</span><span class="p">[</span><span class="n">c_int</span><span class="p">,</span><span class="n">c_int</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">expose_Bspline_structure_ky</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">)</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">expose_Bspline_structure_kx</span><span class="o">.</span><span class="n">argstype</span><span class="o">=</span><span class="p">[</span><span class="n">c_int</span><span class="p">,</span><span class="n">c_int</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">expose_Bspline_structure_kx</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">)</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">expose_Bspline_structure_Pz</span><span class="o">.</span><span class="n">argstype</span><span class="o">=</span><span class="p">[</span><span class="n">c_int</span><span class="p">,</span><span class="n">c_int</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">expose_Bspline_structure_Pz</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span><span class="n">POINTER</span><span class="p">(</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">))</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">compute_dlsds_per_im</span><span class="o">.</span><span class="n">argstype</span><span class="o">=</span><span class="p">[</span><span class="n">POINTER</span><span class="p">(</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">))]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">compute_dlsds_per_im</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span><span class="kc">None</span>
+
+<span class="n">_lib</span><span class="o">.</span><span class="n">compute_likelihood_batch</span><span class="o">.</span><span class="n">argstype</span><span class="o">=</span><span class="p">[</span><span class="n">POINTER</span><span class="p">(</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">)),</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">),</span><span class="n">c_int</span><span class="p">,</span><span class="n">c_int</span><span class="p">]</span>
+<span class="n">_lib</span><span class="o">.</span><span class="n">compute_likelihood_batch</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_int</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">.lenstool</span> <span class="kn">import</span> <span class="n">Lenstool</span>
+
+<div class="viewcode-block" id="handler">
+<a class="viewcode-back" href="../lenstool.html#lenstool.handler">[docs]</a>
+<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">signum</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
+    <span class="n">err_msg</span> <span class="o">=</span> <span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_char</span><span class="o">*</span><span class="mi">500</span><span class="p">)</span><span class="o">.</span><span class="n">in_dll</span><span class="p">(</span><span class="n">lenstool</span><span class="o">.</span><span class="n">_lib</span><span class="p">,</span> <span class="s2">&quot;error_string&quot;</span><span class="p">)</span>
+    <span class="n">err_no</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="o">.</span><span class="n">in_dll</span><span class="p">(</span><span class="n">lenstool</span><span class="o">.</span><span class="n">_lib</span><span class="p">,</span> <span class="s2">&quot;error_number&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="n">err_no</span><span class="p">,</span> <span class="n">err_msg</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
+
+<span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGTERM</span><span class="p">,</span> <span class="n">handler</span><span class="p">)</span>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Allingham et al. (add your names).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>observ &mdash; Lenstool 8.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=1f41a3ab"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Cleanlens" href="CleanLens.html" />
+    <link rel="prev" title="potfile" href="PotFile.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Lenstool
+          </a>
+              <div class="version">
+                8.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation of Lenstool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../method.html">Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../parameter_file.html">Parameter file: Section details</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Mandatory_section.html">Mandatory sections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Mandatory_opt.html">Mandatory sections for lensing optimisation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../Other_sect.html">Other sections:</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="PotFile.html">potfile</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">observ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#noise-int">noise int</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sky-float">sky float</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#idum-int">idum int</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dispersion-float">dispersion float</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prec-float">prec float</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#seeing-int-float">seeing int float</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#seeing-e-int-float1-float2-float3">seeing_e int float1 float2 float3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#psf-int-filename">psf int filename</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#binning-int1-int2">binning int1 int2</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="CleanLens.html">Cleanlens</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ClinE.html">cline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="X-ray.html">X-ray</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ShapeModel.html">shapemodel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ShapeLimit.html">shapelimit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SourcE.html">source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Dynfile.html">DYNFILE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="large.html">large</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cosmolimit.html">cosmolimit</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../InputOutput.html">Input/Output files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Supported_pot.html">Supported Potentials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pywrap.html">Python wrapper</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Lenstool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../parameter_file.html">Parameter file: Section details</a></li>
+          <li class="breadcrumb-item"><a href="../Other_sect.html">Other sections:</a></li>
+      <li class="breadcrumb-item active">observ</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/section_parfile/ObserV.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="observ">
+<h1>observ<a class="headerlink" href="#observ" title="Link to this heading"></a></h1>
+<p><em>Under this identifier is defined the different noise that can be added to a gravitational image, such as seeing or Poisson Noise.</em></p>
+<p>All these constants are used when the image mode <code class="docutils literal notranslate"><span class="pre">large</span> <span class="pre">iso</span></code> or <code class="docutils literal notranslate"><span class="pre">runmode</span> <span class="pre">pixel</span></code> representation is set.</p>
+<section id="noise-int">
+<h2>noise int<a class="headerlink" href="#noise-int" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></code>: if false  <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">=</span> <span class="pre">1</span></code>: is true</p>
+<p>If true, add Poisson noise to the final image</p>
+</section>
+<section id="sky-float">
+<h2>sky float<a class="headerlink" href="#sky-float" title="Link to this heading"></a></h2>
+<p>Mean value for the sky background</p>
+</section>
+<section id="idum-int">
+<h2>idum int<a class="headerlink" href="#idum-int" title="Link to this heading"></a></h2>
+<p>Random number for the noise generation. Should be negative.</p>
+</section>
+<section id="dispersion-float">
+<h2>dispersion float<a class="headerlink" href="#dispersion-float" title="Link to this heading"></a></h2>
+<p>1σ value of the background.</p>
+</section>
+<section id="prec-float">
+<h2>prec float<a class="headerlink" href="#prec-float" title="Link to this heading"></a></h2>
+<p>Defines the precision for the calculation of the value of each pixel. A typical value is 0.1.</p>
+</section>
+<section id="seeing-int-float">
+<h2>seeing int float<a class="headerlink" href="#seeing-int-float" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></code>: if false.  <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">=</span> <span class="pre">1</span></code>: if true.</p>
+<p>If true, will convolve the image by a Gaussian filter with a full width at half maximum of size <code class="docutils literal notranslate"><span class="pre">float</span></code> expressed in arcseconds.</p>
+<p>Note: for good accuracy the pixel size of the image must be small compared to the seeing, a minimum of 2 pixels, but with 4 pixels as an optimum.</p>
+</section>
+<section id="seeing-e-int-float1-float2-float3">
+<h2>seeing_e int float1 float2 float3<a class="headerlink" href="#seeing-e-int-float1-float2-float3" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></code> : if false.<code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">!=0</span></code>: if true.</p>
+<p>If true, will convolve the image by an elliptical Gaussian filter with a full width at half maximum of sizes (expressed in arcseconds)  <code class="docutils literal notranslate"><span class="pre">float1</span></code> and <code class="docutils literal notranslate"><span class="pre">float2</span></code>, oriented at PA (=<code class="docutils literal notranslate"><span class="pre">float3</span></code>) degrees.</p>
+</section>
+<section id="psf-int-filename">
+<h2>psf int filename<a class="headerlink" href="#psf-int-filename" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></code> : if false. <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">!=0</span></code>: if true.</p>
+<p>If true, will convolve the image by a user-provided PSF fits image filename. The PSF provided should be centered on the image and the pixel scale should be identical to the image to convolve.</p>
+</section>
+<section id="binning-int1-int2">
+<h2>binning int1 int2<a class="headerlink" href="#binning-int1-int2" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">int1</span> <span class="pre">=</span> <span class="pre">0</span></code>: if false.<code class="docutils literal notranslate"><span class="pre">int1</span> <span class="pre">=</span> <span class="pre">1</span></code>: if true.</p>
+<p>If true will <strong>bin</strong> the image by <code class="docutils literal notranslate"><span class="pre">int2</span></code> pixels.</p>
+<p>Note: If the binning is set, it is performed just after the seeing and before adding noise. The aim is to better calculate the seeing when the sampling of final image is low. It is not used during optimisation process (<code class="docutils literal notranslate"><span class="pre">cleanset</span> <span class="pre">2</span></code>).</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="PotFile.html" class="btn btn-neutral float-left" title="potfile" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="CleanLens.html" class="btn btn-neutral float-right" title="Cleanlens" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Allingham et al. (add your names).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

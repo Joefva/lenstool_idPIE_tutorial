@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>image &mdash; Lenstool 8.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=1f41a3ab"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="limit" href="LimiT.html" />
+    <link rel="prev" title="Mandatory sections for lensing optimisation" href="../Mandatory_opt.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Lenstool
+          </a>
+              <div class="version">
+                8.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation of Lenstool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../method.html">Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../parameter_file.html">Parameter file: Section details</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Mandatory_section.html">Mandatory sections</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../Mandatory_opt.html">Mandatory sections for lensing optimisation</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">image</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#multfile-int-filename"><code class="docutils literal notranslate"><span class="pre">multfile</span> <span class="pre">int</span> <span class="pre">filename</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mult-wcs-int"><code class="docutils literal notranslate"><span class="pre">mult_wcs</span> <span class="pre">int</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#forme-int"><code class="docutils literal notranslate"><span class="pre">forme</span> <span class="pre">int</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#z-m-limit-int1-imageid-int3-float1-float2-float3"><code class="docutils literal notranslate"><span class="pre">z_m_limit</span> <span class="pre">int1</span> <span class="pre">imageId</span> <span class="pre">int3</span> <span class="pre">float1</span> <span class="pre">float2</span> <span class="pre">float3</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arcletstat-int1-int2-filename"><code class="docutils literal notranslate"><span class="pre">arcletstat</span> <span class="pre">int1</span> <span class="pre">int2</span> <span class="pre">filename</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sigell-int1-float-int2"><code class="docutils literal notranslate"><span class="pre">sigell</span> <span class="pre">int1</span> <span class="pre">float</span> <span class="pre">int2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#z-arclet-float"><code class="docutils literal notranslate"><span class="pre">z_arclet</span> <span class="pre">float</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#critic-int1-float1-float2-float3-float4-float5"><code class="docutils literal notranslate"><span class="pre">critic</span> <span class="pre">int1</span> <span class="pre">float1</span> <span class="pre">float2</span> <span class="pre">float3</span> <span class="pre">float4</span> <span class="pre">float5</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#newton-int1"><code class="docutils literal notranslate"><span class="pre">newton</span> <span class="pre">int1</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="LimiT.html">limit</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Other_sect.html">Other sections:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../InputOutput.html">Input/Output files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Supported_pot.html">Supported Potentials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pywrap.html">Python wrapper</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Lenstool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../parameter_file.html">Parameter file: Section details</a></li>
+          <li class="breadcrumb-item"><a href="../Mandatory_opt.html">Mandatory sections for lensing optimisation</a></li>
+      <li class="breadcrumb-item active">image</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/section_parfile/ImagE.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="image">
+<h1>image<a class="headerlink" href="#image" title="Link to this heading"></a></h1>
+<section id="multfile-int-filename">
+<h2><code class="docutils literal notranslate"><span class="pre">multfile</span> <span class="pre">int</span> <span class="pre">filename</span></code><a class="headerlink" href="#multfile-int-filename" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span></code> file format. If int !=0 will used the multiple images defined in filename to optimize the lens parameters and/or the unknown redshift(s) of multiple images.</p></li>
+</ul>
+<p>The format of filename can be 1, 2, or 3 (see <a class="reference internal" href="#"><span class="xref myst">DataFiles</span></a>)
+Typically the format is <img class="math" src="../_images/math/48f6bf48db4193c0eef479b4a0443210dcec8d52.png" alt="{ i\, x_{ij}\, y_{ij}\, a_{ij}\, b_{ij} \,\theta_{ij}\, z_i \, mag\, [...] }"/></p>
+<p>where i is an identifier for all the multiple images of a single source at redshift <img class="math" src="../_images/math/c0d0f97cd9bb4e6571e2689163f9f2989b304f55.png" alt="z_i"/>. <img class="math" src="../_images/math/da506bb020aaee96b813fbc978d0dbd23beeca92.png" alt="\theta_{ij}"/> is <img class="math" src="../_images/math/31fdf41b39df23c95e52c5aef07f59d9adf82f3c.png" alt="0"/> along the East-West axis, and increasing counter-clockwise. mag is the magnitude of the image. It is used in the flux optimisation mode.</p>
+<p>In the same file the user can put different families of multiple images. Here is an example of 2 families of multiple images:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C1a</span> <span class="mf">20.5</span> <span class="mf">30.4</span> <span class="mf">1.2</span> <span class="mf">0.6</span> <span class="mf">40.</span> <span class="mf">0.65</span> <span class="mf">0.</span>
+<span class="n">C1b</span> <span class="mf">30.8</span> <span class="mf">20.3</span> <span class="mf">1.3</span> <span class="mf">0.6</span> <span class="mf">50.</span> <span class="mf">0.65</span> <span class="mf">0.</span>
+<span class="n">C1c</span> <span class="mf">25.1</span> <span class="mf">25.2</span> <span class="mf">1.2</span> <span class="mf">0.5</span> <span class="mf">60.</span> <span class="mf">0.65</span> <span class="mf">0.</span>
+<span class="n">C2a</span> <span class="mf">10.3</span> <span class="o">-</span><span class="mf">5.2</span> <span class="mf">1.2</span> <span class="mf">0.9</span> <span class="mf">10.</span> <span class="mf">0.</span> <span class="mf">0.</span>
+<span class="n">C2b</span> <span class="o">-</span><span class="mf">9.7</span> <span class="o">-</span><span class="mf">4.2</span> <span class="mf">1.4</span> <span class="mf">0.5</span> <span class="mf">20.</span> <span class="mf">0.</span> <span class="mf">0.</span>
+</pre></div>
+</div>
+<p>The redshift of the second family of multiple images in this example is not known, therefore the redshift is set to 0 and its convergence can be constraint by the z m limit identifier (see below).</p>
+</section>
+<section id="mult-wcs-int">
+<h2><code class="docutils literal notranslate"><span class="pre">mult_wcs</span> <span class="pre">int</span></code><a class="headerlink" href="#mult-wcs-int" title="Link to this heading"></a></h2>
+<p>If true, the multiple images coordinates are considered absolute WCS coordinates. They are transformed to relative coordinates with the reference keyword position given in the runmode section.</p>
+<p>If false, their coordinates are considered relative in arcsec.</p>
+<p>This keyword is outdated. Now, the format of the multiple image file must be specified in the header of the file itself, with the #REFERENCE keyword.</p>
+</section>
+<section id="forme-int">
+<h2><code class="docutils literal notranslate"><span class="pre">forme</span> <span class="pre">int</span></code><a class="headerlink" href="#forme-int" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">int</span></code> : <img class="math" src="../_images/math/cf03b0745ad616733f5473a216f2da47ca1a8d08.png" alt="&lt;0"/> image plane chi2. <img class="math" src="../_images/math/8b52e3cd58bee235338a916e794137c1ab6a6b9e.png" alt="&gt;=0"/> source plane chi2.
+Define the way the chi2 is computed. For source plane chi2, it defines how the source plane errors are computed.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> : use an amplification averaged over all the images of a system. Usually this gives a smaller chi2.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code> : use minor and major axis as additional constraints</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span></code> : use fluxes as additional constraints</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">3</span></code> : use minor/major axis and magnitudes as additional constraints</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">4</span></code> : same as <code class="docutils literal notranslate"><span class="pre">0</span></code> but with a source computed with an amplification weighted barycenter. The errors in the source plane are computed with the amplification of each image.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">5</span></code> : for each image, compute the error by means of a small box lensed to the source plane</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">6</span></code> : combination of <code class="docutils literal notranslate"><span class="pre">4</span></code> (source position) and <code class="docutils literal notranslate"><span class="pre">5</span></code> (source plane errors)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">7</span></code> : same as <code class="docutils literal notranslate"><span class="pre">4</span></code> but with a normal source plane barycenter for the source position</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">8</span></code> : tensor product for the proper computation of errors in source plane</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">9</span></code> : other version of tensor product (not tested)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">10</span></code> : same as <code class="docutils literal notranslate"><span class="pre">0</span></code> for the source position. Source plane variance is the product of minor and major axis values</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-10</span></code>: same as <code class="docutils literal notranslate"><span class="pre">10</span></code> but for the image plane optimisation.</p></li>
+</ul>
+<p>If true will used both the position and the ellipticities of the multfile as constraints. If false will only used the position of the multfile as constraints. In both cases, optimisation is done in the source plane.</p>
+<p>Default value is <code class="docutils literal notranslate"><span class="pre">-1</span></code> for the optimisation in the image plane. Flux and size constraints are not taken into account in image plane optimization.</p>
+</section>
+<section id="z-m-limit-int1-imageid-int3-float1-float2-float3">
+<h2><code class="docutils literal notranslate"><span class="pre">z_m_limit</span> <span class="pre">int1</span> <span class="pre">imageId</span> <span class="pre">int3</span> <span class="pre">float1</span> <span class="pre">float2</span> <span class="pre">float3</span></code><a class="headerlink" href="#z-m-limit-int1-imageid-int3-float1-float2-float3" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">int1</span></code> 0: if false 1: if true.
+If true will optimize the redshift of the multiple images in <code class="docutils literal notranslate"><span class="pre">imageid</span></code>, which correspond to image identifiers listed in <a class="reference internal" href="#"><span class="xref myst">multfile</span></a> filename (ex: <code class="docutils literal notranslate"><span class="pre">C2b</span></code> or <code class="docutils literal notranslate"><span class="pre">A1</span></code>). <code class="docutils literal notranslate"><span class="pre">imageid</span></code> can be a list of several image identifiers :</p></li>
+</ul>
+<p>ex: <code class="docutils literal notranslate"><span class="pre">z_m_limit</span>&#160; <span class="pre">1</span>&#160; <span class="pre">C2a</span> <span class="pre">A1</span> <span class="pre">3</span> <span class="pre">4.5</span> <span class="pre">1.5</span> <span class="pre">0.1</span></code></p>
+<p><em>will optimize systems containing images <code class="docutils literal notranslate"><span class="pre">C2a</span></code> and <code class="docutils literal notranslate"><span class="pre">A1</span></code> with the same redshift. _Note that in this case, image identifiers must start with a letter.</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">int3</span></code> determines the properties of the boundaries. Its meaning depends on the optimization method (see: <a class="reference internal" href="#"><span class="xref myst">inverse</span></a> keyword)</p></li>
+</ul>
+<p>In parabolic optimization (disabled since LT version 6), its meaning is : 1:strict, 2:soft, 3: left soft right strict, 4: right soft left strict, -n: sampling.</p>
+<p>In Bayesian optimization (available since LT version 6), its meaning is : 1: uniform prior, 3: Gaussian prior.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">float1</span></code> lowest boundary (Uniform) or mean value (Gaussian prior).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">float2</span></code> highest boundary (Uniform) or sttdev value (Gaussian prior).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">float3</span></code> precision to reach to stop the optimization of the redshift. (Not considered in Bayesian optimisation).</p></li>
+</ul>
+</section>
+<section id="arcletstat-int1-int2-filename">
+<h2><code class="docutils literal notranslate"><span class="pre">arcletstat</span> <span class="pre">int1</span> <span class="pre">int2</span> <span class="pre">filename</span></code><a class="headerlink" href="#arcletstat-int1-int2-filename" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">int1</span></code> 0: if false, 1: if true.
+If true will used the arclets in filename to optimize the lens parameters assuming all the sources at the redshift defined in source first identifier (See sect. 2.2.12). The format of the catalogue supplied in filename is the same as the arclet catalogue referred above (i.e. an ASCII column format of the form: <img class="math" src="../_images/math/784e6de562850ded3a736427ffd2f2041cff9fd6.png" alt="{ i\, x_{ij}\, y_{ij}\, a_{ij}\, b_{ij} \,\theta_{ij}\, z_i }"/>, where <img class="math" src="../_images/math/0b2b11fa3ba4ebd4b943f5bc8ef372d0cd0657bf.png" alt="\theta_{i}"/> is associated with the ellipses’ major axis, is in degrees and is measured anticlockwise from West, and <img class="math" src="../_images/math/888f7c323ac0341871e867220ae2d76467d74d6e.png" alt="x"/> and <img class="math" src="../_images/math/1b5e577d6216dca3af7d87aa122a0b9b360d6cb3.png" alt="y"/> are RA and Dec in decimal
+degrees).</p></li>
+</ul>
+<p>Note that the redshifts of the sources are defined in this catalogue. It is up to the user to provide sensible estimates for them.</p>
+<p><code class="docutils literal notranslate"><span class="pre">int1</span></code> is actually more than just a switch: it defines the form of the likelihood used in the optimisation.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">int1</span> <span class="pre">=</span> <span class="pre">1</span></code> : use the magnification matrix to convert arclet to source shape matrix. Then, minimise the deformation estimator <img class="math" src="../_images/math/4f7b2a86fc8dd73e7b824ca18ba77e2b6adb7455.png" alt="\tau_S = (a_S^2 - b_S^2 ) / 2 a_S b_S"/> (Eq. 2.95 Kneib PhD 1993, Kochanek 1990) in the <img class="math" src="../_images/math/1cbe49dd16598c0550b8a7477dd597e6bc04367e.png" alt="\chi^2"/> calculation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int1</span> <span class="pre">=</span> <span class="pre">2</span></code> : same as 1 with redshift optimisation (not yet implemented)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int1</span> <span class="pre">=</span> <span class="pre">3</span></code> : Minimise the arclet orientations using the estimator <img class="math" src="../_images/math/75241de1b513a069d41cfc7877e6ad702ac7a4d3.png" alt="\tau_{S2} = \tau_S \sin (2 (\theta_S - \theta_{pot})) = \tau_I \sin (2 (\theta_I - \theta_{pot}))"/>, where <img class="math" src="../_images/math/85302d94e263e1398af8e9ad208b0e316c738d1a.png" alt="\theta_{pot}"/> is the orientation of the shear (Eq. 2.118 Kneib PhD 1993).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int1</span> <span class="pre">=</span> <span class="pre">4</span></code> : Minimise the arclet orientations using the estimator <img class="math" src="../_images/math/a776e8c17b114fed1af9b8db7deb27dd736a2244.png" alt="\tau_{S1} = \tau_S \cos (2 (\theta_S - \theta_{pot})) = \tau_I \delta_{pot} \cos (2 (\theta_I - \theta_{pot})) - \tau_{pot} \delta_I"/> (Eq. 2.118 Kneib PhD 1993), where <img class="math" src="../_images/math/ad67907246d0859f4204ba43fcd2e592fb8345b4.png" alt="\delta_I = (a^2 + b^2) / 2 a b"/> is the distortion parameter of the image (Eq. 2.94 Kneib PhD 1993, Kochanek 1990).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int1</span> <span class="pre">=</span> <span class="pre">5</span></code> : use the magnification matrix to convert arclet to source shape matrix. Minimise the distortion parameter <img class="math" src="../_images/math/60119ec98ccd768330c8a783661ffe10ff141bab.png" alt="\delta_S = (a_S^2 + b_S^2) / 2 a_S b_S"/>, assuming an uncertainty <img class="math" src="../_images/math/920510ca031c5d4e65a571068047e3f856a749bb.png" alt="\sigma_{\delta_S} \sim 0.03"/>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int1</span> <span class="pre">=</span> <span class="pre">6</span></code> : use the magnification matrix to convert arclet to source shape matrix. Minimise the quadratic sum of the ellipticities <img class="math" src="../_images/math/c19684f411e504e92d1960af613a5b284ce86a94.png" alt="\chi^2 = e_{s1}^2 / (\sigma_e^2 + \sigma_{meas1}^2) + e_{s2}^2 / (\sigma_e^2 + \sigma_{meas2}^2)"/>, where <img class="math" src="../_images/math/c3ebeb8cf8305952582a4fe74d2baabfbe2313b3.png" alt="e_{S1} = \epsilon_S \cos ( 2 \theta_S)"/>, <img class="math" src="../_images/math/f860dd24259d7988f98b12eae5b0128c06f0bbb0.png" alt="e_{S2} = e_S \sin ( 2 \theta_S)"/> and <img class="math" src="../_images/math/0da0f2a501ccf120538d4e6f8b1d81183c80f8f6.png" alt="e = (a^2 - b^2 ) / (a^2 + b^2)"/>. <img class="math" src="../_images/math/b0d4511059b7d02521b102edf9da4ba7ac94ad89.png" alt="\sigma_e"/> is specified by the [[ImagE#sigell-int1-float-int2|sigell]] keyword.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int1</span> <span class="pre">=</span> <span class="pre">7</span></code> : equivalent to 6, but without the use of shape matrix. In this case <img class="math" src="../_images/math/0510e73ee85027770aa0ecb698b4899523e49da1.png" alt="e_{S} = \frac{e_I - 2g + g^2 e^*}{1 + |g|^2 - 2 \mathcal{R}(g e^*)}"/> (Eq 4.6 Bartelman &amp; Schneider 2001), where <img class="math" src="../_images/math/a39d1f633996b071460c9e07955b5f104d5e6f3e.png" alt="g = \gamma / (1 + \kappa)"/> is the reduced shear. This should be slightly faster than <em>int1</em> = 6 (TBC).</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">int2</span></code> specifies the format of the arclet catalog.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">int2</span> <span class="pre">=</span> <span class="pre">1</span></code> : <code class="docutils literal notranslate"><span class="pre">ID</span> <span class="pre">RA</span> <span class="pre">DEC</span> <span class="pre">A</span> <span class="pre">B</span> <span class="pre">THETA</span> <span class="pre">Z</span> <span class="pre">MAG</span></code>  (default)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int2</span> <span class="pre">=</span> <span class="pre">2</span></code> : <code class="docutils literal notranslate"><span class="pre">ID</span> <span class="pre">RA</span> <span class="pre">DEC</span> <span class="pre">A</span> <span class="pre">B</span> <span class="pre">THETA</span> <span class="pre">Z</span> <span class="pre">MAG</span> <span class="pre">VARE1</span> <span class="pre">VARE2</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int2</span> <span class="pre">=</span> <span class="pre">3</span></code> : <code class="docutils literal notranslate"><span class="pre">ID</span> <span class="pre">RA</span> <span class="pre">DEC</span> <span class="pre">E1</span> <span class="pre">E2</span> <span class="pre">Z</span> <span class="pre">VARE1</span> <span class="pre">VARE2</span></code></p></li>
+</ul>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">E1</span></code> and <code class="docutils literal notranslate"><span class="pre">E2</span></code> are internally converted to major and minor axis assuming <img class="math" src="../_images/math/fbb2c68e57388fce0d8194240d48627062c5dd88.png" alt="e = (a^2 - b^2) / (a^2 + b^2)"/>, and <img class="math" src="../_images/math/65d9886be4227311807a6d4ee67d91af262ef89a.png" alt="\theta = \arctan (E2, E1)"/>.</p>
+</section>
+<section id="sigell-int1-float-int2">
+<h2><code class="docutils literal notranslate"><span class="pre">sigell</span> <span class="pre">int1</span> <span class="pre">float</span> <span class="pre">int2</span></code><a class="headerlink" href="#sigell-int1-float-int2" title="Link to this heading"></a></h2>
+<p>If true, the width of the (assumed Gaussian) intrinsic ellipticity distribution can be specified here (the default value is 0.3).</p>
+<p>Setting <code class="docutils literal notranslate"><span class="pre">int2</span></code> to -1 freeze up this parameter so that it can be inferred from the data (this option is not yet operational)</p>
+</section>
+<section id="z-arclet-float">
+<h2><code class="docutils literal notranslate"><span class="pre">z_arclet</span> <span class="pre">float</span></code><a class="headerlink" href="#z-arclet-float" title="Link to this heading"></a></h2>
+<p>In the case of arcletstat, it is possible to fix the redshift float of one arclet indexed by int in the arcletstat filename. In this case, any arclet with redshift set to 0 in the arclet file, will be attributed this value.</p>
+</section>
+<section id="critic-int1-float1-float2-float3-float4-float5">
+<h2><code class="docutils literal notranslate"><span class="pre">critic</span> <span class="pre">int1</span> <span class="pre">float1</span> <span class="pre">float2</span> <span class="pre">float3</span> <span class="pre">float4</span> <span class="pre">float5</span></code><a class="headerlink" href="#critic-int1-float1-float2-float3-float4-float5" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">int1</span> <span class="pre">=</span> <span class="pre">0</span></code>: if false <code class="docutils literal notranslate"><span class="pre">int1</span> <span class="pre">=</span> <span class="pre">1</span></code>: if true.
+If true will add the constraint of the position of the break (locus of merging images) and the orientation of the image at the break (i.e. the direction of amplification matrix).</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">float1</span></code> x position (in arcseconds) of the break.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">float2</span></code> y position (in arcseconds) of the break.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">float3</span></code> direction of the orientation of the image at the break point, expressed in degree from the horizontal line, counter-clockwise.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">float4</span></code> error of position (in arcseconds) of the break along the arc.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">float5</span></code> redshift of the source of the merging images.</p></li>
+</ul>
+<p>Note: it is possible to give more than one such a constraint, from merging points at different position and different redshifts. One has simply to enter as many critic lines as merging points.</p>
+</section>
+<section id="newton-int1">
+<h2><code class="docutils literal notranslate"><span class="pre">newton</span> <span class="pre">int1</span></code><a class="headerlink" href="#newton-int1" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">int1</span> <span class="pre">=</span> <span class="pre">0</span></code>: if false <code class="docutils literal notranslate"><span class="pre">int1</span> <span class="pre">=</span> <span class="pre">1</span></code> : if true</p>
+<p>If true will use the Newton gradient algorithm to solve the lens equation and search for multiple images. Otherwise
+will use the default bi-triangles transportation algorithm.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../Mandatory_opt.html" class="btn btn-neutral float-left" title="Mandatory sections for lensing optimisation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="LimiT.html" class="btn btn-neutral float-right" title="limit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Allingham et al. (add your names).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

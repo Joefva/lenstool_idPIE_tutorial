@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cline &mdash; Lenstool 8.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=1f41a3ab"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="shapemodel" href="ShapeModel.html" />
+    <link rel="prev" title="Cleanlens" href="CleanLens.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Lenstool
+          </a>
+              <div class="version">
+                8.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation of Lenstool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../method.html">Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../parameter_file.html">Parameter file: Section details</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Mandatory_section.html">Mandatory sections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Mandatory_opt.html">Mandatory sections for lensing optimisation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../Other_sect.html">Other sections:</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="PotFile.html">potfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ObserV.html">observ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CleanLens.html">Cleanlens</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">cline</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nplane-int-float-float"><code class="docutils literal notranslate"><span class="pre">nplane</span> <span class="pre">int</span> <span class="pre">float</span> <span class="pre">[float]</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zonemult-int1-int2-filename"><code class="docutils literal notranslate"><span class="pre">zonemult</span> <span class="pre">int1</span> <span class="pre">int2</span> <span class="pre">filename</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dmax-float"><code class="docutils literal notranslate"><span class="pre">dmax</span> <span class="pre">float</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#algorithm-string"><code class="docutils literal notranslate"><span class="pre">algorithm</span> <span class="pre">string</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-float"><code class="docutils literal notranslate"><span class="pre">step</span> <span class="pre">float</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#limitlow-float"><code class="docutils literal notranslate"><span class="pre">limitLow</span> <span class="pre">float</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#limithigh-float"><code class="docutils literal notranslate"><span class="pre">limitHigh</span> <span class="pre">float</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ShapeModel.html">shapemodel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ShapeLimit.html">shapelimit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SourcE.html">source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Dynfile.html">DYNFILE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="large.html">large</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cosmolimit.html">cosmolimit</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../InputOutput.html">Input/Output files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Supported_pot.html">Supported Potentials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pywrap.html">Python wrapper</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Lenstool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../parameter_file.html">Parameter file: Section details</a></li>
+          <li class="breadcrumb-item"><a href="../Other_sect.html">Other sections:</a></li>
+      <li class="breadcrumb-item active">cline</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/section_parfile/ClinE.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="cline">
+<h1>cline<a class="headerlink" href="#cline" title="Link to this heading"></a></h1>
+<p>Under this identifier are defined the parameters to compute the critical and the caustic lines.</p>
+<section id="nplane-int-float-float">
+<h2><code class="docutils literal notranslate"><span class="pre">nplane</span> <span class="pre">int</span> <span class="pre">float</span> <span class="pre">[float]</span></code><a class="headerlink" href="#nplane-int-float-float" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">int</span></code> defines the number of Source Plane for which will be computed the critical and caustic lines.
+The list of <code class="docutils literal notranslate"><span class="pre">float</span></code> arguments give the redshift of these planes.
+Results are put in 2 different files: ”ce.dat” (external critic and caustic lines), ”ci.dat” (internal critic and caustic lines). ”ce.dat” and ”ci.dat” are 5-columns ASCII files with the format: <img class="math" src="../_images/math/14c36fe454a72a823f6f99ed26a87e926bf4099f.png" alt="{j\, xIi\, yIi\, xSi\, ySi }"/>: <img class="math" src="../_images/math/e3fc28292267f066fee7718c64f4bbfece521f24.png" alt="j"/> is the line identifier (we can have more than one external or internal lines). <img class="math" src="../_images/math/804ca77a0bf7138dabc14450f3587d00db9d6a67.png" alt="xIi"/> and <img class="math" src="../_images/math/796751b29a12402af6b0feb28326897b7bc3c5fc.png" alt="yIi"/> are the coordinates of the critical lines. <img class="math" src="../_images/math/251b44d71fe67f50e78fcb865c47402898db8667.png" alt="xSi"/> and <img class="math" src="../_images/math/d592e2630e420406e478919b2ad4331b993456ab.png" alt="ySi"/> are the coordinates of the corresponding caustic lines.</p>
+</section>
+<section id="zonemult-int1-int2-filename">
+<h2><code class="docutils literal notranslate"><span class="pre">zonemult</span> <span class="pre">int1</span> <span class="pre">int2</span> <span class="pre">filename</span></code><a class="headerlink" href="#zonemult-int1-int2-filename" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">int1</span> <span class="pre">=</span> <span class="pre">0</span></code>: if false <code class="docutils literal notranslate"><span class="pre">int1</span> <span class="pre">=1</span></code>: if true. If true and if <code class="docutils literal notranslate"><span class="pre">int</span></code> of <a class="reference internal" href="#"><span class="xref myst">nplan</span></a> equals 1, will determine for the redshift <code class="docutils literal notranslate"><span class="pre">float</span></code> of <a class="reference internal" href="#"><span class="xref myst">nplan</span></a> the image multiplicity of each pixel ( <code class="docutils literal notranslate"><span class="pre">int2</span></code><img class="math" src="../_images/math/8ef1f282527041d7d5c4a46dd2c60a02a7a7c00b.png" alt="\times"/><code class="docutils literal notranslate"><span class="pre">int2</span></code> frame) of the image plane (area defined by <code class="docutils literal notranslate"><span class="pre">dmax</span></code> ). Results are written in the pixel-frame file <code class="docutils literal notranslate"><span class="pre">filename</span></code> (fits file) If <a class="reference internal" href="#"><span class="xref myst">nplan</span></a> not equals 1, zonemult is not executed, and a WARNING is displayed.</p>
+</section>
+<section id="dmax-float">
+<h2><code class="docutils literal notranslate"><span class="pre">dmax</span> <span class="pre">float</span></code><a class="headerlink" href="#dmax-float" title="Link to this heading"></a></h2>
+<p>Defines the area (<code class="docutils literal notranslate"><span class="pre">xmin=</span> <span class="pre">-float</span></code> , <code class="docutils literal notranslate"><span class="pre">xmax</span> <span class="pre">=</span> <span class="pre">float</span></code> ; <code class="docutils literal notranslate"><span class="pre">ymin=</span> <span class="pre">-float</span></code> , <code class="docutils literal notranslate"><span class="pre">ymax</span> <span class="pre">=</span> <span class="pre">float</span></code> ) where the critical lines are search. <code class="docutils literal notranslate"><span class="pre">float</span></code> is expressed in arcseconds. A typical value of <code class="docutils literal notranslate"><span class="pre">dmax</span></code> is 30. Default: the value defined in <code class="docutils literal notranslate"><span class="pre">champ</span></code> section.</p>
+</section>
+<section id="algorithm-string">
+<h2><code class="docutils literal notranslate"><span class="pre">algorithm</span> <span class="pre">string</span></code><a class="headerlink" href="#algorithm-string" title="Link to this heading"></a></h2>
+<p>string can be <code class="docutils literal notranslate"><span class="pre">MARCHINGSQUARE</span></code> (default) or <code class="docutils literal notranslate"><span class="pre">SNAKE</span></code>.</p>
+<p>Select one of the two algorithms for the computation of the critical and caustic lines. The snake algorithm is the original algorithm implemented in LensTool. For each of the first nlens crit clumps of the lens model, the algorithm starts from the centre of the clump and looks for a point on a surrounding critical line (locus of the space where amplification is infinite). Then, it tries to follow this critical line and to go back to its original starting point. The marching squares algorithm defines a first square with the <code class="docutils literal notranslate"><span class="pre">dmax</span></code> or the <code class="docutils literal notranslate"><span class="pre">champ</span></code> keywords. Then, it divides this first cube in 4 small squares. According to their size and their amplification values in the centre and the 4 corners, each square is divided or not in further small squares. If the field is rectangular, the greater value between the width and the height of the field is choosen as the square size. As long as the size of a square is greater than limitHigh, it is automatically divided in 4 small squares. The size of a square cannot be lower than limitLow. The marching squares algorithm is slower than the line-following snake algorithm but gives always the full contour of the critical lines. It is less sensitive to small irregularities in the contour. The snake algorithm always returns a connected contour. Default algorithm is marchingsquares.</p>
+</section>
+<section id="step-float">
+<h2><code class="docutils literal notranslate"><span class="pre">step</span> <span class="pre">float</span></code><a class="headerlink" href="#step-float" title="Link to this heading"></a></h2>
+<p>For the line-following algorithm : Defines the step between each search i.e. it represents the typical distance in arcsecs between each point of the external critical lines. For internal critical lines half this value is taken. To improve the definition of the critic and caustic lines, use smaller values such as <img class="math" src="../_images/math/c673d1a31d8613bba3d82bdef328acab63ba409b.png" alt="0.5”"/> or even <img class="math" src="../_images/math/34543827ed4ce73cd2fd6362bede8e4cb39a28c3.png" alt="0.2”"/>. Default is <img class="math" src="../_images/math/b3eebedff0f1a85018ebdbdfc5e08089b2437dd8.png" alt="1.”"/></p>
+</section>
+<section id="limitlow-float">
+<h2><code class="docutils literal notranslate"><span class="pre">limitLow</span> <span class="pre">float</span></code><a class="headerlink" href="#limitlow-float" title="Link to this heading"></a></h2>
+<p>For the marching cube algorithm : Defines the smaller size of a square i.e. the size of a square is compared to this value to decide between dividing again in 4 squares or stopping the division. To improve the definition of the critic and caustic lines, use smaller values such as <img class="math" src="../_images/math/c673d1a31d8613bba3d82bdef328acab63ba409b.png" alt="0.5”"/> or even <img class="math" src="../_images/math/34543827ed4ce73cd2fd6362bede8e4cb39a28c3.png" alt="0.2”"/>. This implies more computation time. Default is <img class="math" src="../_images/math/b8047e8357bfbd902a79e01174ef7cb23163d7aa.png" alt="1”"/>.</p>
+</section>
+<section id="limithigh-float">
+<h2><code class="docutils literal notranslate"><span class="pre">limitHigh</span> <span class="pre">float</span></code><a class="headerlink" href="#limithigh-float" title="Link to this heading"></a></h2>
+<p>For the marching cube algorithm : Defines the higher size of a square i.e. the size of a square cannot be higher than this value. A square with a size above this value is automatically divided in 4 squares. Decrease this value to remove holes in the critical lines and improve the detection of critical lines around isolated galaxies. This implies more computation time. Default is 10”.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="CleanLens.html" class="btn btn-neutral float-left" title="Cleanlens" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ShapeModel.html" class="btn btn-neutral float-right" title="shapemodel" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Allingham et al. (add your names).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

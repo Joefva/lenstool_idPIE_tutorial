@@ -1,0 +1,60 @@
+# limit
+
+Under this identifier are defined the priors on the potential parameters. It is advised to put the limit identifier just after the potentiel identifier. As the potential identifier, it is allowed to put comments after the identifier limit on the same line.
+
+
+
+## `x_centre int float1 float2 float3`
+
+Gives limits for the `x_centre` parameters of the deflecting potential, when using the inverse mode. 
+
+`int` tells if and how should the optimizer handle the parameters. 0: the optimizer does not change the parameter, and keep the value defined within the potential list. 1: consider a flat prior with strict bounds `float1` and `float2`. 3: consider a Gaussian prior with mean `float1` and dispersion `float2`.
+
+Outdated: 
+`float1` is the minimum. `float2` is the maximum. `float3` is the precision desired on the parameters, be careful it is not a dispersion! 
+2: consider `float1` and `float2` as soft bounds. If the optimizer find a minimum outside this bounds, it will test it. 3: consider `float1` as a soft bound, `float2` as strict bound. 4: consider `float2` as a soft bound, `float1` as strict bound. -n: the optimizer will take n different values between `float1` and `float2`, and try to optimize the others parameters. Only 2 parameters can have such limit mode.
+
+
+## `y_centre int float1 float2 float3`
+
+Same thing.
+
+
+## `ellipticite int float1 float2 float3`
+
+Same thing.
+
+
+## `angle_pos int float1 float2 float3`
+
+Same thing.
+
+
+## `core_radius int float1 float2 float3`
+
+Same thing.
+
+
+## `cut_radius int float1 float2 float3`
+
+Same thing.
+
+
+## `v_disp int float1 float2 float3`
+
+Same thing.
+
+
+## `exponent int float1 float2 float3`
+
+Same thing.
+
+
+## `alpha int float1 float2 float3`
+
+Same as exponent.
+
+
+## `beta int float1 float2 float3`
+
+Same thing.

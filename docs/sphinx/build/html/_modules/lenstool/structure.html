@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lenstool.structure &mdash; Lenstool 8.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=1f41a3ab"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Lenstool
+          </a>
+              <div class="version">
+                8.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation of Lenstool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../method.html">Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial.html">Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../parameter_file.html">Parameter file: Section details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../InputOutput.html">Input/Output files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Supported_pot.html">Supported Potentials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pywrap.html">Python wrapper</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Lenstool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+          <li class="breadcrumb-item"><a href="../lenstool.html">lenstool</a></li>
+      <li class="breadcrumb-item active">lenstool.structure</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for lenstool.structure</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">ctypes</span>
+<span class="kn">from</span> <span class="nn">ctypes</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">.dimension</span> <span class="kn">import</span> <span class="o">*</span>
+
+<div class="viewcode-block" id="Structure">
+<a class="viewcode-back" href="../../lenstool.html#lenstool.structure.Structure">[docs]</a>
+<span class="k">class</span> <span class="nc">Structure</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fields_</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="point">
+<a class="viewcode-back" href="../../lenstool.html#lenstool.structure.point">[docs]</a>
+<span class="k">class</span> <span class="nc">point</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">)</span>
+    <span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="cpoint">
+<a class="viewcode-back" href="../../lenstool.html#lenstool.structure.cpoint">[docs]</a>
+<span class="k">class</span> <span class="nc">cpoint</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;next&quot;</span><span class="p">,</span> <span class="n">c_void_p</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;prev&quot;</span><span class="p">,</span> <span class="n">c_void_p</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;z1&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;z2&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">)</span>
+    <span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="ellipse">
+<a class="viewcode-back" href="../../lenstool.html#lenstool.structure.ellipse">[docs]</a>
+<span class="k">class</span> <span class="nc">ellipse</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;theta&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">)</span>
+    <span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="matrix">
+<a class="viewcode-back" href="../../lenstool.html#lenstool.structure.matrix">[docs]</a>
+<span class="k">class</span> <span class="nc">matrix</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">)</span>
+    <span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="biline">
+<a class="viewcode-back" href="../../lenstool.html#lenstool.structure.biline">[docs]</a>
+<span class="k">class</span> <span class="nc">biline</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;i&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="n">point</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="n">point</span><span class="p">)</span>
+    <span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="Bspline2D_red">
+<a class="viewcode-back" href="../../lenstool.html#lenstool.structure.Bspline2D_red">[docs]</a>
+<span class="k">class</span> <span class="nc">Bspline2D_red</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+     <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;degx&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;degy&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;nx&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ny&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Pz&quot;</span><span class="p">,</span><span class="n">POINTER</span><span class="p">(</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">))),</span>
+        <span class="p">(</span><span class="s2">&quot;kx&quot;</span><span class="p">,</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;ky&quot;</span><span class="p">,</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">))</span>
+    <span class="p">]</span></div>
+
+
+
+
+<div class="viewcode-block" id="Bspline2D">
+<a class="viewcode-back" href="../../lenstool.html#lenstool.structure.Bspline2D">[docs]</a>
+<span class="k">class</span> <span class="nc">Bspline2D</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;degx&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;degy&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;nx&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ny&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Pz&quot;</span><span class="p">,</span><span class="n">POINTER</span><span class="p">(</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">))),</span>
+        <span class="p">(</span><span class="s2">&quot;der10&quot;</span><span class="p">,</span> <span class="n">Bspline2D_red</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;der01&quot;</span><span class="p">,</span> <span class="n">Bspline2D_red</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;der20&quot;</span><span class="p">,</span> <span class="n">Bspline2D_red</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;der11&quot;</span><span class="p">,</span> <span class="n">Bspline2D_red</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;der02&quot;</span><span class="p">,</span> <span class="n">Bspline2D_red</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;kx&quot;</span><span class="p">,</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;ky&quot;</span><span class="p">,</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;x_c&quot;</span><span class="p">,</span><span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;y_c&quot;</span><span class="p">,</span><span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;size_sq&quot;</span><span class="p">,</span><span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;lim&quot;</span><span class="p">,</span><span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;coeff_file&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+    <span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="cpa2d">
+<a class="viewcode-back" href="../../lenstool.html#lenstool.structure.cpa2d">[docs]</a>
+<span class="k">class</span> <span class="nc">cpa2d</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="n">_fields_</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;nx&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ny&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;v&quot;</span><span class="p">,</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">))</span>
+    <span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="g_pixel">
+<a class="viewcode-back" href="../../lenstool.html#lenstool.structure.g_pixel">[docs]</a>
+<span class="k">class</span> <span class="nc">g_pixel</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;column&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ech&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;format&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;pixfile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ncont&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;outfile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;contfile&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;pixelx&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;pixely&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;header&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;xmin&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;xmax&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ymin&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ymax&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;nx&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ny&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;meanFlux&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;wcsprm&quot;</span><span class="p">,</span> <span class="n">c_void_p</span><span class="p">),</span>  <span class="c1"># TODO: implement the wcsinfo pointer</span>
+        <span class="p">(</span><span class="s2">&quot;array&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">)))</span>
+    <span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="g_X_ray">
+<a class="viewcode-back" href="../../lenstool.html#lenstool.structure.g_X_ray">[docs]</a>
+<span class="k">class</span> <span class="nc">g_X_ray</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;psf_bool&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;bool_exposure&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;bool_count&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;bool_bkg&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;bool_pix&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;bool_cooling_function&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;cooling_function&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">g_pixel</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;bool_intrinsic_error&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;intrinsic_error&quot;</span><span class="p">,</span><span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;intrinsic_error_map&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">g_pixel</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;pixmapx&quot;</span><span class="p">,</span><span class="n">POINTER</span><span class="p">(</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">))),</span>
+        <span class="p">(</span><span class="s2">&quot;pixmapy&quot;</span><span class="p">,</span><span class="n">POINTER</span><span class="p">(</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">))),</span>
+        <span class="p">(</span><span class="s2">&quot;logfactorial_to_compute&quot;</span><span class="p">,</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;opti&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;type_factor&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;factor_cash&quot;</span><span class="p">,</span><span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;factor_likelihood&quot;</span><span class="p">,</span><span class="n">c_double</span><span class="o">*</span><span class="mi">2</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;constant_cash&quot;</span><span class="p">,</span><span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;opti_z&quot;</span><span class="p">,</span><span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;psf_fft&quot;</span><span class="p">,</span><span class="n">POINTER</span><span class="p">(</span><span class="n">cpa2d</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;psf_map&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">g_pixel</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;bkgmap&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">g_pixel</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;bkg_type&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;exposuremap&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">g_pixel</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;countmap&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">g_pixel</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;Cash_statistic_norm&quot;</span><span class="p">,</span><span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;pix_area&quot;</span><span class="p">,</span><span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;indice_pot&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">c_int</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;n_pot&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">)</span>       
+    <span class="p">]</span></div>
+
+
+
+
+
+<div class="viewcode-block" id="g_source">
+<a class="viewcode-back" href="../../lenstool.html#lenstool.structure.g_source">[docs]</a>
+<span class="k">class</span> <span class="nc">g_source</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;multi_s&quot;</span><span class="p">,</span> <span class="n">point</span> <span class="o">*</span> <span class="n">NFMAX</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;multfile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;n_mult&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;multmode&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;mult&quot;</span><span class="p">,</span> <span class="n">c_int</span> <span class="o">*</span> <span class="n">NFMAX</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;grid&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;rand&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ns&quot;</span><span class="p">,</span> <span class="n">c_long</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;distz&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;emax&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;zs&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;zsmin&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;zsmax&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;par1&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;par2&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;par3&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;taille&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;lfalpha&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;lfm_star&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;lfm_min&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;lfm_max&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">)</span>
+    <span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="g_image">
+<a class="viewcode-back" href="../../lenstool.html#lenstool.structure.g_image">[docs]</a>
+<span class="k">class</span> <span class="nc">g_image</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;random&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;nzlim&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;npcl&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;shmap&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;zsh&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;dl0ssh&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;dossh&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;drsh&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;shfile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;stat&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;statmode&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;arclet&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;nza&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="mi">10</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;zarclet&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;c_drarclet&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;sigell&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;dsigell &quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;sig2ell&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;srcfit    &quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;nsrcfit   &quot;</span><span class="p">,</span> <span class="n">c_long</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;srcfitFile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;srcfitMethod&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="mi">50</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;forme&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;n_mult&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;multmode&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;mult_abs&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;mult&quot;</span><span class="p">,</span> <span class="n">c_int</span> <span class="o">*</span> <span class="n">NFMAX</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;multfile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;sig2pos&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">c_double</span> <span class="o">*</span> <span class="n">NIMAX</span><span class="p">)</span> <span class="o">*</span> <span class="n">NFMAX</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">))),</span>
+        <span class="p">(</span><span class="s2">&quot;detCov&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;sig2amp&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Dmag&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;adjust&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Afile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Anx&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Any&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Abin&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Anfilt&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Anpixseeing&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Apixel&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Aseeing&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Axmin&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Axmax&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Aymin&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Aymax&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Amean&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Adisp&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;newton &quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">)</span>
+    <span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="g_grille">
+<a class="viewcode-back" href="../../lenstool.html#lenstool.structure.g_grille">[docs]</a>
+<span class="k">class</span> <span class="nc">g_grille</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;ngrid&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;pol&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;nlens&quot;</span><span class="p">,</span> <span class="n">c_long</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;nplens&quot;</span><span class="p">,</span> <span class="n">c_long</span> <span class="o">*</span> <span class="p">(</span><span class="n">NPOTFILE</span><span class="o">+</span><span class="mi">1</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;npot&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;nlens_crit&quot;</span><span class="p">,</span> <span class="n">c_long</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;no_lens&quot;</span><span class="p">,</span> <span class="n">c_long</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;nmsgrid&quot;</span><span class="p">,</span> <span class="n">c_long</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;splinefile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;xmin&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;xmax&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ymin&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ymax&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;dx&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;dy&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;nx&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ny&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;echant&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;exc&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;excmin&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;invmat&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">)))</span>
+    <span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="g_mode">
+<a class="viewcode-back" href="../../lenstool.html#lenstool.structure.g_mode">[docs]</a>
+<span class="k">class</span> <span class="nc">g_mode</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;verbose&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;sort&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;grille&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ngrille&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;zgrille&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;inverse&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;itmax&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;rate&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;minchi0&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ichi2&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;image&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;imafile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;sourfile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;sof&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;imsfile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;sfile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;icorshear&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;corshfile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;local&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;localfile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;study&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;studyfile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;fake&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;seeing&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;iampli&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;nampli&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;zampli&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;amplifile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ipoten&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;npoten&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;zpoten&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;potenfile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;imass&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;nmass&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;zmass&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;massfile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;idpl&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ndpl&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;zdpl&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;dplxfile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;dplyfile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;icurv&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ncurv&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;zcurv&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;cxxfile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;cxyfile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;cyyfile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ishearf&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;zshearf&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;shearffile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;nshearf&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;iamplif&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;zamplif&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ampliffile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ishear&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;nshear&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;zshear&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;shearfile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;itime&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ntime&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ztime&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;timefile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;prop&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;nprop&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;zprop&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;propfile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;radius&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;masse&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;pixel&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;npixel&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;pixelfile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;cube&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;nslices&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;cubefile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;iref&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ref_ra&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ref_dec&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;marker&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;zmarker&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;markfile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;radial&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;zradial&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;theta&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;iclean&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;zclean&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;flux&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;output&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;centerfile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;restart&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;restart_seed&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;servermode_url&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="mi">200</span><span class="p">),</span>
+    <span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="g_pot">
+<a class="viewcode-back" href="../../lenstool.html#lenstool.structure.g_pot">[docs]</a>
+<span class="k">class</span> <span class="nc">g_pot</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;potid&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ftype&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;potfile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;zlens&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;core&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;corekpc&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;mag0&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;select&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ircut&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;cut&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;cut1&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;cut2&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;cutkpc1&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;cutkpc2&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;isigma&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;sigma&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;sigma1&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;sigma2&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;islope&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;slope&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;slope1&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;slope2&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ivdslope&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;vdslope&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;vdslope1&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;vdslope2&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ivdscat&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;vdscat&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;vdscat1&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;vdscat2&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ircutscat&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;rcutscat&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;rcutscat1&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;rcutscat2&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ia&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;a1&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;a2&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ib&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;b1&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;b2&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;opt&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">)</span>
+    <span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="g_frame">
+<a class="viewcode-back" href="../../lenstool.html#lenstool.structure.g_frame">[docs]</a>
+<span class="k">class</span> <span class="nc">g_frame</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[</span>
+	<span class="p">(</span><span class="s2">&quot;xmin&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+	<span class="p">(</span><span class="s2">&quot;xmax&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+	<span class="p">(</span><span class="s2">&quot;ymin&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+	<span class="p">(</span><span class="s2">&quot;ymax&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+	<span class="p">(</span><span class="s2">&quot;lmin&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+	<span class="p">(</span><span class="s2">&quot;lmax&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+	<span class="p">(</span><span class="s2">&quot;rmax&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">)</span>
+    <span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="g_cline">
+<a class="viewcode-back" href="../../lenstool.html#lenstool.structure.g_cline">[docs]</a>
+<span class="k">class</span> <span class="nc">g_cline</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;nplan&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;cz&quot;</span><span class="p">,</span> <span class="n">c_double</span> <span class="o">*</span> <span class="n">NPZMAX</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;zone&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;npzone&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;zonefile&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">FILENAME_SIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;cpas&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;dmax&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;algorithm&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="mi">20</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;limitHigh&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">)</span>
+    <span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="g_cosmo">
+<a class="viewcode-back" href="../../lenstool.html#lenstool.structure.g_cosmo">[docs]</a>
+<span class="k">class</span> <span class="nc">g_cosmo</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;omegaM&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;omegaX&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;kcourb&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;wX&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;wa&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;H0&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">)</span>
+    <span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="pot">
+<a class="viewcode-back" href="../../lenstool.html#lenstool.structure.pot">[docs]</a>
+<span class="k">class</span> <span class="nc">pot</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">IDSIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="n">point</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;epot&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;epot2&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;emass&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;theta&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;phi&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;sigma&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;sigma_obs&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;sigma_obs_err&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;rc&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;rckpc&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;rcut&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;rcutkpc&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;alpha&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;beta&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;rcslope&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;dlsds&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;psicut&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;psimcut&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;psiccut&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;b0&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;masse&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;masse_star&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;pmass&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;cr&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ct&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;mag&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;lum&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;mtol&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;effradius&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;costheta&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;sintheta&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;cosphi&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;sinphi&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;dplxmap&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">g_pixel</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;dplymap&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">g_pixel</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;kappamap&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">g_pixel</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;gamma1map&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">g_pixel</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;gamma2map&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">g_pixel</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;potenmap&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">g_pixel</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;dplx_spline&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">Bspline2D_red</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;dply_spline&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">Bspline2D_red</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;kappa_spline&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">Bspline2D_red</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;gamma1_spline&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">Bspline2D_red</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;gamma2_spline&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">Bspline2D_red</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;poten_spline&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">Bspline2D_red</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;Bspline&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">Bspline2D</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;X_bool&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;gas_frac&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;_3D_bool&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;_3D_conv_fac&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;_3D_scale_fac&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;emass2&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;costheta_3D&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;sintheta_3D&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">)</span>      
+    <span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="galaxie">
+<a class="viewcode-back" href="../../lenstool.html#lenstool.structure.galaxie">[docs]</a>
+<span class="k">class</span> <span class="nc">galaxie</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">IDSIZE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="n">point</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Grad&quot;</span><span class="p">,</span> <span class="n">point</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="n">ellipse</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;E2&quot;</span><span class="p">,</span> <span class="n">ellipse</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="n">c_char</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;magabs&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;mag&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;mag2&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;flux&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;mu&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;I0&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;dl0s&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;dos&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;dr&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;eps&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;eps2&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;tau&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;dis&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ep&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;tp&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;dp&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;thp&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;taux&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;tauy&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;kappa&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;gamma1&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;gamma2&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;var1&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;var2&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;grad&quot;</span><span class="p">,</span> <span class="n">point</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;grad2&quot;</span><span class="p">,</span> <span class="n">matrix</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;np_grad&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">point</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;np_grad2a&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;np_grad2b&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;np_grad2c&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;gsource&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">POINTER</span><span class="p">(</span><span class="n">POINTER</span><span class="p">(</span><span class="n">point</span><span class="p">)))),</span>
+        <span class="p">(</span><span class="s2">&quot;grid_dr&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">)</span>
+    <span class="p">]</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Allingham et al. (add your names).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

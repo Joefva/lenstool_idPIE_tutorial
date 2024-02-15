@@ -1,0 +1,8 @@
+Python wrapper
+------------------
+
+.. toctree::
+   :maxdepth: 1
+  
+   GuideForJupyter.ipynb
+   modules

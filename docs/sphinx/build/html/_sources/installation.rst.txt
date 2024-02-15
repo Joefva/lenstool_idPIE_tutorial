@@ -1,26 +1,10 @@
-Installation
-=============
-
-.. _installation:
-
-``GitHub`` installation
+Installation of Lenstool
 ------------------------
 
-To use the modified version of ``lenstool``, first ``git clone`` it:
 
-.. code-block:: console
+.. toctree::
+   :maxdepth: 1
 
-   git clone https://github.com/njzifjoiez/Lenstool_Bspline
-
-and switch branch:
-
-.. code-block:: console
-
-   git checkout idPIE-pot-joint
-
-
-.. note::
-
-   TODO: HERE detail the installation if necessary
-   
-
+   installation/installation_general
+   installation/CondA.md
+   installation/CygwiN.md
