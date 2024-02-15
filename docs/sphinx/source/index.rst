@@ -31,9 +31,13 @@ Contents
    :maxdepth: 1
    :caption: Software:
 
+<<<<<<< HEAD
    parameter_file
    InputOutput
    Supported_pot
+=======
+   InputOutput
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 .. toctree::
    :maxdepth: 1

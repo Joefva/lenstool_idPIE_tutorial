@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # observ
+=======
+# `observ`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 *Under this identifier is defined the different noise that can be added to a gravitational image, such as seeing or Poisson Noise.*
 
@@ -6,12 +10,17 @@ All these constants are used when the image mode `large iso` or `runmode pixel` 
 
 
 
+<<<<<<< HEAD
 ## noise int
+=======
+## `noise int`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 `int = 0`: if false  `int = 1`: is true
 
 If true, add Poisson noise to the final image
 
+<<<<<<< HEAD
 ## sky float
 
 Mean value for the sky background
@@ -29,6 +38,25 @@ Random number for the noise generation. Should be negative.
 Defines the precision for the calculation of the value of each pixel. A typical value is 0.1.
 
 ## seeing int float
+=======
+## `sky float`
+
+Mean value for the sky background
+
+## `idum int`
+
+Random number for the noise generation. Should be negative.
+
+## `dispersion float`
+
+1σ value of the background.
+
+## `prec float`
+
+Defines the precision for the calculation of the value of each pixel. A typical value is 0.1.
+
+## `seeing int float`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 `int = 0`: if false.  `int = 1`: if true.
 
@@ -36,19 +64,31 @@ If true, will convolve the image by a Gaussian filter with a full width at half 
 
 Note: for good accuracy the pixel size of the image must be small compared to the seeing, a minimum of 2 pixels, but with 4 pixels as an optimum.
 
+<<<<<<< HEAD
 ## seeing\_e int float1 float2 float3
+=======
+## `seeing_e int float1 float2 float3`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 `int = 0` : if false.`int !=0`: if true.
 
 If true, will convolve the image by an elliptical Gaussian filter with a full width at half maximum of sizes (expressed in arcseconds)  `float1` and `float2`, oriented at PA (=`float3`) degrees. 
 
+<<<<<<< HEAD
 ## psf int filename
+=======
+## `psf int filename`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 `int = 0` : if false. `int !=0`: if true.
 
 If true, will convolve the image by a user-provided PSF fits image filename. The PSF provided should be centered on the image and the pixel scale should be identical to the image to convolve.
 
+<<<<<<< HEAD
 ## binning int1 int2
+=======
+## `binning int1 int2`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 `int1 = 0`: if false.`int1 = 1`: if true.
 

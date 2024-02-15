@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # shapelimit
+=======
+# `shapelimit`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 
 Under this identifier are defined the priors on the parameters that define a source shape.
@@ -6,37 +10,65 @@ Under this identifier are defined the priors on the parameters that define a sou
 
 
 
+<<<<<<< HEAD
 ## s\_center\_x int float1 float2 float3
+=======
+## `s_center_x int float1 float2 float3`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Range of position along the X axis for the center of the source in arcsec. The reference point for this range is the barycenter of sources is attached to a system of multiple images, or the reference point defined in the .par file if not.
 
 
+<<<<<<< HEAD
 ## s\_center\_y int float1 float2 float3
+=======
+## `s_center_y int float1 float2 float3`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Range of position along the Y axis for the center of the source in arcsec. The reference point for this range is the barycenter of sources is attached to a system of multiple images, or the reference point defined in the .par file if not.
 
 
+<<<<<<< HEAD
 ## s\_sig\_x int float1 float2 float3
+=======
+## `s_sig_x int float1 float2 float3`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Range on the size of the major axis in arcsec
 
 
+<<<<<<< HEAD
 ## s\_sig\_y int float1 float2 float3
+=======
+## `s_sig_y int float1 float2 float3`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Range on the size of the minor axis in arcsec
 
 
+<<<<<<< HEAD
 ## s\_angle int float1 float2 float3
+=======
+## `s_angle int float1 float2 float3`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Range on the orientation of the ellipse defining the source. The angle is defined anti-clockwise from west to north axis.
 
 
+<<<<<<< HEAD
 ## s\_mag int float1 float2 float3
+=======
+## `s_mag int float1 float2 float3`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Range on the unlensed magnitude of the source
 
 
+<<<<<<< HEAD
 ## index int float1 float2 float3
+=======
+## `index int float1 float2 float3`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Range on the value of the Sersic index $n$ for sources modeled with Sersic profile.
 

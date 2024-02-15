@@ -1,10 +1,18 @@
+<<<<<<< HEAD
 # limit
+=======
+# `limit`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Under this identifier are defined the priors on the potential parameters. It is advised to put the limit identifier just after the potentiel identifier. As the potential identifier, it is allowed to put comments after the identifier limit on the same line.
 
 
 
+<<<<<<< HEAD
 ## x\_centre int float1 float2 float3
+=======
+## `x_centre int float1 float2 float3`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Gives limits for the `x_centre` parameters of the deflecting potential, when using the inverse mode. 
 
@@ -15,46 +23,82 @@ Outdated:
 2: consider `float1` and `float2` as soft bounds. If the optimizer find a minimum outside this bounds, it will test it. 3: consider `float1` as a soft bound, `float2` as strict bound. 4: consider `float2` as a soft bound, `float1` as strict bound. -n: the optimizer will take n different values between `float1` and `float2`, and try to optimize the others parameters. Only 2 parameters can have such limit mode.
 
 
+<<<<<<< HEAD
 ## y\_centre int float1 float2 float3
+=======
+## `y_centre int float1 float2 float3`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Same thing.
 
 
+<<<<<<< HEAD
 ## ellipticite int float1 float2 float3
+=======
+## `ellipticite int float1 float2 float3`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Same thing.
 
 
+<<<<<<< HEAD
 ## angle\_pos int float1 float2 float3
+=======
+## `angle_pos int float1 float2 float3`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Same thing.
 
 
+<<<<<<< HEAD
 ## core\_radius int float1 float2 float3
+=======
+## `core_radius int float1 float2 float3`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Same thing.
 
 
+<<<<<<< HEAD
 ## cut\_radius int float1 float2 float3
+=======
+## `cut_radius int float1 float2 float3`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Same thing.
 
 
+<<<<<<< HEAD
 ## v\_disp int float1 float2 float3
+=======
+## `v_disp int float1 float2 float3`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Same thing.
 
 
+<<<<<<< HEAD
 ## exponent int float1 float2 float3
+=======
+## `exponent int float1 float2 float3`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Same thing.
 
 
+<<<<<<< HEAD
 ## alpha int float1 float2 float3
+=======
+## `alpha int float1 float2 float3`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Same as exponent.
 
 
+<<<<<<< HEAD
 ## beta int float1 float2 float3
+=======
+## `beta int float1 float2 float3`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Same thing.

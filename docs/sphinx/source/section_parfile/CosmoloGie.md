@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 # Cosmologie
 
 
 
 ## Model
+=======
+# `Cosmologie`
+
+
+
+## `Model`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 Can be `1`, `2`, `3`, or `4`. Default value is `Model = 1`.
 - `1`  for CPL model
 - `2`  for Cardassian model
@@ -10,6 +18,7 @@ Can be `1`, `2`, `3`, or `4`. Default value is `Model = 1`.
 - `4`  for Holographic Ricci Scale with CPL
 
 
+<<<<<<< HEAD
 ## H0 float
 float defines the value of $H_0$ in Mpc/km/s. Default value is $H_0 = 50$.
 
@@ -25,12 +34,33 @@ Default value  $\lambda = 0$.
 float defines the normalized value of the curvature of the Universe  $\Omega_k$
 
 ## wX (q, or w0) float
+=======
+## `H0 float`
+float defines the value of $H_0$ in Mpc/km/s. Default value is $H_0 = 50$.
+
+
+## `omega float`
+float defines the value of $\Omega_{0}$. Default value is  $\Omega_{0} = 1$.
+
+## `lambda (or omegaX) float`
+float defines the normalized value of $\lambda$. (for a flat universe  $\Omega_{0} +  \lambda = 1.$)
+Default value  $\lambda = 0$.
+
+## `omegaK float`
+float defines the normalized value of the curvature of the Universe  $\Omega_k$
+
+## `wX (q, or w0) float`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 If Model is equal to 1, float defines the first parameter in the CPL model.
 If Model is equal to 2, float defines the $q$ parameter in the Cardassian model.
 If Model is equal to 3, float defines the $w_x$ parameter in the Interacting DE model.
 If Model is equal to 4, float defines the $w_0$ parameter in the Holographic Ricci scale with CPL.
 
+<<<<<<< HEAD
 ## wa (n, delta, or w1) float
+=======
+## `wa (n, delta, or w1) float`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 If Model is equal to 1, float defines the second parameter in the CPL model.
 If Model is equal to 2, float defines the $n$ parameter in the Cardassian model.
 If Model is equal to 3, float defines the $\delta$ parameter in the Interacting DE model.

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # runmode
+=======
+# `runmode`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 This identifier is the most important one, and determine what the program will do. It works with the following  second identifiers.
 
@@ -7,7 +11,11 @@ This identifier is the most important one, and determine what the program will d
 
 
 
+<<<<<<< HEAD
 ## reference int RA DEC
+=======
+## `reference int RA DEC`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Set the reference point for the system to study, this parameter is the only **mandatory one of the section**.  This keyword is used to convert the relative coordinates used in [Lenstool] to absolute coordinates used in some input or output files.
 
@@ -16,7 +24,11 @@ If `int = 1`, `RA` and `DEC` are in the sexagesimal format hh:mm:ss and dd:mm:ss
 If `int = 3`, `RA` and `DEC` are in degrees.
 
 
+<<<<<<< HEAD
 ## inverse int1 float1 [float2]
+=======
+## `inverse int1 float1 [float2]`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 If `int1 = 0`, no optimisation is performed.
 
@@ -48,7 +60,11 @@ At the end of the optimisation process, Lenstool creates a [best.par]() and a [b
 
 
 
+<<<<<<< HEAD
 ## image int filename
+=======
+## `image int filename`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 `int` 0: if false >0: if true. 
 
@@ -61,7 +77,11 @@ Interest: find counter images.
 Note: both image and source identifiers can be used at the same time.
 
 
+<<<<<<< HEAD
 ## source int filename
+=======
+## `source int filename`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 `int` 0: if false >0: if true. 
 
@@ -74,7 +94,11 @@ Interest: usually used to show typical image configurations.
 Note: both image and source identifiers can be used at the same time.
 
 
+<<<<<<< HEAD
 ## time int1 int2 float filename
+=======
+## `time int1 int2 float filename`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 `int1` 0: if false 1: if true.
 
@@ -89,7 +113,11 @@ EQUATIONS
 The (relative) arrival time surface corresponds to the time of arrival at the Image Plane of a flash that left at the same time the Source Plane. It is absolute in the sense we have substracted the mean travel time between the two planes. To find out the time-delay between two images of the same source, one has to know the position of the images and then compute the difference between the two corresponding arrival times.
 
 
+<<<<<<< HEAD
 ## ampli int1 int2 float filename
+=======
+## `ampli int1 int2 float filename`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 `int1` 0: if false 1: if true.
 
@@ -108,7 +136,11 @@ with $\kappa$ and $\gamma$ the convergence and the shear respectively. They are 
 
 
 
+<<<<<<< HEAD
 ## poten int1 int2 float filename
+=======
+## `poten int1 int2 float filename`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 `int1` 0: if false 1,2: if true. `int2` size of the square grid. `float` redshift of the source plane ($z^S$ ). `filename` : fits file that will contain the results.
 
@@ -120,7 +152,11 @@ Where the absolute projected potential (`int1 = 2`) is: $\phi(\vec{\xi^I})$. Bec
 
 
 
+<<<<<<< HEAD
 ## mass int1 int2 float filename
+=======
+## `mass int1 int2 float filename`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 `int1` 0: if false 1,2: if true. *int2* size of the square grid. `float` redshift of the lens plane ($z ^L$ ). `filename`: fits file that will contain the result.
 
@@ -149,7 +185,11 @@ in unit of $\rm 10^12 \, M_{\odot}/pixel$
 Obviously, it depends on the pixel size. As for the time function, the area covered by the image is defined in the frame section. In Bayesian optimisation mode, you can get the projected error mass-density (`int1 = 5`) in $\rm 10^12 \, M_{\odot}/pixel$. The map size in arcsec is defined with the [`dmax`]() keyword in the champ section. In the rectangular field case, the image size is (X,Y) = (scaling$\times$`int2`, `int2`).
 
 
+<<<<<<< HEAD
 ## shear int1 int2 float filename
+=======
+## `shear int1 int2 float filename`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Shear is just a pixel-frame of the intensity of the shear with no indication of the orientation of the shear.
 
@@ -168,7 +208,11 @@ Shear is just a pixel-frame of the intensity of the shear with no indication of 
 If `int1` <0, the behavior is the same but for pixels are considered in the source plane.
 
 
+<<<<<<< HEAD
 ## shearfield int float filename int2
+=======
+## `shearfield int float filename int2`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 `int` 0: if false 1,2,3,4: if true. If true will compute for the redshift `float` the shear field at `int2`$\times$`int2`] points of the Image Plane (area defined by frame ). Results are written in the file `filename` in the same arclet-type format (see [image.dat]()). 
 
@@ -176,22 +220,38 @@ If `int1` <0, the behavior is the same but for pixels are considered in the sour
 If `int = 1`, the size of the ticks correspond to the induced ellipticity by the mass distribution. If `int = 2`, the ticks show only the polarization of the field. If `int = 3`, the ticks show the deformation $\tau = (a^2 - b^2)/2ab$. If `int = 4`, the ticks show the usual ellipticity components ${a,b,\theta}$. Note: Do not mix the identifiers shear and shearfield. shear is just a pixel-frame of the intensity of the shear with no indication of the orientation of the shear. shearfield on the contrary will give you the orientation of the shear and its intensity but only in a grid of `int2`$\times$`int2` points. Default `int2` = 25.
 
 
+<<<<<<< HEAD
 ## imseeing float float
+=======
+## `imseeing float float`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 FWHM of the gaussian Imseeing of the arclet assuming that both the profile of the arclet and of the seeing are Gaussian. It’s a very simple and crude correction. Default value is 0 (meaning no seeing correction).
 
 
+<<<<<<< HEAD
 ## grid int1 int2 float
+=======
+## `grid int1 int2 float`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 `int1` 0: if false 1,2: if true. If true, will create a grid of `int2` points. If `int1`= 1, it considers this grid as the Source Plane at the redshift of float, and compute the corresponding grid in the Image Plane. If `int1= 2`, it considers this grid as the Image Plane and compute the corresponding grid in the Source Plane at the redshift of `float`. The grid coordinates either in the source or in the image planes are defined in the frame section by the [`dmax`]() or by the set of keywords (`xmin`, `xmax`, `ymin`, `ymax`). Results are in the files: gi1.dat (image vertical grid) gi2.dat (image horizontal grid) and gs1.dat (source vertical grid) gs2.dat (source horizontal grid). All these file have the following format: ${j\, x_i\, y_i}$ where $j$ is an index, $x_i$ $y_i$ are the pixel coordinates.
 
 
+<<<<<<< HEAD
 ## minchi0 float float
+=======
+## `minchi0 float float`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 value of the $\chi^2$ at which the optimization program will stop in the case of a parabolic optimisation. Default is 0, but this is not dramatic in case of slow convergence or even non-convergence at all. The number of iterations is also controlled from inverse qualifier.
 
 
+<<<<<<< HEAD
 ## pixel int1 int2 filename
+=======
+## `pixel int1 int2 filename`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 `int1` 0: if false >0: if true. `filename`:  has to be a fits file. If true, it will create a pixel-frame filename of `int2`$\times$`int2` pixels that corresponds of the brightness intensity in the image-plane of all the arc(let)s computed from:
 
@@ -203,12 +263,20 @@ If the first identifier [`observ`] is set, the program will convolve the true im
 
 An image  `source.fits` of the corresponding source is also created. Its size, resolution and location can be altered from the default values with the [cleanlens]() section.
 
+<<<<<<< HEAD
 ## verbose int
+=======
+## `verbose int`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 If `int` is 0, minimal log information is printed to the screen. If `int` is 1, then some debugging information is printed to the screen.
 
 
+<<<<<<< HEAD
 ## marker int float filename
+=======
+## `marker int float filename`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 `int` 0: if false 1: if true. `filename` input points filename must be a 3 columns ASCII file: 
 | $i$ | $x_i$ | $y_i$ |.
@@ -216,7 +284,11 @@ If `int` is 0, minimal log information is printed to the screen. If `int` is 1, 
 If true, will read the points markers in the file filename and compute the corresponding points in the Source Plane at redshift float. Results are put in the file [:MarkersDat:marker_s.dat].
 
 
+<<<<<<< HEAD
 ## radialprop int float1 float2
+=======
+## `radialprop int float1 float2`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 `int` 0: if false 1,2,3: if true. If true, will compute for the current potential some properties of images for a Source Plane at redshift `float1`. These properties differs according to the value of `int`. They are computed along a radial line starting at the center of the first clump and with the position angle `float2` expressed in degree. Results are put in the files: `radial.dat` and `radial2.dat`. These are huge datafile, hence be careful! If `int= 1` only `radial.dat` will be created with the following format:
 
@@ -238,13 +310,21 @@ If `int= 3` only `radial.dat` will be created with the following format:
 
 where $r_i$ is the radial distance, $\alpha_i$ is the deflection angle, $c_r$ is the radial critical radius, $c_t$ the tangential critical radius.
 
+<<<<<<< HEAD
 ## dpl int1 int2 float filename1 filename2
+=======
+## `dpl int1 int2 float filename1 filename2`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 `int1` 0: if false, 1: if true. If true, compute the displacement map of size `int2`$\times$`int2` for a source plane at redshift `float`, and for a spatial coverage specified in the section [champ]().
 
 The displacement maps along the X and Y axes are written in the FITS files `filename1` and `filename2` respectively.
 
+<<<<<<< HEAD
 ## restart int1 int2
+=======
+## `restart int1 int2`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 `int1` 0: if, false (default), 1: if true. If true, store a file `restart.dat` in the local working directory (name can be changed in `dimension.h`), and use it for restarting lenstool where it stopped in a previous run. At restart, `bayes.dat` and `burning.dat` files are overwritten at the identical.
 

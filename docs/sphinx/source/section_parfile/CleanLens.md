@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Cleanlens
+=======
+# `Cleanlens`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 *Under this identifier are defined some parameters to retrieve the shape of the source knowing a pixel-frame of the image.*
 
@@ -17,7 +21,11 @@ When using the [inverse]() mode, the program will minimize the estimate of the e
 
 
 
+<<<<<<< HEAD
 ## cleanset int float
+=======
+## `cleanset int float`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 If `int = 0`, nothing is performed.
 
@@ -32,39 +40,67 @@ Moreover it will create the pixel-frame:
 
 - `imult.fits` : this pixel-frame shows the multiplicity of each pixel of the reconstructed source pixel-frame.
 
+<<<<<<< HEAD
 ## c\_image filename
 
 If `int = 1` for the cleanset keyword, filename is an ASCII file that contains a list of points in the format ($i$, $x_i$, $y_i$) in the image plane given in arcsecs relative to the [image reference points]() that defines the center of the observed image. The barycenter of those points is sent to the source plane and defines the source center. This value is used to compute the WCS keywords of the resulting source FITS file.
 
 ## imframe int filename
+=======
+## `c_image filename`
+
+If `int = 1` for the cleanset keyword, filename is an ASCII file that contains a list of points in the format ($i$, $x_i$, $y_i$) in the image plane given in arcsecs relative to the [image reference points]() that defines the center of the observed image. The barycenter of those points is sent to the source plane and defines the source center. This value is used to compute the WCS keywords of the resulting source FITS file.
+
+## `imframe int filename`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 `int` specifies the format of the input image ( `int = 2` for ipx format, `int = 3` for FITS file).
 
 `filename` is the name of the CCD frame where (multiple) gravitational images are present.
 
+<<<<<<< HEAD
 ## psfframe int filename
+=======
+## `psfframe int filename`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 `int` specifies the format of the input Point Spread Function (PSF)( `int = 2` for ipx format, `int = 3` for FITS file). 
 
 `filename` is the name of the PSF frame, namely a Star Profile. The Star must be at the center of the frame. And the total intensity of the frame (sum of all the pixels) must be equal to 1 (PSF normalized). Note: the psf frame is used when using a deconvolve-inversion of the lensed images.
 
+<<<<<<< HEAD
 ## sframe filename
 
 `filename` is the name of the output source frame. This frame will correspond to the inversion of the [imframe]() frame (from Image Plane to Source Plane). It is written with the FITS format.
 
 ## wframe int filename
+=======
+## `sframe filename`
+
+`filename` is the name of the output source frame. This frame will correspond to the inversion of the [imframe]() frame (from Image Plane to Source Plane). It is written with the FITS format.
+
+## `wframe int filename`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 `int` specifies the format of the input image ( `int = 2` for ipx format, `int = 3` for FITS file).
 
 `filename` is the name of the weight frame. This image is required to perform the optimisation.
 
+<<<<<<< HEAD
 ## ncont int filename
+=======
+## `ncont int filename`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 `int` is the number of contours. 
 
 `filename` is the name of the output frame: that is the CCD frame where only the pixels inside the contours (closed lines) have been kept. The idea is to limit the area of the frame, and keep only the interesting pixels.
 
+<<<<<<< HEAD
 ## contour int filename
+=======
+## `contour int filename`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Defines contours in the image plane of one or several images of the source you want the shape in the source plane. 
 
@@ -72,12 +108,17 @@ Defines contours in the image plane of one or several images of the source you w
 
 `filename` is the name of the contour ASCII file for one image that contains a list of points ($i$, $x_i$,$y_i$) in the image plane given in arcsec relative to the  [image reference points]().
 
+<<<<<<< HEAD
 ## subsamp int
+=======
+## `subsamp int`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 It is possible to subsample the CCD frame to calculate with greater accuracy the source frame in the source plane. 
 
 `int` is the subsampling parameter. Default is 1. If `int = 2` it will cut each pixel in 4 smaller pixels. Default value : 2.
 
+<<<<<<< HEAD
 ## s\_subsamp int
 
 It is possible to subsample the frame in the source plane as you can do in the image plane with the [subsamp]() keyword. If `int` is too high, you can get an image with undefined pixel values. Default value : 1.
@@ -99,12 +140,36 @@ Defines the right (West) limit of the source plane image in relative arc seconds
 Defines the bottom (South) limit of the source plane image in relative arc seconds. Default value : -20 arcsec. This value is overwritten if a polygon in the image plane is provided with the [c_image]() keyword in the [cleanlens]() section.
 
 ## s\_ymax float
+=======
+## `s_subsamp int`
+
+It is possible to subsample the frame in the source plane as you can do in the image plane with the [subsamp]() keyword. If `int` is too high, you can get an image with undefined pixel values. Default value : 1.
+
+## `s_n int`
+
+Defines the width and height of the resulting source image in pixels. Default value : 50 pixels.
+
+## `s_xmin float`
+
+Defines the left (East) limit of the source plane image in relative arc seconds. Default value : -20 arcsec. This value is overwritten if a polygon in the image plane is provided with the [c_image]() keyword in the [cleanlens]() section.
+
+## `s_xmax float`
+
+Defines the right (West) limit of the source plane image in relative arc seconds. Default value : 20 arcsec. This value is overwritten if a polygon in the image plane is provided with the [c_image]() keyword in the [cleanlens]() section.
+
+## `s_ymin float`
+
+Defines the bottom (South) limit of the source plane image in relative arc seconds. Default value : -20 arcsec. This value is overwritten if a polygon in the image plane is provided with the [c_image]() keyword in the [cleanlens]() section.
+
+## `s_ymax float`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Defines the upper (North) limit of the source plane image in relative arc seconds. Default value : 20 arcsec. This value is overwritten if a polygon in the image plane is provided with the [c_image]() keyword in the [cleanlens]() section.
 
 
 The following parameters should be set only if the `int` argument of the [imframe]() keyword is 0 (ascii format) or 1 (ipx format without scaling). It is strongly advised to used the ipx format: 2 or FITS format: 3, to avoid to define these parameters.
 
+<<<<<<< HEAD
 ## pixel float
 
 Sets size of the pixel in $x$ and $y$ in arcseconds.
@@ -130,5 +195,32 @@ Pixel size in $y$ in arcseconds (if the pixel is not a square).
 $x$ position of the bottom-left pixel (expressed in pixel units).
 
 ## ymin float
+=======
+## `pixel float`
+
+Sets size of the pixel in $x$ and $y$ in arcseconds.
+
+## `column int`
+
+Column to be selected (in a multi-column ascii pixel-frame file).
+
+## `header int`
+
+Number of lines to skip before the real beginning of the data.
+
+## `pixelx float`
+
+Pixel size in $x$ in arcseconds (if the pixel is not a square).
+
+## `pixely float`
+
+Pixel size in $y$ in arcseconds (if the pixel is not a square).
+
+## `xmin float`
+
+$x$ position of the bottom-left pixel (expressed in pixel units).
+
+## `ymin float`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 $y$ position of the bottom-left pixel (expressed in pixel units).

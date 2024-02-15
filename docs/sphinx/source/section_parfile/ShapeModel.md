@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # shapemodel
+=======
+# `shapemodel`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 
 Under this identifier are defined the parameters that define a source shape.
@@ -6,35 +10,60 @@ Under this identifier are defined the parameters that define a source shape.
 
 
 
+<<<<<<< HEAD
 ## s\_center\_x float
 
 Position along the X axis for the center of the source in arcsec. The reference point for this range is the barycenter of sources is attached to a system of multiple images, or the reference point defined in the .par file if not.
 
 ## s\_center\_y float
+=======
+## `s_center_x float`
+
+Position along the X axis for the center of the source in arcsec. The reference point for this range is the barycenter of sources is attached to a system of multiple images, or the reference point defined in the .par file if not.
+
+## `s_center_y float`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Position along the Y axis for the center of the source in arcsec. The reference point for this range is the barycenter of sources is attached to a system of multiple images, or the reference point defined in the .par file if not.
 
 
+<<<<<<< HEAD
 ## s\_sigx float
+=======
+## `s_sigx float`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Value of the size of the major axis in arcsec
 
 
+<<<<<<< HEAD
 ## s\_sigy float
+=======
+## `s_sigy float`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Value of the size of the minor axis in arcsec
 
 
+<<<<<<< HEAD
 ## s\_angle float
+=======
+## `s_angle float`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Value of the orientation of the ellipse defining the source. The angle is defined anti-clockwise from west to north axis.
 
 
+<<<<<<< HEAD
 ## s\_mag float
+=======
+## `s_mag float`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Value of theunlensed magnitude of the source
 
 
+<<<<<<< HEAD
 ## index float
 
 Value of the Sersic index $n$ for sources modeled with Sersic profile.
@@ -48,6 +77,21 @@ Redshift of the source.
 Identifier of the source.
 
 ## type int
+=======
+## `index float`
+
+Value of the Sersic index $n$ for sources modeled with Sersic profile.
+
+## `z float`
+
+Redshift of the source.
+
+## `id string`
+
+Identifier of the source.
+
+## `type int`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 Surface brightness density type
 - 1: Velocity field $I(r)=sign(y)$ $I_0$ $\sqrt{|y|}$

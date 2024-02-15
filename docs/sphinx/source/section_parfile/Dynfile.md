@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # DYNFILE
 
 
@@ -27,6 +28,37 @@ The mass of cluster. Can be the 2D mass, or the 3D mass, see below.
 The associated error of the mass. 
 
 ## refradius\_kpc
+=======
+# `DYNFILE`
+
+
+
+## `dyntype`  
+
+Set the type of profile used to do the calculations. In the current version of the code, this optimization procedure is only working with the NFW profile. Then you need to use 12.
+
+## `dynnumber`
+
+Can be 1, 2 or 3. See below. 
+
+## `velocity`
+
+The measure velocity dispersion of the cluster 
+
+## `e_velocity`
+
+The associated error of the velocity dispersion.
+
+## `indmass`
+
+The mass of cluster. Can be the 2D mass, or the 3D mass, see below. 
+
+## `e_indmass`
+
+The associated error of the mass. 
+
+## `refradius_kpc`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 The radius at which the mass is measured. In kiloparsec.
 

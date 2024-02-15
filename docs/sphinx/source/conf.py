@@ -18,8 +18,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Lenstool'
-copyright = '2023, Allingham et al. (add your names)'
-author = 'Allingham et al.'
+copyright = '2023, Lenstool group'  
+author = 'Lenstool group' # Allingham, Beauchesne, Jullo, Richard (add your names)
 
 release = '8.1'
 version = '8.1.0'
@@ -37,7 +37,12 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.imgmath', 
     'sphinx.ext.todo',
+<<<<<<< HEAD
     'myst_nb',
+=======
+    'myst_parser',
+    'sphinx.ext.extlinks',
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 #    'breathe',   # add it if doing C api. Requires to install breathe.
 #    'sphinx.ext.duration',
 #    'sphinx.ext.autosummary',

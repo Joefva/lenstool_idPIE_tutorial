@@ -35,3 +35,35 @@ Note that only the first 5000 images are transferred to DS9. This number is set 
 
 
 
+<<<<<<< HEAD
+=======
+
+## predT0.h
+
+This script is in `./utils`, and serves to yield a reference pivot ICM temperature, in the ``X-ray`` section, where keywords ``Temp0`` and ``Jz_array`` are proper to the hydrostatic X-ray profiles (type ``2``).
+
+``Temp0`` is the pivot temperature model, eq. (17) in 
+`Allingham+23b <https://arxiv.org/abs/2309.07076>`_:
+:math:`T_0(z) = T_{500,c} (z) T_{\rm ref}`.
+It may be computed using routine ``predT``:
+
+.. code-block:: console
+	
+	predT0 <redshift> <model_type> <M_500,c>
+	
+where the mass
+:math:`M_{500,c}` is in
+:math:`M_{\odot}`, and the ``<model_type>`` corresponds to the regression used for
+:math:`P_e (n_e)`. By defult, use ``polyEv1`` for the latter.
+
+``Jz_array`` indicates how to compute the Jz function, relating the potential to the ICM density 
+:math:`n_e`. 
+It takes three arguments:
+
+- An integer. ``0``: do not perform the computation. ``1``: perform it.
+
+- A string for the model type. By default, use ``polyE``.
+
+- A second string for the name of the output array. If the array is not computed (``0``), this array must already exist.
+
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed

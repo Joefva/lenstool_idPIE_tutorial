@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 # image
 
 
 ## multfile int filename
+=======
+# `image`
+
+
+## `multfile int filename`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 - `int` file format. If int !=0 will used the multiple images defined in filename to optimize the lens parameters and/or the unknown redshift(s) of multiple images.
 
@@ -21,7 +28,11 @@ C2b -9.7 -4.2 1.4 0.5 20. 0. 0.
 
 The redshift of the second family of multiple images in this example is not known, therefore the redshift is set to 0 and its convergence can be constraint by the z m limit identifier (see below).
 
+<<<<<<< HEAD
 ## mult\_wcs int
+=======
+## `mult_wcs int`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 If true, the multiple images coordinates are considered absolute WCS coordinates. They are transformed to relative coordinates with the reference keyword position given in the runmode section. 
 
@@ -29,7 +40,11 @@ If false, their coordinates are considered relative in arcsec.
 
 This keyword is outdated. Now, the format of the multiple image file must be specified in the header of the file itself, with the #REFERENCE keyword.
 
+<<<<<<< HEAD
 ## forme int
+=======
+## `forme int`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 `int` : $<0$ image plane chi2. $>=0$ source plane chi2.
 Define the way the chi2 is computed. For source plane chi2, it defines how the source plane errors are computed.
@@ -51,7 +66,11 @@ If true will used both the position and the ellipticities of the multfile as con
 
 Default value is `-1` for the optimisation in the image plane. Flux and size constraints are not taken into account in image plane optimization.
 
+<<<<<<< HEAD
 ## z\_m\_limit int1 imageId int3 float1 float2 float3
+=======
+## `z_m_limit int1 imageId int3 float1 float2 float3`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 - `int1` 0: if false 1: if true.
 If true will optimize the redshift of the multiple images in `imageid`, which correspond to image identifiers listed in [multfile]() filename (ex: `C2b` or `A1`). `imageid` can be a list of several image identifiers :
@@ -69,7 +88,11 @@ In Bayesian optimization (available since LT version 6), its meaning is : 1: uni
 - `float2` highest boundary (Uniform) or sttdev value (Gaussian prior).
 - `float3` precision to reach to stop the optimization of the redshift. (Not considered in Bayesian optimisation).
 
+<<<<<<< HEAD
 ## arcletstat int1 int2 filename
+=======
+## `arcletstat int1 int2 filename`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 - `int1` 0: if false, 1: if true.
 If true will used the arclets in filename to optimize the lens parameters assuming all the sources at the redshift defined in source first identifier (See sect. 2.2.12). The format of the catalogue supplied in filename is the same as the arclet catalogue referred above (i.e. an ASCII column format of the form: ${ i\, x_{ij}\, y_{ij}\, a_{ij}\, b_{ij} \,\theta_{ij}\, z_i }$, where $\theta_{i}$ is associated with the ellipses’ major axis, is in degrees and is measured anticlockwise from West, and $x$ and $y$ are RA and Dec in decimal
@@ -94,17 +117,29 @@ Note that the redshifts of the sources are defined in this catalogue. It is up t
 
 Note that `E1` and `E2` are internally converted to major and minor axis assuming $e = (a^2 - b^2) / (a^2 + b^2)$, and $\theta = \arctan (E2, E1)$.
 
+<<<<<<< HEAD
 ## sigell int1 float int2
+=======
+## `sigell int1 float int2`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 If true, the width of the (assumed Gaussian) intrinsic ellipticity distribution can be specified here (the default value is 0.3). 
 
 Setting `int2` to -1 freeze up this parameter so that it can be inferred from the data (this option is not yet operational)
 
+<<<<<<< HEAD
 ## z\_arclet float
 
 In the case of arcletstat, it is possible to fix the redshift float of one arclet indexed by int in the arcletstat filename. In this case, any arclet with redshift set to 0 in the arclet file, will be attributed this value.
 
 ## critic int1 float1 float2 float3 float4 float5
+=======
+## `z_arclet float`
+
+In the case of arcletstat, it is possible to fix the redshift float of one arclet indexed by int in the arcletstat filename. In this case, any arclet with redshift set to 0 in the arclet file, will be attributed this value.
+
+## `critic int1 float1 float2 float3 float4 float5`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 `int1 = 0`: if false `int1 = 1`: if true.
 If true will add the constraint of the position of the break (locus of merging images) and the orientation of the image at the break (i.e. the direction of amplification matrix).
@@ -116,7 +151,11 @@ If true will add the constraint of the position of the break (locus of merging i
 
 Note: it is possible to give more than one such a constraint, from merging points at different position and different redshifts. One has simply to enter as many critic lines as merging points.
 
+<<<<<<< HEAD
 ## newton int1
+=======
+## `newton int1`
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
 
 `int1 = 0`: if false `int1 = 1` : if true
 

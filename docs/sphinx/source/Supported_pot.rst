@@ -1,5 +1,6 @@
 Supported Potentials
 --------------------
+<<<<<<< HEAD
 
 .. toctree::
    :maxdepth: 1
@@ -11,3 +12,59 @@ Supported Potentials
    potentials/Mass_sheet.md
    potentials/SIS.md
    potentials/PIEMD.md
+=======
+.. The list below gives you the potential identification number, and a link to its description.
+
+.. toctree::
+	:maxdepth: 1
+
+	potentials/SIS.md
+	potentials/NFW.md
+	potentials/ExternalShear.md
+	potentials/External_maps.md
+	potentials/EinastoPotential.md
+	potentials/PIEMD.md
+	potentials/Mass_sheet.md
+
+
+
+     
+.. table:: Identifiers
+   :widths: 20 10 40
+
+   +-------------------+------+-----------------------------------------------------------------------------------------------------------------------+
+   | Potential         | Id   | :math:`\Phi`                                                                                                          |
+   +===================+======+=======================================================================================================================+
+   | NFW               | 12   | :math:`\rho_S \left[\frac{r}{r_S}\right]^{-1} \left[ 1 + \frac{r}{r_S} \right]^{-2}`                                  |
+   +-------------------+------+-----------------------------------------------------------------------------------------------------------------------+
+   | dPIE              | 81   | :math:`\rho_0 \left[1 + \left(\frac{r}{a} \right)^2 \right]^{-1} \left[ 1 + \left(\frac{r}{s} \right)^2 \right]^{-1}` |
+   +-------------------+------+-----------------------------------------------------------------------------------------------------------------------+
+
+
+To continue
+
+
+.. 
+    1 : Singular Isothermal Sphere profile
+
+    3 : Power law with core radius
+
+    7: Point Mass potential
+
+    81 : Pseudo Isothermal Mass Distribution, or dual Pseudo Isothermal Elliptical model
+
+    9 : Mass sheet
+
+    12: NFW potential
+
+    13: Sersic potential
+
+    14: External shear and convergence potential
+
+    15: Einasto potential
+
+    16 : Hernquist profile
+
+    17 : External maps potential
+
+>>>>>>> e8bc58d1858b26df7c5823c468ad671bf631e9ed
