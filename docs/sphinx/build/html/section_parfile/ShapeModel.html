@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>shapemodel &mdash; Lenstool 8.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=1f41a3ab"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="shapelimit" href="ShapeLimit.html" />
+    <link rel="prev" title="X-ray" href="X-ray.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Lenstool
+          </a>
+              <div class="version">
+                8.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation of Lenstool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../method.html">Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../parameter_file.html">Parameter file: Section details</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Mandatory_section.html">Mandatory sections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Mandatory_opt.html">Mandatory sections for lensing optimisation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../Other_sect.html">Other sections:</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="PotFile.html">potfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ObserV.html">observ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CleanLens.html">Cleanlens</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ClinE.html">cline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="X-ray.html">X-ray</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">shapemodel</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#s-center-x-float">s_center_x float</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#s-center-y-float">s_center_y float</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#s-sigx-float">s_sigx float</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#s-sigy-float">s_sigy float</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#s-angle-float">s_angle float</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#s-mag-float">s_mag float</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#index-float">index float</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#z-float">z float</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id-string">id string</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#type-int">type int</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ShapeLimit.html">shapelimit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SourcE.html">source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Dynfile.html">DYNFILE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="large.html">large</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cosmolimit.html">cosmolimit</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../InputOutput.html">Input/Output files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Supported_pot.html">Supported Potentials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pywrap.html">Python wrapper</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Lenstool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../parameter_file.html">Parameter file: Section details</a></li>
+          <li class="breadcrumb-item"><a href="../Other_sect.html">Other sections:</a></li>
+      <li class="breadcrumb-item active">shapemodel</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/section_parfile/ShapeModel.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="shapemodel">
+<h1>shapemodel<a class="headerlink" href="#shapemodel" title="Link to this heading"></a></h1>
+<p>Under this identifier are defined the parameters that define a source shape.</p>
+<section id="s-center-x-float">
+<h2>s_center_x float<a class="headerlink" href="#s-center-x-float" title="Link to this heading"></a></h2>
+<p>Position along the X axis for the center of the source in arcsec. The reference point for this range is the barycenter of sources is attached to a system of multiple images, or the reference point defined in the .par file if not.</p>
+</section>
+<section id="s-center-y-float">
+<h2>s_center_y float<a class="headerlink" href="#s-center-y-float" title="Link to this heading"></a></h2>
+<p>Position along the Y axis for the center of the source in arcsec. The reference point for this range is the barycenter of sources is attached to a system of multiple images, or the reference point defined in the .par file if not.</p>
+</section>
+<section id="s-sigx-float">
+<h2>s_sigx float<a class="headerlink" href="#s-sigx-float" title="Link to this heading"></a></h2>
+<p>Value of the size of the major axis in arcsec</p>
+</section>
+<section id="s-sigy-float">
+<h2>s_sigy float<a class="headerlink" href="#s-sigy-float" title="Link to this heading"></a></h2>
+<p>Value of the size of the minor axis in arcsec</p>
+</section>
+<section id="s-angle-float">
+<h2>s_angle float<a class="headerlink" href="#s-angle-float" title="Link to this heading"></a></h2>
+<p>Value of the orientation of the ellipse defining the source. The angle is defined anti-clockwise from west to north axis.</p>
+</section>
+<section id="s-mag-float">
+<h2>s_mag float<a class="headerlink" href="#s-mag-float" title="Link to this heading"></a></h2>
+<p>Value of theunlensed magnitude of the source</p>
+</section>
+<section id="index-float">
+<h2>index float<a class="headerlink" href="#index-float" title="Link to this heading"></a></h2>
+<p>Value of the Sersic index <img class="math" src="../_images/math/5a939c5280da7202ca4531f175a7780ad5e1f80a.png" alt="n"/> for sources modeled with Sersic profile.</p>
+</section>
+<section id="z-float">
+<h2>z float<a class="headerlink" href="#z-float" title="Link to this heading"></a></h2>
+<p>Redshift of the source.</p>
+</section>
+<section id="id-string">
+<h2>id string<a class="headerlink" href="#id-string" title="Link to this heading"></a></h2>
+<p>Identifier of the source.</p>
+</section>
+<section id="type-int">
+<h2>type int<a class="headerlink" href="#type-int" title="Link to this heading"></a></h2>
+<p>Surface brightness density type</p>
+<ul class="simple">
+<li><p>1: Velocity field <img class="math" src="../_images/math/6293d0ccf5d2588485f20692e373f40a849d59a4.png" alt="I(r)=sign(y)"/> <img class="math" src="../_images/math/adcd782280d325715f28dea464d7791b13dfe769.png" alt="I_0"/> <img class="math" src="../_images/math/5400fd29a96a5fc2d6c0d9a4fa94bc679037e4a7.png" alt="\sqrt{|y|}"/></p></li>
+<li><p>2: Exponential disk  <img class="math" src="../_images/math/0d4c98f1e132392280cd34024306ca9c20c32382.png" alt="I(r)=I_0"/> <img class="math" src="../_images/math/00433344a35f1d458d449a0ee4da755a7998486f.png" alt="\exp(-r)"/></p></li>
+<li><p>3: 2D Gaussian <img class="math" src="../_images/math/9ed9cb29d394daf62d7b4b3146a40ffae3562f18.png" alt="I(r)=I_g"/> <img class="math" src="../_images/math/07da7ca5b8f4eae364a5f22c1c12ae7d5c55b217.png" alt="\exp(-0.5\,r^2)"/></p></li>
+<li><p>4: Sersic <img class="math" src="../_images/math/0d4c98f1e132392280cd34024306ca9c20c32382.png" alt="I(r)=I_0"/> <img class="math" src="../_images/math/4260565bd508d8df9c05b7bbcfecefdca2ca5f01.png" alt="\exp(-r^{1/n})"/></p></li>
+<li><p>5: Uniform disk within radius <img class="math" src="../_images/math/0d4c98f1e132392280cd34024306ca9c20c32382.png" alt="I(r)=I_0"/> for <img class="math" src="../_images/math/843974bd6de54910162e4361b1f32fdfd2c36b96.png" alt="r&lt;a\ b"/></p></li>
+</ul>
+<p>with <img class="math" src="../_images/math/271b78e84865975afd98f6a799b04491b1a78fd8.png" alt="I_0=10^{-0.4\,({\rm s_{mag}}-26)}"/> and <img class="math" src="../_images/math/98258485df73986e6eb67a60f1fde969c3af62b2.png" alt="I_g = 10^{-0.4\,({\rm s_{mag}}+48.57)+29}"/></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="X-ray.html" class="btn btn-neutral float-left" title="X-ray" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ShapeLimit.html" class="btn btn-neutral float-right" title="shapelimit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Lenstool group.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

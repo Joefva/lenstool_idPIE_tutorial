@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>source &mdash; Lenstool 8.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=1f41a3ab"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DYNFILE" href="Dynfile.html" />
+    <link rel="prev" title="shapelimit" href="ShapeLimit.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Lenstool
+          </a>
+              <div class="version">
+                8.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation of Lenstool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../method.html">Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../parameter_file.html">Parameter file: Section details</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Mandatory_section.html">Mandatory sections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Mandatory_opt.html">Mandatory sections for lensing optimisation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../Other_sect.html">Other sections:</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="PotFile.html">potfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ObserV.html">observ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CleanLens.html">Cleanlens</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ClinE.html">cline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="X-ray.html">X-ray</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ShapeModel.html">shapemodel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ShapeLimit.html">shapelimit</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">source</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#grid-int">grid int</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#random-int">random int</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#n-source-int">n_source int</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#elip-max-float">elip_max float</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dist-z-int-float1-float2">dist_z int float1 float2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#z-source-float">z_source float</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#taille-float">taille float</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#smail-float1-float2-float3">smail float1 float2 float3</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Dynfile.html">DYNFILE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="large.html">large</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cosmolimit.html">cosmolimit</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../InputOutput.html">Input/Output files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Supported_pot.html">Supported Potentials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pywrap.html">Python wrapper</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Lenstool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../parameter_file.html">Parameter file: Section details</a></li>
+          <li class="breadcrumb-item"><a href="../Other_sect.html">Other sections:</a></li>
+      <li class="breadcrumb-item active">source</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/section_parfile/SourcE.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="source">
+<h1>source<a class="headerlink" href="#source" title="Link to this heading"></a></h1>
+<p>This section describes how Lenstool simulate sources.</p>
+<section id="grid-int">
+<h2>grid int<a class="headerlink" href="#grid-int" title="Link to this heading"></a></h2>
+<p>If <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">=</span> <span class="pre">1</span></code>, the sources are placed on a regular grid of size <code class="docutils literal notranslate"><span class="pre">n_source</span></code><img class="math" src="../_images/math/8ef1f282527041d7d5c4a46dd2c60a02a7a7c00b.png" alt="\times"/><code class="docutils literal notranslate"><span class="pre">n_source</span></code> in the source plane corresponding to the field in the image plane described in section <a class="reference internal" href="#"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">champ</span></code></span></a>. If the <a class="reference internal" href="#"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">polaire</span></code></span></a> is set, then sources are placed on a polar grid. If <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></code>, then sources are placed randomly in the rectangular field corresponding to the source plane of the field described in section <a class="reference internal" href="#"><span class="xref myst">champ</span></a>.</p>
+</section>
+<section id="random-int">
+<h2>random int<a class="headerlink" href="#random-int" title="Link to this heading"></a></h2>
+<p>This force the seed value for the random number generator, better if negative. By default, Lenstool uses a random seed based on the local time on the machine.</p>
+</section>
+<section id="n-source-int">
+<h2>n_source int<a class="headerlink" href="#n-source-int" title="Link to this heading"></a></h2>
+<p>Number of sources to draw.</p>
+</section>
+<section id="elip-max-float">
+<h2>elip_max float<a class="headerlink" href="#elip-max-float" title="Link to this heading"></a></h2>
+<p>Maximum ellipticity of the drawing sources. The ellipticity of the sources is drawn from 0 to <code class="docutils literal notranslate"><span class="pre">float</span></code> with a uniform law.</p>
+</section>
+<section id="dist-z-int-float1-float2">
+<h2>dist_z int float1 float2<a class="headerlink" href="#dist-z-int-float1-float2" title="Link to this heading"></a></h2>
+<p>Specify how Lenstool draw the redshift of the sources.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></code>, all the redshift will be set to the value specified by the keyword <a class="reference internal" href="#"><span class="xref myst">z_source</span></a>.
+If <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">=</span> <span class="pre">1</span></code>, the redshifts will be drawn with a uniform law between redshifts <code class="docutils literal notranslate"><span class="pre">float1</span></code> and <code class="docutils literal notranslate"><span class="pre">float2</span></code>.
+If <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">=</span> <span class="pre">2</span></code> and the <a class="reference internal" href="#"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">smail</span></code></span></a> keyword is set, the redshifts will be drawn with a <a class="reference internal" href="#"><span class="xref myst">Smail et al.</span></a> distribution.</p>
+</section>
+<section id="z-source-float">
+<h2>z_source float<a class="headerlink" href="#z-source-float" title="Link to this heading"></a></h2>
+<p>Redshift of the sources without redshift in Lenstool. Default value: <img class="math" src="../_images/math/62327a919d6bc15c954cbdc9f7876c071dcf295f.png" alt="z = 0.8"/>.</p>
+</section>
+<section id="taille-float">
+<h2>taille float<a class="headerlink" href="#taille-float" title="Link to this heading"></a></h2>
+<p>Set the size of the source in arcsecond.</p>
+</section>
+<section id="smail-float1-float2-float3">
+<h2>smail float1 float2 float3<a class="headerlink" href="#smail-float1-float2-float3" title="Link to this heading"></a></h2>
+<p>Specify the shape of a <a class="reference internal" href="#"><span class="xref myst">Smail et al.</span></a> distribution, from which redshifts are randomly drawn.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ShapeLimit.html" class="btn btn-neutral float-left" title="shapelimit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Dynfile.html" class="btn btn-neutral float-right" title="DYNFILE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Lenstool group.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

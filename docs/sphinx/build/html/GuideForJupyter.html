@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Some examples of lenstool usage on Jupyter Notebook &mdash; Lenstool 8.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=1f41a3ab"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="lenstool" href="modules.html" />
+    <link rel="prev" title="Python wrapper" href="pywrap.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Lenstool
+          </a>
+              <div class="version">
+                8.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation of Lenstool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="method.html">Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="parameter_file.html">Parameter file: Section details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="InputOutput.html">Input/Output files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Supported_pot.html">Supported Potentials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="pywrap.html">Python wrapper</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Some examples of lenstool usage on Jupyter Notebook</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-sis-model-singular-isothermal-sphere">The SIS model (Singular Isothermal Sphere)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-inputs">The inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-source-definition">The source definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modelling-gravitational-lensing">Modelling gravitational lensing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#with-another-source">With another source</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#modelling-of-the-einstein-ring">Modelling of the Einstein ring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-convergence-map">The convergence map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calculation-of-the-einstein-ring">Calculation of the Einstein ring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#display-of-critical-lines">Display of critical lines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">lenstool</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Lenstool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="pywrap.html">Python wrapper</a></li>
+      <li class="breadcrumb-item active">Some examples of lenstool usage on Jupyter Notebook</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/GuideForJupyter.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="some-examples-of-lenstool-usage-on-jupyter-notebook">
+<h1>Some examples of lenstool usage on Jupyter Notebook<a class="headerlink" href="#some-examples-of-lenstool-usage-on-jupyter-notebook" title="Link to this heading"></a></h1>
+<section id="the-sis-model-singular-isothermal-sphere">
+<h2>The SIS model (Singular Isothermal Sphere)<a class="headerlink" href="#the-sis-model-singular-isothermal-sphere" title="Link to this heading"></a></h2>
+<p>In this notebook we will showcase lensing modelling with Lenstool using the SIS model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">astropy.wcs</span> <span class="kn">import</span> <span class="n">WCS</span>
+<span class="kn">from</span> <span class="nn">astropy.table</span> <span class="kn">import</span> <span class="n">Table</span>
+<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Ellipse</span>
+<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Circle</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="k">as</span> <span class="nn">cm</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">Normalize</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">lenstool</span>
+<span class="kn">from</span> <span class="nn">lenstool.potentials</span> <span class="kn">import</span> <span class="n">sis</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lt</span> <span class="o">=</span> <span class="n">lenstool</span><span class="o">.</span><span class="n">Lenstool</span><span class="p">()</span>
+<span class="n">lt</span><span class="o">.</span><span class="n">add_lens</span><span class="p">(</span><span class="n">sis</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mi">800</span><span class="p">))</span>
+<span class="n">lt</span><span class="o">.</span><span class="n">set_cosmology</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">lt</span><span class="o">.</span><span class="n">set_field</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">lt</span><span class="o">.</span><span class="n">set_grid</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-inputs">
+<h2>The inputs<a class="headerlink" href="#the-inputs" title="Link to this heading"></a></h2>
+<p>We will first define the lens model. In this example, the lens is a single SIS potential. It is centered at (0,0) and has a redshift of 0.3.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lt</span><span class="o">.</span><span class="n">get_lenses</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><i>Table length=1</i>
+<table id="table139713367668000" class="table-striped table-bordered table-condensed">
+<thead><tr><th>type</th><th>n</th><th>x</th><th>y</th><th>z</th></tr></thead>
+<thead><tr><th>int64</th><th>str1</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
+<tr><td>1</td><td>1</td><td>0.0</td><td>0.0</td><td>0.3</td></tr>
+</table></div></div></div>
+</div>
+</section>
+<section id="the-source-definition">
+<h2>The source definition<a class="headerlink" href="#the-source-definition" title="Link to this heading"></a></h2>
+<p>The source properties are coordinates in arcsec, size, redshift, orientation angle and magnitude (brightness).
+These parameters must be given directly in the code .
+Here we study a circular source of redshift 1 and magnitude 20.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tab</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;theta&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="s1">&#39;mag&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;str&#39;</span><span class="p">,</span><span class="o">*</span><span class="p">[</span><span class="s1">&#39;float&#39;</span><span class="p">,]</span><span class="o">*</span><span class="mi">7</span><span class="p">])</span>
+<span class="n">tab</span><span class="o">.</span><span class="n">add_row</span><span class="p">([</span><span class="s1">&#39;1a&#39;</span><span class="p">,</span> <span class="mf">0.6789067</span><span class="p">,</span> <span class="o">-</span><span class="mf">9.7</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
+<span class="n">lt</span><span class="o">.</span><span class="n">set_sources</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span>
+<span class="n">lt</span><span class="o">.</span><span class="n">get_sources</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><i>Table length=1</i>
+<table id="table139716920049568" class="table-striped table-bordered table-condensed">
+<thead><tr><th>n</th><th>x</th><th>y</th><th>a</th><th>b</th><th>theta</th><th>z</th><th>mag</th></tr></thead>
+<thead><tr><th>str2</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
+<tr><td>1a</td><td>0.6789067</td><td>-9.7</td><td>3.5</td><td>3.5</td><td>0.0</td><td>1.0</td><td>20.0</td></tr>
+</table></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mass</span><span class="p">,</span> <span class="n">wcs</span> <span class="o">=</span> <span class="n">lt</span><span class="o">.</span><span class="n">g_mass</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">],</span> <span class="n">projection</span><span class="o">=</span><span class="n">wcs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">mass</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">lt</span><span class="o">.</span><span class="n">get_sources</span><span class="p">():</span> 
+    <span class="n">ellipse</span> <span class="o">=</span> <span class="n">Ellipse</span><span class="p">((</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="o">/</span><span class="mf">3600.</span><span class="p">,</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">/</span><span class="mf">3600.</span><span class="p">),</span> <span class="c1">#conversion from arcsecs to degrees</span>
+                      <span class="n">width</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">3600</span><span class="p">,</span> 
+                      <span class="n">height</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">3600</span><span class="p">,</span>
+                      <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;pink&#39;</span><span class="p">,</span>
+                      <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span>
+                      <span class="n">angle</span> <span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">]</span><span class="o">+</span><span class="mi">90</span><span class="p">,</span>
+                      <span class="n">transform</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">get_transform</span><span class="p">(</span><span class="s1">&#39;world&#39;</span><span class="p">)</span>
+                     <span class="p">)</span>
+ 
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">ellipse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4bdb34b33947086f230a66e34ec7ad7c576d466d753e2855291e572cb7351f8e.png" src="_images/4bdb34b33947086f230a66e34ec7ad7c576d466d753e2855291e572cb7351f8e.png" />
+</div>
+</div>
+<p>Here we have displayed the source in pink and the cluster of galaxies that acts as a lens in yellow.
+The colorbar indicates the mass repartition of the cluster in <img class="math" src="_images/math/edee3f94f49bfe573eaaf3a3bcc0cb779d8baf59.png" alt="10^{12}"/> Msun/pixel.</p>
+</section>
+<section id="modelling-gravitational-lensing">
+<h2>Modelling gravitational lensing<a class="headerlink" href="#modelling-gravitational-lensing" title="Link to this heading"></a></h2>
+<p>Using the data from the above source, one or more images can be created corresponding to the gravitational lensing under study.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lt</span><span class="o">.</span><span class="n">e_lensing</span><span class="p">()</span>
+<span class="n">lt</span><span class="o">.</span><span class="n">get_images</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Compute multiple images for source 0...images found 3, not found 0
+</pre></div>
+</div>
+<div class="output text_html"><div><i>Table length=3</i>
+<table id="table139712129258528" class="table-striped table-bordered table-condensed">
+<thead><tr><th>n</th><th>x</th><th>y</th><th>a</th><th>b</th><th>theta</th><th>z</th><th>mag</th></tr></thead>
+<thead><tr><th>str2</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
+<tr><td>1a</td><td>-0.1439036032657953</td><td>2.0560154188542463</td><td>3.5000000009029875</td><td>0.7418610444825656</td><td>274.0036883033475</td><td>1.0</td><td>21.684363693981073</td></tr>
+<tr><td>1a</td><td>-0.14387454674726022</td><td>2.057052271183944</td><td>3.500000000902991</td><td>0.7423114188365738</td><td>274.00087143112734</td><td>1.0</td><td>21.683704757410105</td></tr>
+<tr><td>1a</td><td>1.5017408667543064</td><td>-21.45605858938671</td><td>7.741844354807153</td><td>3.5000000009029857</td><td>184.0036860228906</td><td>1.0</td><td>19.13805902100179</td></tr>
+</table></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_images</span><span class="p">():</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">],</span> <span class="n">projection</span><span class="o">=</span><span class="n">wcs</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">mass</span><span class="p">)</span>
+
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">lt</span><span class="o">.</span><span class="n">get_images</span><span class="p">()[</span><span class="s1">&#39;mag&#39;</span><span class="p">]),</span> <span class="nb">max</span><span class="p">(</span><span class="n">lt</span><span class="o">.</span><span class="n">get_images</span><span class="p">()[</span><span class="s1">&#39;mag&#39;</span><span class="p">]))</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">lt</span><span class="o">.</span><span class="n">get_images</span><span class="p">():</span> 
+        <span class="n">ellipse</span> <span class="o">=</span> <span class="n">Ellipse</span><span class="p">((</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="o">/</span><span class="mf">3600.</span><span class="p">,</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">/</span><span class="mf">3600.</span><span class="p">),</span>
+                          <span class="n">width</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">3600</span><span class="p">,</span>
+                          <span class="n">height</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">3600</span><span class="p">,</span>
+                          <span class="n">facecolor</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span>
+                          <span class="n">angle</span> <span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">90</span><span class="p">,</span>
+                          <span class="n">transform</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">get_transform</span><span class="p">(</span><span class="s1">&#39;world&#39;</span><span class="p">)</span>
+                         <span class="p">)</span>
+         <span class="c1"># Assign color to the ellipse based on the magnification</span>
+
+        <span class="n">color</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;Wistia&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_rgba</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;mag&#39;</span><span class="p">])</span>
+        <span class="n">ellipse</span><span class="o">.</span><span class="n">set_edgecolor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">ellipse</span><span class="p">)</span>
+
+    <span class="c1"># Creating a ScalarMappable object for colorbar</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;Wistia&#39;</span><span class="p">)</span>
+    <span class="n">cmap</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">tab</span><span class="p">[</span><span class="s1">&#39;mag&#39;</span><span class="p">])</span>
+
+    <span class="c1"># Adding the colorbar</span>
+    <span class="n">colorbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cmap</span><span class="p">)</span>
+    <span class="n">colorbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Magnitude&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plot_images</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2756599/310927048.py:27: MatplotlibDeprecationWarning: Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
+  colorbar = plt.colorbar(cmap)
+</pre></div>
+</div>
+<img alt="_images/f28589088580f88ed79c2c2d39f095fce3d87d6d65ac7981fa28457a3e74dd0c.png" src="_images/f28589088580f88ed79c2c2d39f095fce3d87d6d65ac7981fa28457a3e74dd0c.png" />
+</div>
+</div>
+<p>As we can see, three images are displayed whereas in the SIS model only two images should appear. This happens because due to numerical resolution limits, Lenstool finds two radial images, whereas only one should exist in theory. Note that depending on the grid.number, and grid.polar parameters, this third image is not always detected.</p>
+<section id="with-another-source">
+<h3>With another source<a class="headerlink" href="#with-another-source" title="Link to this heading"></a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tab</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span>
+    <span class="n">rows</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;1a&#39;</span><span class="p">,</span> <span class="mf">10.6789067</span><span class="p">,</span> <span class="mf">10.7</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)],</span>
+    <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;theta&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="s1">&#39;mag&#39;</span><span class="p">],</span> 
+    <span class="n">dtype</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;str&#39;</span><span class="p">,</span><span class="o">*</span><span class="p">[</span><span class="s1">&#39;float&#39;</span><span class="p">,]</span><span class="o">*</span><span class="mi">7</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">lt</span><span class="o">.</span><span class="n">set_sources</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span>
+<span class="n">lt</span><span class="o">.</span><span class="n">get_sources</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><i>Table length=1</i>
+<table id="table139713367669968" class="table-striped table-bordered table-condensed">
+<thead><tr><th>n</th><th>x</th><th>y</th><th>a</th><th>b</th><th>theta</th><th>z</th><th>mag</th></tr></thead>
+<thead><tr><th>str2</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
+<tr><td>1a</td><td>10.6789067</td><td>10.7</td><td>3.5</td><td>3.5</td><td>0.0</td><td>1.0</td><td>20.0</td></tr>
+</table></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lt</span><span class="o">.</span><span class="n">e_lensing</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="n">lt</span><span class="o">.</span><span class="n">get_images</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Compute multiple images for source 0...
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>images found 1, not found 0
+</pre></div>
+</div>
+<div class="output text_html"><div><i>Table length=1</i>
+<table id="table139712129211536" class="table-striped table-bordered table-condensed">
+<thead><tr><th>n</th><th>x</th><th>y</th><th>a</th><th>b</th><th>theta</th><th>z</th><th>mag</th></tr></thead>
+<thead><tr><th>str2</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
+<tr><td>1a</td><td>19.003780153858134</td><td>19.041315591211987</td><td>6.228466685230651</td><td>3.5000000004546004</td><td>135.05652820048417</td><td>1.0</td><td>19.374217246134503</td></tr>
+</table></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_images</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2756599/310927048.py:27: MatplotlibDeprecationWarning: Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
+  colorbar = plt.colorbar(cmap)
+</pre></div>
+</div>
+<img alt="_images/cb001a4ffa3c8274707e22c68253a41d79c76333d8ce3c285c36b4c98f2f9b62.png" src="_images/cb001a4ffa3c8274707e22c68253a41d79c76333d8ce3c285c36b4c98f2f9b62.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tab</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span>
+    <span class="n">rows</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;1a&#39;</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)],</span>
+    <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;theta&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="s1">&#39;mag&#39;</span><span class="p">],</span> 
+    <span class="n">dtype</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;str&#39;</span><span class="p">,</span><span class="o">*</span><span class="p">[</span><span class="s1">&#39;float&#39;</span><span class="p">,]</span><span class="o">*</span><span class="mi">7</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">lt</span><span class="o">.</span><span class="n">set_sources</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span>
+<span class="n">lt</span><span class="o">.</span><span class="n">get_sources</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><i>Table length=1</i>
+<table id="table139712128563808" class="table-striped table-bordered table-condensed">
+<thead><tr><th>n</th><th>x</th><th>y</th><th>a</th><th>b</th><th>theta</th><th>z</th><th>mag</th></tr></thead>
+<thead><tr><th>str2</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
+<tr><td>1a</td><td>1.7</td><td>1.7</td><td>3.5</td><td>3.5</td><td>0.0</td><td>1.0</td><td>20.0</td></tr>
+</table></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lt</span><span class="o">.</span><span class="n">e_lensing</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="n">lt</span><span class="o">.</span><span class="n">get_images</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Compute multiple images for source 0...images found 2, not found 0
+</pre></div>
+</div>
+<div class="output text_html"><div><i>Table length=2</i>
+<table id="table139712129829040" class="table-striped table-bordered table-condensed">
+<thead><tr><th>n</th><th>x</th><th>y</th><th>a</th><th>b</th><th>theta</th><th>z</th><th>mag</th></tr></thead>
+<thead><tr><th>str2</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
+<tr><td>1a</td><td>10.033094210747203</td><td>10.033094210747207</td><td>20.656397190255532</td><td>3.5000000004537077</td><td>134.99999999105756</td><td>1.0</td><td>18.072533671216917</td></tr>
+<tr><td>1a</td><td>-6.6330663752945656</td><td>-6.6330663752945656</td><td>13.65607183861927</td><td>3.5000000004537037</td><td>134.99999999408797</td><td>1.0</td><td>18.521855628870078</td></tr>
+</table></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_images</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2756599/310927048.py:27: MatplotlibDeprecationWarning: Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
+  colorbar = plt.colorbar(cmap)
+</pre></div>
+</div>
+<img alt="_images/98e01b1e6e02a3104534a78e7b5219d21037138b0ab98e9d24c7a573ca5da608.png" src="_images/98e01b1e6e02a3104534a78e7b5219d21037138b0ab98e9d24c7a573ca5da608.png" />
+</div>
+</div>
+<p>By moving the source closer to the lens, the flux can be amplified.
+The second colorbar represents the magnitude values of the obtained images.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tab</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span>
+    <span class="n">rows</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;1a&#39;</span><span class="p">,</span> <span class="mf">0.6789067</span><span class="p">,</span> <span class="o">-</span><span class="mf">9.7</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">20</span><span class="p">)],</span>
+    <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;theta&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="s1">&#39;mag&#39;</span><span class="p">],</span> 
+    <span class="n">dtype</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;str&#39;</span><span class="p">,</span><span class="o">*</span><span class="p">[</span><span class="s1">&#39;float&#39;</span><span class="p">,]</span><span class="o">*</span><span class="mi">7</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">lt</span><span class="o">.</span><span class="n">set_sources</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span>
+<span class="n">lt</span><span class="o">.</span><span class="n">get_sources</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><i>Table length=1</i>
+<table id="table139712128367104" class="table-striped table-bordered table-condensed">
+<thead><tr><th>n</th><th>x</th><th>y</th><th>a</th><th>b</th><th>theta</th><th>z</th><th>mag</th></tr></thead>
+<thead><tr><th>str2</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
+<tr><td>1a</td><td>0.6789067</td><td>-9.7</td><td>5.5</td><td>5.5</td><td>0.0</td><td>1.5</td><td>20.0</td></tr>
+</table></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lt</span><span class="o">.</span><span class="n">e_lensing</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="n">lt</span><span class="o">.</span><span class="n">get_images</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Compute multiple images for source 0...images found 2, not found 0
+</pre></div>
+</div>
+<div class="output text_html"><div><i>Table length=2</i>
+<table id="table139712127952464" class="table-striped table-bordered table-condensed">
+<thead><tr><th>n</th><th>x</th><th>y</th><th>a</th><th>b</th><th>theta</th><th>z</th><th>mag</th></tr></thead>
+<thead><tr><th>str2</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
+<tr><td>1a</td><td>-0.25707791557222537</td><td>3.672954994000554</td><td>5.500000001342866</td><td>2.0826060496906016</td><td>94.00372378931525</td><td>1.5</td><td>21.054388909410584</td></tr>
+<tr><td>1a</td><td>1.6149036200952676</td><td>-23.072957535127333</td><td>13.082585562250514</td><td>5.500000001342866</td><td>184.00367029497949</td><td>1.5</td><td>19.059172764025583</td></tr>
+</table></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_images</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2756599/310927048.py:27: MatplotlibDeprecationWarning: Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
+  colorbar = plt.colorbar(cmap)
+</pre></div>
+</div>
+<img alt="_images/bac6aa9d8d8a094599c63d64bd351d46e7fe255e5e3907c94c9ba365273d6cd4.png" src="_images/bac6aa9d8d8a094599c63d64bd351d46e7fe255e5e3907c94c9ba365273d6cd4.png" />
+</div>
+</div>
+<p>The image obtained for the first source studied is modelled again and the size of the source is increased; it can be seen that the size of the image is also increased.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tab</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span>
+    <span class="n">rows</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;1a&#39;</span><span class="p">,</span> <span class="mf">0.6789067</span><span class="p">,</span> <span class="o">-</span><span class="mf">9.7</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)],</span>
+    <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;theta&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="s1">&#39;mag&#39;</span><span class="p">],</span> 
+    <span class="n">dtype</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;str&#39;</span><span class="p">,</span><span class="o">*</span><span class="p">[</span><span class="s1">&#39;float&#39;</span><span class="p">,]</span><span class="o">*</span><span class="mi">7</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">lt</span><span class="o">.</span><span class="n">set_sources</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span>
+<span class="n">lt</span><span class="o">.</span><span class="n">get_sources</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><i>Table length=1</i>
+<table id="table139712127947424" class="table-striped table-bordered table-condensed">
+<thead><tr><th>n</th><th>x</th><th>y</th><th>a</th><th>b</th><th>theta</th><th>z</th><th>mag</th></tr></thead>
+<thead><tr><th>str2</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
+<tr><td>1a</td><td>0.6789067</td><td>-9.7</td><td>3.5</td><td>3.5</td><td>0.0</td><td>15.0</td><td>20.0</td></tr>
+</table></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lt</span><span class="o">.</span><span class="n">e_lensing</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="n">lt</span><span class="o">.</span><span class="n">get_images</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Compute multiple images for source 0...images found 2, not found 0
+</pre></div>
+</div>
+<div class="output text_html"><div><i>Table length=2</i>
+<table id="table139712126491936" class="table-striped table-bordered table-condensed">
+<thead><tr><th>n</th><th>x</th><th>y</th><th>a</th><th>b</th><th>theta</th><th>z</th><th>mag</th></tr></thead>
+<thead><tr><th>str2</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
+<tr><td>1a</td><td>1.8173670426662405</td><td>-25.965958656690344</td><td>9.369170222656104</td><td>3.50000000232949</td><td>184.00362385225992</td><td>15.0</td><td>18.93091728652996</td></tr>
+<tr><td>1a</td><td>-0.4595568468859513</td><td>6.565971489067192</td><td>3.50000000232949</td><td>2.369165693006243</td><td>274.0036418742858</td><td>15.0</td><td>20.423681522252945</td></tr>
+</table></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_images</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2756599/310927048.py:27: MatplotlibDeprecationWarning: Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
+  colorbar = plt.colorbar(cmap)
+</pre></div>
+</div>
+<img alt="_images/fdb5a9404ec5e23dfe453e2abefa5d3425377a480795c70480835c03e6d7f4e9.png" src="_images/fdb5a9404ec5e23dfe453e2abefa5d3425377a480795c70480835c03e6d7f4e9.png" />
+</div>
+</div>
+<p>When the redshift is increased, the distance between the images is also increased.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tab</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span>
+    <span class="n">rows</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;1a&#39;</span><span class="p">,</span> <span class="mf">0.3789067</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)],</span>
+    <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;theta&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="s1">&#39;mag&#39;</span><span class="p">],</span> 
+    <span class="n">dtype</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;str&#39;</span><span class="p">,</span><span class="o">*</span><span class="p">[</span><span class="s1">&#39;float&#39;</span><span class="p">,]</span><span class="o">*</span><span class="mi">7</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">lt</span><span class="o">.</span><span class="n">set_sources</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span>
+<span class="n">lt</span><span class="o">.</span><span class="n">get_sources</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><i>Table length=1</i>
+<table id="table139712124921760" class="table-striped table-bordered table-condensed">
+<thead><tr><th>n</th><th>x</th><th>y</th><th>a</th><th>b</th><th>theta</th><th>z</th><th>mag</th></tr></thead>
+<thead><tr><th>str2</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
+<tr><td>1a</td><td>0.3789067</td><td>0.4</td><td>3.5</td><td>3.5</td><td>0.0</td><td>1.0</td><td>20.0</td></tr>
+</table></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lt</span><span class="o">.</span><span class="n">e_lensing</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="n">lt</span><span class="o">.</span><span class="n">get_images</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Compute multiple images for source 0...images found 2, not found 0
+</pre></div>
+</div>
+<div class="output text_html"><div><i>Table length=2</i>
+<table id="table139712124917344" class="table-striped table-bordered table-condensed">
+<thead><tr><th>n</th><th>x</th><th>y</th><th>a</th><th>b</th><th>theta</th><th>z</th><th>mag</th></tr></thead>
+<thead><tr><th>str2</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
+<tr><td>1a</td><td>8.483351108269728</td><td>8.955704565242327</td><td>78.35533537154147</td><td>3.500000000478264</td><td>136.55153147905978</td><td>1.0</td><td>16.62499867624839</td></tr>
+<tr><td>1a</td><td>-7.725506849912627</td><td>-8.155647694845774</td><td>71.35961784032642</td><td>3.500000000478264</td><td>136.5514760544116</td><td>1.0</td><td>16.726538821848983</td></tr>
+</table></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_images</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2756599/310927048.py:27: MatplotlibDeprecationWarning: Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
+  colorbar = plt.colorbar(cmap)
+</pre></div>
+</div>
+<img alt="_images/2e73cbcce520a862528f4084f259b125bd97316920deca35cd83718416c29dc4.png" src="_images/2e73cbcce520a862528f4084f259b125bd97316920deca35cd83718416c29dc4.png" />
+</div>
+</div>
+<p>By moving the source closer to the lens again, the images appear streched.</p>
+</section>
+</section>
+<section id="modelling-of-the-einstein-ring">
+<h2>Modelling of the Einstein ring<a class="headerlink" href="#modelling-of-the-einstein-ring" title="Link to this heading"></a></h2>
+<p>Now that we have seen the impact of each parameter on the resulting image, we want to model the Einstein ring.
+To do so we can model the brightness map with lenstool.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pix</span><span class="p">,</span> <span class="n">wcs</span> <span class="o">=</span> <span class="n">lt</span><span class="o">.</span><span class="n">e_pixel_image</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">source</span><span class="p">,</span> <span class="n">swcs</span> <span class="o">=</span> <span class="n">lt</span><span class="o">.</span><span class="n">e_pixel_source</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="n">projection</span><span class="o">=</span><span class="n">wcs</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">pix</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">autoscale_view</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Image plane&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="n">projection</span><span class="o">=</span><span class="n">swcs</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">autoscale_view</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Source plane&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>image (100,100) s=1.010 [-50.000,50.000] [-50.000,50.000]
+
+source (40,40) s=(1.026,1.026) [-20.000,20.000] [-20.000,20.000]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Source plane&#39;)
+</pre></div>
+</div>
+<img alt="_images/ff0c331fd19b2fb6d62f6ad38de742fd2389bff6f936b2183d069d0cc5bbeacf.png" src="_images/ff0c331fd19b2fb6d62f6ad38de742fd2389bff6f936b2183d069d0cc5bbeacf.png" />
+</div>
+</div>
+</section>
+<section id="the-convergence-map">
+<h2>The convergence map<a class="headerlink" href="#the-convergence-map" title="Link to this heading"></a></h2>
+<p>Lenstool can also compute the convergence map of the lens.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conv</span><span class="p">,</span> <span class="n">wcs</span> <span class="o">=</span> <span class="n">lt</span><span class="o">.</span><span class="n">g_mass</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">],</span> <span class="n">projection</span><span class="o">=</span><span class="n">wcs</span><span class="p">)</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">conv</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.02</span>
+<span class="n">conv</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">conv</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f11439380d0&gt;
+</pre></div>
+</div>
+<img alt="_images/44610d120c1b5ba0bc0c946d00409e2944848842b3e5a83b57cfd57f5a69b363.png" src="_images/44610d120c1b5ba0bc0c946d00409e2944848842b3e5a83b57cfd57f5a69b363.png" />
+</div>
+</div>
+<p>Here, the yellow circle is the critical line for our SIS model (when the convergence = 1/2).</p>
+</section>
+<section id="calculation-of-the-einstein-ring">
+<h2>Calculation of the Einstein ring<a class="headerlink" href="#calculation-of-the-einstein-ring" title="Link to this heading"></a></h2>
+<p>We start by using the lensing equations to obtain the radius of the ring created by gravitational lensing. <br>
+$<img class="math" src="_images/math/8b66822b1a5d41b21d9ccff035a5faa5eb0016bc.png" alt="\theta_{E} = \frac{4 \pi\sigma_{v}^{2}}{c^{2}}\frac{D_{LS}}{D_{S}}"/>$</p>
+<p>We can calculate the distances to the source and to the lens with the redshift data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+<span class="kn">import</span> <span class="nn">astropy.constants</span> <span class="k">as</span> <span class="nn">const</span>
+<span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="kn">from</span> <span class="nn">astropy.cosmology</span> <span class="kn">import</span> <span class="n">FlatLambdaCDM</span>
+
+<span class="n">cosmo</span><span class="o">=</span> <span class="n">FlatLambdaCDM</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span><span class="mf">0.3</span><span class="p">)</span>                     <span class="c1"># definition of the universe (H0, z_lens)</span>
+<span class="n">dol</span><span class="o">=</span><span class="n">cosmo</span><span class="o">.</span><span class="n">angular_diameter_distance</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>         <span class="c1"># distance between the observer and the lens</span>
+<span class="n">dos</span><span class="o">=</span><span class="n">cosmo</span><span class="o">.</span><span class="n">angular_diameter_distance</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>           <span class="c1"># distance between the observer and the source</span>
+<span class="n">dls</span><span class="o">=</span><span class="n">cosmo</span><span class="o">.</span><span class="n">angular_diameter_distance_z1z2</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># distance between the lens and the source</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">800</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">km</span> <span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">s</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">dls</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">dos</span><span class="o">*</span><span class="n">const</span><span class="o">.</span><span class="n">c</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">theta</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;m2/m2&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the radius value is:&quot;</span><span class="p">,</span><span class="n">theta</span><span class="p">)</span>                                  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the radius value is: 5.713423457351444e-05
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we have the radius we can display the ring.<br>
+To observe the match with the magnification map, it is also possible to directly display the ring on it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ampli</span><span class="p">,</span> <span class="n">wcs</span> <span class="o">=</span> <span class="n">lt</span><span class="o">.</span><span class="n">g_ampli</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">],</span> <span class="n">projection</span><span class="o">=</span><span class="n">wcs</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ampli</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clim</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+           <span class="n">numpy</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span>
+           <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;pink&#39;</span><span class="p">,</span>
+           <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span>
+           <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+           <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">get_transform</span><span class="p">(</span><span class="s1">&#39;world&#39;</span><span class="p">)</span>
+          <span class="p">)</span>
+           
+        
+<span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Magnification map&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Magnification map&#39;)
+</pre></div>
+</div>
+<img alt="_images/fd46af41f58bb19852f3b09f148a7aada1b048d64915253c014791b28daae1cb.png" src="_images/fd46af41f58bb19852f3b09f148a7aada1b048d64915253c014791b28daae1cb.png" />
+</div>
+</div>
+<p>Here the Eistein ring is pink and the colorbar indicates the magnification factor.</p>
+</section>
+<section id="display-of-critical-lines">
+<h2>Display of critical lines<a class="headerlink" href="#display-of-critical-lines" title="Link to this heading"></a></h2>
+<p>Another method to represent the critical lines is to use the data calculated by Lenstool, we can then also represent the caustic lines.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lenstool</span> <span class="kn">import</span> <span class="n">pcl</span>
+
+<span class="c1"># Compute image plane and source plane surface brightness maps</span>
+<span class="n">pix</span><span class="p">,</span> <span class="n">wcs</span> <span class="o">=</span> <span class="n">lt</span><span class="o">.</span><span class="n">e_pixel_image</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">source</span><span class="p">,</span> <span class="n">swcs</span> <span class="o">=</span> <span class="n">lt</span><span class="o">.</span><span class="n">e_pixel_source</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Compute critical and caustic external lines</span>
+<span class="n">tangent</span><span class="p">,</span> <span class="n">radial</span> <span class="o">=</span> <span class="n">lt</span><span class="o">.</span><span class="n">criticnew</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">critic_int</span><span class="p">,</span> <span class="n">caustic_int</span> <span class="o">=</span> <span class="n">pcl</span><span class="o">.</span><span class="n">parse_cline</span><span class="p">(</span><span class="n">radial</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="n">projection</span><span class="o">=</span><span class="n">wcs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">pix</span><span class="p">)</span>
+<span class="n">critic_int</span><span class="o">.</span><span class="n">set_transform</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_transform</span><span class="p">(</span><span class="s1">&#39;world&#39;</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">critic_int</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">autoscale_view</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Image plane&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="n">projection</span><span class="o">=</span><span class="n">swcs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+<span class="n">caustic_int</span><span class="o">.</span><span class="n">set_transform</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_transform</span><span class="p">(</span><span class="s1">&#39;world&#39;</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">caustic_int</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">autoscale_view</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Source plane&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>image (100,100) s=1.010 [-50.000,50.000] [-50.000,50.000]
+
+source (40,40) s=(1.026,1.026) [-20.000,20.000] [-20.000,20.000]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>COMP1: critic and caustic lines for source plane at z=1.000
+limitHigh(in arcsec)=10.000 limitLow(in arcsec)=1.000
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Source plane&#39;)
+</pre></div>
+</div>
+<img alt="_images/660e852c15b7ffcfdf07d0aa454764cfe1af30a2e93bb32718265e2064c6308f.png" src="_images/660e852c15b7ffcfdf07d0aa454764cfe1af30a2e93bb32718265e2064c6308f.png" />
+</div>
+</div>
+<p>Here we display the external critical and caustic lines of the lens.<br>
+In the image plane, the critical line is a circle (as we calculated) superposed to the Einstein ring whereas the caustic line in the source plane is a point centered on the source.<br>
+If we were to model the internal lines, it would be the opposite, meaning that the internal critical line would be a point in the image plane and the caustic line a circle in the source plane. However, this point in the image plane is infinitely small, and Lenstool cannot find it, hence it cannot compute the associated caustic line.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pywrap.html" class="btn btn-neutral float-left" title="Python wrapper" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="modules.html" class="btn btn-neutral float-right" title="lenstool" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Lenstool group.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

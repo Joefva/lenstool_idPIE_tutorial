@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>X-ray extension: Basics &mdash; Lenstool 8.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=1f41a3ab"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="idPIE: Joint baryon and DM modelling" href="idpie.html" />
+    <link rel="prev" title="X-ray extension" href="X-ray.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Lenstool
+          </a>
+              <div class="version">
+                8.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation of Lenstool</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../method.html">Method</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../strong_lensing.html">Strong Lensing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weak_lensing.html">Weak Lensing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image_reconstruction.html">Image reconstruction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="X-ray.html">X-ray extension</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">X-ray extension: Basics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-it-works">How it works</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#optimisation">Optimisation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-product-implemented">Data product implemented</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#chandra-data-reduction-and-processing-wrapper">Chandra data reduction and processing wrapper</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#developement">Developement</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="idpie.html">idPIE: Joint baryon and DM modelling</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../parameter_file.html">Parameter file: Section details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../InputOutput.html">Input/Output files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Supported_pot.html">Supported Potentials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pywrap.html">Python wrapper</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Lenstool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../method.html">Method</a></li>
+          <li class="breadcrumb-item"><a href="X-ray.html">X-ray extension</a></li>
+      <li class="breadcrumb-item active">X-ray extension: Basics</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/X-ray/general_method_X.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="x-ray-extension-basics">
+<h1>X-ray extension: Basics<a class="headerlink" href="#x-ray-extension-basics" title="Link to this heading"></a></h1>
+<p>Since the work of <a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2023arXiv230110907B/abstract">Beauchesne+23</a>, Lenstool is able to use X-ray data to model the intra-cluster gas. It only requires to define a new section in the parameter file that will define the X-ray observation and needs to be activated per potential with a simple keyword.</p>
+<section id="how-it-works">
+<h2>How it works<a class="headerlink" href="#how-it-works" title="Link to this heading"></a></h2>
+<p>To make it simple, the X-ray extension bring the ability of Lenstool to compute the <img class="math" src="../_images/math/9d6ca16123c511ab7cfac8d32981824aa5811107.png" alt="\int n_e n_p dl"/> for a potential which allow to constraint the shape of the gas haloes with the count map and to also produce the related quantities as map. For now, only the dPIE are implemented and thus, we will focus on this potential to detail how it has been put in place.</p>
+<section id="dpie">
+<h3>dPIE<a class="headerlink" href="#dpie" title="Link to this heading"></a></h3>
+<p>The analytical formulae associé au dPIE and that is unique to each potential is the computation of <img class="math" src="../_images/math/d464703363fe06a906a98967912f4ebde76dc829.png" alt="\int \rho^2 dl"/>. We use the
+equation presented in <a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2017ApJ...842..132B/abstract">Bonamigo+17</a> and to define their elliptical counter part we use the same transformation as in <a class="reference external" href="https://arxiv.org/abs/0710.5636">Elıasdottir+07</a>. As we are considering the sum of multiple potential there is two different interesting formulae. If we consider the <img class="math" src="../_images/math/3d2006e56cc72c929d49557c7d4b01e336b4ce6b.png" alt="i^{th}"/> and <img class="math" src="../_images/math/84c95c5cbf1d18d325539baa27f22bc3b7453acf.png" alt="j^{th}"/> potentials, we have to compute <img class="math" src="../_images/math/b631acab80f9ccb0e81abd191afb47b78dda34b1.png" alt="\int \rho_i^2 dl"/> and <img class="math" src="../_images/math/63e35b4bc235a732dcb19bc14e544a0c58bd0d9f.png" alt="\int \rho_i \rho_j dl"/> that are presented in equation 5 and 7 in <a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2017ApJ...842..132B/abstract">Bonamigo+17</a>. As we can see, these expressions only depends of the usual dPIE parameters. However, each of these potential does not have to only consist of gas, thus a gas fraction has to be defined for these X-ray activated potentials, which bring one more parameter to the potential. By default the gas fraction is fixed to one and it is the current recommended practice as it implies no assumption on the gas following the DM distribution. The gas fraction behave like any other potential parameter and can be optimised between 0 and 1.</p>
+<p>The definition of a dPIE potential is then almost the same as without the X-ray extension and is the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">potential</span> <span class="n">O6</span>
+    <span class="n">profile</span>       <span class="mi">81</span>
+    <span class="n">x_centre</span>     <span class="o">-</span><span class="mf">22.867836</span>
+    <span class="n">y_centre</span>     <span class="mf">17.190451</span>
+    <span class="n">ellipticity</span>     <span class="mf">0.133194</span>
+    <span class="n">angle_pos</span>       <span class="o">-</span><span class="mf">27.937929</span>
+    <span class="n">core_radius_kpc</span>     <span class="mf">153.952651</span>
+    <span class="n">cut_radius_kpc</span>     <span class="mf">1250.000000</span>
+    <span class="n">v_disp</span>     <span class="mf">338.723340</span>
+    <span class="n">X</span><span class="o">-</span><span class="n">ray</span>     <span class="mi">1</span>
+    <span class="n">Gas_fraction</span>     <span class="mf">1.000000</span>
+    <span class="n">z_lens</span>     <span class="mf">0.3475</span>
+    <span class="n">end</span>
+</pre></div>
+</div>
+<p>As we can see there is only <code class="docutils literal notranslate"><span class="pre">X-ray</span></code> and <code class="docutils literal notranslate"><span class="pre">Gas_fraction</span></code>, the first being a boolean and can be set to 0 or 1 and the second is the previously discussed parameter. If other potential have to be implemented, they will follow the same pattern and just these two keywords will have to be added. The only exception is potentials that will follows some specific assumptions.</p>
+</section>
+<section id="plasma-emission-model">
+<h3>Plasma emission model<a class="headerlink" href="#plasma-emission-model" title="Link to this heading"></a></h3>
+<p>The model is separated in two parts, the hard coded and the user provided. The earlier is only the transformation from <img class="math" src="../_images/math/5e339651eb04b28e4e0af88d52e005d388b607cc.png" alt="\rho^2"/> to <img class="math" src="../_images/math/bbd3c6c841cd00f502f020e436b8ea6fe6e29bd9.png" alt="n_e n_p"/> while the later is the final transformation from <img class="math" src="../_images/math/9d6ca16123c511ab7cfac8d32981824aa5811107.png" alt="\int n_e n_p dl"/> to the actual number of counts. The transformation of the mass to the proton and neutron density is the following:</p>
+<div class="math">
+<p><img src="../_images/math/80237a2be3a7879d8bd31e4c3eaa455fa32ea02d.png" alt="\rho=\mu(n_e+n_p)"/></p>
+</div><div class="math">
+<p><img src="../_images/math/aa38e403dd3a8a1d6186a58db476677b16075b25.png" alt="\Rightarrow n_e n_p=\frac{\rho^2}{\mu^2 \left(1+{\rm nhc}\right)\left(1+\frac{1}{\rm nhc}\right)}"/></p>
+</div><p>Where <img class="math" src="../_images/math/4a3598141469c2555591e66606a1b86d4ec6dca9.png" alt="\mu"/> and <img class="math" src="../_images/math/bb2cca26cb1f8bb80876b4ca91b6c46bd5d75f97.png" alt="{\rm nhc}"/> are the mean molecular weight per particle in a fully ionised gas and the conversion factor from <img class="math" src="../_images/math/351ab58ec07d1a94c28dbf9d3e7bd8ee782a79ca.png" alt="n_p"/> to <img class="math" src="../_images/math/13af008a4fd5becfa43736ebf9a15c461fa2efae.png" alt="n_e"/>, respectively. For now, we hardcoded the value of this two parameters to the following work of <a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2009ARA%26A..47..481A/abstract">Asplund+09</a>. Here are their values:
+<img class="math" src="../_images/math/84bc4f831636f27d2dbc74a590eb93999fd9c947.png" alt="\mu=0.5994"/> and <img class="math" src="../_images/math/29a20f78adc1cd19a3e9783c3911ff1561b59212.png" alt="nhc=\frac{1}{0.8527}"/></p>
+<p>Regarding the user provided part, it comes with the set up of the optimisation constraint in the new X-ray section of the parameter file. Indeed, the factor that transform <img class="math" src="../_images/math/9d6ca16123c511ab7cfac8d32981824aa5811107.png" alt="\int n_e n_p dl"/> to the photon count have to be provided in the form of a map, the earlier integral being given in <img class="math" src="../_images/math/2419dcbf4f7be879720f9963c911104a3594b369.png" alt="cm^{-5}"/>. This map represent the plasma emission model time the exposure map and if we consider Chandra data, it can be obtained with the following procedure:</p>
+<ul class="simple">
+<li><p>Create an exposure map in <img class="math" src="../_images/math/31e29b9b71493f3d544805c5e388db13f431d492.png" alt="cm^2 s \,count / photon"/> with merge_obs for example. <a class="reference external" href="https://cxc.cfa.harvard.edu/ciao/ahelp/merge_obs.html">See here.</a></p></li>
+<li><p>Compute a the emission for your emission model in <img class="math" src="../_images/math/a0ab2801f5d464d9b5ed8120130f599334119044.png" alt="photon/cm^2/s"/> with calc_photon_flux. <a class="reference external" href="https://cxc.harvard.edu/sherpa/ahelp/calc_photon_flux.html">See here.</a></p></li>
+<li><p>Normalize the emission from your model to a unitary emission in term of the mass of the gas. For an <a class="reference external" href="https://heasarc.gsfc.nasa.gov/xanadu/xspec/manual/XSmodelApec.html">APEC</a> model, this is equivalent to choosing the right norm (<img class="math" src="../_images/math/96ec0b99ac5a3d6ac8005d03f20868beb50a47d4.png" alt="{10^{-14}\over{4\pi[D_A(1+z)]^2}}\int n_e n_HdV"/> for <img class="math" src="../_images/math/08b806053a82300361c923371130ad3a266aee81.png" alt="\int n_e n_p dl=1"/>). Using the following value:</p>
+<ul>
+<li><p><img class="math" src="../_images/math/c3a9e60ecc49343bd2d3c2d577b12db6c31d75e1.png" alt="\frac{1}{(4. \times (1. + z)^2 \times (180.\times 60.) ^2 / \pi / 1e-14 )}"/> and setting <code class="docutils literal notranslate"><span class="pre">pixel_area</span></code> keyword to the pixel area of your exposure map in arcmin. These two things will perform the normalization correctly.
+Notably, the exposure map produced by data reduction pipelines of other X-ray observatory may be different as for XMM-Newton for example, where the map does not take into account the pixel size in <img class="math" src="../_images/math/78dd6bd79ba9a0f7c9c18f14dd2940d3121c305e.png" alt="cm^2"/>. We thus take into account this differences by offering a keyword <code class="docutils literal notranslate"><span class="pre">Chandra</span></code> to be set to <img class="math" src="../_images/math/31fdf41b39df23c95e52c5aef07f59d9adf82f3c.png" alt="0"/> if the pixel size is not in th exposure map.</p></li>
+</ul>
+</li>
+</ul>
+<p>We will now move to the optimisation section where we will continue on explaining the keyword of the <code class="docutils literal notranslate"><span class="pre">X-ray</span></code> and finally summarize them with the presentation of a complete section.</p>
+</section>
+</section>
+<section id="optimisation">
+<h2>Optimisation<a class="headerlink" href="#optimisation" title="Link to this heading"></a></h2>
+<p>The optimisation is performed through a Monte Carlo method, with the Markov Chains Monte Carlo engine <a class="reference external" href="https://www.inference.org.uk/bayesys/">bayeSys</a> implemented in the lenstool C code or through any optimiser with the Python wrapper of the Lenstool C library. Thus, it needs a loglikelihood which can be choose between a Poisson loglikelihood and a Poisson-gamma mixture loglikelihood. The earlier <img class="math" src="../_images/math/8850637e84fbea9a45c1168adcff9ae749fe5ca4.png" alt="\mathcal{L}_{\rm Poisson}"/> does not take into account an intrinsic errors due to the assumption of the modelling method in contrary to the latter <img class="math" src="../_images/math/e8b4c6bffbc7d076d62948abf05125b4a0f8f058.png" alt="\mathcal{L}_{\rm PG}"/>. They are defined as follow:</p>
+<div class="math">
+<p><img src="../_images/math/458728fb534c04a4408ee6554895106763373ba5.png" alt="\mathcal{L}_{\rm Poisson}=\sum_{i} D_i\log\left(M_i\right)-M_i-\log\left(D_i!\right)"/></p>
+</div><div class="math">
+<p><img src="../_images/math/5ec8a08508fb2b06b4d122fc46836861c9bb050a.png" alt="\mathcal{L}_{\rm PG}=\sum_i \log\left(\frac{\Gamma\left(D_i+\frac{M_i^2}{\sigma_{\rm X}^2}\right)}{D_i!\Gamma\left(\frac{M_i^2}{\sigma_{\rm X}^2}\right)}\left(\frac{M_i}{M_i+\sigma_{\rm X}^2}\right)^\frac{M_i^2}{\sigma_{\rm X}^2}\left(\frac{\sigma_{\rm X}^2}{\mu_i+\sigma_{\rm X}^2}\right)^{D_i}\right)"/></p>
+</div><p>Where <img class="math" src="../_images/math/c493811970fe3f0f8605b0cd1b63a11ad19ca165.png" alt="D_i"/> and <img class="math" src="../_images/math/86810cecefe160a038ea1bf18596df24b14c6731.png" alt="M_i"/> and <img class="math" src="../_images/math/93ce9024cd6abc7f44a7e5c1ab8d33ac93669601.png" alt="\sigma_{\rm X}"/> are the observed and the model count number in the <img class="math" src="../_images/math/3d2006e56cc72c929d49557c7d4b01e336b4ce6b.png" alt="i^{th}"/> bin. <img class="math" src="../_images/math/93ce9024cd6abc7f44a7e5c1ab8d33ac93669601.png" alt="\sigma_{\rm X}"/> is the systematic uncertainty due to the method which can also be defined per bin. The computation of these likelihood will be automatically done is the <code class="docutils literal notranslate"><span class="pre">X-ray</span></code> section of the parameter file is properly defined (i.e. the plasma emission model) and set up for an optimisation. Such section looks like the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">-</span><span class="n">ray</span>
+   <span class="n">pixel_area</span> <span class="mf">0.00107584</span>
+   <span class="n">Chandra</span> <span class="mi">1</span>
+   <span class="n">Optimization</span> <span class="mi">1</span>
+   <span class="n">Optimization_z</span> <span class="mf">0.3475</span>
+   <span class="n">bkg_map</span> <span class="mi">3</span> <span class="n">S1063_bkg_map_fit</span><span class="o">.</span><span class="n">fits</span>
+   <span class="n">count_map</span> <span class="mi">3</span> <span class="n">S1063_count_map_fit</span><span class="o">.</span><span class="n">fits</span>
+   <span class="n">count_factor_map</span> <span class="mi">3</span> <span class="n">S1063_count_factor_map_fit</span><span class="o">.</span><span class="n">fits</span>
+   <span class="n">intrinsic_error</span> <span class="mf">1.0</span> <span class="mi">1</span> <span class="mf">0.01</span> <span class="mf">1.0</span>
+   <span class="n">end</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Chandra</span></code> and <code class="docutils literal notranslate"><span class="pre">pixel_area</span></code> have been defined in the previous section. <code class="docutils literal notranslate"><span class="pre">bkg_map</span></code> and <code class="docutils literal notranslate"><span class="pre">count_map</span></code> are the background and observed count map. The former is added the initial count model while the latter refers to the data that we want to fit. The <code class="docutils literal notranslate"><span class="pre">count_factor_map</span></code> is the map detailed in the previous section that make the link between <img class="math" src="../_images/math/9d6ca16123c511ab7cfac8d32981824aa5811107.png" alt="\int n_e n_p dl"/> and the photon count. We thus have three more keywords to set up the optimisation, with in first <code class="docutils literal notranslate"><span class="pre">optimisation</span></code> which can be 0 or 1 and represent a boolean to activate the computation of the likelihood. <code class="docutils literal notranslate"><span class="pre">optimisation_z</span></code> is the redshift of the gas modelled. Finally, <code class="docutils literal notranslate"><span class="pre">intrinsic_error</span></code> represent the systematic error and has the same syntax as an optimised parameter in the <code class="docutils literal notranslate"><span class="pre">potfile</span></code> section. The first floating value define its value, if its 0 a poisson likelihood will be computed if not the other if it is fixed. The following integer and floating values are defining the optimisation behavior and are the following:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">0.01</span> <span class="pre">1.0</span></code> : First integer set to 0 means no optimisation and the two other values are ignored.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">min</span> <span class="pre">max</span></code> : Optimisation with a uniform prior, with the bound defined as here.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">mean</span> <span class="pre">std</span></code> : Optimisation with a gaussian prior.</p></li>
+</ul>
+<p>Once that section has been defined, the model can be optimised by the MCMC engine included in C code which is bayeSys or any other optimiser/sampler through the python interface. There are example of how to use these other methods in the directory <code class="docutils literal notranslate"><span class="pre">perl</span></code> in the lenstool directory. See the following files :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dynamic_nested_sampler.py</span></code> : Example with <code class="docutils literal notranslate"><span class="pre">Ultranest</span></code> and <code class="docutils literal notranslate"><span class="pre">Dynesty</span></code> with the creation of the normal output files of lenstool</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pool_emcee_EnsembleSampler.py</span></code> : Example with <code class="docutils literal notranslate"><span class="pre">Emcee</span></code> with the creation of the <code class="docutils literal notranslate"><span class="pre">bayes.dat</span></code> and <code class="docutils literal notranslate"><span class="pre">burnin.dat</span></code> solely.</p></li>
+</ul>
+<p>At the end of the optimisation or at the production of a <code class="docutils literal notranslate"><span class="pre">chires.dat</span></code> file, the code will generate the three following maps:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Xray_model_counts.fits</span></code>: Maps that has the same size has the imput maps and contains in each pixel the value of the best-fit count model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Xray_residual_counts.fits</span></code> : Same as before, but with the residual (i.e. Data-model)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Xray_loglikelihood_pix.fits</span></code> : Same as before, but each pixel contains the value of the loglikelihood associated.</p></li>
+</ul>
+<p>These allows you to see the best-fit count model and see which part of the field are badly/betterly reproduced. These map can be created for other models than the best as long as you have a parameter file for them by using the usual lenstool method to produce map, which is by specifying them in the <code class="docutils literal notranslate"><span class="pre">runmode</span></code> section with the following lines:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">X-ray</span> <span class="pre">2</span> <span class="pre">0</span> <span class="pre">z_lens</span> <span class="pre">Xray_model_counts.fits</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">X-ray</span> <span class="pre">3</span> <span class="pre">0</span> <span class="pre">z_lens</span> <span class="pre">Xray_residual_counts.fits</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">X-ray</span> <span class="pre">4</span> <span class="pre">0</span> <span class="pre">z_lens</span> <span class="pre">Xray_loglikelihood_pix.fits</span></code></p></li>
+</ul>
+<p>These lines have to be used one by one, as lenstool does not have the hability to create multiple maps of the same keywords at the same time. Here, the size of the maps are defined by the input maps, so the integer related to the number of pixel per row and column is <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<p>In addition, other quantity related to the best-fit model can be found in the <code class="docutils literal notranslate"><span class="pre">chires.dat</span></code>  that contains will contains the usual lines associated with the other likelihood defined such as the lensing one. Here is an example of the X-ray lines:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chi</span> <span class="n">X</span><span class="o">-</span><span class="n">ray</span> <span class="n">surface</span> <span class="n">brightness</span>
+<span class="n">N_pixel</span>    <span class="mi">16900</span>
+<span class="n">Cash_Statistic</span>    <span class="o">-</span><span class="mf">437152.56002</span>
+<span class="n">Cstat</span>    <span class="mf">4661.77537</span>
+<span class="n">log</span><span class="p">(</span><span class="n">likelihood</span><span class="p">)</span>    <span class="o">-</span><span class="mf">33189.73608</span>
+<span class="n">Monte</span> <span class="n">Carlo</span> <span class="n">estimation</span> <span class="n">of</span> <span class="n">the</span> <span class="n">quality</span> <span class="n">of</span> <span class="n">the</span> <span class="n">fit</span><span class="p">:</span> <span class="n">Mean</span><span class="p">:</span> <span class="o">-</span><span class="mf">32915.46507</span> <span class="n">Std</span><span class="p">:</span> <span class="mf">87.35700</span>
+<span class="n">Interval</span> <span class="mi">1</span> <span class="n">sigma</span><span class="p">:</span> <span class="nb">min</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="mf">33002.06100</span> <span class="o">||</span><span class="nb">max</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="mf">32829.06987</span> 
+<span class="n">Interval</span> <span class="mi">3</span> <span class="n">sigma</span><span class="p">:</span> <span class="nb">min</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="mf">33177.52215</span> <span class="o">||</span><span class="nb">max</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="mf">32648.07052</span> 
+<span class="n">Interval</span> <span class="mi">5</span> <span class="n">sigma</span><span class="p">:</span> <span class="nb">min</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="mf">33255.71946</span> <span class="o">||</span><span class="nb">max</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="mf">32599.59211</span>
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">N_pixel</span></code> contains the total number of pixel, the  <code class="docutils literal notranslate"><span class="pre">Cash_Statistic</span></code> is equal to <img class="math" src="../_images/math/3f9ba089bbe8f8b42544ad67ae26e140837f5d7b.png" alt="-2\times\log\left(\mathcal{L}\right)"/> (Correct definition if <img class="math" src="../_images/math/608659007e9497aed736e123948de39442ef7d81.png" alt="\sigma_{X}=0"/>). The <code class="docutils literal notranslate"><span class="pre">Cstat</span></code> is defined as follows:
+<img class="math" src="../_images/math/6cfaa5747b3ef7c34f8417cd33aa9bc912992d5e.png" alt="\text{Cstat}=\sum^{\rm N_{pixel} }_{\rm i} 2(M_i-D_i+D_i\log\left(\frac{D_i}{M_i}\right))"/>
+It is similar to the one implemented in Xspec or Sherpa. In case <img class="math" src="../_images/math/40fd78755bdfa2a5a2923753d3c8753989c9bebc.png" alt="M_i=0"/>, we replace the previous term in the sum by <img class="math" src="../_images/math/d3e6dab5708d6ae7ce0d4dd9693bdb05fd0ee1d0.png" alt="2 D_i"/>. We added these two other likelihoods to provide a comparison with other X-ray fitting software. These lines also contains the results of the goodness of fit procedure presented in <a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2023arXiv230110907B/abstract">Beauchesne+23</a>. The idea of this procedure is to see if the observed data are likely to be produced by the count model, ideally we would build such distribution by using the full posterior however for computing time reason we only use the best-fit model. Hence, we are sampling in each pixels <img class="math" src="../_images/math/e7d4c074acb188bc8ec119ba186ead6b1c4373d6.png" alt="100000"/> realisation of the associated distribution which is a Poisson distribution or the Poisson-Gamma mixture. The number of counts in the pixel is the mean of the Poisson distribution for the earlier when it is the mean of the Gamma distribution in the latter. This distribution have <img class="math" src="../_images/math/4d30897731452b6af04e8523310eda039f399489.png" alt="\sigma_{X}"/> as standard deviation and the random variate defined is then the mean of the Poisson distribution of the mixture. We then compute the likelihood associated with each of the sample and extract the following information:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Monte</span> <span class="n">Carlo</span> <span class="n">estimation</span> <span class="n">of</span> <span class="n">the</span> <span class="n">quality</span> <span class="n">of</span> <span class="n">the</span> <span class="n">fit</span><span class="p">:</span> <span class="n">Mean</span><span class="p">:</span> <span class="n">Sample</span> <span class="n">mean</span> <span class="n">Std</span><span class="p">:</span> <span class="n">Sample</span> <span class="n">standard</span> <span class="n">deviation</span>
+<span class="n">Interval</span> <span class="mi">1</span> <span class="n">sigma</span><span class="p">:</span> <span class="nb">min</span> <span class="o">-&gt;</span> <span class="n">percentile</span> <span class="mi">16</span><span class="o">%</span> <span class="o">||</span><span class="nb">max</span> <span class="o">-&gt;</span> <span class="n">percentile</span> <span class="mi">84</span><span class="o">%</span> 
+<span class="n">Interval</span> <span class="mi">3</span> <span class="n">sigma</span><span class="p">:</span> <span class="nb">min</span> <span class="o">-&gt;</span> <span class="n">percentile</span> <span class="mf">.135</span><span class="o">%</span> <span class="o">||</span><span class="nb">max</span> <span class="o">-&gt;</span> <span class="n">percentile</span> <span class="mf">99.865</span><span class="o">%</span> 
+<span class="n">Interval</span> <span class="mi">5</span> <span class="n">sigma</span><span class="p">:</span> <span class="nb">min</span> <span class="o">-&gt;</span> <span class="n">percentile</span> <span class="mf">.0000286</span><span class="o">%</span> <span class="o">||</span><span class="nb">max</span> <span class="o">-&gt;</span> <span class="n">percentile</span> <span class="mf">99.9999713</span><span class="o">%</span>
+</pre></div>
+</div>
+<p>From this information, you can see how likely the model will produce the observed data and set up a threshold for your own analysis and see how much you should complexify your model. To make an analogy with a gaussian likelihood, this criteria is computing an equivalent to the <img class="math" src="../_images/math/a20908f135984728d2a3a248fdfe7b69dcd69aa1.png" alt="\chi^2\sim1"/> which does not exist for Poisson-like likelihood. Indeed,  the value would be changing for each different case.</p>
+</section>
+<section id="data-product-implemented">
+<h2>Data product implemented<a class="headerlink" href="#data-product-implemented" title="Link to this heading"></a></h2>
+<p>For now, there are not much maps that can be produced by more will come as the extension is used. To create a map, here is the syntax to add in the <code class="docutils literal notranslate"><span class="pre">runmode</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">runmode</span>
+    <span class="n">X</span><span class="o">-</span><span class="n">ray</span> <span class="nb">type</span> <span class="n">N_pix</span> <span class="n">z</span> <span class="n">name_file</span>
+    <span class="n">end</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">type</span></code> (integer) is the type of map that you can produce, <code class="docutils literal notranslate"><span class="pre">N_pix</span></code> the number of pixel per column and row, <code class="docutils literal notranslate"><span class="pre">z</span></code> the redshift for which you would like to compute the map (that plane need to have some X-ray potential to not return only <img class="math" src="../_images/math/31fdf41b39df23c95e52c5aef07f59d9adf82f3c.png" alt="0"/>) and finally the name of the fits file you want to create. Here are the type of map you can do:</p>
+<ul class="simple">
+<li><p><img class="math" src="../_images/math/31fdf41b39df23c95e52c5aef07f59d9adf82f3c.png" alt="0"/>: Do nothing</p></li>
+<li><p><img class="math" src="../_images/math/ec830c85a5fbb48028fe797044da6bdfb924c2fa.png" alt="1"/>: Map of the mass model (<img class="math" src="../_images/math/a32f6aeb88a43dda4cbfdf4b2d2bfa1f68b985a7.png" alt="\int \rho_{gas}^2"/>) times the map provided through the <code class="docutils literal notranslate"><span class="pre">Emissivity_map</span></code> keyword in the <code class="docutils literal notranslate"><span class="pre">X-ray</span></code> section. If the cooling function is provided, you will obtain the surface brightness. It can be used to create a count map by providing the <code class="docutils literal notranslate"><span class="pre">count_factor_map</span></code> in the previous keyword, the difference with <code class="docutils literal notranslate"><span class="pre">type</span></code> <img class="math" src="../_images/math/d94997a2318fec7e8e5bc4d8d79bb633675f9411.png" alt="2"/> is that the map is interpolated to be computed at the defined resolution with a bilinear interpolation.</p></li>
+<li><p><img class="math" src="../_images/math/d94997a2318fec7e8e5bc4d8d79bb633675f9411.png" alt="2"/>: Count model with the same size as the input data map</p></li>
+<li><p><img class="math" src="../_images/math/3204f0580808cc1d3ded72d87384c025c9e7e272.png" alt="3"/>: residual map with the same size as the input data map</p></li>
+<li><p><img class="math" src="../_images/math/d6c8c868656d607bf5557bd64bb81ccdecda9203.png" alt="4"/>: Loglikelihood map with the same size as the input data map</p></li>
+</ul>
+<p>Type of maps to be implemented in the future:</p>
+<ul class="simple">
+<li><p>Map of the projected gas mass</p></li>
+<li><p>Map of the projected gas fraction</p></li>
+<li><p>…</p></li>
+</ul>
+<p>If the type of map that you would like to see is not implemented, you can contact us to see if we can put that in place.</p>
+</section>
+<section id="chandra-data-reduction-and-processing-wrapper">
+<h2>Chandra data reduction and processing wrapper<a class="headerlink" href="#chandra-data-reduction-and-processing-wrapper" title="Link to this heading"></a></h2>
+</section>
+<section id="developement">
+<h2>Developement<a class="headerlink" href="#developement" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="X-ray.html" class="btn btn-neutral float-left" title="X-ray extension" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="idpie.html" class="btn btn-neutral float-right" title="idPIE: Joint baryon and DM modelling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Lenstool group.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
