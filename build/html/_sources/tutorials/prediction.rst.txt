@@ -1,2 +1,0 @@
-Predicting lensing quantities
------------------------------
