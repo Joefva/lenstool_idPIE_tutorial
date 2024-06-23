@@ -12,17 +12,24 @@
 #
 import os
 import sys
-# sys.path.insert(0, os.path.abspath('/home/joseph/Software/Lenstool_JA/'))   # os.path.abspath('.'))
+sys.path.insert(0, os.path.abspath('/path_to_lenstool/'))
 
 
 # -- Project information -----------------------------------------------------
 
 project = 'Lenstool'
 copyright = '2024, Lenstool group'  
-author = 'Lenstool group' # Allingham, Beauchesne, Jullo, Richard (add your names)
+author = 'Lenstool group' # Allingham, Beauchesne, Jullo, Limousin, Richard (add your names)
 
-release = '8.3'
-version = '8.3.0'
+three_dir_up = os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + "/../../../")
+version_file = three_dir_up + "/VERSION"
+with open(version_file, 'r') as file:
+    version = file.read()
+print("VERSION: " + version)
+
+# Last version number for which it was compiled, not necessarily the last 
+# release = '8.5'   
+# version = '8.5.1'
 
 
 # -- General configuration ---------------------------------------------------
@@ -89,3 +96,8 @@ if False:
     breathe_projects_source = {
         "o_chi" : ( "../../../../src", ["o_chi.c"] )
     }
+
+
+# If necessary, eliminate some Myst Warnings:
+# import warnings
+# warnings.filterwarnings("ignore", category=UserWarning, message=".*'myst' cross-reference target not found.*")

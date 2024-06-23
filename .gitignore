@@ -25,11 +25,22 @@ docs/sphinx/build/latex/*.ind
 docs/sphinx/build/latex/*.ilg
 docs/sphinx/build/latex/*.idx
 docs/sphinx/build/latex/.doctrees/*
+docs/sphinx/source.zip
 
 
 docs/sphinx/old
 
 docs/doxygen
+
+docs/DS_Store
+docs/._.DS_Store
+docs/*/DS_Store
+docs/*/._.DS_Store
+docs/*/*/DS_Store
+docs/*/*/._.DS_Store
+docs/*/*/*/DS_Store
+docs/*/*/*/._.DS_Store
+
 
 
 

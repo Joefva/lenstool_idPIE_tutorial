@@ -22,3 +22,37 @@ https://smobsc.readthedocs.io/en/stable/usage/installation.html
 * You can open the compiled ReadTheDocs files in docs/sphinx/build/html/
 
 * For the "API", we do not have documentation yet. One can refer to the full code of Lenstool, if it is in this directory, but Sphinx favours Python code. To create an API with C/C++, see: https://leimao.github.io/blog/CPP-Documentation-Using-Sphinx/.
+
+* VERSION is the current lenstool version. This is simply three numbers 'X.Y.Z'.
+
+* Think of adding the Lenstool library path to LD_LIBRARY_PATH:
+
+.. code-block:: console
+
+	export LD_LIBRARY_PATH=/PATH_TO_LENSTOOL/lib:$LD_LIBRARY_PATH
+
+* Also add the lenstool path to docs/sphinx/source/conf.py:
+
+.. code-block:: console
+
+	sed -i 's/path_to_lenstool/PATH_TO_LENSTOOL/g' docs/sphinx/source/conf.py
+
+where you must replace `PATH_TO_LENSTOOL`.
+
+
+* New syntax for all parameters:
+
+Example:
+
+number
+-------------------
+
+.. admonition:: Syntax
+
+   ``number N ``
+
+
+- Parameters: 
+    - ``N``, integer: [Insert description of N]. [Default: XXX].
+    
+
