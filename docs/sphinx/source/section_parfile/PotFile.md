@@ -6,6 +6,7 @@ Under this identifier are defined the default parameters for all the galaxy scal
 
 
 ## filein int filename
+[//]: {#filein-potfile}
 
 If `int = 1` or `3` the galaxy catalog format is $\rm (id\, x_c \,y_c \,a \,b\, \theta\, mag\, lum)$.
 If `int = 3`, $x_c$ and $y_c$ are given in degrees in the equatorial coordinates.
@@ -47,21 +48,24 @@ In the inverse 2 optimisation mode (deprecated), int sets the number of bins for
 
 ## core float
 
-float is $r_c^*$ in arc seconds. It is used to compute the core radius of the galaxies using the scaling relation $r_c= r_c^*\ \left( \frac{L}{L^*} \right)^{\frac{1}{2}}$. 
+float is $r_c^*$ in arc seconds. It is used to compute the core radius of the galaxies using the scaling relation $r_c= r_c^*\ \left( \frac{L}{L^{\star}} \right)^{\frac{1}{2}}$. 
 
 ## corekpc float
 
 `float` is $r_c$ in kpc. It is used to compute the core radius in kpc of the galaxies. The cosmological parameters defined in the [cosmologie]() Section are used to convert from kpc to arc seconds. [core]() parameter defined in arc second takes precedence over [corekpc]().
+$$
+r_{core} {\rm ('') \ } = \frac{1}{D_{OL}} \frac{c}{H_0} r_{core} \rm(kpc) 
+$$
 
 ## cut int float1 float2
  
-`float1` is $r_{cut}^*$ in arc seconds. The cut radius in arc seconds of a galaxy is $\r_{\rm cut} = r_{\rm cut}^*\ \left( \frac{L}{L^*} \right)^{\frac{2}{\rm slope}}$.
+`float1` is $r_{\rm cut}^{\star}$ in arc seconds. The cut radius in arc seconds of a galaxy is $r_{\rm cut} = r_{\rm cut}^{\star} 10^{ 0.4 \frac{2 (m_{\star} - mag)}{\rm slope} } = r_{\rm cut}^{\star} \left( \frac{L}{L^{\star}} \right)^{\frac{2}{\rm slope}}$.
 
 `int` and `float2` are used for the potfile optimisation. (see [sigma]() keyword and [inverse]() section).
 
 ## cutkpc int float1 float2
 
-`float1` is $r_{cut}^*$ in kpc and is used to compute the cut radius of the galaxies in kpc. The cosmological parameters defined in the [`cosmologie`]() section are then used to convert from kpc to arc seconds. Arguments `int`, `float1` and `float2` work in the same way as for the [`cut`]() parameter. [`cut`]() parameter defined in arc second takes precedence over [`cutkpc`]().
+`float1` is $r_{cut}^{\star}$ in kpc and is used to compute the cut radius of the galaxies in kpc. The cosmological parameters defined in the [`cosmologie`]() section are then used to convert from kpc to arc seconds. Arguments `int`, `float1` and `float2` work in the same way as for the [`cut`]() parameter. [`cut`]() parameter defined in arc second takes precedence over [`cutkpc`]().
 
 ## slope int float1 float2
 

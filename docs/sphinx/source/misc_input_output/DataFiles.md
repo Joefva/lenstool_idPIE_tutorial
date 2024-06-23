@@ -4,9 +4,9 @@
 
 ### input potfile catalog
 
-The file starts with header `#REFERENCE 0` if `RA`, `DEC` are given in absolute ICRS coordinates, or `#REFERENCE 3 RA_REF DEC_REF`, if `RA`, `DE`C are in relative arcsec. 
+The file starts with header `#REFERENCE 0` if `RA`, `DEC` are given in absolute ICRS coordinates, or `#REFERENCE 3 RA_REF DEC_REF`, if `RA`, `DEC` are in relative arcsec. 
 
-Eath line in this file corresponds to a galaxy to model in the potfile. The columns in this file depend on the file format given as argument to the [filein]() keyword in the parameter file.
+Each line in this file corresponds to a galaxy to model in the potfile. The columns in this file depend on the file format given as argument to the [filein](../section_parfile/PotFile.md#filein-potfile) keyword in the parameter file.
 
 #### `Format` specifier 1 or 3
 
