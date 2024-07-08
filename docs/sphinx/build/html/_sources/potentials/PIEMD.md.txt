@@ -58,14 +58,14 @@ Note that the  [mass]() keyword corrects for this factor internally, and returns
 We give an instance of dPIE potential:
 ```
 potential  1
-        profil           81
+        profile          81
         x_centre         0.
         y_centre         0.
-        ellipticite      0.
+        ellipticity      0.
         angle_pos        0.
-	    core_radius_kpc  100.
-	    cut_radius_kpc   1500.
-	    v_disp           1000.
+	core_radius_kpc  100.
+	cut_radius_kpc   1500.
+	v_disp           1000.
         z_lens           0.2
         end
 ```

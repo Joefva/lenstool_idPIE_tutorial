@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lenstool data files &mdash; Lenstool 8.1 documentation</title>
+  <title>Lenstool data files &mdash; Lenstool  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
   
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=1f41a3ab"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
@@ -29,18 +24,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../index.html" class="icon icon-home">
-            Lenstool
+            <a href="../index.html" class="icon icon-home"> Lenstool
           </a>
               <div class="version">
-                8.1.0
+                8.5.1
+
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -87,10 +79,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../InputOutput.html">Input/Output files</a></li>
-          <li class="breadcrumb-item"><a href="../misc_file.html">Auxiliary files and tools</a></li>
-      <li class="breadcrumb-item active">Lenstool data files</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../InputOutput.html">Input/Output files</a> &raquo;</li>
+          <li><a href="../misc_file.html">Auxiliary files and tools</a> &raquo;</li>
+      <li>Lenstool data files</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/misc_input_output/DataFiles.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -106,8 +98,8 @@
 <h2>Input files<a class="headerlink" href="#input-files" title="Link to this heading"></a></h2>
 <section id="input-potfile-catalog">
 <h3>input potfile catalog<a class="headerlink" href="#input-potfile-catalog" title="Link to this heading"></a></h3>
-<p>The file starts with header <code class="docutils literal notranslate"><span class="pre">#REFERENCE</span> <span class="pre">0</span></code> if <code class="docutils literal notranslate"><span class="pre">RA</span></code>, <code class="docutils literal notranslate"><span class="pre">DEC</span></code> are given in absolute ICRS coordinates, or <code class="docutils literal notranslate"><span class="pre">#REFERENCE</span> <span class="pre">3</span> <span class="pre">RA_REF</span> <span class="pre">DEC_REF</span></code>, if <code class="docutils literal notranslate"><span class="pre">RA</span></code>, <code class="docutils literal notranslate"><span class="pre">DE</span></code>C are in relative arcsec.</p>
-<p>Eath line in this file corresponds to a galaxy to model in the potfile. The columns in this file depend on the file format given as argument to the <a class="reference internal" href="#"><span class="xref myst">filein</span></a> keyword in the parameter file.</p>
+<p>The file starts with header <code class="docutils literal notranslate"><span class="pre">#REFERENCE</span> <span class="pre">0</span></code> if <code class="docutils literal notranslate"><span class="pre">RA</span></code>, <code class="docutils literal notranslate"><span class="pre">DEC</span></code> are given in absolute ICRS coordinates, or <code class="docutils literal notranslate"><span class="pre">#REFERENCE</span> <span class="pre">3</span> <span class="pre">RA_REF</span> <span class="pre">DEC_REF</span></code>, if <code class="docutils literal notranslate"><span class="pre">RA</span></code>, <code class="docutils literal notranslate"><span class="pre">DEC</span></code> are in relative arcsec.</p>
+<p>Each line in this file corresponds to a galaxy to model in the potfile. The columns in this file depend on the file format given as argument to the <a class="reference internal" href="../section_parfile/PotFile.html#filein-potfile"><span class="std std-ref">filein</span></a> keyword in the parameter file.</p>
 <section id="format-specifier-1-or-3">
 <h4><code class="docutils literal notranslate"><span class="pre">Format</span></code> specifier 1 or 3<a class="headerlink" href="#format-specifier-1-or-3" title="Link to this heading"></a></h4>
 <ul class="simple">
@@ -239,6 +231,11 @@
 </section>
 <section id="image-all">
 <h3>image.all<a class="headerlink" href="#image-all" title="Link to this heading"></a></h3>
+<section id="note">
+<h4>Note:<a class="headerlink" href="#note" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>TODO</strong>: When the ‘multfile’ is not in the execution folder, image.all, image.dat and source.dat are not created.</p></li>
+</ul>
 <p>The file image.all is produced each time you activate the <a class="reference internal" href="#"><span class="xref myst">image</span></a>  keyword in the [RunMode] section.</p>
 <p>The file starts with a header <code class="docutils literal notranslate"><span class="pre">#REFERENCE</span> <span class="pre">3</span> <span class="pre">RA_REF</span> <span class="pre">DEC_REF</span></code>, which specifies the reference coordinates for the images in the catalog.</p>
 <p>Each line in this file corresponds to a counter image of an image in the input catalog. The columns in this file are:</p>
@@ -252,6 +249,7 @@
 <li><p>redshift</p></li>
 <li><p>predicted magnitude</p></li>
 </ul>
+</section>
 </section>
 <section id="image-dat">
 <h3>image.dat<a class="headerlink" href="#image-dat" title="Link to this heading"></a></h3>
@@ -281,6 +279,7 @@
 </section>
 <section id="best-par">
 <h3>best.par<a class="headerlink" href="#best-par" title="Link to this heading"></a></h3>
+<p>The best.par is produced at the end of the optimisation, with the line of bayes.dat yielding the best fit (lower <img class="math" src="../_images/math/1cbe49dd16598c0550b8a7477dd597e6bc04367e.png" alt="\chi^2"/> statistic). It is a parameter file without optimisation of the best model.</p>
 </section>
 <section id="bestopt-par">
 <h3>bestopt.par<a class="headerlink" href="#bestopt-par" title="Link to this heading"></a></h3>
@@ -302,7 +301,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Lenstool group.</p>
+    <p>&#169; Copyright 2024, Lenstool group.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

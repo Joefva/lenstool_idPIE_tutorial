@@ -4,9 +4,9 @@
 
 ### input potfile catalog
 
-The file starts with header `#REFERENCE 0` if `RA`, `DEC` are given in absolute ICRS coordinates, or `#REFERENCE 3 RA_REF DEC_REF`, if `RA`, `DE`C are in relative arcsec. 
+The file starts with header `#REFERENCE 0` if `RA`, `DEC` are given in absolute ICRS coordinates, or `#REFERENCE 3 RA_REF DEC_REF`, if `RA`, `DEC` are in relative arcsec. 
 
-Eath line in this file corresponds to a galaxy to model in the potfile. The columns in this file depend on the file format given as argument to the [filein]() keyword in the parameter file.
+Each line in this file corresponds to a galaxy to model in the potfile. The columns in this file depend on the file format given as argument to the [filein](../section_parfile/PotFile.md#filein-potfile) keyword in the parameter file.
 
 #### `Format` specifier 1 or 3
 
@@ -122,6 +122,12 @@ This file contains as many lines as potentials defined in the parameter file. Th
 
 ### image.all
 
+#### Note:
+
+-   **TODO**: When the 'multfile' is not in the execution folder, image.all, image.dat and source.dat are not created.
+   
+
+
 The file image.all is produced each time you activate the [image]()  keyword in the [RunMode] section.
 
 The file starts with a header `#REFERENCE 3 RA_REF DEC_REF`, which specifies the reference coordinates for the images in the catalog.
@@ -164,6 +170,8 @@ Statistics on the predicted images.
 ### bayes.dat
 
 ### best.par
+
+The best.par is produced at the end of the optimisation, with the line of bayes.dat yielding the best fit (lower $\chi^2$ statistic). It is a parameter file without optimisation of the best model.
 
 ### bestopt.par
 

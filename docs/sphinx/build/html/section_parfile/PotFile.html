@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>potfile &mdash; Lenstool 8.1 documentation</title>
+  <title>potfile &mdash; Lenstool  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
   
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=1f41a3ab"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
@@ -29,18 +24,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../index.html" class="icon icon-home">
-            Lenstool
+            <a href="../index.html" class="icon icon-home"> Lenstool
           </a>
               <div class="version">
-                8.1.0
+                8.5.1
+
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -107,10 +99,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../parameter_file.html">Parameter file: Section details</a></li>
-          <li class="breadcrumb-item"><a href="../Other_sect.html">Other sections:</a></li>
-      <li class="breadcrumb-item active">potfile</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../parameter_file.html">Parameter file: Section details</a> &raquo;</li>
+          <li><a href="../Other_sect.html">Other sections:</a> &raquo;</li>
+      <li>potfile</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/section_parfile/PotFile.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -155,118 +147,21 @@ If <code class="docutils literal notranslate"><span class="pre">int</span> <span
 </section>
 <section id="core-float">
 <h2>core float<a class="headerlink" href="#core-float" title="Link to this heading"></a></h2>
-<p>float is <img class="math" src="../_images/math/b726e83652349a246cdaa07a4058ed76746d870c.png" alt="r_c^*"/> in arc seconds. It is used to compute the core radius of the galaxies using the scaling relation <img class="math" src="../_images/math/b8e364439ccbb3c1c256b14409e0f9dd613900d7.png" alt="r_c= r_c^*\ \left( \frac{L}{L^*} \right)^{\frac{1}{2}}"/>.</p>
+<p>float is <img class="math" src="../_images/math/b726e83652349a246cdaa07a4058ed76746d870c.png" alt="r_c^*"/> in arc seconds. It is used to compute the core radius of the galaxies using the scaling relation <img class="math" src="../_images/math/24e329ce3d8a5c7136f2327b40cab2b9dfc2bb33.png" alt="r_c= r_c^*\ \left( \frac{L}{L^{\star}} \right)^{\frac{1}{2}}"/>.</p>
 </section>
 <section id="corekpc-float">
 <h2>corekpc float<a class="headerlink" href="#corekpc-float" title="Link to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">float</span></code> is <img class="math" src="../_images/math/937d2dd6ed453e894690c0f7eced573dffce57ff.png" alt="r_c"/> in kpc. It is used to compute the core radius in kpc of the galaxies. The cosmological parameters defined in the <a class="reference internal" href="#"><span class="xref myst">cosmologie</span></a> Section are used to convert from kpc to arc seconds. <a class="reference internal" href="#"><span class="xref myst">core</span></a> parameter defined in arc second takes precedence over <a class="reference internal" href="#"><span class="xref myst">corekpc</span></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">float</span></code> is <img class="math" src="../_images/math/937d2dd6ed453e894690c0f7eced573dffce57ff.png" alt="r_c"/> in kpc. It is used to compute the core radius in kpc of the galaxies. The cosmological parameters defined in the <a class="reference internal" href="#"><span class="xref myst">cosmologie</span></a> Section are used to convert from kpc to arc seconds. <a class="reference internal" href="#"><span class="xref myst">core</span></a> parameter defined in arc second takes precedence over <a class="reference internal" href="#"><span class="xref myst">corekpc</span></a>.
+$<img class="math" src="../_images/math/4e46cd5bd621fa09198f3ed36c5ccd4a73d65d4c.png" alt="r_{core} {\rm ('') \ } = \frac{1}{D_{OL}} \frac{c}{H_0} r_{core} \rm(kpc)"/>$</p>
 </section>
 <section id="cut-int-float1-float2">
 <h2>cut int float1 float2<a class="headerlink" href="#cut-int-float1-float2" title="Link to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">float1</span></code> is <img class="math" src="../_images/math/c767c6e9fa6f5a0d06248885da08e2b7ae252646.png" alt="r_{cut}^*"/> in arc seconds. The cut radius in arc seconds of a galaxy is <aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">\r_{\rm cut} = r_{\rm cut}^*\ \left( \frac{L}{L^*} \right)^{\frac{2}{\rm slope}}</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2022-11-01&gt; patch level 1
-L3 programming layer &lt;2023-01-16&gt;
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/anyfontsize/anyfontsize.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-dvips.def)
-(./math.aux) (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
-
-LaTeX Warning: Command \r invalid in math mode on input line 13.
-
-! Missing $ inserted.
-&lt;inserted text&gt; 
-                $
-l.13 \fontsize{12}{14}\selectfont $\r_
-                                      {\rm cut} = r_{\rm cut}^*\ \left( \fra...
-
-! Missing { inserted.
-&lt;to be read again&gt; 
-                   \global 
-l.13 \fontsize{12}{14}\selectfont $\r_
-                                      {\rm cut} = r_{\rm cut}^*\ \left( \fra...
-
-! Improper \spacefactor.
-&lt;recently read&gt; \spacefactor 
-                             
-l.13 \fontsize{12}{14}\selectfont $\r_
-                                      {\rm cut} = r_{\rm cut}^*\ \left( \fra...
-
-! Please use \mathaccent for accents in math mode.
-\add&#64;accent ... \let \ignorespaces \relax \accent 
-                                                  #1 #2\egroup \ifmmode \els...
-l.13 \fontsize{12}{14}\selectfont $\r_
-                                      {\rm cut} = r_{\rm cut}^*\ \left( \fra...
-
-! Missing { inserted.
-&lt;to be read again&gt; 
-                   _
-l.13 \fontsize{12}{14}\selectfont $\r_
-                                      {\rm cut} = r_{\rm cut}^*\ \left( \fra...
-
-! Missing { inserted.
-&lt;to be read again&gt; 
-                   \egroup 
-l.13 \fontsize{12}{14}\selectfont $\r_
-                                      {\rm cut} = r_{\rm cut}^*\ \left( \fra...
-
-! Missing } inserted.
-&lt;inserted text&gt; 
-                }
-l.13 ...rac{L}{L^*} \right)^{\frac{2}{\rm slope}}$
-                                                  
-! Improper \prevdepth.
-\newpage ...everypar {}\fi \par \ifdim \prevdepth 
-                                                  &gt;\z&#64; \vskip -\ifdim \prevd...
-l.14 \end{document}
-                   
-! Missing } inserted.
-&lt;inserted text&gt; 
-                }
-l.14 \end{document}
-                   
-! Missing $ inserted.
-&lt;inserted text&gt; 
-                $
-l.14 \end{document}
-                   
-! Missing } inserted.
-&lt;inserted text&gt; 
-                }
-l.14 \end{document}
-                   
-[1] (./math.aux) )
-(see the transcript file for additional information)
-Output written on math.dvi (1 page, 188 bytes).
-Transcript written on math.log.
-</p>
-</aside>
-.</p>
+<p><code class="docutils literal notranslate"><span class="pre">float1</span></code> is <img class="math" src="../_images/math/0adb7949e4168488fae9685a607329e0fea22422.png" alt="r_{\rm cut}^{\star}"/> in arc seconds. The cut radius in arc seconds of a galaxy is <img class="math" src="../_images/math/1ae2d0ccfd7772422dbd0ad3196ddedccad4b850.png" alt="r_{\rm cut} = r_{\rm cut}^{\star} 10^{ 0.4 \frac{2 (m_{\star} - mag)}{\rm slope} } = r_{\rm cut}^{\star} \left( \frac{L}{L^{\star}} \right)^{\frac{2}{\rm slope}}"/>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">float2</span></code> are used for the potfile optimisation. (see <a class="reference internal" href="#"><span class="xref myst">sigma</span></a> keyword and <a class="reference internal" href="#"><span class="xref myst">inverse</span></a> section).</p>
 </section>
 <section id="cutkpc-int-float1-float2">
 <h2>cutkpc int float1 float2<a class="headerlink" href="#cutkpc-int-float1-float2" title="Link to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">float1</span></code> is <img class="math" src="../_images/math/c767c6e9fa6f5a0d06248885da08e2b7ae252646.png" alt="r_{cut}^*"/> in kpc and is used to compute the cut radius of the galaxies in kpc. The cosmological parameters defined in the <a class="reference internal" href="#"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">cosmologie</span></code></span></a> section are then used to convert from kpc to arc seconds. Arguments <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float1</span></code> and <code class="docutils literal notranslate"><span class="pre">float2</span></code> work in the same way as for the <a class="reference internal" href="#"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">cut</span></code></span></a> parameter. <a class="reference internal" href="#"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">cut</span></code></span></a> parameter defined in arc second takes precedence over <a class="reference internal" href="#"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">cutkpc</span></code></span></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">float1</span></code> is <img class="math" src="../_images/math/084ed394f4dee52ff1b0022a30af971f3bbf0c27.png" alt="r_{cut}^{\star}"/> in kpc and is used to compute the cut radius of the galaxies in kpc. The cosmological parameters defined in the <a class="reference internal" href="#"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">cosmologie</span></code></span></a> section are then used to convert from kpc to arc seconds. Arguments <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float1</span></code> and <code class="docutils literal notranslate"><span class="pre">float2</span></code> work in the same way as for the <a class="reference internal" href="#"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">cut</span></code></span></a> parameter. <a class="reference internal" href="#"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">cut</span></code></span></a> parameter defined in arc second takes precedence over <a class="reference internal" href="#"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">cutkpc</span></code></span></a>.</p>
 </section>
 <section id="slope-int-float1-float2">
 <h2>slope int float1 float2<a class="headerlink" href="#slope-int-float1-float2" title="Link to this heading"></a></h2>
@@ -289,7 +184,7 @@ Transcript written on math.log.
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Lenstool group.</p>
+    <p>&#169; Copyright 2024, Lenstool group.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

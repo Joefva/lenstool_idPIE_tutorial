@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>lenstool package &mdash; Lenstool 8.1 documentation</title>
+  <title>lenstool package &mdash; Lenstool  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
   
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=1f41a3ab"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -28,18 +23,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="index.html" class="icon icon-home">
-            Lenstool
+            <a href="index.html" class="icon icon-home"> Lenstool
           </a>
               <div class="version">
-                8.1.0
+                8.5.1
+
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -67,11 +59,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#module-lenstool.constant">lenstool.constant module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-lenstool.dimension">lenstool.dimension module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-lenstool.lenstool">lenstool.lenstool module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-lenstool.pcl">lenstool.pcl module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-lenstool.potentials">lenstool.potentials module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-lenstool.sm_client">lenstool.sm_client module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lenstool-pcl-module">lenstool.pcl module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lenstool-potentials-module">lenstool.potentials module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lenstool-sm-client-module">lenstool.sm_client module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-lenstool.structure">lenstool.structure module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-lenstool">Module contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-contents">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -93,10 +85,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="pywrap.html">Python wrapper</a></li>
-          <li class="breadcrumb-item"><a href="modules.html">lenstool</a></li>
-      <li class="breadcrumb-item active">lenstool package</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="pywrap.html">Python wrapper</a> &raquo;</li>
+          <li><a href="modules.html">lenstool</a> &raquo;</li>
+      <li>lenstool package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/lenstool.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -151,20 +143,6 @@ multiple Lenstool instances.</p>
 <dd><p>Return the CL structure</p>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="lenstool.lenstool.Lenstool.Delta_sigma">
-<span class="sig-name descname"><span class="pre">Delta_sigma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/lenstool.html#Lenstool.Delta_sigma"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.lenstool.Lenstool.Delta_sigma" title="Link to this definition"></a></dt>
-<dd><p>Compute the Delta sigma for weak lensing measurement comparison for a radius r with r in kpc from numerical integration.
-The computation is based on the C code implemented in e_mass_tot.c. For now, only dPIE
-and B-spline are implemented for speed reasons (only the convergence is computed).</p>
-<dl class="simple">
-<dt>Parameters</dt><dd><p>r:    numpy array containing the radius at which the mass is calculated</p>
-</dd>
-<dt>Returns</dt><dd><p>Delta sigma: numpy array with the total mass inside spheres of radius r. Output units 10^12 M_sun/kpc^2</p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py property">
 <dt class="sig sig-object py" id="lenstool.lenstool.Lenstool.F">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">F</span></span><a class="headerlink" href="#lenstool.lenstool.Lenstool.F" title="Link to this definition"></a></dt>
@@ -189,32 +167,10 @@ and B-spline are implemented for speed reasons (only the convergence is computed
 <dd><p>Return the M global variable, with the runmode content</p>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="lenstool.lenstool.Lenstool.Mass_in_sphere">
-<span class="sig-name descname"><span class="pre">Mass_in_sphere</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/lenstool.html#Lenstool.Mass_in_sphere"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.lenstool.Lenstool.Mass_in_sphere" title="Link to this definition"></a></dt>
-<dd><p>Compute the mass inside spheres of radius r with r in kpc from numerical integration.
-The computation is based on the C code implemented in e_mass_tot.c. For now, only dPIE
-and B-spline are implemented.</p>
-<dl class="simple">
-<dt>Parameters</dt><dd><p>r:    numpy array containing the radius at which the mass is calculated</p>
-</dd>
-<dt>Returns</dt><dd><p>mass: numpy array with the total mass inside spheres of radius r. Mass given in M_sun 
-mass_gas: numpy array with the gas mass inside spheres of radius r. If there are</p>
-</dd>
-</dl>
-<p>no X-ray potential, it will be filled with zeros. Mass given in M_sun</p>
-</dd></dl>
-
 <dl class="py property">
 <dt class="sig sig-object py" id="lenstool.lenstool.Lenstool.S">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">S</span></span><a class="headerlink" href="#lenstool.lenstool.Lenstool.S" title="Link to this definition"></a></dt>
 <dd><p>Return the S structure</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="lenstool.lenstool.Lenstool.X">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">X</span></span><a class="headerlink" href="#lenstool.lenstool.Lenstool.X" title="Link to this definition"></a></dt>
-<dd><p>Return the X structure associated with the X-ray</p>
 </dd></dl>
 
 <dl class="py method">
@@ -230,9 +186,10 @@ mass_gas: numpy array with the gas mass inside spheres of radius r. If there are
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="lenstool.lenstool.Lenstool.batch_likelihood">
-<span class="sig-name descname"><span class="pre">batch_likelihood</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cube</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/lenstool.html#Lenstool.batch_likelihood"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.lenstool.Lenstool.batch_likelihood" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="lenstool.lenstool.Lenstool.bayesHeader">
+<span class="sig-name descname"><span class="pre">bayesHeader</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/lenstool.html#Lenstool.bayesHeader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.lenstool.Lenstool.bayesHeader" title="Link to this definition"></a></dt>
+<dd><p>Return the name of the parameters in bayes.dat</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lenstool.lenstool.Lenstool.close_bayes">
@@ -285,16 +242,15 @@ If one of xmin, xmax, ymin, ymax is None, corresponding field limit is taken fro
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="lenstool.lenstool.Lenstool.free_optimisation_C_structure">
-<span class="sig-name descname"><span class="pre">free_optimisation_C_structure</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/lenstool.html#Lenstool.free_optimisation_C_structure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.lenstool.Lenstool.free_optimisation_C_structure" title="Link to this definition"></a></dt>
-<dd><p>Run o_global_free() to free allocated structures needed for the optimisation
-BB: I thought it was useful but I think it only lead me to segfault</p>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="lenstool.lenstool.Lenstool.g_ampli">
 <span class="sig-name descname"><span class="pre">g_ampli</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iamp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">np</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/lenstool.html#Lenstool.g_ampli"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.lenstool.Lenstool.g_ampli" title="Link to this definition"></a></dt>
 <dd><p>Compute amplification maps</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lenstool.lenstool.Lenstool.g_dpl">
+<span class="sig-name descname"><span class="pre">g_dpl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">np</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/lenstool.html#Lenstool.g_dpl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.lenstool.Lenstool.g_dpl" title="Link to this definition"></a></dt>
+<dd><p>Compute the deflexion fields alpha_x and alpha_y</p>
 </dd></dl>
 
 <dl class="py method">
@@ -328,15 +284,16 @@ BB: I thought it was useful but I think it only lead me to segfault</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="lenstool.lenstool.Lenstool.get_field">
+<span class="sig-name descname"><span class="pre">get_field</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/lenstool.html#Lenstool.get_field"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.lenstool.Lenstool.get_field" title="Link to this definition"></a></dt>
+<dd><p>Return the contient of the field section (internal F global variable)</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="lenstool.lenstool.Lenstool.get_images">
 <span class="sig-name descname"><span class="pre">get_images</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/lenstool.html#Lenstool.get_images"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.lenstool.Lenstool.get_images" title="Link to this definition"></a></dt>
 <dd><p>Return a astropy.table.Table object containing a copy of the image catalog</p>
 </dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="lenstool.lenstool.Lenstool.get_lens_struct">
-<span class="sig-name descname"><span class="pre">get_lens_struct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nb_param</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/lenstool.html#Lenstool.get_lens_struct"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.lenstool.Lenstool.get_lens_struct" title="Link to this definition"></a></dt>
-<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lenstool.lenstool.Lenstool.get_lenses">
@@ -368,11 +325,6 @@ BB: I thought it was useful but I think it only lead me to segfault</p>
 </dl>
 </section>
 </dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="lenstool.lenstool.Lenstool.initialize_lens_struct">
-<span class="sig-name descname"><span class="pre">initialize_lens_struct</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/lenstool.html#Lenstool.initialize_lens_struct"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.lenstool.Lenstool.initialize_lens_struct" title="Link to this definition"></a></dt>
-<dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lenstool.lenstool.Lenstool.lens">
@@ -461,11 +413,6 @@ parameter space, 0 otherwise.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="lenstool.lenstool.Lenstool.rescaleCube_send_lens_struct">
-<span class="sig-name descname"><span class="pre">rescaleCube_send_lens_struct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cube</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nb_param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_ray</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ret_valid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/lenstool.html#Lenstool.rescaleCube_send_lens_struct"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.lenstool.Lenstool.rescaleCube_send_lens_struct" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="lenstool.lenstool.Lenstool.reset_grid">
 <span class="sig-name descname"><span class="pre">reset_grid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/lenstool.html#Lenstool.reset_grid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.lenstool.Lenstool.reset_grid" title="Link to this definition"></a></dt>
 <dd><p>Call this function after modifying self.F</p>
@@ -496,7 +443,7 @@ parameter space, 0 otherwise.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lenstool.lenstool.Lenstool.set_field">
-<span class="sig-name descname"><span class="pre">set_field</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/lenstool.html#Lenstool.set_field"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.lenstool.Lenstool.set_field" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_field</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/lenstool.html#Lenstool.set_field"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.lenstool.Lenstool.set_field" title="Link to this definition"></a></dt>
 <dd><p>Set the field section (internal F global variable)</p>
 <section id="parameter">
 <h3>Parameter<a class="headerlink" href="#parameter" title="Link to this heading"></a></h3>
@@ -511,6 +458,12 @@ parameter space, 0 otherwise.</p>
 <dt class="sig sig-object py" id="lenstool.lenstool.Lenstool.set_grid">
 <span class="sig-name descname"><span class="pre">set_grid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/lenstool.html#Lenstool.set_grid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.lenstool.Lenstool.set_grid" title="Link to this definition"></a></dt>
 <dd><p>Initialize the grid for searching multiple images</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lenstool.lenstool.Lenstool.set_lenses">
+<span class="sig-name descname"><span class="pre">set_lenses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tab</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/lenstool.html#Lenstool.set_lenses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.lenstool.Lenstool.set_lenses" title="Link to this definition"></a></dt>
+<dd><p>Set the lenses in the model from an array of potentials</p>
 </dd></dl>
 
 <dl class="py method">
@@ -541,35 +494,9 @@ parameter space, 0 otherwise.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lenstool.lenstool.Lenstool.write_burnin_line">
-<span class="sig-name descname"><span class="pre">write_burnin_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iteration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">likelihood</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coord</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/lenstool.html#Lenstool.write_burnin_line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.lenstool.Lenstool.write_burnin_line" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">write_burnin_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iteration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">likelihood</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coord</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/lenstool.html#Lenstool.write_burnin_line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.lenstool.Lenstool.write_burnin_line" title="Link to this definition"></a></dt>
 <dd><p>Write a line in the burnin.dat file with the parameter currently set in memory.</p>
 <p>Call o_chi_lhood() function is likelihood is not set.</p>
-<dl class="simple">
-<dt>Parameters</dt><dd><p>iteration: Int of the iteration number
-likelihood: Likelihood of the set of parameter
-coord: set of parameters
-last_col: Float printed in the last column. In the case of bayeSys, current
-computation of the Evidence. For the nested sampling, weights of the set of
-parameter</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="lenstool.lenstool.Lenstool.write_lenstool_output">
-<span class="sig-name descname"><span class="pre">write_lenstool_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logZ</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/lenstool.html#Lenstool.write_lenstool_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.lenstool.Lenstool.write_lenstool_output" title="Link to this definition"></a></dt>
-<dd><p>Write best.par, bestopt.par and chires.dat from the sampling results contained in bayes.dat.
-Mimic the behavior of lenstool.
-Parameters</p>
-<blockquote>
-<div><p>n_sigma: Limits of the bestopt.par are n_sigma x std
-logZ: it corresponds to the marginal likelihood (i.e. Bayesian evidence) computed by bayeSys. Can be</p>
-</div></blockquote>
-<p>obtained with nested sampling methods.</p>
-<dl class="simple">
-<dt>Returns</dt><dd><p>None</p>
-</dd>
-</dl>
 </dd></dl>
 
 </dd></dl>
@@ -597,166 +524,14 @@ input sd_array is freed upon the call to this function.</p>
 </dd></dl>
 
 </section>
-<section id="module-lenstool.pcl">
-<span id="lenstool-pcl-module"></span><h2>lenstool.pcl module<a class="headerlink" href="#module-lenstool.pcl" title="Link to this heading"></a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="lenstool.pcl.convert_radec">
-<span class="sig-prename descclassname"><span class="pre">lenstool.pcl.</span></span><span class="sig-name descname"><span class="pre">convert_radec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ra</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dec</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/pcl.html#convert_radec"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.pcl.convert_radec" title="Link to this definition"></a></dt>
-<dd><p>Convert coordinates to WCS world coordinates</p>
-<section id="id5">
-<h3>Parameters<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
-<blockquote>
-<div><dl class="simple">
-<dt>x, y: numpy.ndarray</dt><dd><p>Coordinates to convert. They can be either in absolute world coordinates, or in arcsec coordinates relative to <cite>ra</cite>, <cite>dec</cite> reference position.</p>
-</dd>
-<dt>iref: int</dt><dd><p>WCS flag. 0: x,y are in absolute coordinates, 3: x,y are in relative coordinates</p>
-</dd>
-</dl>
-</div></blockquote>
+<section id="lenstool-pcl-module">
+<h2>lenstool.pcl module<a class="headerlink" href="#lenstool-pcl-module" title="Link to this heading"></a></h2>
 </section>
-<section id="id6">
-<h3>Return<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
-<blockquote>
-<div><dl class="simple">
-<dt>x, y: numpy.ndarray</dt><dd><p>If <cite>iref</cite> = 3, converted absolute coordinates, otherwise input (x,y) unchanged.</p>
-</dd>
-</dl>
-</div></blockquote>
+<section id="lenstool-potentials-module">
+<h2>lenstool.potentials module<a class="headerlink" href="#lenstool-potentials-module" title="Link to this heading"></a></h2>
 </section>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="lenstool.pcl.create_lines">
-<span class="sig-prename descclassname"><span class="pre">lenstool.pcl.</span></span><span class="sig-name descname"><span class="pre">create_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/pcl.html#create_lines"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.pcl.create_lines" title="Link to this definition"></a></dt>
-<dd><p>Return lines associated to a list of positions.
-A line is drawn between 2 successive rows with the same index <cite>lid</cite>.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="lenstool.pcl.define_options">
-<span class="sig-prename descclassname"><span class="pre">lenstool.pcl.</span></span><span class="sig-name descname"><span class="pre">define_options</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/pcl.html#define_options"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.pcl.define_options" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="lenstool.pcl.parse_cline">
-<span class="sig-prename descclassname"><span class="pre">lenstool.pcl.</span></span><span class="sig-name descname"><span class="pre">parse_cline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bilines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/pcl.html#parse_cline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.pcl.parse_cline" title="Link to this definition"></a></dt>
-<dd><p>Convert an array of <cite>structure.biline</cite> objects to a LineCollection
-for the critical and caustic lines to be used with <cite>Axes.add_collection()</cite>.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="lenstool.pcl.parse_cline_file">
-<span class="sig-prename descclassname"><span class="pre">lenstool.pcl.</span></span><span class="sig-name descname"><span class="pre">parse_cline_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_critic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_caustic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/pcl.html#parse_cline_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.pcl.parse_cline_file" title="Link to this definition"></a></dt>
-<dd><p>Parse ce.dat or ci.dat and return critic and caustic polygons</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="lenstool.pcl.parse_header">
-<span class="sig-prename descclassname"><span class="pre">lenstool.pcl.</span></span><span class="sig-name descname"><span class="pre">parse_header</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/pcl.html#parse_header"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.pcl.parse_header" title="Link to this definition"></a></dt>
-<dd><p>Parse the #REFERENCE line of a Lenstool data file.</p>
-<section id="id7">
-<h3>Return<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
-<blockquote>
-<div><p>iref, ra, dec : tuple with WCS centering information</p>
-</div></blockquote>
-</section>
-</dd></dl>
-
-</section>
-<section id="module-lenstool.potentials">
-<span id="lenstool-potentials-module"></span><h2>lenstool.potentials module<a class="headerlink" href="#module-lenstool.potentials" title="Link to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="lenstool.potentials.dpie">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lenstool.potentials.</span></span><span class="sig-name descname"><span class="pre">dpie</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rcut</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rckpc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rcutkpc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/potentials.html#dpie"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.potentials.dpie" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#lenstool.structure.pot" title="lenstool.structure.pot"><code class="xref py py-class docutils literal notranslate"><span class="pre">pot</span></code></a></p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="lenstool.potentials.sis">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lenstool.potentials.</span></span><span class="sig-name descname"><span class="pre">sis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/potentials.html#sis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.potentials.sis" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#lenstool.structure.pot" title="lenstool.structure.pot"><code class="xref py py-class docutils literal notranslate"><span class="pre">pot</span></code></a></p>
-</dd></dl>
-
-</section>
-<section id="module-lenstool.sm_client">
-<span id="lenstool-sm-client-module"></span><h2>lenstool.sm_client module<a class="headerlink" href="#module-lenstool.sm_client" title="Link to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="lenstool.sm_client.client">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lenstool.sm_client.</span></span><span class="sig-name descname"><span class="pre">client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">addr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/sm_client.html#client"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.sm_client.client" title="Link to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.sm_client.client.context">
-<span class="sig-name descname"><span class="pre">context</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#lenstool.sm_client.client.context" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="lenstool.sm_client.client.recv">
-<span class="sig-name descname"><span class="pre">recv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/sm_client.html#client.recv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.sm_client.client.recv" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="lenstool.sm_client.client.req_calc_lnprob">
-<span class="sig-name descname"><span class="pre">req_calc_lnprob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/sm_client.html#client.req_calc_lnprob"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.sm_client.client.req_calc_lnprob" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="lenstool.sm_client.client.req_init_files">
-<span class="sig-name descname"><span class="pre">req_init_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/sm_client.html#client.req_init_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.sm_client.client.req_init_files" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="lenstool.sm_client.client.req_ndim">
-<span class="sig-name descname"><span class="pre">req_ndim</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/sm_client.html#client.req_ndim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.sm_client.client.req_ndim" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="lenstool.sm_client.client.req_write_bayes">
-<span class="sig-name descname"><span class="pre">req_write_bayes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lnprob</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vx</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/sm_client.html#client.req_write_bayes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.sm_client.client.req_write_bayes" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="lenstool.sm_client.client.req_write_bayes_withchi2">
-<span class="sig-name descname"><span class="pre">req_write_bayes_withchi2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lnprob</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vx</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/sm_client.html#client.req_write_bayes_withchi2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.sm_client.client.req_write_bayes_withchi2" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="lenstool.sm_client.client.req_write_burnin">
-<span class="sig-name descname"><span class="pre">req_write_burnin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lnprob</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vx</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/sm_client.html#client.req_write_burnin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.sm_client.client.req_write_burnin" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="lenstool.sm_client.client.req_write_wtag">
-<span class="sig-name descname"><span class="pre">req_write_wtag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lnprob</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/sm_client.html#client.req_write_wtag"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.sm_client.client.req_write_wtag" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="lenstool.sm_client.client.send">
-<span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vec</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/sm_client.html#client.send"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.sm_client.client.send" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.sm_client.client.socket">
-<span class="sig-name descname"><span class="pre">socket</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#lenstool.sm_client.client.socket" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="lenstool.sm_client.slauncher">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lenstool.sm_client.</span></span><span class="sig-name descname"><span class="pre">slauncher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lenstool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_parfile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nthreads</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/sm_client.html#slauncher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.sm_client.slauncher" title="Link to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="lenstool.sm_client.slauncher.clean">
-<span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool/sm_client.html#slauncher.clean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.sm_client.slauncher.clean" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.sm_client.slauncher.ipc_url">
-<span class="sig-name descname"><span class="pre">ipc_url</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#lenstool.sm_client.slauncher.ipc_url" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<section id="lenstool-sm-client-module">
+<h2>lenstool.sm_client module<a class="headerlink" href="#lenstool-sm-client-module" title="Link to this heading"></a></h2>
 </section>
 <section id="module-lenstool.structure">
 <span id="lenstool-structure-module"></span><h2>lenstool.structure module<a class="headerlink" href="#module-lenstool.structure" title="Link to this heading"></a></h2>
@@ -953,30 +728,6 @@ for the critical and caustic lines to be used with <cite>Axes.add_collection()</
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="lenstool.structure.cpa2d">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lenstool.structure.</span></span><span class="sig-name descname"><span class="pre">cpa2d</span></span><a class="reference internal" href="_modules/lenstool/structure.html#cpa2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.structure.cpa2d" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#lenstool.structure.Structure" title="lenstool.structure.Structure"><code class="xref py py-class docutils literal notranslate"><span class="pre">Structure</span></code></a></p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.cpa2d.nx">
-<span class="sig-name descname"><span class="pre">nx</span></span><a class="headerlink" href="#lenstool.structure.cpa2d.nx" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.cpa2d.ny">
-<span class="sig-name descname"><span class="pre">ny</span></span><a class="headerlink" href="#lenstool.structure.cpa2d.ny" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.cpa2d.v">
-<span class="sig-name descname"><span class="pre">v</span></span><a class="headerlink" href="#lenstool.structure.cpa2d.v" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
 <dt class="sig sig-object py" id="lenstool.structure.cpoint">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lenstool.structure.</span></span><span class="sig-name descname"><span class="pre">cpoint</span></span><a class="reference internal" href="_modules/lenstool/structure.html#cpoint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.structure.cpoint" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lenstool.structure.Structure" title="lenstool.structure.Structure"><code class="xref py py-class docutils literal notranslate"><span class="pre">Structure</span></code></a></p>
@@ -1031,186 +782,6 @@ for the critical and caustic lines to be used with <cite>Axes.add_collection()</
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lenstool.structure.ellipse.theta">
 <span class="sig-name descname"><span class="pre">theta</span></span><a class="headerlink" href="#lenstool.structure.ellipse.theta" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lenstool.structure.</span></span><span class="sig-name descname"><span class="pre">g_X_ray</span></span><a class="reference internal" href="_modules/lenstool/structure.html#g_X_ray"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.structure.g_X_ray" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#lenstool.structure.Structure" title="lenstool.structure.Structure"><code class="xref py py-class docutils literal notranslate"><span class="pre">Structure</span></code></a></p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.Cash_statistic_norm">
-<span class="sig-name descname"><span class="pre">Cash_statistic_norm</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.Cash_statistic_norm" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.bkg_type">
-<span class="sig-name descname"><span class="pre">bkg_type</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.bkg_type" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.bkgmap">
-<span class="sig-name descname"><span class="pre">bkgmap</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.bkgmap" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.bool_bkg">
-<span class="sig-name descname"><span class="pre">bool_bkg</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.bool_bkg" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.bool_cooling_function">
-<span class="sig-name descname"><span class="pre">bool_cooling_function</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.bool_cooling_function" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.bool_count">
-<span class="sig-name descname"><span class="pre">bool_count</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.bool_count" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.bool_exposure">
-<span class="sig-name descname"><span class="pre">bool_exposure</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.bool_exposure" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.bool_intrinsic_error">
-<span class="sig-name descname"><span class="pre">bool_intrinsic_error</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.bool_intrinsic_error" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.bool_pix">
-<span class="sig-name descname"><span class="pre">bool_pix</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.bool_pix" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.constant_cash">
-<span class="sig-name descname"><span class="pre">constant_cash</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.constant_cash" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.cooling_function">
-<span class="sig-name descname"><span class="pre">cooling_function</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.cooling_function" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.countmap">
-<span class="sig-name descname"><span class="pre">countmap</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.countmap" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.exposuremap">
-<span class="sig-name descname"><span class="pre">exposuremap</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.exposuremap" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.factor_cash">
-<span class="sig-name descname"><span class="pre">factor_cash</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.factor_cash" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.factor_likelihood">
-<span class="sig-name descname"><span class="pre">factor_likelihood</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.factor_likelihood" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.indice_pot">
-<span class="sig-name descname"><span class="pre">indice_pot</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.indice_pot" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.intrinsic_error">
-<span class="sig-name descname"><span class="pre">intrinsic_error</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.intrinsic_error" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.intrinsic_error_map">
-<span class="sig-name descname"><span class="pre">intrinsic_error_map</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.intrinsic_error_map" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.logfactorial_to_compute">
-<span class="sig-name descname"><span class="pre">logfactorial_to_compute</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.logfactorial_to_compute" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.n_pot">
-<span class="sig-name descname"><span class="pre">n_pot</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.n_pot" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.opti">
-<span class="sig-name descname"><span class="pre">opti</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.opti" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.opti_z">
-<span class="sig-name descname"><span class="pre">opti_z</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.opti_z" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.pix_area">
-<span class="sig-name descname"><span class="pre">pix_area</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.pix_area" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.pixmapx">
-<span class="sig-name descname"><span class="pre">pixmapx</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.pixmapx" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.pixmapy">
-<span class="sig-name descname"><span class="pre">pixmapy</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.pixmapy" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.psf_bool">
-<span class="sig-name descname"><span class="pre">psf_bool</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.psf_bool" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.psf_fft">
-<span class="sig-name descname"><span class="pre">psf_fft</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.psf_fft" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.psf_map">
-<span class="sig-name descname"><span class="pre">psf_map</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.psf_map" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.g_X_ray.type_factor">
-<span class="sig-name descname"><span class="pre">type_factor</span></span><a class="headerlink" href="#lenstool.structure.g_X_ray.type_factor" title="Link to this definition"></a></dt>
 <dd><p>Structure/Union member</p>
 </dd></dl>
 
@@ -3201,12 +2772,6 @@ for the critical and caustic lines to be used with <cite>Axes.add_collection()</
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.pot.X_bool">
-<span class="sig-name descname"><span class="pre">X_bool</span></span><a class="headerlink" href="#lenstool.structure.pot.X_bool" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="lenstool.structure.pot.alpha">
 <span class="sig-name descname"><span class="pre">alpha</span></span><a class="headerlink" href="#lenstool.structure.pot.alpha" title="Link to this definition"></a></dt>
 <dd><p>Structure/Union member</p>
@@ -3225,20 +2790,8 @@ for the critical and caustic lines to be used with <cite>Axes.add_collection()</
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.pot.cosphi">
-<span class="sig-name descname"><span class="pre">cosphi</span></span><a class="headerlink" href="#lenstool.structure.pot.cosphi" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="lenstool.structure.pot.costheta">
 <span class="sig-name descname"><span class="pre">costheta</span></span><a class="headerlink" href="#lenstool.structure.pot.costheta" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.pot.costheta_3D">
-<span class="sig-name descname"><span class="pre">costheta_3D</span></span><a class="headerlink" href="#lenstool.structure.pot.costheta_3D" title="Link to this definition"></a></dt>
 <dd><p>Structure/Union member</p>
 </dd></dl>
 
@@ -3261,20 +2814,8 @@ for the critical and caustic lines to be used with <cite>Axes.add_collection()</
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.pot.dplx_spline">
-<span class="sig-name descname"><span class="pre">dplx_spline</span></span><a class="headerlink" href="#lenstool.structure.pot.dplx_spline" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="lenstool.structure.pot.dplxmap">
 <span class="sig-name descname"><span class="pre">dplxmap</span></span><a class="headerlink" href="#lenstool.structure.pot.dplxmap" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.pot.dply_spline">
-<span class="sig-name descname"><span class="pre">dply_spline</span></span><a class="headerlink" href="#lenstool.structure.pot.dply_spline" title="Link to this definition"></a></dt>
 <dd><p>Structure/Union member</p>
 </dd></dl>
 
@@ -3297,26 +2838,8 @@ for the critical and caustic lines to be used with <cite>Axes.add_collection()</
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.pot.emass2">
-<span class="sig-name descname"><span class="pre">emass2</span></span><a class="headerlink" href="#lenstool.structure.pot.emass2" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="lenstool.structure.pot.epot">
 <span class="sig-name descname"><span class="pre">epot</span></span><a class="headerlink" href="#lenstool.structure.pot.epot" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.pot.epot2">
-<span class="sig-name descname"><span class="pre">epot2</span></span><a class="headerlink" href="#lenstool.structure.pot.epot2" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.pot.gamma1_spline">
-<span class="sig-name descname"><span class="pre">gamma1_spline</span></span><a class="headerlink" href="#lenstool.structure.pot.gamma1_spline" title="Link to this definition"></a></dt>
 <dd><p>Structure/Union member</p>
 </dd></dl>
 
@@ -3327,26 +2850,8 @@ for the critical and caustic lines to be used with <cite>Axes.add_collection()</
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.pot.gamma2_spline">
-<span class="sig-name descname"><span class="pre">gamma2_spline</span></span><a class="headerlink" href="#lenstool.structure.pot.gamma2_spline" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="lenstool.structure.pot.gamma2map">
 <span class="sig-name descname"><span class="pre">gamma2map</span></span><a class="headerlink" href="#lenstool.structure.pot.gamma2map" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.pot.gas_frac">
-<span class="sig-name descname"><span class="pre">gas_frac</span></span><a class="headerlink" href="#lenstool.structure.pot.gas_frac" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.pot.kappa_spline">
-<span class="sig-name descname"><span class="pre">kappa_spline</span></span><a class="headerlink" href="#lenstool.structure.pot.kappa_spline" title="Link to this definition"></a></dt>
 <dd><p>Structure/Union member</p>
 </dd></dl>
 
@@ -3375,12 +2880,6 @@ for the critical and caustic lines to be used with <cite>Axes.add_collection()</
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.pot.masse_star">
-<span class="sig-name descname"><span class="pre">masse_star</span></span><a class="headerlink" href="#lenstool.structure.pot.masse_star" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="lenstool.structure.pot.mtol">
 <span class="sig-name descname"><span class="pre">mtol</span></span><a class="headerlink" href="#lenstool.structure.pot.mtol" title="Link to this definition"></a></dt>
 <dd><p>Structure/Union member</p>
@@ -3401,12 +2900,6 @@ for the critical and caustic lines to be used with <cite>Axes.add_collection()</
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lenstool.structure.pot.pmass">
 <span class="sig-name descname"><span class="pre">pmass</span></span><a class="headerlink" href="#lenstool.structure.pot.pmass" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.pot.poten_spline">
-<span class="sig-name descname"><span class="pre">poten_spline</span></span><a class="headerlink" href="#lenstool.structure.pot.poten_spline" title="Link to this definition"></a></dt>
 <dd><p>Structure/Union member</p>
 </dd></dl>
 
@@ -3471,32 +2964,8 @@ for the critical and caustic lines to be used with <cite>Axes.add_collection()</
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.pot.sigma_obs">
-<span class="sig-name descname"><span class="pre">sigma_obs</span></span><a class="headerlink" href="#lenstool.structure.pot.sigma_obs" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.pot.sigma_obs_err">
-<span class="sig-name descname"><span class="pre">sigma_obs_err</span></span><a class="headerlink" href="#lenstool.structure.pot.sigma_obs_err" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.pot.sinphi">
-<span class="sig-name descname"><span class="pre">sinphi</span></span><a class="headerlink" href="#lenstool.structure.pot.sinphi" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="lenstool.structure.pot.sintheta">
 <span class="sig-name descname"><span class="pre">sintheta</span></span><a class="headerlink" href="#lenstool.structure.pot.sintheta" title="Link to this definition"></a></dt>
-<dd><p>Structure/Union member</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lenstool.structure.pot.sintheta_3D">
-<span class="sig-name descname"><span class="pre">sintheta_3D</span></span><a class="headerlink" href="#lenstool.structure.pot.sintheta_3D" title="Link to this definition"></a></dt>
 <dd><p>Structure/Union member</p>
 </dd></dl>
 
@@ -3521,13 +2990,8 @@ for the critical and caustic lines to be used with <cite>Axes.add_collection()</
 </dd></dl>
 
 </section>
-<section id="module-lenstool">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lenstool" title="Link to this heading"></a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="lenstool.handler">
-<span class="sig-prename descclassname"><span class="pre">lenstool.</span></span><span class="sig-name descname"><span class="pre">handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signum</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lenstool.html#handler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lenstool.handler" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
+<section id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
 </section>
 </section>
 
@@ -3541,7 +3005,7 @@ for the critical and caustic lines to be used with <cite>Axes.add_collection()</
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Lenstool group.</p>
+    <p>&#169; Copyright 2024, Lenstool group.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

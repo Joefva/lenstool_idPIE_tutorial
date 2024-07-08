@@ -3,17 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>lenstool.lenstool &mdash; Lenstool 8.1 documentation</title>
+  <title>lenstool.lenstool &mdash; Lenstool  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
   
-        <script src="../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=1f41a3ab"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -26,18 +21,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../../index.html" class="icon icon-home">
-            Lenstool
+            <a href="../../index.html" class="icon icon-home"> Lenstool
           </a>
               <div class="version">
-                8.1.0
+                8.5.1
+
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -73,10 +65,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
-          <li class="breadcrumb-item"><a href="../lenstool.html">lenstool</a></li>
-      <li class="breadcrumb-item active">lenstool.lenstool</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>lenstool.lenstool</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -90,12 +81,12 @@
 <span class="kn">from</span> <span class="nn">ctypes</span> <span class="kn">import</span> <span class="n">POINTER</span>
 <span class="kn">import</span> <span class="nn">os.path</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
-<span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">_lib</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">structure</span><span class="p">,</span> <span class="n">dimension</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">constant</span>
 <span class="kn">import</span> <span class="nn">astropy.wcs</span>
 <span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span>
+<span class="kn">import</span> <span class="nn">logging</span>
 
 <div class="viewcode-block" id="sdarray_ndarray">
 <a class="viewcode-back" href="../../lenstool.html#lenstool.lenstool.sdarray_ndarray">[docs]</a>
@@ -112,8 +103,8 @@
 <span class="sd">        -------</span>
 <span class="sd">            Array of type numpy.ndarray with shape (nrows, ncols)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">arr</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">)])</span>
-    <span class="n">_lib</span><span class="o">.</span><span class="n">free_square_double</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">nrows</span><span class="p">)</span>
+    <span class="n">arr</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">)])</span>
+    <span class="n">_lib</span><span class="o">.</span><span class="n">free_square_double</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">ncols</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">arr</span></div>
 
 
@@ -219,11 +210,6 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Return the C structure &quot;&quot;&quot;</span>
         <span class="n">C</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">_lib</span><span class="o">.</span><span class="n">C</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">structure</span><span class="o">.</span><span class="n">g_cosmo</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">C</span>
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">X</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Return the X structure associated with the X-ray&quot;&quot;&quot;</span>
-        <span class="n">X</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">_lib</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">structure</span><span class="o">.</span><span class="n">g_X_ray</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="k">return</span> <span class="n">X</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -300,6 +286,16 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_nvals</span> <span class="o">=</span> <span class="n">n_vals</span><span class="o">.</span><span class="n">value</span></div>
 
 
+<div class="viewcode-block" id="Lenstool.bayesHeader">
+<a class="viewcode-back" href="../../lenstool.html#lenstool.lenstool.Lenstool.bayesHeader">[docs]</a>
+    <span class="k">def</span> <span class="nf">bayesHeader</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Return the name of the parameters in bayes.dat &quot;&quot;&quot;</span>
+        <span class="n">bayes</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39; &#39;</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">get_NParameters</span><span class="p">()</span>
+        <span class="n">_lib</span><span class="o">.</span><span class="n">bayesHeader</span><span class="p">(</span><span class="n">bayes</span><span class="p">)</span>
+        <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">bayes</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> 
+        <span class="k">return</span> <span class="n">names</span></div>
+
+
 <div class="viewcode-block" id="Lenstool.get_chains">
 <a class="viewcode-back" href="../../lenstool.html#lenstool.lenstool.Lenstool.get_chains">[docs]</a>
     <span class="k">def</span> <span class="nf">get_chains</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">return_ndarray</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -313,12 +309,13 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chains</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;bayes.dat file not read. Use readBayesModels() first&quot;</span><span class="p">)</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Read bayes.dat&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">readBayesModels</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="n">return_ndarray</span><span class="p">:</span>
             <span class="n">np_arr</span> <span class="o">=</span> <span class="n">sdarray_ndarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_chains</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nvals</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nparams</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_chains</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="k">return</span> <span class="n">np_arr</span><span class="o">.</span><span class="n">T</span>
+            <span class="k">return</span> <span class="n">np_arr</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bayesHeader</span><span class="p">()[</span><span class="mi">1</span><span class="p">:]</span> <span class="c1"># remove Nsample column because it doesn&#39;t get read by readBayesModel()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chains</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nparams</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nvals</span></div>
 
@@ -354,7 +351,6 @@
 <span class="sd">            etc.) mentioned in the input parameter file.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">_lib</span><span class="o">.</span><span class="n">readConstraints</span><span class="p">()</span>
-        <span class="n">_lib</span><span class="o">.</span><span class="n">readConstraints_X_ray</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_constraints_read</span> <span class="o">=</span> <span class="kc">True</span></div>
 
 
@@ -367,11 +363,10 @@
 <span class="sd">            method     Specify the row from the bayes.dat from which a chires.dat file should be calculated. Special values are -4 to use the maximum likelihood row (default).</span>
 <span class="sd">         &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_constraints_read</span><span class="p">:</span>
-            <span class="n">_lib</span><span class="o">.</span><span class="n">readConstraints</span><span class="p">()</span>
-            <span class="n">_lib</span><span class="o">.</span><span class="n">readConstraints_X_ray</span><span class="p">()</span>
+            <span class="n">readConstraints</span><span class="p">()</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chains</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">_lib</span><span class="o">.</span><span class="n">readBayesModels</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chains</span><span class="p">:</span>
+            <span class="n">readBayesModels</span><span class="p">()</span>
 
         <span class="n">_lib</span><span class="o">.</span><span class="n">setBayesModel</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nvals</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chains</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_modelset</span> <span class="o">=</span> <span class="kc">True</span></div>
@@ -430,7 +425,7 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fburnin</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fbayes</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;bayes.dat or burnin.dat files already open. Close them first with close_bayes().&quot;</span><span class="p">)</span>
 
-        <span class="n">nparams</span> <span class="o">=</span> <span class="n">_lib</span><span class="o">.</span><span class="n">bayesHeader</span><span class="p">()</span>
+        <span class="n">nparams</span> <span class="o">=</span> <span class="n">_lib</span><span class="o">.</span><span class="n">bayesHeader</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">_suffix</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39; &#39;</span><span class="o">*</span><span class="mi">13</span>  <span class="c1"># allocate enough memory</span>
 
         <span class="c1"># Need to cast here because by default ctypes converts returned c_void_p into class &lt;int&gt;</span>
@@ -446,35 +441,26 @@
 
 <div class="viewcode-block" id="Lenstool.write_burnin_line">
 <a class="viewcode-back" href="../../lenstool.html#lenstool.lenstool.Lenstool.write_burnin_line">[docs]</a>
-    <span class="k">def</span> <span class="nf">write_burnin_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iteration</span><span class="p">,</span> <span class="n">likelihood</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">coord</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">last_col</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Write a line in the burnin.dat file with the parameter currently set in memory. </span>
+    <span class="k">def</span> <span class="nf">write_burnin_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iteration</span><span class="p">,</span> <span class="n">likelihood</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">coord</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Write a line in the burnin.dat file with the parameter currently set in memory.</span>
 
 <span class="sd">            Call o_chi_lhood() function is likelihood is not set.</span>
-
-<span class="sd">            Parameters</span>
-<span class="sd">                iteration: Int of the iteration number</span>
-<span class="sd">                likelihood: Likelihood of the set of parameter</span>
-<span class="sd">                coord: set of parameters</span>
-<span class="sd">                last_col: Float printed in the last column. In the case of bayeSys, current</span>
-<span class="sd">                computation of the Evidence. For the nested sampling, weights of the set of</span>
-<span class="sd">                parameter</span>
-<span class="sd">                </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fburnin</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_burnin_name</span><span class="si">}</span><span class="s2"> file not open. Use write_bayes_header() function first.&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">coord</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rescaleCube</span><span class="p">(</span><span class="n">coord</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Invalid model with rescaled cube&quot;</span><span class="p">,</span> <span class="n">coord</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Invalid model with rescaled cube&quot;</span><span class="p">,</span> <span class="n">cube</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">likelihood</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">error</span><span class="p">,</span> <span class="n">chi2</span><span class="p">,</span> <span class="n">lhood0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">o_chi_lhood0</span><span class="p">()</span>
             <span class="n">likelihood</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">chi2</span> <span class="o">+</span> <span class="n">lhood0</span><span class="p">)</span>
-            
-        <span class="n">_lib</span><span class="o">.</span><span class="n">write_bayes_line</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fburnin</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="n">likelihood</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="n">last_col</span><span class="p">),</span> 
-                              <span class="n">iteration</span><span class="p">,</span><span class="n">iteration</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_userCommon</span><span class="p">)</span></div>
 
-        
+        <span class="n">_lib</span><span class="o">.</span><span class="n">write_bayes_line</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fburnin</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="n">likelihood</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+                              <span class="n">iteration</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_userCommon</span><span class="p">)</span></div>
+
+
 <div class="viewcode-block" id="Lenstool.write_bayes_line">
 <a class="viewcode-back" href="../../lenstool.html#lenstool.lenstool.Lenstool.write_bayes_line">[docs]</a>
     <span class="k">def</span> <span class="nf">write_bayes_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iteration</span><span class="p">,</span> <span class="n">likelihood</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">coord</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -487,50 +473,16 @@
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">coord</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rescaleCube</span><span class="p">(</span><span class="n">coord</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Invalid model with rescaled cube&quot;</span><span class="p">,</span> <span class="n">coord</span><span class="p">)</span>
-        <span class="n">chi2</span><span class="o">=</span><span class="mf">0.</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Invalid model with rescaled cube&quot;</span><span class="p">,</span> <span class="n">cube</span><span class="p">)</span>
+
         <span class="k">if</span> <span class="n">likelihood</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">error</span><span class="p">,</span> <span class="n">chi2</span><span class="p">,</span> <span class="n">lhood0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">o_chi_lhood0</span><span class="p">()</span>
-            <span class="n">likelihood</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">chi2</span> <span class="o">+</span> <span class="n">lhood0</span><span class="p">)</span>        
-        <span class="n">_lib</span><span class="o">.</span><span class="n">write_bayes_line</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fbayes</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="n">likelihood</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="n">chi2</span><span class="p">),</span> 
-                              <span class="n">iteration</span><span class="p">,</span> <span class="n">iteration</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_userCommon</span><span class="p">)</span></div>
+            <span class="n">likelihood</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">chi2</span> <span class="o">+</span> <span class="n">lhood0</span><span class="p">)</span>
+
+        <span class="n">_lib</span><span class="o">.</span><span class="n">write_bayes_line</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fbayes</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="n">likelihood</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+                              <span class="n">iteration</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_userCommon</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="Lenstool.write_lenstool_output">
-<a class="viewcode-back" href="../../lenstool.html#lenstool.lenstool.Lenstool.write_lenstool_output">[docs]</a>
-    <span class="k">def</span> <span class="nf">write_lenstool_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">n_sigma</span><span class="o">=</span><span class="mf">3.</span><span class="p">,</span><span class="n">logZ</span><span class="o">=</span><span class="mf">0.</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Write best.par, bestopt.par and chires.dat from the sampling results contained in bayes.dat.</span>
-<span class="sd">            Mimic the behavior of lenstool.</span>
-<span class="sd">            Parameters</span>
-<span class="sd">                n_sigma: Limits of the bestopt.par are n_sigma x std</span>
-<span class="sd">                logZ: it corresponds to the marginal likelihood (i.e. Bayesian evidence) computed by bayeSys. Can be</span>
-<span class="sd">            obtained with nested sampling methods.</span>
-
-<span class="sd">            Returns</span>
-<span class="sd">                None</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1">#Read the bayes.dat, set limits and best-fit parameters</span>
-        <span class="n">_lib</span><span class="o">.</span><span class="n">o_set_lens_bayes</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="n">n_sigma</span><span class="p">))</span>
-
-        <span class="c1">#Needed for the header of the bestopt.par</span>
-        <span class="n">error</span><span class="p">,</span> <span class="n">chi2</span><span class="p">,</span> <span class="n">lhood0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">o_chi_lhood0</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">o_chires</span><span class="p">()</span>
-        <span class="n">_lib</span><span class="o">.</span><span class="n">set_res_par</span><span class="p">()</span>
-        <span class="n">_lib</span><span class="o">.</span><span class="n">o_print_res</span><span class="p">(</span><span class="n">chi2</span><span class="p">,</span><span class="n">logZ</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">None</span></div>
-
-
-<div class="viewcode-block" id="Lenstool.free_optimisation_C_structure">
-<a class="viewcode-back" href="../../lenstool.html#lenstool.lenstool.Lenstool.free_optimisation_C_structure">[docs]</a>
-    <span class="k">def</span> <span class="nf">free_optimisation_C_structure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Run o_global_free() to free allocated structures needed for the optimisation</span>
-<span class="sd">        BB: I thought it was useful but I think it only lead me to segfault</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">_lib</span><span class="o">.</span><span class="n">o_global_free</span><span class="p">()</span>
-        <span class="k">return</span> <span class="kc">None</span></div>
-
-    
 <div class="viewcode-block" id="Lenstool.close_bayes">
 <a class="viewcode-back" href="../../lenstool.html#lenstool.lenstool.Lenstool.close_bayes">[docs]</a>
     <span class="k">def</span> <span class="nf">close_bayes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -543,7 +495,6 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_userCommon</span><span class="p">:</span>
             <span class="n">_lib</span><span class="o">.</span><span class="n">userCommon_free</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_userCommon</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_userCommon</span> <span class="o">=</span> <span class="kc">None</span></div>
-
 
 
 <div class="viewcode-block" id="Lenstool.e_lensing">
@@ -596,7 +547,7 @@
         <span class="n">ymax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">ymin</span> <span class="o">+</span> <span class="n">dy</span>
         <span class="n">xmin</span><span class="p">,</span> <span class="n">ymin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">xmin</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">ymin</span>
 
-        <span class="nb">print</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
             <span class="s2">&quot;image (</span><span class="si">%d</span><span class="s2">,</span><span class="si">%d</span><span class="s2">) s=</span><span class="si">%.3lf</span><span class="s2"> [</span><span class="si">%.3lf</span><span class="s2">,</span><span class="si">%.3lf</span><span class="s2">] [</span><span class="si">%.3lf</span><span class="s2">,</span><span class="si">%.3lf</span><span class="s2">]</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span>
             <span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">)</span>
         <span class="p">)</span>
@@ -622,7 +573,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">ps</span><span class="o">.</span><span class="n">pixelx</span> <span class="o">=</span> <span class="n">dx</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ps</span><span class="o">.</span><span class="n">nx</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ps</span><span class="o">.</span><span class="n">pixely</span> <span class="o">=</span> <span class="n">dy</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ps</span><span class="o">.</span><span class="n">ny</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
-        <span class="nb">print</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
             <span class="s2">&quot;source (</span><span class="si">%d</span><span class="s2">,</span><span class="si">%d</span><span class="s2">) s=(</span><span class="si">%.3lf</span><span class="s2">,</span><span class="si">%.3lf</span><span class="s2">) [</span><span class="si">%.3lf</span><span class="s2">,</span><span class="si">%.3lf</span><span class="s2">] [</span><span class="si">%.3lf</span><span class="s2">,</span><span class="si">%.3lf</span><span class="s2">]</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ps</span><span class="o">.</span><span class="n">nx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ps</span><span class="o">.</span><span class="n">ny</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ps</span><span class="o">.</span><span class="n">pixelx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ps</span><span class="o">.</span><span class="n">pixely</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ps</span><span class="o">.</span><span class="n">xmin</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ps</span><span class="o">.</span><span class="n">xmax</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ps</span><span class="o">.</span><span class="n">ymin</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ps</span><span class="o">.</span><span class="n">ymax</span><span class="p">)</span>
         <span class="p">)</span>
@@ -686,6 +637,18 @@
         <span class="k">return</span> <span class="n">ampli</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_field_wcs</span><span class="p">(</span><span class="n">np</span><span class="p">,</span> <span class="n">np</span><span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="Lenstool.g_dpl">
+<a class="viewcode-back" href="../../lenstool.html#lenstool.lenstool.Lenstool.g_dpl">[docs]</a>
+    <span class="k">def</span> <span class="nf">g_dpl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">np</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Compute the deflexion fields alpha_x and alpha_y &quot;&quot;&quot;</span>
+        <span class="n">alpha_x</span> <span class="o">=</span> <span class="n">_lib</span><span class="o">.</span><span class="n">alloc_square_double</span><span class="p">(</span><span class="n">np</span><span class="p">,</span> <span class="n">np</span><span class="p">)</span>
+        <span class="n">alpha_y</span> <span class="o">=</span> <span class="n">_lib</span><span class="o">.</span><span class="n">alloc_square_double</span><span class="p">(</span><span class="n">np</span><span class="p">,</span> <span class="n">np</span><span class="p">)</span>
+        <span class="n">_lib</span><span class="o">.</span><span class="n">g_dpl_tmp</span><span class="p">(</span><span class="n">np</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="n">z</span><span class="p">),</span> <span class="n">alpha_x</span><span class="p">,</span> <span class="n">alpha_y</span><span class="p">)</span>
+        <span class="n">alpha_x</span> <span class="o">=</span> <span class="n">sdarray_ndarray</span><span class="p">(</span><span class="n">alpha_x</span><span class="p">,</span> <span class="n">np</span><span class="p">,</span> <span class="n">np</span><span class="p">)</span>
+        <span class="n">alpha_y</span> <span class="o">=</span> <span class="n">sdarray_ndarray</span><span class="p">(</span><span class="n">alpha_y</span><span class="p">,</span> <span class="n">np</span><span class="p">,</span> <span class="n">np</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">alpha_x</span><span class="p">,</span> <span class="n">alpha_y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_field_wcs</span><span class="p">(</span><span class="n">np</span><span class="p">,</span> <span class="n">np</span><span class="p">)</span></div>
+
+
 <div class="viewcode-block" id="Lenstool.get_sources">
 <a class="viewcode-back" href="../../lenstool.html#lenstool.lenstool.Lenstool.get_sources">[docs]</a>
     <span class="k">def</span> <span class="nf">get_sources</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -714,6 +677,9 @@
 <a class="viewcode-back" href="../../lenstool.html#lenstool.lenstool.Lenstool.set_sources">[docs]</a>
     <span class="k">def</span> <span class="nf">set_sources</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tab</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Initialise a set of sources based on a astropy.table.Table object &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">dimension</span><span class="o">.</span><span class="n">NFMAX</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Too many sources in table </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span><span class="si">}</span><span class="s2">. Maximum value = </span><span class="si">{</span><span class="n">dimension</span><span class="o">.</span><span class="n">NFMAX</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
             <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="c1"># prevent from creating source object at every value assignment</span>
             <span class="n">source</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">],</span> <span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
@@ -797,17 +763,8 @@
             <span class="n">pot</span><span class="o">.</span><span class="n">costheta</span><span class="p">,</span> <span class="n">pot</span><span class="o">.</span><span class="n">sintheta</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span>
         <span class="k">if</span> <span class="n">pot</span><span class="o">.</span><span class="n">n</span> <span class="o">==</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">:</span>
             <span class="n">pot</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="o">.</span><span class="n">no_lens</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">pot</span><span class="o">.</span><span class="n">cosphi</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">pot</span><span class="o">.</span><span class="n">sinphi</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">pot</span><span class="o">.</span><span class="n">cosphi</span><span class="p">,</span> <span class="n">pot</span><span class="o">.</span><span class="n">sinphi</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span>
-        <span class="k">if</span> <span class="n">pot</span><span class="o">.</span><span class="n">costheta_3D</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">pot</span><span class="o">.</span><span class="n">sintheta_3D</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">pot</span><span class="o">.</span><span class="n">costheta_3D</span><span class="p">,</span> <span class="n">pot</span><span class="o">.</span><span class="n">sintheta_3D</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span>
-        <span class="k">if</span> <span class="n">pot</span><span class="o">.</span><span class="n">gas_frac</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span> <span class="n">pot</span><span class="o">.</span><span class="n">gas_frac</span> <span class="o">=</span> <span class="mf">1.0</span>
-        <span class="k">if</span> <span class="n">pot</span><span class="o">.</span><span class="n">_3D_conv_fac</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">pot</span><span class="o">.</span><span class="n">_3D_scale_fac</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">pot</span><span class="o">.</span><span class="n">_3D_conv_fac</span><span class="p">,</span> <span class="n">pot</span><span class="o">.</span><span class="n">_3D_scale_fac</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span>
-        
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">lens</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="o">.</span><span class="n">nlens</span><span class="p">]</span> <span class="o">=</span> <span class="n">pot</span>
-        
         <span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="o">.</span><span class="n">nlens</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="o">.</span><span class="n">nmsgrid</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="o">.</span><span class="n">nmsgrid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="o">.</span><span class="n">nlens</span>
@@ -815,6 +772,23 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="o">.</span><span class="n">nplens</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="o">.</span><span class="n">nplens</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="o">.</span><span class="n">npot</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="o">.</span><span class="n">nmsgrid</span>  <span class="c1"># TODO: add support for potfile </span>
         <span class="n">_lib</span><span class="o">.</span><span class="n">set_lens</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="o">.</span><span class="n">nlens</span></div>
+
+
+<div class="viewcode-block" id="Lenstool.set_lenses">
+<a class="viewcode-back" href="../../lenstool.html#lenstool.lenstool.Lenstool.set_lenses">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_lenses</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tab</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Set the lenses in the model from an array of potentials &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">dimension</span><span class="o">.</span><span class="n">NLMAX</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Too many lenses in array </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span><span class="si">}</span><span class="s2">. Maximum value = </span><span class="si">{</span><span class="n">dimension</span><span class="o">.</span><span class="n">NLMAX</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="o">.</span><span class="n">nlens</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="o">.</span><span class="n">nmsgrid</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="o">.</span><span class="n">npot</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">pot</span> <span class="ow">in</span> <span class="n">tab</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_lens</span><span class="p">(</span><span class="n">pot</span><span class="p">)</span>
+
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="o">.</span><span class="n">nlens</span></div>
 
 
@@ -913,7 +887,7 @@
 
 <div class="viewcode-block" id="Lenstool.set_field">
 <a class="viewcode-back" href="../../lenstool.html#lenstool.lenstool.Lenstool.set_field">[docs]</a>
-    <span class="k">def</span> <span class="nf">set_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">set_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">reset_grid</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Set the field section (internal F global variable) </span>
 <span class="sd">    </span>
 <span class="sd">        Parameter</span>
@@ -928,7 +902,17 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">xmin</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">xmax</span> <span class="o">=</span> <span class="n">field</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">field</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">ymin</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">ymax</span> <span class="o">=</span> <span class="n">field</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">field</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">rmax</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">field</span><span class="p">))</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.</span><span class="p">)</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">rmax</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">field</span><span class="p">))</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">reset_grid</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">reset_grid</span><span class="p">()</span> </div>
+
+
+<div class="viewcode-block" id="Lenstool.get_field">
+<a class="viewcode-back" href="../../lenstool.html#lenstool.lenstool.Lenstool.get_field">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Return the contient of the field section (internal F global variable) &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">xmin</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">xmax</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">ymin</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">ymax</span></div>
 
 
 <div class="viewcode-block" id="Lenstool.set_grid">
@@ -944,127 +928,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="o">.</span><span class="n">dx</span> <span class="o">=</span> <span class="n">dx</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="o">.</span><span class="n">dy</span> <span class="o">=</span> <span class="n">dy</span>
         <span class="n">_lib</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span></div>
-
-
-<div class="viewcode-block" id="Lenstool.Mass_in_sphere">
-<a class="viewcode-back" href="../../lenstool.html#lenstool.lenstool.Lenstool.Mass_in_sphere">[docs]</a>
-    <span class="k">def</span> <span class="nf">Mass_in_sphere</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">r</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Compute the mass inside spheres of radius r with r in kpc from numerical integration.</span>
-<span class="sd">            The computation is based on the C code implemented in e_mass_tot.c. For now, only dPIE</span>
-<span class="sd">            and B-spline are implemented.</span>
-
-<span class="sd">            Parameters</span>
-<span class="sd">                r:    numpy array containing the radius at which the mass is calculated</span>
-
-<span class="sd">            Returns</span>
-<span class="sd">                mass: numpy array with the total mass inside spheres of radius r. Mass given in M_sun </span>
-<span class="sd">                mass_gas: numpy array with the gas mass inside spheres of radius r. If there are</span>
-<span class="sd">            no X-ray potential, it will be filled with zeros. Mass given in M_sun</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">mass</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
-        <span class="n">mass_gas</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">p</span><span class="p">,</span><span class="n">m</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">mass</span><span class="p">):</span>
-            
-            <span class="k">if</span> <span class="n">p</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
-                <span class="n">mass</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">=</span><span class="n">_lib</span><span class="o">.</span><span class="n">Circular_total_mass</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="mf">1e-10</span><span class="p">),</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">p</span><span class="p">]),</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
-                <span class="n">mass_gas</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">=</span><span class="n">_lib</span><span class="o">.</span><span class="n">Circular_total_mass</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="mf">1e-10</span><span class="p">),</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">p</span><span class="p">]),</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">mass</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">=</span><span class="n">_lib</span><span class="o">.</span><span class="n">Circular_total_mass</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">p</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">p</span><span class="p">]),</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
-                <span class="n">mass_gas</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">=</span><span class="n">_lib</span><span class="o">.</span><span class="n">Circular_total_mass</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">p</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">p</span><span class="p">]),</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-             
-        <span class="k">return</span> <span class="n">mass</span><span class="p">,</span><span class="n">mass_gas</span></div>
-
-
-<div class="viewcode-block" id="Lenstool.Delta_sigma">
-<a class="viewcode-back" href="../../lenstool.html#lenstool.lenstool.Lenstool.Delta_sigma">[docs]</a>
-    <span class="k">def</span> <span class="nf">Delta_sigma</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">r</span><span class="p">):</span>
-
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Compute the Delta sigma for weak lensing measurement comparison for a radius r with r in kpc from numerical integration.</span>
-<span class="sd">            The computation is based on the C code implemented in e_mass_tot.c. For now, only dPIE</span>
-<span class="sd">            and B-spline are implemented for speed reasons (only the convergence is computed).</span>
-
-<span class="sd">            Parameters</span>
-<span class="sd">                r:    numpy array containing the radius at which the mass is calculated</span>
-
-<span class="sd">            Returns</span>
-<span class="sd">                Delta sigma: numpy array with the total mass inside spheres of radius r. Output units 10^12 M_sun/kpc^2</span>
-<span class="sd">                </span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">dsigma</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
-            <span class="c1">#print(p)</span>
-            <span class="n">circle_length</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">r</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
-            <span class="n">disk_area</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">r</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
-            <span class="n">dsigma</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">=</span><span class="n">_lib</span><span class="o">.</span><span class="n">Mass_inside_rad</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">p</span><span class="p">]))</span><span class="o">/</span><span class="n">disk_area</span><span class="o">-</span><span class="n">_lib</span><span class="o">.</span><span class="n">Mass_at_rad</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">p</span><span class="p">]))</span><span class="o">/</span><span class="n">circle_length</span>
-        <span class="k">return</span> <span class="n">dsigma</span></div>
-
-
-    <span class="c1">#BB: I will change the name or move these definition out of the lenstool code</span>
-    <span class="c1"># It is related to my JAX code to take advantage of the GPU</span>
-<div class="viewcode-block" id="Lenstool.rescaleCube_send_lens_struct">
-<a class="viewcode-back" href="../../lenstool.html#lenstool.lenstool.Lenstool.rescaleCube_send_lens_struct">[docs]</a>
-    <span class="k">def</span> <span class="nf">rescaleCube_send_lens_struct</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">cube</span><span class="p">,</span><span class="n">nb_param</span><span class="p">,</span><span class="n">X_ray</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">image</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">ret_valid</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        
-        <span class="c1"># There may be a better way to deal with the ctypes and numpy arrays</span>
-        <span class="c1">#array = (ctypes.POINTER(ctypes.c_double) * cube.shape[0])(*map(numpy.ctypeslib.as_ctypes, cube))</span>
-        <span class="n">array</span><span class="o">=</span> <span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">)</span> <span class="o">*</span> <span class="n">cube</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])()</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cube</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-            <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span> <span class="o">*</span> <span class="n">cube</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])(</span><span class="o">*</span><span class="n">cube</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-            
-        <span class="n">lens_array</span><span class="o">=</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">)</span> <span class="o">*</span> <span class="n">cube</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])(</span><span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">ctypeslib</span><span class="o">.</span><span class="n">as_ctypes</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">cube</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">nb_param</span><span class="p">))))</span>
-        <span class="n">X_ray_error</span><span class="o">=</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span> <span class="o">*</span> <span class="n">cube</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])()</span>
-
-        <span class="n">dlsds</span><span class="o">=</span><span class="n">_lib</span><span class="o">.</span><span class="n">alloc_cubic_double</span><span class="p">(</span><span class="n">cube</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="bp">self</span><span class="o">.</span><span class="n">I</span><span class="o">.</span><span class="n">n_mult</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="o">.</span><span class="n">nlens</span><span class="p">)</span><span class="c1">#(ctypes.c_double * cube.shape[0]*self.I.n_mult*self.G.nlens)()</span>
-        <span class="c1">#print(&quot;val_model&quot;,self.I.n_mult,self.G.nlens,self.X.n_pot)</span>
-        <span class="n">kpc_per_arcsec_X_ray</span><span class="o">=</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">)</span> <span class="o">*</span> <span class="n">cube</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])(</span><span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">ctypeslib</span><span class="o">.</span><span class="n">as_ctypes</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">cube</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">n_pot</span><span class="p">))))</span>
-        <span class="n">valid</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">_lib</span><span class="o">.</span><span class="n">rescale_cube_and_fill_lens</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="n">lens_array</span><span class="p">,</span><span class="n">dlsds</span><span class="p">,</span><span class="n">kpc_per_arcsec_X_ray</span><span class="p">,</span><span class="n">X_ray_error</span><span class="p">,</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">(</span><span class="n">cube</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_nparams</span><span class="p">),</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">X_ray</span><span class="p">)),</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">image</span><span class="p">)))[:</span><span class="n">cube</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
-        
-        <span class="n">param_scaled</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">fromiter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="n">nb_param</span><span class="p">),</span> <span class="n">lens_array</span><span class="p">)),</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-        <span class="c1">#dlsds=numpy.array(list(map(lambda x: numpy.fromiter(x, dtype=float, count=self.I.n_mult*self.G.nlens), dlsds)),dtype=float).reshape(cube.shape[0],self.I.n_mult,self.G.nlens)</span>
-        <span class="c1">#_lib_lt.free_square_double(lens_array,cube.shape[0])</span>
-        <span class="n">dlsds_end</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="n">dlsds</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="o">.</span><span class="n">nlens</span><span class="p">)]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">I</span><span class="o">.</span><span class="n">n_mult</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cube</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-        <span class="n">_lib</span><span class="o">.</span><span class="n">free_cubic_double</span><span class="p">(</span><span class="n">dlsds</span><span class="p">,</span><span class="n">cube</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="bp">self</span><span class="o">.</span><span class="n">I</span><span class="o">.</span><span class="n">n_mult</span><span class="p">)</span>
-        <span class="n">kpc_per_arcsec_X_ray</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">fromiter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">n_pot</span><span class="p">),</span> <span class="n">kpc_per_arcsec_X_ray</span><span class="p">)),</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-        <span class="n">X_ray_error</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X_ray_error</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">ret_valid</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">param_scaled</span><span class="p">,</span><span class="n">X_ray_error</span><span class="p">,</span><span class="n">dlsds_end</span><span class="p">,</span><span class="n">kpc_per_arcsec_X_ray</span><span class="p">,</span><span class="n">valid</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">param_scaled</span><span class="p">,</span><span class="n">X_ray_error</span><span class="p">,</span><span class="n">dlsds_end</span><span class="p">,</span><span class="n">kpc_per_arcsec_X_ray</span></div>
-
-
-<div class="viewcode-block" id="Lenstool.batch_likelihood">
-<a class="viewcode-back" href="../../lenstool.html#lenstool.lenstool.Lenstool.batch_likelihood">[docs]</a>
-    <span class="k">def</span> <span class="nf">batch_likelihood</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">cube</span><span class="p">):</span>
-
-        <span class="n">array</span><span class="o">=</span> <span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">)</span> <span class="o">*</span> <span class="n">cube</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])()</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cube</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-            <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span> <span class="o">*</span> <span class="n">cube</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])(</span><span class="o">*</span><span class="n">cube</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-        <span class="n">likelihood</span><span class="o">=</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span> <span class="o">*</span> <span class="n">cube</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])()</span>
-        <span class="n">valid</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">_lib</span><span class="o">.</span><span class="n">compute_likelihood_batch</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="n">likelihood</span><span class="p">,</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">(</span><span class="n">cube</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_nparams</span><span class="p">))[:</span><span class="n">cube</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
-        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">likelihood</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="Lenstool.get_lens_struct">
-<a class="viewcode-back" href="../../lenstool.html#lenstool.lenstool.Lenstool.get_lens_struct">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_lens_struct</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">nb_param</span><span class="p">):</span>
-        <span class="c1">#array = (ctypes.c_double * len(cube))(*cube)</span>
-        <span class="n">lens_array</span><span class="o">=</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span> <span class="o">*</span> <span class="n">nb_param</span><span class="p">)()</span>
-        <span class="n">_lib</span><span class="o">.</span><span class="n">expose_lens_structure</span><span class="p">(</span><span class="n">lens_array</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">lens_array</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span></div>
-
-        
-<div class="viewcode-block" id="Lenstool.initialize_lens_struct">
-<a class="viewcode-back" href="../../lenstool.html#lenstool.lenstool.Lenstool.initialize_lens_struct">[docs]</a>
-    <span class="k">def</span> <span class="nf">initialize_lens_struct</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">nb_param</span><span class="o">=</span><span class="n">_lib</span><span class="o">.</span><span class="n">expose_lens_structure_param_num</span><span class="p">()</span>
-        <span class="n">nb_pot</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="o">.</span><span class="n">nlens</span>
-        <span class="n">pot_type</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">_lib</span><span class="o">.</span><span class="n">expose_lens_structure_type</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">(</span><span class="n">nb_param</span><span class="p">))[:</span><span class="n">nb_pot</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
-        <span class="n">pot_index</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">_lib</span><span class="o">.</span><span class="n">expose_lens_structure_index</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">(</span><span class="n">nb_param</span><span class="p">))[:</span><span class="n">nb_pot</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">pot_type</span><span class="p">,</span><span class="n">pot_index</span><span class="p">,</span><span class="n">nb_param</span></div>
 </div>
 
-
-        
 
 </pre></div>
 
@@ -1075,7 +940,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Lenstool group.</p>
+    <p>&#169; Copyright 2024, Lenstool group.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
