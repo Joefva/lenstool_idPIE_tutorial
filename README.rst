@@ -49,7 +49,7 @@ number
 
 .. admonition:: Syntax
 
-   ``number N ``
+   ``number N``
 
 
 - Parameters: 
