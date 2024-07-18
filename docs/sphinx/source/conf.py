@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.abspath('/path_to_lenstool/'))
 
 project = 'Lenstool'
 copyright = '2024, Lenstool group'  
-author = 'Lenstool group' # Allingham, Beauchesne, Jullo, Limousin, Richard (add your names)
+author = 'Lenstool group' # Jean-Paul Kneib, Henri Bonnet, Ghyslain Golse, David Sand, Eric Jullo, Phil Marshall, Julien Zoubian, Mathilde Jauzac, Johan Richard, Benjamin Clément, Tomas Verdugo, Soniya Sharma, Benjamin Beauchesne, Joseph Allingham (Do we miss someone?)
 
 three_dir_up = os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + "/../../../")
 version_file = three_dir_up + "/VERSION"
