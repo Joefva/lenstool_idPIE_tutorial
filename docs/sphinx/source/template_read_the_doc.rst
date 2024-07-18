@@ -3,7 +3,7 @@ New syntax template for the readThedoc
 
 
 keyword
--------
+--------
 
 .. admonition:: Syntax
 

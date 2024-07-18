@@ -44,15 +44,17 @@ where you must replace `PATH_TO_LENSTOOL`.
 
 Example:
 
-number
--------------------
+keyword
+--------
 
 .. admonition:: Syntax
 
-   ``number N``
+   ``keyword param1 param2 param3 ...``
 
 
 - Parameters: 
-    - ``N``, integer: [Insert description of N]. [Default: XXX].
+    - ``param1``, param1 type (ex int, float): Description of the parameter. Default: default value if relevant.
+    - ``param2``, param1 type (ex int, float): Description of the parameter. Default: default value if relevant.
+    - ``param3``, param1 type (ex int, float): Description of the parameter. Default: default value if relevant.
     
 
