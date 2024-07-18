@@ -44,17 +44,20 @@ where you must replace `PATH_TO_LENSTOOL`.
 
 Example:
 
-keyword
---------
+.. code-block:: console
 
-.. admonition:: Syntax
+    keyword
+    --------
 
-   ``keyword param1 param2 param3 ...``
+    .. admonition:: Syntax
+
+       ``keyword param1 param2 param3 ...``
 
 
-- Parameters: 
-    - ``param1``, param1 type (ex int, float): Description of the parameter. Default: default value if relevant.
-    - ``param2``, param1 type (ex int, float): Description of the parameter. Default: default value if relevant.
-    - ``param3``, param1 type (ex int, float): Description of the parameter. Default: default value if relevant.
+    - Parameters: 
+        - ``param1``, param1 type (ex int, float): Description of the parameter. Default: default value if relevant.
+        - ``param2``, param1 type (ex int, float): Description of the parameter. Default: default value if relevant.
+        - ``param3``, param1 type (ex int, float): Description of the parameter. Default: default value if relevant.
+
     
 
