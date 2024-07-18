@@ -31,13 +31,13 @@ https://smobsc.readthedocs.io/en/stable/usage/installation.html
 
 	export LD_LIBRARY_PATH=/PATH_TO_LENSTOOL/lib:$LD_LIBRARY_PATH
 
-* Also add the lenstool path to docs/sphinx/source/conf.py:
+* Also add the lenstool path, under the variable name 'LENSTOOL_DIR' to docs/sphinx/source/conf.py:
 
 .. code-block:: console
 
-	sed -i 's/path_to_lenstool/PATH_TO_LENSTOOL/g' docs/sphinx/source/conf.py
+	export LENSTOOL_DIR=/path_to_lenstool/
 
-where you must replace `PATH_TO_LENSTOOL`.
+where you must replace `path_to_lenstool`.
 
 
 * New syntax for all parameters:
