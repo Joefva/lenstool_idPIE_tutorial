@@ -52,12 +52,11 @@
 <li class="toctree-l3"><a class="reference internal" href="PoTential.html">potential</a></li>
 <li class="toctree-l3"><a class="reference internal" href="CosmoloGie.html">Cosmologie</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">grid</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#number-int">number int</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#number-new-syntax">number (new syntax)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#polar-int">polar int</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#nlens-int">nlens int</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#nlens-opt-int">nlens_opt int</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#nlens-crit-int">nlens_crit int</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#number">number</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polar">polar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nlens">nlens</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nlens-opt">nlens_opt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nlens-crit">nlens_crit</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="field.html">field</a></li>
@@ -106,12 +105,8 @@
 <p>Defines some parameters such has the number of potential mode, the total number of potential mode that are going to be tested, the grid mode, and the number of rows and columns in the grid.</p>
 <p>If no counter image is found for an image defined in the runmode section with the [image]() or [source]() keywords, then the following warning message is printed out: “WARN: There were missed images probably due to the grid resolution.”
 In this case, you can try to increase the grid resolution with the [nombre]() keyword, or adopt a polar geometry for the grid with the [polaire]() keyword.</p>
-<section id="number-int">
-<h2>number int<a class="headerlink" href="#number-int" title="Link to this heading"></a></h2>
-<p>Represents the number of points of the grid used to invert the lens equation (from Source Plane to Image Plane).  An even number,   between 10 and 128 is required. Default: <code class="docutils literal notranslate"><span class="pre">int=</span> <span class="pre">30</span></code>.</p>
-</section>
-<section id="number-new-syntax">
-<h2>number (new syntax)<a class="headerlink" href="#number-new-syntax" title="Link to this heading"></a></h2>
+<section id="number">
+<h2>number<a class="headerlink" href="#number" title="Link to this heading"></a></h2>
 <div class="admonition-syntax admonition">
 <p class="admonition-title">Syntax</p>
 <p><code class="docutils literal notranslate"><span class="pre">number</span> <span class="pre">N</span></code></p>
@@ -126,21 +121,69 @@ In this case, you can try to increase the grid resolution with the [nombre]() ke
 </li>
 </ul>
 </section>
-<section id="polar-int">
-<h2>polar int<a class="headerlink" href="#polar-int" title="Link to this heading"></a></h2>
-<p>Set the grid to a polar shape if <code class="docutils literal notranslate"><span class="pre">int=</span> <span class="pre">1</span></code>, else it takes a rectangular shape. Polar shape is advised if the main clump is centered on (0,0). Default: int=0 meaning that the program will used a rectangular grid. Interest: used to predict radial images in axi-symetrical lens model.</p>
+<section id="polar">
+<h2>polar<a class="headerlink" href="#polar" title="Link to this heading"></a></h2>
+<div class="admonition-syntax admonition">
+<p class="admonition-title">Syntax</p>
+<p><code class="docutils literal notranslate"><span class="pre">polar</span> <span class="pre">b</span></code></p>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Parameters:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code>, boolean: If <code class="docutils literal notranslate"><span class="pre">b=1</span></code> the grid used to predict multiple images is polar, else a rectangular grid is used. The polar shape is advised if the main clump is centered on (0,0). It allows to predict radial images in axi-symetrical lens model. Default: <code class="docutils literal notranslate"><span class="pre">b=0</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
 </section>
-<section id="nlens-int">
-<h2>nlens int<a class="headerlink" href="#nlens-int" title="Link to this heading"></a></h2>
-<p>Set the number of clumps that defines the Lens Potential. The number of first identifier potential must be equal or larger than this number. If the  number of potentials is lower than nlentille then nlentille is set to the effectively read number of potentials. Default: <code class="docutils literal notranslate"><span class="pre">int=0</span></code>.</p>
+<section id="nlens">
+<h2>nlens<a class="headerlink" href="#nlens" title="Link to this heading"></a></h2>
+<div class="admonition-syntax admonition">
+<p class="admonition-title">Syntax</p>
+<p><code class="docutils literal notranslate"><span class="pre">nlens</span> <span class="pre">N</span></code></p>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Parameters:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">N</span></code>, integer: Set the number of clumps that defines the Lens Potential. The number of first identifier potential must be equal or larger than this number. If the  number of potentials is lower than <code class="docutils literal notranslate"><span class="pre">N</span></code> then <code class="docutils literal notranslate"><span class="pre">N</span></code> is set to the effectively read number of potentials. Default: <code class="docutils literal notranslate"><span class="pre">N=0</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
 </section>
-<section id="nlens-opt-int">
-<h2>nlens_opt int<a class="headerlink" href="#nlens-opt-int" title="Link to this heading"></a></h2>
-<p>Set the number of clumps that will be optimized in the inverse mode. The number of first identifiers potential and limit must be equal or larger than this number otherwise nlens_opt is set to the number of limit identifier read. Moreover one should have nlens_opt ≤ nlentille. Default: <code class="docutils literal notranslate"><span class="pre">int=0</span></code>.</p>
+<section id="nlens-opt">
+<h2>nlens_opt<a class="headerlink" href="#nlens-opt" title="Link to this heading"></a></h2>
+<div class="admonition-syntax admonition">
+<p class="admonition-title">Syntax</p>
+<p><code class="docutils literal notranslate"><span class="pre">nlens_opt</span> <span class="pre">N</span></code></p>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Parameters:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">N</span></code>, integer: Set the number of clumps that will be optimized in the inverse mode. The number of first identifiers potential and limit must be equal or larger than this number otherwise nlens_opt is set to the number of limit identifier read. Moreover the number of optimised lens should inferior or equal to the number of lens defined at <code class="docutils literal notranslate"><span class="pre">nlens</span></code>. Default: <code class="docutils literal notranslate"><span class="pre">N=0</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
 </section>
-<section id="nlens-crit-int">
-<h2>nlens_crit int<a class="headerlink" href="#nlens-crit-int" title="Link to this heading"></a></h2>
-<p>Set the number of clumps for which the critical lines must be calculated. Only used for the snake algorithm (defined in section [cline]()).</p>
+<section id="nlens-crit">
+<h2>nlens_crit<a class="headerlink" href="#nlens-crit" title="Link to this heading"></a></h2>
+<div class="admonition-syntax admonition">
+<p class="admonition-title">Syntax</p>
+<p><code class="docutils literal notranslate"><span class="pre">nlens_crit</span> <span class="pre">N</span></code></p>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Parameters:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">N</span></code>, integer: Set the number of clumps for which the critical lines must be calculated. Only used for the snake algorithm. Default: <code class="docutils literal notranslate"><span class="pre">N=0</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
 </section>
 </section>
 

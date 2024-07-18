@@ -9,13 +9,9 @@ In this case, you can try to increase the grid resolution with the [nombre]() ke
 
 
 
-number int
-----------
 
-Represents the number of points of the grid used to invert the lens equation (from Source Plane to Image Plane).  An even number,   between 10 and 128 is required. Default: ``int= 30``. 
-
-number (new syntax)
--------------------
+number
+------
 
 .. admonition:: Syntax
 
@@ -24,27 +20,49 @@ number (new syntax)
 
 - Parameters: 
     - ``N``, integer: Number of points that is used to define the grid to invert the lens equation (from Source Plane to Image Plane). An even number, between 10 and 128 is required. Default: ``30``.
+ 
+
+polar
+-----
+
+.. admonition:: Syntax
+
+   ``polar b``
 
 
-polar int
+- Parameters: 
+    - ``b``, boolean: If ``b=1`` the grid used to predict multiple images is polar, else a rectangular grid is used. The polar shape is advised if the main clump is centered on (0,0). It allows to predict radial images in axi-symetrical lens model. Default: ``b=0``
+
+
+nlens
+-----
+
+.. admonition:: Syntax
+
+   ``nlens N``
+
+- Parameters: 
+    - ``N``, integer: Set the number of clumps that defines the Lens Potential. The number of first identifier potential must be equal or larger than this number. If the  number of potentials is lower than ``N`` then ``N`` is set to the effectively read number of potentials. Default: ``N=0``
+
+
+
+nlens_opt
 ---------
 
-Set the grid to a polar shape if ``int= 1``, else it takes a rectangular shape. Polar shape is advised if the main clump is centered on (0,0). Default: int=0 meaning that the program will used a rectangular grid. Interest: used to predict radial images in axi-symetrical lens model. 
+.. admonition:: Syntax
+
+   ``nlens_opt N``
+
+- Parameters: 
+    - ``N``, integer: Set the number of clumps that will be optimized in the inverse mode. The number of first identifiers potential and limit must be equal or larger than this number otherwise nlens_opt is set to the number of limit identifier read. Moreover the number of optimised lens should inferior or equal to the number of lens defined at ``nlens``. Default: ``N=0``.
 
 
-nlens int
+nlens_crit
 ----------
 
-Set the number of clumps that defines the Lens Potential. The number of first identifier potential must be equal or larger than this number. If the  number of potentials is lower than nlentille then nlentille is set to the effectively read number of potentials. Default: ``int=0``.
+.. admonition:: Syntax
 
+   ``nlens_crit N``
 
-nlens_opt int
--------------
-
-Set the number of clumps that will be optimized in the inverse mode. The number of first identifiers potential and limit must be equal or larger than this number otherwise nlens_opt is set to the number of limit identifier read. Moreover one should have nlens_opt ≤ nlentille. Default: ``int=0``.
-
-
-nlens_crit int
---------------
-
-Set the number of clumps for which the critical lines must be calculated. Only used for the snake algorithm (defined in section [cline]()).
+- Parameters: 
+    - ``N``, integer: Set the number of clumps for which the critical lines must be calculated. Only used for the snake algorithm. Default: ``N=0``.
