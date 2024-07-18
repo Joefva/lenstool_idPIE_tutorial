@@ -83,7 +83,7 @@ Bijections being invertible functions, we may revert the previous equation, thus
    n_e = \mathcal{J}^{-1}_z  \left( \frac{\mu_g m_a}{k_B} \Phi (r) \right).
 
 
-------------------------------------------------
+-------------------
 .. _Xray_opt_idPIE:
 
 ICM profile optimisation with ``idPIE`` profile

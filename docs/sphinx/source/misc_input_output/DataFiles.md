@@ -122,9 +122,9 @@ This file contains as many lines as potentials defined in the parameter file. Th
 
 ### image.all
 
-.. note::
+#### Note:
 
-   TODO: When the 'multfile' is not in the execution folder, image.all, image.dat and source.dat are not created.
+-   **TODO**: When the 'multfile' is not in the execution folder, image.all, image.dat and source.dat are not created.
    
 
 

@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Some examples of lenstool usage on Jupyter Notebook &mdash; Lenstool 8.1 documentation</title>
+  <title>Some examples of lenstool usage on Jupyter Notebook &mdash; Lenstool  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
   
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=1f41a3ab"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -29,18 +24,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="index.html" class="icon icon-home">
-            Lenstool
+            <a href="index.html" class="icon icon-home"> Lenstool
           </a>
               <div class="version">
-                8.1.0
+                8.5.1
+
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -93,9 +85,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="pywrap.html">Python wrapper</a></li>
-      <li class="breadcrumb-item active">Some examples of lenstool usage on Jupyter Notebook</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="pywrap.html">Python wrapper</a> &raquo;</li>
+      <li>Some examples of lenstool usage on Jupyter Notebook</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/GuideForJupyter.ipynb.txt" rel="nofollow"> View page source</a>
       </li>
@@ -127,6 +119,19 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_195902</span><span class="o">/</span><span class="mf">3828346664.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">Normalize</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">import</span> <span class="nn">numpy</span>
+<span class="ne">---&gt; </span><span class="mi">11</span> <span class="kn">import</span> <span class="nn">lenstool</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">lenstool.potentials</span> <span class="kn">import</span> <span class="n">sis</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;lenstool&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -151,7 +156,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=1</i>
-<table id="table139713367668000" class="table-striped table-bordered table-condensed">
+<table id="table4475448784" class="table-striped table-bordered table-condensed">
 <thead><tr><th>type</th><th>n</th><th>x</th><th>y</th><th>z</th></tr></thead>
 <thead><tr><th>int64</th><th>str1</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
 <tr><td>1</td><td>1</td><td>0.0</td><td>0.0</td><td>0.3</td></tr>
@@ -174,7 +179,7 @@ Here we study a circular source of redshift 1 and magnitude 20.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=1</i>
-<table id="table139716920049568" class="table-striped table-bordered table-condensed">
+<table id="table4475452192" class="table-striped table-bordered table-condensed">
 <thead><tr><th>n</th><th>x</th><th>y</th><th>a</th><th>b</th><th>theta</th><th>z</th><th>mag</th></tr></thead>
 <thead><tr><th>str2</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
 <tr><td>1a</td><td>0.6789067</td><td>-9.7</td><td>3.5</td><td>3.5</td><td>0.0</td><td>1.0</td><td>20.0</td></tr>
@@ -204,7 +209,7 @@ Here we study a circular source of redshift 1 and magnitude 20.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4bdb34b33947086f230a66e34ec7ad7c576d466d753e2855291e572cb7351f8e.png" src="_images/4bdb34b33947086f230a66e34ec7ad7c576d466d753e2855291e572cb7351f8e.png" />
+<img alt="_images/9d3518d781c62d38a74c9e1ceb77f706211c84ddbed1bd70f3d66b306a8dbe5a.png" src="_images/9d3518d781c62d38a74c9e1ceb77f706211c84ddbed1bd70f3d66b306a8dbe5a.png" />
 </div>
 </div>
 <p>Here we have displayed the source in pink and the cluster of galaxies that acts as a lens in yellow.
@@ -225,7 +230,7 @@ The colorbar indicates the mass repartition of the cluster in <img class="math" 
 </pre></div>
 </div>
 <div class="output text_html"><div><i>Table length=3</i>
-<table id="table139712129258528" class="table-striped table-bordered table-condensed">
+<table id="table4493788688" class="table-striped table-bordered table-condensed">
 <thead><tr><th>n</th><th>x</th><th>y</th><th>a</th><th>b</th><th>theta</th><th>z</th><th>mag</th></tr></thead>
 <thead><tr><th>str2</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
 <tr><td>1a</td><td>-0.1439036032657953</td><td>2.0560154188542463</td><td>3.5000000009029875</td><td>0.7418610444825656</td><td>274.0036883033475</td><td>1.0</td><td>21.684363693981073</td></tr>
@@ -270,11 +275,11 @@ The colorbar indicates the mass repartition of the cluster in <img class="math" 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2756599/310927048.py:27: MatplotlibDeprecationWarning: Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/mm/6xbl_6k14pn5zn23cltp9rzc0000gn/T/ipykernel_24111/310927048.py:27: MatplotlibDeprecationWarning: Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
   colorbar = plt.colorbar(cmap)
 </pre></div>
 </div>
-<img alt="_images/f28589088580f88ed79c2c2d39f095fce3d87d6d65ac7981fa28457a3e74dd0c.png" src="_images/f28589088580f88ed79c2c2d39f095fce3d87d6d65ac7981fa28457a3e74dd0c.png" />
+<img alt="_images/3cdfeb2d6e28ffcc73d5489ae112ffdb29f14d5f2dff1d040b9b4e25ce8f8719.png" src="_images/3cdfeb2d6e28ffcc73d5489ae112ffdb29f14d5f2dff1d040b9b4e25ce8f8719.png" />
 </div>
 </div>
 <p>As we can see, three images are displayed whereas in the SIS model only two images should appear. This happens because due to numerical resolution limits, Lenstool finds two radial images, whereas only one should exist in theory. Note that depending on the grid.number, and grid.polar parameters, this third image is not always detected.</p>
@@ -294,7 +299,7 @@ The colorbar indicates the mass repartition of the cluster in <img class="math" 
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=1</i>
-<table id="table139713367669968" class="table-striped table-bordered table-condensed">
+<table id="table4475452096" class="table-striped table-bordered table-condensed">
 <thead><tr><th>n</th><th>x</th><th>y</th><th>a</th><th>b</th><th>theta</th><th>z</th><th>mag</th></tr></thead>
 <thead><tr><th>str2</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
 <tr><td>1a</td><td>10.6789067</td><td>10.7</td><td>3.5</td><td>3.5</td><td>0.0</td><td>1.0</td><td>20.0</td></tr>
@@ -308,14 +313,11 @@ The colorbar indicates the mass repartition of the cluster in <img class="math" 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Compute multiple images for source 0...
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>images found 1, not found 0
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Compute multiple images for source 0...images found 1, not found 0
 </pre></div>
 </div>
 <div class="output text_html"><div><i>Table length=1</i>
-<table id="table139712129211536" class="table-striped table-bordered table-condensed">
+<table id="table4493801120" class="table-striped table-bordered table-condensed">
 <thead><tr><th>n</th><th>x</th><th>y</th><th>a</th><th>b</th><th>theta</th><th>z</th><th>mag</th></tr></thead>
 <thead><tr><th>str2</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
 <tr><td>1a</td><td>19.003780153858134</td><td>19.041315591211987</td><td>6.228466685230651</td><td>3.5000000004546004</td><td>135.05652820048417</td><td>1.0</td><td>19.374217246134503</td></tr>
@@ -328,11 +330,11 @@ The colorbar indicates the mass repartition of the cluster in <img class="math" 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2756599/310927048.py:27: MatplotlibDeprecationWarning: Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/mm/6xbl_6k14pn5zn23cltp9rzc0000gn/T/ipykernel_24111/310927048.py:27: MatplotlibDeprecationWarning: Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
   colorbar = plt.colorbar(cmap)
 </pre></div>
 </div>
-<img alt="_images/cb001a4ffa3c8274707e22c68253a41d79c76333d8ce3c285c36b4c98f2f9b62.png" src="_images/cb001a4ffa3c8274707e22c68253a41d79c76333d8ce3c285c36b4c98f2f9b62.png" />
+<img alt="_images/232d05905715576172c239d920a43a75e35eab95bc893ca295311213a73d06d0.png" src="_images/232d05905715576172c239d920a43a75e35eab95bc893ca295311213a73d06d0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -349,7 +351,7 @@ The colorbar indicates the mass repartition of the cluster in <img class="math" 
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=1</i>
-<table id="table139712128563808" class="table-striped table-bordered table-condensed">
+<table id="table4495096320" class="table-striped table-bordered table-condensed">
 <thead><tr><th>n</th><th>x</th><th>y</th><th>a</th><th>b</th><th>theta</th><th>z</th><th>mag</th></tr></thead>
 <thead><tr><th>str2</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
 <tr><td>1a</td><td>1.7</td><td>1.7</td><td>3.5</td><td>3.5</td><td>0.0</td><td>1.0</td><td>20.0</td></tr>
@@ -367,7 +369,7 @@ The colorbar indicates the mass repartition of the cluster in <img class="math" 
 </pre></div>
 </div>
 <div class="output text_html"><div><i>Table length=2</i>
-<table id="table139712129829040" class="table-striped table-bordered table-condensed">
+<table id="table4495205008" class="table-striped table-bordered table-condensed">
 <thead><tr><th>n</th><th>x</th><th>y</th><th>a</th><th>b</th><th>theta</th><th>z</th><th>mag</th></tr></thead>
 <thead><tr><th>str2</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
 <tr><td>1a</td><td>10.033094210747203</td><td>10.033094210747207</td><td>20.656397190255532</td><td>3.5000000004537077</td><td>134.99999999105756</td><td>1.0</td><td>18.072533671216917</td></tr>
@@ -381,11 +383,11 @@ The colorbar indicates the mass repartition of the cluster in <img class="math" 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2756599/310927048.py:27: MatplotlibDeprecationWarning: Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/mm/6xbl_6k14pn5zn23cltp9rzc0000gn/T/ipykernel_24111/310927048.py:27: MatplotlibDeprecationWarning: Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
   colorbar = plt.colorbar(cmap)
 </pre></div>
 </div>
-<img alt="_images/98e01b1e6e02a3104534a78e7b5219d21037138b0ab98e9d24c7a573ca5da608.png" src="_images/98e01b1e6e02a3104534a78e7b5219d21037138b0ab98e9d24c7a573ca5da608.png" />
+<img alt="_images/9d54bee38a73f30c905c021ff079021e6a38aa6e166ddb8dbbf368bc92e7f170.png" src="_images/9d54bee38a73f30c905c021ff079021e6a38aa6e166ddb8dbbf368bc92e7f170.png" />
 </div>
 </div>
 <p>By moving the source closer to the lens, the flux can be amplified.
@@ -404,7 +406,7 @@ The second colorbar represents the magnitude values of the obtained images.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=1</i>
-<table id="table139712128367104" class="table-striped table-bordered table-condensed">
+<table id="table4495086768" class="table-striped table-bordered table-condensed">
 <thead><tr><th>n</th><th>x</th><th>y</th><th>a</th><th>b</th><th>theta</th><th>z</th><th>mag</th></tr></thead>
 <thead><tr><th>str2</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
 <tr><td>1a</td><td>0.6789067</td><td>-9.7</td><td>5.5</td><td>5.5</td><td>0.0</td><td>1.5</td><td>20.0</td></tr>
@@ -422,7 +424,7 @@ The second colorbar represents the magnitude values of the obtained images.</p>
 </pre></div>
 </div>
 <div class="output text_html"><div><i>Table length=2</i>
-<table id="table139712127952464" class="table-striped table-bordered table-condensed">
+<table id="table4496372016" class="table-striped table-bordered table-condensed">
 <thead><tr><th>n</th><th>x</th><th>y</th><th>a</th><th>b</th><th>theta</th><th>z</th><th>mag</th></tr></thead>
 <thead><tr><th>str2</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
 <tr><td>1a</td><td>-0.25707791557222537</td><td>3.672954994000554</td><td>5.500000001342866</td><td>2.0826060496906016</td><td>94.00372378931525</td><td>1.5</td><td>21.054388909410584</td></tr>
@@ -436,11 +438,11 @@ The second colorbar represents the magnitude values of the obtained images.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2756599/310927048.py:27: MatplotlibDeprecationWarning: Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/mm/6xbl_6k14pn5zn23cltp9rzc0000gn/T/ipykernel_24111/310927048.py:27: MatplotlibDeprecationWarning: Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
   colorbar = plt.colorbar(cmap)
 </pre></div>
 </div>
-<img alt="_images/bac6aa9d8d8a094599c63d64bd351d46e7fe255e5e3907c94c9ba365273d6cd4.png" src="_images/bac6aa9d8d8a094599c63d64bd351d46e7fe255e5e3907c94c9ba365273d6cd4.png" />
+<img alt="_images/74d56eb725f5743ca2e367b33152309f877c7fca076b4a9a09e8c9f4f2a720d0.png" src="_images/74d56eb725f5743ca2e367b33152309f877c7fca076b4a9a09e8c9f4f2a720d0.png" />
 </div>
 </div>
 <p>The image obtained for the first source studied is modelled again and the size of the source is increased; it can be seen that the size of the image is also increased.</p>
@@ -458,7 +460,7 @@ The second colorbar represents the magnitude values of the obtained images.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=1</i>
-<table id="table139712127947424" class="table-striped table-bordered table-condensed">
+<table id="table4496681392" class="table-striped table-bordered table-condensed">
 <thead><tr><th>n</th><th>x</th><th>y</th><th>a</th><th>b</th><th>theta</th><th>z</th><th>mag</th></tr></thead>
 <thead><tr><th>str2</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
 <tr><td>1a</td><td>0.6789067</td><td>-9.7</td><td>3.5</td><td>3.5</td><td>0.0</td><td>15.0</td><td>20.0</td></tr>
@@ -476,7 +478,7 @@ The second colorbar represents the magnitude values of the obtained images.</p>
 </pre></div>
 </div>
 <div class="output text_html"><div><i>Table length=2</i>
-<table id="table139712126491936" class="table-striped table-bordered table-condensed">
+<table id="table4498025408" class="table-striped table-bordered table-condensed">
 <thead><tr><th>n</th><th>x</th><th>y</th><th>a</th><th>b</th><th>theta</th><th>z</th><th>mag</th></tr></thead>
 <thead><tr><th>str2</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
 <tr><td>1a</td><td>1.8173670426662405</td><td>-25.965958656690344</td><td>9.369170222656104</td><td>3.50000000232949</td><td>184.00362385225992</td><td>15.0</td><td>18.93091728652996</td></tr>
@@ -490,11 +492,11 @@ The second colorbar represents the magnitude values of the obtained images.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2756599/310927048.py:27: MatplotlibDeprecationWarning: Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/mm/6xbl_6k14pn5zn23cltp9rzc0000gn/T/ipykernel_24111/310927048.py:27: MatplotlibDeprecationWarning: Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
   colorbar = plt.colorbar(cmap)
 </pre></div>
 </div>
-<img alt="_images/fdb5a9404ec5e23dfe453e2abefa5d3425377a480795c70480835c03e6d7f4e9.png" src="_images/fdb5a9404ec5e23dfe453e2abefa5d3425377a480795c70480835c03e6d7f4e9.png" />
+<img alt="_images/64e94d29f2839d26bcf830a0f27c5d2cf0f33d5c9c49d85a47d22057312ee201.png" src="_images/64e94d29f2839d26bcf830a0f27c5d2cf0f33d5c9c49d85a47d22057312ee201.png" />
 </div>
 </div>
 <p>When the redshift is increased, the distance between the images is also increased.</p>
@@ -512,7 +514,7 @@ The second colorbar represents the magnitude values of the obtained images.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=1</i>
-<table id="table139712124921760" class="table-striped table-bordered table-condensed">
+<table id="table4498024784" class="table-striped table-bordered table-condensed">
 <thead><tr><th>n</th><th>x</th><th>y</th><th>a</th><th>b</th><th>theta</th><th>z</th><th>mag</th></tr></thead>
 <thead><tr><th>str2</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
 <tr><td>1a</td><td>0.3789067</td><td>0.4</td><td>3.5</td><td>3.5</td><td>0.0</td><td>1.0</td><td>20.0</td></tr>
@@ -530,7 +532,7 @@ The second colorbar represents the magnitude values of the obtained images.</p>
 </pre></div>
 </div>
 <div class="output text_html"><div><i>Table length=2</i>
-<table id="table139712124917344" class="table-striped table-bordered table-condensed">
+<table id="table4498558640" class="table-striped table-bordered table-condensed">
 <thead><tr><th>n</th><th>x</th><th>y</th><th>a</th><th>b</th><th>theta</th><th>z</th><th>mag</th></tr></thead>
 <thead><tr><th>str2</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
 <tr><td>1a</td><td>8.483351108269728</td><td>8.955704565242327</td><td>78.35533537154147</td><td>3.500000000478264</td><td>136.55153147905978</td><td>1.0</td><td>16.62499867624839</td></tr>
@@ -544,11 +546,11 @@ The second colorbar represents the magnitude values of the obtained images.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2756599/310927048.py:27: MatplotlibDeprecationWarning: Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/mm/6xbl_6k14pn5zn23cltp9rzc0000gn/T/ipykernel_24111/310927048.py:27: MatplotlibDeprecationWarning: Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
   colorbar = plt.colorbar(cmap)
 </pre></div>
 </div>
-<img alt="_images/2e73cbcce520a862528f4084f259b125bd97316920deca35cd83718416c29dc4.png" src="_images/2e73cbcce520a862528f4084f259b125bd97316920deca35cd83718416c29dc4.png" />
+<img alt="_images/02981be19e4e6c311911ee754364b2aff6c2eae40d73741451b3ec2c58c7a25f.png" src="_images/02981be19e4e6c311911ee754364b2aff6c2eae40d73741451b3ec2c58c7a25f.png" />
 </div>
 </div>
 <p>By moving the source closer to the lens again, the images appear streched.</p>
@@ -587,7 +589,7 @@ source (40,40) s=(1.026,1.026) [-20.000,20.000] [-20.000,20.000]
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Source plane&#39;)
 </pre></div>
 </div>
-<img alt="_images/ff0c331fd19b2fb6d62f6ad38de742fd2389bff6f936b2183d069d0cc5bbeacf.png" src="_images/ff0c331fd19b2fb6d62f6ad38de742fd2389bff6f936b2183d069d0cc5bbeacf.png" />
+<img alt="_images/abda10f2c8ccc101b11d6f00ad3fb44ba130ded16d7908ebadfecbc3256d9328.png" src="_images/abda10f2c8ccc101b11d6f00ad3fb44ba130ded16d7908ebadfecbc3256d9328.png" />
 </div>
 </div>
 </section>
@@ -609,10 +611,10 @@ source (40,40) s=(1.026,1.026) [-20.000,20.000] [-20.000,20.000]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f11439380d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x110517370&gt;
 </pre></div>
 </div>
-<img alt="_images/44610d120c1b5ba0bc0c946d00409e2944848842b3e5a83b57cfd57f5a69b363.png" src="_images/44610d120c1b5ba0bc0c946d00409e2944848842b3e5a83b57cfd57f5a69b363.png" />
+<img alt="_images/ba85623ecf41c6251532c41017e81e49ed5464653d3091653870f61a972a576e.png" src="_images/ba85623ecf41c6251532c41017e81e49ed5464653d3091653870f61a972a576e.png" />
 </div>
 </div>
 <p>Here, the yellow circle is the critical line for our SIS model (when the convergence = 1/2).</p>
@@ -677,7 +679,7 @@ To observe the match with the magnification map, it is also possible to directly
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Magnification map&#39;)
 </pre></div>
 </div>
-<img alt="_images/fd46af41f58bb19852f3b09f148a7aada1b048d64915253c014791b28daae1cb.png" src="_images/fd46af41f58bb19852f3b09f148a7aada1b048d64915253c014791b28daae1cb.png" />
+<img alt="_images/1be12f7a2ffd8308a0332a193b3926927de335ba1f6caa2b5112240c4c5bcf1b.png" src="_images/1be12f7a2ffd8308a0332a193b3926927de335ba1f6caa2b5112240c4c5bcf1b.png" />
 </div>
 </div>
 <p>Here the Eistein ring is pink and the colorbar indicates the magnification factor.</p>
@@ -728,7 +730,7 @@ limitHigh(in arcsec)=10.000 limitLow(in arcsec)=1.000
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Source plane&#39;)
 </pre></div>
 </div>
-<img alt="_images/660e852c15b7ffcfdf07d0aa454764cfe1af30a2e93bb32718265e2064c6308f.png" src="_images/660e852c15b7ffcfdf07d0aa454764cfe1af30a2e93bb32718265e2064c6308f.png" />
+<img alt="_images/d3ee1837f778b88fa1542dca0a2e3d580147ff4f79356d840120c647822b917a.png" src="_images/d3ee1837f778b88fa1542dca0a2e3d580147ff4f79356d840120c647822b917a.png" />
 </div>
 </div>
 <p>Here we display the external critical and caustic lines of the lens.<br>
@@ -748,7 +750,7 @@ If we were to model the internal lines, it would be the opposite, meaning that t
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Lenstool group.</p>
+    <p>&#169; Copyright 2024, Lenstool group.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

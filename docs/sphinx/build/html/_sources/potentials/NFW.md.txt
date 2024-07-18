@@ -16,10 +16,10 @@ $\alpha = 1.0$ corresponds to a regular NFW profile.
 Example of lenstool NFW parametrisation:
 ```
 potential  1
-        profil               12
+        profile              12
         x_centre             0.
         y_centre             0.
-        ellipticite          0.
+        ellipticity          0.
         angle_pos            0.
         alpha                1.
         scale_radius_kpc     30.
