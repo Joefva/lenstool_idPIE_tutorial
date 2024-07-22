@@ -15,7 +15,8 @@ import sys
 
 try:
     path_lenstool = os.getenv('LENSTOOL_DIR')
-    sys.path.insert(0, os.path.abspath(path_lenstool)) # '/path_to_lenstool/'
+    sys.path.insert(0, os.path.abspath(path_lenstool))
+    print("Lenstoll directory imported: " + path_lenstool)
 except:
     print("WARNING: No 'LENSTOOL_DIR' variable found, the path to Lenstool is unknown.")
 
