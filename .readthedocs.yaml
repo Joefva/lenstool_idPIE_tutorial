@@ -14,6 +14,10 @@ build:
     # nodejs: "19"
     # rust: "1.64"
     # golang: "1.19"
+  jobs:
+    pre_create_environment:
+      - echo "Command run at 'pre_create_environment' step"
+      - source .bashrc
 
 # Build documentation in the "docs/" directory with Sphinx
 sphinx:
@@ -37,8 +41,4 @@ python:
 #env:
 #  PYTHONPATH:
 #    - /home/joseph/Software/Lenstool_JA
-
-setup:
-  commands:
-    - source .bashrc
 
