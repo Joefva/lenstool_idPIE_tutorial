@@ -34,8 +34,8 @@ python:
   install:
     - requirements: requirements.txt
     
-env:
-  PYTHONPATH:
-    - /home/joseph/Software/Lenstool_JA
+#env:
+#  PYTHONPATH:
+#    - /home/joseph/Software/Lenstool_JA
 
 
