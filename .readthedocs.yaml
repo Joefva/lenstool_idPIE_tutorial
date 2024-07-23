@@ -19,6 +19,9 @@ build:
 sphinx:
   configuration: docs/sphinx/source/conf.py
 
+#system_packages:
+#  - libcfitsio-dev
+
 # Optionally build your docs in additional formats such as PDF and ePub
 # formats:
 #    - pdf

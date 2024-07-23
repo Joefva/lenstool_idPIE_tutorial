@@ -8,4 +8,4 @@ numpy
 jupyter
 nbconvert
 nbformat
-fitsio
+#fitsio

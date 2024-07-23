@@ -14,7 +14,13 @@ import os
 import sys
 
 try:
-    path_lenstool = '/home/joseph/Software/Lenstool_JA' # os.getenv(LENSTOOL_DIR)
+    pythonpath = os.getenv('PYTHONPATH')
+    print("Python path directory imported: " + pythonpath)
+except:
+    print("WANING: No python path found!")
+
+try:
+    path_lenstool = '/home/joseph/Software/Lenstool_JA' # os.getenv('LENSTOOL_DIR')
     sys.path.insert(0, os.path.abspath(path_lenstool)) # '/path_to_lenstool/' '/home/joseph/Software/lenstool/'
     print("Lenstool directory imported: " + path_lenstool)
 except:
