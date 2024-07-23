@@ -1,6 +1,5 @@
 myst_nb
 myst-parser
-ctypes
 sphinx
 sphinx_rtd_theme
 astropy
@@ -9,4 +8,4 @@ numpy
 jupyter
 nbconvert
 nbformat
-
+cfitsio

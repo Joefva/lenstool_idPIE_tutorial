@@ -17,14 +17,16 @@ try:
     path_lenstool = '/home/joseph/Software/Lenstool_JA' # os.getenv(LENSTOOL_DIR)
     sys.path.insert(0, os.path.abspath(path_lenstool)) # '/path_to_lenstool/' '/home/joseph/Software/lenstool/'
     print("Lenstool directory imported: " + path_lenstool)
-    sys.path.insert(0, os.path.abspath("/home/joseph/Software/Lenstool_JA/lenstool"))
+except:
+    print("WARNING: No 'LENSTOOL_DIR' variable found, the path to Lenstool is unknown.")
+
+try:
+    # sys.path.insert(0, os.path.abspath("/home/joseph/Software/Lenstool_JA/lenstool"))
     import lenstool
     print("Path of lenstool:", lenstool.__file__)
     print("lenstool.constant.cH0_4piG = ", lenstool.constant.cH0_4piG)
 except:
-    print("WARNING: No 'LENSTOOL_DIR' variable found, the path to Lenstool is unknown.")
-
-import lenstool
+    print("WARNING: 'import lenstool' command in 'conf.py' failed!")
 
 # -- Project information -----------------------------------------------------
 
