@@ -14,16 +14,17 @@ import os
 import sys
 
 
-sys.path.insert(0, os.path.abspath('/home/joseph/Work/Codes'))
-import astro_constants_mod
-print('astro_constants_mod.c = ', astro_constants_mod.c)
-
 try:
     pythonpath = os.getenv('PYTHONPATH')
     print("Python path directory imported: " + pythonpath)
     sys.path.insert(0, os.path.abspath(pythonpath))
 except:
     print("WARNING: No python path found!")
+
+sys.path.insert(0, os.path.abspath('/home/joseph/Work/Codes'))
+import astro_constants_mod
+print('astro_constants_mod.c = ', astro_constants_mod.c)
+
 
 try:
     path_lenstool = '/home/joseph/Software/Lenstool_JA' # os.getenv('LENSTOOL_DIR')
