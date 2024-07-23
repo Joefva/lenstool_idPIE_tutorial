@@ -3,4 +3,7 @@ sphinx_rtd_theme
 astropy
 matplotlib
 numpy
+jupyter
+nbconvert
+nbformat
 
