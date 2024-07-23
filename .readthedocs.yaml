@@ -17,7 +17,11 @@ build:
   jobs:
     pre_create_environment:
       - echo "Command run at 'pre_create_environment' step"
-      - source .bashrc
+      - export LENSTOOL_JA_DIR=/home/joseph/Software/Lenstool_JA
+      - export LD_LIBRARY_PATH=$LENSTOOL_JA_DIR/lib:$LD_LIBRARY_PATH
+      - export PYTHONPATH="${PYTHONPATH}:${LENSTOOL_JA_DIR}"
+      - export CODESDIR=/home/joseph/Work/Codes
+      - export PYTHONPATH="${PYTHONPATH}:${CODESDIR}"
 
 # Build documentation in the "docs/" directory with Sphinx
 sphinx:
