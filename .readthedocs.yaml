@@ -28,8 +28,5 @@ sphinx:
 # to build your documentation
 # See https://docs.readthedocs.io/en/stable/guides/reproducible-builds.html
 python:
-  setup_py_install: |
-    export LENSTOOL_DIR=/home/joseph/Software/Lenstool_JA
-
   install:
     - requirements: requirements.txt
