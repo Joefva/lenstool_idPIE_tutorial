@@ -38,4 +38,7 @@ python:
 #  PYTHONPATH:
 #    - /home/joseph/Software/Lenstool_JA
 
+setup:
+  commands:
+    - source .bashrc
 
