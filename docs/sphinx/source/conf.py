@@ -14,9 +14,9 @@ import os
 import sys
 
 
-sys.path.insert(0, os.path.abspath('/home/joseph/Work'))
-import machine_var
-print('machine_var.home_dir = ', machine_var.home_dir)
+sys.path.insert(0, os.path.abspath('/home/joseph/Work/Codes'))
+import astro_constants_mod
+print('astro_constants_mod.c = ', astro_constants_mod.c)
 
 try:
     pythonpath = os.getenv('PYTHONPATH')
