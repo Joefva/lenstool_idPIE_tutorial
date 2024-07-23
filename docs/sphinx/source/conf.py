@@ -13,11 +13,17 @@
 import os
 import sys
 
+
+sys.path.insert(0, os.path.abspath('/home/joseph/Work'))
+import machine_var
+print('machine_var.home_dir = ', machine_var.home_dir)
+
 try:
     pythonpath = os.getenv('PYTHONPATH')
     print("Python path directory imported: " + pythonpath)
+    sys.path.insert(0, os.path.abspath(pythonpath))
 except:
-    print("WANING: No python path found!")
+    print("WARNING: No python path found!")
 
 try:
     path_lenstool = '/home/joseph/Software/Lenstool_JA' # os.getenv('LENSTOOL_DIR')
