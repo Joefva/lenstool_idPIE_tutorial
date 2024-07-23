@@ -140,7 +140,6 @@
     <span class="p">]</span></div>
 
 
-
 <div class="viewcode-block" id="Bspline2D_red">
 <a class="viewcode-back" href="../../lenstool.html#lenstool.structure.Bspline2D_red">[docs]</a>
 <span class="k">class</span> <span class="nc">Bspline2D_red</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
@@ -151,7 +150,8 @@
         <span class="p">(</span><span class="s2">&quot;ny&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
         <span class="p">(</span><span class="s2">&quot;Pz&quot;</span><span class="p">,</span><span class="n">POINTER</span><span class="p">(</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">))),</span>
         <span class="p">(</span><span class="s2">&quot;kx&quot;</span><span class="p">,</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">)),</span>
-        <span class="p">(</span><span class="s2">&quot;ky&quot;</span><span class="p">,</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">))</span>
+        <span class="p">(</span><span class="s2">&quot;ky&quot;</span><span class="p">,</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;file_name&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">c_char</span> <span class="p">))</span>
     <span class="p">]</span></div>
 
 
@@ -182,6 +182,16 @@
     <span class="p">]</span></div>
 
 
+<div class="viewcode-block" id="cpa2d">
+<a class="viewcode-back" href="../../lenstool.html#lenstool.structure.cpa2d">[docs]</a>
+<span class="k">class</span> <span class="nc">cpa2d</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="n">_fields_</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;nx&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ny&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;v&quot;</span><span class="p">,</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">))</span>
+    <span class="p">]</span></div>
+
+
 <div class="viewcode-block" id="g_pixel">
 <a class="viewcode-back" href="../../lenstool.html#lenstool.structure.g_pixel">[docs]</a>
 <span class="k">class</span> <span class="nc">g_pixel</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
@@ -206,6 +216,45 @@
         <span class="p">(</span><span class="s2">&quot;wcsprm&quot;</span><span class="p">,</span> <span class="n">c_void_p</span><span class="p">),</span>  <span class="c1"># TODO: implement the wcsinfo pointer</span>
         <span class="p">(</span><span class="s2">&quot;array&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">)))</span>
     <span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="g_X_ray">
+<a class="viewcode-back" href="../../lenstool.html#lenstool.structure.g_X_ray">[docs]</a>
+<span class="k">class</span> <span class="nc">g_X_ray</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;psf_bool&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;bool_exposure&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;bool_count&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;bool_bkg&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;bool_pix&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;bool_cooling_function&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;cooling_function&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">g_pixel</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;bool_intrinsic_error&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;intrinsic_error&quot;</span><span class="p">,</span><span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;intrinsic_error_map&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">g_pixel</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;pixmapx&quot;</span><span class="p">,</span><span class="n">POINTER</span><span class="p">(</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">))),</span>
+        <span class="p">(</span><span class="s2">&quot;pixmapy&quot;</span><span class="p">,</span><span class="n">POINTER</span><span class="p">(</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">))),</span>
+        <span class="p">(</span><span class="s2">&quot;logfactorial_to_compute&quot;</span><span class="p">,</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;opti&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;type_factor&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;factor_cash&quot;</span><span class="p">,</span><span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;factor_likelihood&quot;</span><span class="p">,</span><span class="n">c_double</span><span class="o">*</span><span class="mi">2</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;constant_cash&quot;</span><span class="p">,</span><span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;opti_z&quot;</span><span class="p">,</span><span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;psf_fft&quot;</span><span class="p">,</span><span class="n">POINTER</span><span class="p">(</span><span class="n">cpa2d</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;psf_map&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">g_pixel</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;bkgmap&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">g_pixel</span><span class="p">)),</span>
+        <span class="c1"># (&quot;bkg_type&quot;, c_int),</span>
+        <span class="p">(</span><span class="s2">&quot;exposuremap&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">g_pixel</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;countmap&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">g_pixel</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;Cash_statistic_norm&quot;</span><span class="p">,</span><span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;pix_area&quot;</span><span class="p">,</span><span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;indice_pot&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">c_int</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;n_pot&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">)</span>       
+    <span class="p">]</span></div>
+
+
+
 
 
 <div class="viewcode-block" id="g_source">
@@ -467,7 +516,8 @@
         <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
         <span class="p">(</span><span class="s2">&quot;b1&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
         <span class="p">(</span><span class="s2">&quot;b2&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
-        <span class="p">(</span><span class="s2">&quot;opt&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">)</span>
+        <span class="p">(</span><span class="s2">&quot;opt&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;opti&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">)</span>
     <span class="p">]</span></div>
 
 
@@ -524,10 +574,13 @@
         <span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="n">c_char</span> <span class="o">*</span> <span class="n">IDSIZE</span><span class="p">),</span>
         <span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="n">point</span><span class="p">),</span>
         <span class="p">(</span><span class="s2">&quot;epot&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;epot2&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
         <span class="p">(</span><span class="s2">&quot;emass&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
         <span class="p">(</span><span class="s2">&quot;theta&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
         <span class="p">(</span><span class="s2">&quot;phi&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
         <span class="p">(</span><span class="s2">&quot;sigma&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;sigma_obs&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;sigma_obs_err&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
         <span class="p">(</span><span class="s2">&quot;rc&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
         <span class="p">(</span><span class="s2">&quot;rckpc&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
         <span class="p">(</span><span class="s2">&quot;rcut&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
@@ -542,6 +595,7 @@
         <span class="p">(</span><span class="s2">&quot;psiccut&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
         <span class="p">(</span><span class="s2">&quot;b0&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
         <span class="p">(</span><span class="s2">&quot;masse&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;masse_star&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
         <span class="p">(</span><span class="s2">&quot;pmass&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
         <span class="p">(</span><span class="s2">&quot;cr&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
         <span class="p">(</span><span class="s2">&quot;ct&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
@@ -551,13 +605,29 @@
         <span class="p">(</span><span class="s2">&quot;effradius&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
         <span class="p">(</span><span class="s2">&quot;costheta&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
         <span class="p">(</span><span class="s2">&quot;sintheta&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;cosphi&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;sinphi&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
         <span class="p">(</span><span class="s2">&quot;dplxmap&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">g_pixel</span><span class="p">)),</span>
         <span class="p">(</span><span class="s2">&quot;dplymap&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">g_pixel</span><span class="p">)),</span>
         <span class="p">(</span><span class="s2">&quot;kappamap&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">g_pixel</span><span class="p">)),</span>
         <span class="p">(</span><span class="s2">&quot;gamma1map&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">g_pixel</span><span class="p">)),</span>
         <span class="p">(</span><span class="s2">&quot;gamma2map&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">g_pixel</span><span class="p">)),</span>
         <span class="p">(</span><span class="s2">&quot;potenmap&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">g_pixel</span><span class="p">)),</span>
-        <span class="p">(</span><span class="s2">&quot;Bspline&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">Bspline2D</span><span class="p">))</span> <span class="c1"># TODO: implement Bspline2D type</span>
+        <span class="p">(</span><span class="s2">&quot;dplx_spline&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">Bspline2D_red</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;dply_spline&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">Bspline2D_red</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;kappa_spline&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">Bspline2D_red</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;gamma1_spline&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">Bspline2D_red</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;gamma2_spline&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">Bspline2D_red</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;poten_spline&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">Bspline2D_red</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;Bspline&quot;</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">Bspline2D</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;X_bool&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;gas_frac&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;_3D_bool&quot;</span><span class="p">,</span> <span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;_3D_conv_fac&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;_3D_scale_fac&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;emass2&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;costheta_3D&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;sintheta_3D&quot;</span><span class="p">,</span> <span class="n">c_double</span><span class="p">)</span>      
     <span class="p">]</span></div>
 
 
