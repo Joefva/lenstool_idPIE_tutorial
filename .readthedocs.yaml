@@ -19,9 +19,6 @@ build:
 sphinx:
   configuration: docs/sphinx/source/conf.py
 
-  setup_py_install: |
-    export LENSTOOL_DIR=/home/joseph/Software/Lenstool_JA/lenstool
-
 # Optionally build your docs in additional formats such as PDF and ePub
 # formats:
 #    - pdf
@@ -31,5 +28,8 @@ sphinx:
 # to build your documentation
 # See https://docs.readthedocs.io/en/stable/guides/reproducible-builds.html
 python:
+  setup_py_install: |
+    export LENSTOOL_DIR=/home/joseph/Software/Lenstool_JA
+
   install:
     - requirements: requirements.txt
