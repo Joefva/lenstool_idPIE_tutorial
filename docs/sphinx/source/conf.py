@@ -66,12 +66,13 @@ extensions = [
 #    'breathe',   # add it if doing C api. Requires to install breathe.
 #    'sphinx.ext.duration',
 #    'sphinx.ext.autosummary',
-#    'sphinx.ext.intersphinx',
+    'sphinx.ext.intersphinx',
 ]
 #nb_kernel_rgx_aliases = {"python3"}
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),
     'sphinx': ('https://www.sphinx-doc.org/en/master/', None),
+    'lenstool': ('https://git-cral.univ-lyon1.fr/lenstool/lenstool/-/tree/X-ray-hydro?ref_type=heads', None),
 }
 intersphinx_disabled_domains = ['std']
 
