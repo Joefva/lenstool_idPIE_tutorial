@@ -21,6 +21,10 @@ try:
 except:
     print("WARNING: No python path found!")
 
+
+sys.path.insert(0, os.path.abspath('/home/joseph/Work/cocococ'))
+
+
 sys.path.insert(0, os.path.abspath('/home/joseph/Work/Codes'))
 import astro_constants_mod
 print('astro_constants_mod.c = ', astro_constants_mod.c)
