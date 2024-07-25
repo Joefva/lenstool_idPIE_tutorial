@@ -1,56 +1,154 @@
-# X-ray extension: Basics
+SZE extension: Basics
+==========================
 
-Since the work of [Beauchesne+23](https://ui.adsabs.harvard.edu/abs/2023arXiv230110907B/abstract), Lenstool is able to use X-ray data to model the intra-cluster gas. It only requires to define a new section in the parameter file that will define the X-ray observation and needs to be activated per potential with a simple keyword.
-
-## How it works
-
-To make it simple, the X-ray extension bring the ability of Lenstool to compute the $\int n_e n_p dl$ for a potential which allow to constraint the shape of the gas haloes with the count map and to also produce the related quantities as map. For now, only the dPIE are implemented and thus, we will focus on this potential to detail how it has been put in place.
-
-### dPIE
-
-The analytical formulae associated to the dPIE and unique to each potential is the computation of $\int \rho^2 dl$. 
-We use the equation presented in [Bonamigo+17](https://ui.adsabs.harvard.edu/abs/2017ApJ...842..132B/abstract) and to define their elliptical counter part we use the same transformation as in [Elıasdottir+07](https://arxiv.org/abs/0710.5636). As we are considering the sum of multiple potential there is two different interesting formulae. If we consider the $i^{th}$ and $j^{th}$ potentials, we have to compute $\int \rho_i^2 dl$ and $\int \rho_i \rho_j dl$ that are presented in equation 5 and 7 in [Bonamigo+17](https://ui.adsabs.harvard.edu/abs/2017ApJ...842..132B/abstract). As we can see, these expressions only depends of the usual dPIE parameters. However, each of these potential does not have to only consist of gas, thus a gas fraction has to be defined for these X-ray activated potentials, which bring one more parameter to the potential. By default the gas fraction is fixed to one and it is the current recommended practice as it implies no assumption on the gas following the DM distribution. The gas fraction behave like any other potential parameter and can be optimised between 0 and 1.
-
-The definition of a dPIE potential is then almost the same as without the X-ray extension and is the following:
-
-```
-potential O6
-    profile       81
-    x_centre     -22.867836
-    y_centre     17.190451
-    ellipticity     0.133194
-    angle_pos       -27.937929
-    core_radius_kpc     153.952651
-    cut_radius_kpc     1250.000000
-    v_disp     338.723340
-    X-ray     1
-    Gas_fraction     1.000000
-    z_lens     0.3475
-    end
-```
-
-As we can see there is only `X-ray` and `Gas_fraction`, the first being a boolean and can be set to 0 or 1 and the second is the previously discussed parameter. If other potential have to be implemented, they will follow the same pattern and just these two keywords will have to be added. The only exception is potentials that will follows some specific assumptions.
-
-### Plasma emission model
-
-The model is separated in two parts, the hard coded and the user provided. The earlier is only the transformation from $\rho^2$ to $n_e n_p$ while the later is the final transformation from $\int n_e n_p dl$ to the actual number of counts. The transformation of the mass to the proton and neutron density is the following:
-
-$$
-\rho=\mu(n_e+n_p)
+Since the work of `Beauchesne et al. 2023 <https://ui.adsabs.harvard.edu/abs/2023arXiv230110907B/abstract>`_
+, Lenstool is able to use X-ray data to model the intra-cluster gas (see :doc:`../X-ray/X-ray`). 
+In a similar fashion, we can use the Sunyaev-Zel'dovich (SZ) effect, observed in submillimetre frequencies, to constrain the properties of the intra-cluster medium (ICM). 
+This SZ effect (SZE) is can be added to the ``lenstool`` parameter file by adding one section, and selecting the SZE-bright potential with keyword ``SZE``.
 
 
+.. _theoreticalpreliminary:
 
-$$
+Theoretical preliminary
+-----------------------
 
-$$
-\Rightarrow n_e n_p=\frac{\rho^2}{\mu^2 \left(1+{\rm nhc}\right)\left(1+\frac{1}{\rm nhc}\right)}
+The CMB photons are permanently bathing the Universe. As a result, they can occasionally interact with physical objects at an observable scale.
+The thermal, non-relativistic, hot electrons of the ICM create the condition for an inverse Compton scattering: in a spectral band-width of CMB photons, one can observe the broadening of the band due to the Doppler effect.
+Therefore, `cold` or `hot` spots in CMB surveys such as *Planck* or ACT (Atacama Cosmology Telescope) may reveal the presence of the ICM associated with galaxy clusters.
+This effect was first described in `Sunyaev and Zel’dovich 1970a <https://link.springer.com/article/10.1007/BF00653471>`_, `b <https://link.springer.com/article/10.1007/BF00653472>`_.
+
+Given a CMB temperature 
+:math:`T_r \simeq 2.726` K today, we introduce the reduced frequency is defined as:
+
+.. math::
+
+    x = \frac{h \nu}{k_B T_r},
+
+where 
+:math:`k_B` is the Boltzmann constant, 
+:math:`h` is the Planck constant and 
+:math:`\nu` is the measured frequency.
+We also introduce the Compton parameter
+:math:`y`:
+
+.. math::
+
+    y = \frac{k_B \sigma_T}{m_e c^2} \int n_e T_e \mathrm{d}l,
+
+where 
+:math:`m_e` the electron mass, 
+:math:`c` the celerity of light, 
+:math:`\sigma_T` the Thomson cross-section, 
+:math:`n_e` the ICM electron number density, 
+:math:`T_e` the ICM electron temperature and 
+:math:`\int \mathrm{d}l` the integral over the line-of-sight. 
+
+We can also define the electron optical depth 
+:math:`\tau_e`:
+
+.. math::
+
+    \tau_e = \int \sigma_T n_e \mathrm{d}l.
+
+
+We can now write the SZE temperature contrast:
+
+.. math::
+
+   \Theta_r = \frac{\Delta T}{T_r} = \frac{(e^x - 1)^2}{x^4 e^x} \frac{\Delta I}{I_0} \left[ x \coth \left( \frac{x}{2} \right) - 4 \right] y,
+
+where 
+:math:`\Delta_I` is the SZE spectral intensity shift and
+:math:`I_0` the spectral intensity of the CMB.
+
+.. note::
+
+   WARNING: Please notice that this only describes the thermal SZ effect (tSZE). The kinematic and polarisation SZE are a priori much fainter, but may create offsets in the data. 
+   
 
 
 
-$$
+.. _howitworks:
 
-Where $\mu$ and ${\rm nhc}$ are the mean molecular weight per particle in a fully ionised gas and the conversion factor from $n_p$ to $n_e$, respectively. For now, we hardcoded the value of this two parameters to the following work of [Asplund+09](https://ui.adsabs.harvard.edu/abs/2009ARA%26A..47..481A/abstract). Here are their values:
-$\mu=0.5994$ and $nhc=\frac{1}{0.8527}$
+How it works
+---------------
+
+This extension to ``lenstool`` computes a map of 
+:math:`y` for a potential, which allows to constraint the shape of the gas haloes with the SZE data maps, and to produce the related quantities as map. 
+For now, only the dPIE and idPIE 
+:math:`n_e` potentials are implemented.
+A temperature 
+:math:`T_e` map can be given as an input, or we can use different polytropic temperatue laws (detailed in the :ref:`temperature_profiles` section).
+
+
+
+.. _density_profiles:
+
+Density profiles
+------------------
+
+.. _dPIE_profile_SZE:
+
+dPIE Profile
+~~~~~~~~~~~~~~~
+
+The ICM corresponding to the dPIE profile (see :ref:`supported_potentials`) for the SZE simply describes the gas density as a dPIE, independant of any other parameter. Therefore, it uses the same description as other dPIE potentials.
+
+.. _idPIE_profile_SZE:
+
+idPIE Profile
+~~~~~~~~~~~~~~~
+See section :doc:`X-ray/usage`.
+
+
+.. _temperature_profiles:
+
+Temperature profiles
+---------------------
+
+See section :doc:`../ICM_Te_models`.
+
+.. _example_potential:
+
+Example of ``Potential``
+-------------------------
+
+The ``potential`` keyword presents two additional parameters: ``SZE`` and ``Gas_fraction``.
+
+- ``SZE``, ``bool``: 1 if dPIE SZE-bright, 2 for idPIE SZE-bright, 0 otherwise. Default: 0.
+- ``Gas_fraction``, ``float``: Fraction of gas (multiplying the density, between 0 and 1). Default: 1.
+
+.. code-block:: console
+
+	potential O1
+		profile          81
+		SZE	         1
+		Gas_fraction     1.
+		x_centre         0.
+		y_centre         0.
+		ellipticity      0.5
+		angle_pos        0.
+		core_radius_kpc  100
+		cut_radius_kpc   2500.
+		v_disp           1000.
+		z_lens           0.3
+		end
+	limit O1
+		x_centre         1 -10. 5. 0.01
+		cut_radius_kpc   1 500. 10000. 100.
+		end
+
+
+.. _Xray_compatibility:
+
+X-ray compatibility
+--------------------
+
+As the ICM observed through X-ray and SZE is the same baryonic medium, the parameters used to describe both should be identical (Temparature model, density profile, etc.).
+
+
+
+.. To complete
 
 Regarding the user provided part, it comes with the set up of the optimisation constraint in the new X-ray section of the parameter file. Indeed, the factor that transform $\int n_e n_p dl$ to the photon count have to be provided in the form of a map, the earlier integral being given in $cm^{-5}$. This map represent the plasma emission model time the exposure map and if we consider Chandra data, it can be obtained with the following procedure:
 
