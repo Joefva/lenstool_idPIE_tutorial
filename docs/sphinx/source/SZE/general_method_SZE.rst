@@ -58,7 +58,8 @@ We can now write the SZE temperature contrast:
    \Theta_r = \frac{\Delta T}{T_r} = \frac{(e^x - 1)^2}{x^4 e^x} \frac{\Delta I}{I_0} \left[ x \coth \left( \frac{x}{2} \right) - 4 \right] y,
 
 where 
-:math:`\Delta_I` is the SZE spectral intensity shift and
+:math:`\Delta T = T - T_r` is the SZE spectral temperature contrast, 
+:math:`\Delta I` is the SZE spectral intensity shift and
 :math:`I_0` the spectral intensity of the CMB.
 
 .. note::
@@ -98,7 +99,7 @@ The ICM corresponding to the dPIE profile (see :ref:`supported_potentials`) for 
 
 idPIE Profile
 ~~~~~~~~~~~~~~~
-See section :doc:`X-ray/usage`.
+See section :doc:`../X-ray/usage`.
 
 
 .. _temperature_profiles:
@@ -139,6 +140,105 @@ The ``potential`` keyword presents two additional parameters: ``SZE`` and ``Gas_
 		end
 
 
+
+.. _SZE_optimisation_block:
+
+SZE optimisation parameters
+----------------------------
+
+This SZE extension adds a ``lenstool`` keyword to the parameter file, to input the specific parameters.
+Three maps must be provided, in order to compute the observed Compton parameter 
+:math:`y`:
+
+- Contrast Temperature map ``SZE_map`` in the submillimetre spectrum, measuring the SZE effect.
+- Standard deviation of the measured contrast Temperature map ``std_map``.
+- Temperature map ``Temperature_map`` of the ICM of the cluster. This is the temperature of the cluster, not of the scattered CMB photons. This map can be replaced by an analytical temperature model (see ``Temp0`` and ``Jz_array``).
+
+
+We give an example of the ``SZE`` section:
+
+.. code-block:: console
+
+	SZE
+		pixel_area      0.00833333
+		Optimisation    1
+		Optimisation_z  0.4
+		Temp0           13.4                            # keV
+		Jz_array        1 polyE Jz_polyE_z0.4000.csv    # 'polyE' is the default.
+		Gauss_stat_norm     252.2                           # = N_PIX_X/N_IM_SL  (for instance)
+		psf             3 ACT_PSFmap.fits
+		frequency       150.                            # GHz
+		SZE_map         3 f150_map_filtered_0.05.fits       # '6' here for temperature contrast in microKelvins
+		std_map         6 f150_ivar.fits     # '6' for inverse variance, in muK^-2
+		beam            1 s16_pa2_f150_nohwp_night_beam_profile_jitter.txt
+		model_type      0
+		end
+
+..		Type_factor_likelihood   1
+
+where:
+
+- ``frequency``, ``float``: frequency of measurement the SZE map, in :math:`\mathrm{GHz}`. Default: 0. Note: several frequencies (from a same telescope) can be input together as ``{float1,float2}``.
+
+- ``SZE_map``, ``int``: 1 if the map is in Compton parameter :math:`y`, 2 for a CMB temperature contrast in :math:`\mathrm{K}`, 3 for a CMB temperature in :math:`\mu \mathrm{K}`, 0 to switch off. Default: 0. ``string``: Path of the temperature contrast map. Note: several maps (from a same telescope, with the same ``int`` unit) can be input together as ``{string1,string2}``.
+
+.. note::
+
+	TO DO: multiple maps with a same command.
+	
+- ``Std_map``, ``int``: 1 if the map is in Compton parameter :math:`y`, 2 for a CMB temperature contrast in :math:`\mathrm{K}`, 3 for a CMB temperature in :math:`\mu \mathrm{K}`, 6 for a map in inverse variance in :math:`\mu \mathrm{K}^{-2}`, 0 to switch off. Default: 0. ``string``: Path of the measured standard deviation of the temperature contrast. Note: several maps (from a same telescope, with the same ``int`` unit) can be input together as ``{string1,string2}``.
+
+- ``Temperature_map``, ``int``: 1 if the ICM temperature map is in :math:`\mathrm{K}`, 2 if the map is in :math:`\mathrm{keV}`, 0 to switch off. Default: 0. ``string``: Path of the measured ICM electron temperature map :math:`T_e`. If ``int`` is not 0, this overrides any analytical temperature model.
+
+- ``pixel_area``, ``float``: pixel size for all maps (must be identical), in :math:`\mathrm{deg}`. Default: 1.
+
+- ``Optimisation``, ``bool``: 1 or 0 to activate/deactivate the SZE optimisation, through likelihood optimisation. Default: 0.
+
+- ``Optimisation_z``, ``float``: redshift of the ICM. Default: 0.
+
+- ``Temp0``, ``float``: pivot temperature in :math:`\mathrm{keV}`, in case of an analytical ICM temperature model. Default: 0. For more details, see :ref:`temperature_profiles`.
+
+- ``Jz_array``, ``bool``: 1 or 0 to compute/not compute the :math:`\mathcal{J}_z` array, necessary to use a hydrostatic ``idPIE`` :math:`n_e` ICM density profile (see :ref:`idPIE_profile_SZE`). Default: 0. ``string``: temperature model (see :ref:`temperature_profiles`). Default: ``polyE``. ``string``: name of the output array. If the array is not computed (``0``), this array must already exist, if the user is using idPIE profiles (keyword ``SZE 2``, in combination with ``profile 81`` in :ref:`example_potential`).
+
+- ``Gauss_stat_norm``, ``float``: Normalisation of the log-likelihood of the SZE. For instance, setting this parameter to 10 multiplies the SZE Gaussian log-likelihood by a factor 1/10. Default: 1.
+
+.. - ``Type_factor_likelihood``: ``int``: Not used yet, this should be used if other types of likelihood are to be implemented for SZE. Default: 1 (Gaussian).
+
+- ``psf``, TO DO
+
+- ``beam``, ``bool``: 1 if there is a dispersion beam to take into account in the maps, 0 otherwise. Default: 0. ``string``: filename of the beam.
+
+- ``model_type``, ``int``: 0 for a simple Gaussian model, where the model std is considered to be 0. 1 for a model std equal to the model SZE value itself. Default: 0. (TO DO.)
+
+
+.. _SZE_Optimisation:
+
+SZE Optimisation
+-----------------
+
+The optimisation is performed through a Monte Carlo method, with the Markov Chains Monte Carlo engine `bayeSys <(https://www.inference.org.uk/bayesys/>`_ implemented in the ``Lenstool`` C code or through any optimiser with the Python wrapper of the ``Lenstool`` C library. The Gaussian log-likelihood writes:
+
+.. math::
+
+   \ln \mathcal{L}_{\rm Gauss} = - \frac{1}{2} \sum_{i} \left[ \ln \sigma_i^2 + \ln 2 \pi + \left(\frac{M_i -  C_i}{\sigma_i} \right)^2 \right],
+	
+where: 
+
+- :math:`M_i` is the model value in the :math:`i`-th pixel, 
+- :math:`C_i` is the detected value in the :math:`i`-th pixel (provided through ``SZE_map``) and 
+- :math:`\sigma_i` is the standard deviation in the :math:`i`-th pixel. If ``model_type = 0``, it is simply the value :math:`\sigma_{C, i}` provided through ``Std_map``. If ``model_type = 1``, then :math:`\sigma_i^2 = \sigma_{C, i}^2 + M_i^2`.
+
+.. _Python_optimisation_SZE:
+
+SZE Python optimisation
+------------------------
+
+.. note::
+
+	TO DO
+
+
+
 .. _Xray_compatibility:
 
 X-ray compatibility
@@ -150,54 +250,7 @@ As the ICM observed through X-ray and SZE is the same baryonic medium, the param
 
 .. To complete
 
-Regarding the user provided part, it comes with the set up of the optimisation constraint in the new X-ray section of the parameter file. Indeed, the factor that transform $\int n_e n_p dl$ to the photon count have to be provided in the form of a map, the earlier integral being given in $cm^{-5}$. This map represent the plasma emission model time the exposure map and if we consider Chandra data, it can be obtained with the following procedure:
 
-- Create an exposure map in $cm^2 s \,count / photon$ with merge_obs for example. [See here.](https://cxc.cfa.harvard.edu/ciao/ahelp/merge_obs.html)
-- Compute a the emission for your emission model in $photon/cm^2/s$ with calc\_photon\_flux. [See here.](https://cxc.harvard.edu/sherpa/ahelp/calc_photon_flux.html)
-- Normalize the emission from your model to a unitary emission in term of the mass of the gas. For an [APEC](https://heasarc.gsfc.nasa.gov/xanadu/xspec/manual/XSmodelApec.html) model, this is equivalent to choosing the right norm (${10^{-14}\over{4\pi[D_A(1+z)]^2}}\int n_e n_HdV$ for $\int n_e n_p dl=1$). Using the following value:
-    - $\frac{1}{(4. \times (1. + z)^2 \times (180.\times 60.) ^2 / \pi / 1e-14 )}$ and setting `pixel_area` keyword to the pixel area of your exposure map in arcmin. These two things will perform the normalization correctly.
-        Notably, the exposure map produced by data reduction pipelines of other X-ray observatory may be different as for XMM-Newton for example, where the map does not take into account the pixel size in $cm^2$. We thus take into account this differences by offering a keyword `Chandra` to be set to $0$ if the pixel size is not in th exposure map.
-
-We will now move to the optimisation section where we will continue on explaining the keyword of the `X-ray` and finally summarize them with the presentation of a complete section.
-
-## Optimisation
-
-The optimisation is performed through a Monte Carlo method, with the Markov Chains Monte Carlo engine [bayeSys](https://www.inference.org.uk/bayesys/) implemented in the lenstool C code or through any optimiser with the Python wrapper of the Lenstool C library. Thus, it needs a loglikelihood which can be choose between a Poisson loglikelihood and a Poisson-gamma mixture loglikelihood. The earlier $\mathcal{L}_{\rm Poisson}$ does not take into account an intrinsic errors due to the assumption of the modelling method in contrary to the latter $\mathcal{L}_{\rm PG}$. They are defined as follow:
-
-$$
-\mathcal{L}_{\rm Poisson}=\sum_{i} D_i\log\left(M_i\right)-M_i-\log\left(D_i!\right)
-
-$$
-
-$$
-\mathcal{L}_{\rm PG}=\sum_i \log\left(\frac{\Gamma\left(D_i+\frac{M_i^2}{\sigma_{\rm X}^2}\right)}{D_i!\Gamma\left(\frac{M_i^2}{\sigma_{\rm X}^2}\right)}\left(\frac{M_i}{M_i+\sigma_{\rm X}^2}\right)^\frac{M_i^2}{\sigma_{\rm X}^2}\left(\frac{\sigma_{\rm X}^2}{\mu_i+\sigma_{\rm X}^2}\right)^{D_i}\right)
-
-$$
-
-Where $D_i$ and $M_i$ and $\sigma_{\rm X}$ are the observed and the model count number in the $i^{th}$ bin. $\sigma_{\rm X}$ is the systematic uncertainty due to the method which can also be defined per bin. The computation of these likelihood will be automatically done is the `X-ray` section of the parameter file is properly defined (i.e. the plasma emission model) and set up for an optimisation. Such section looks like the following:
-
-```
-X-ray
-   pixel_area 0.00107584
-   Chandra 1
-   Optimization 1
-   Optimization_z 0.3475
-   bkg_map 3 S1063_bkg_map_fit.fits
-   count_map 3 S1063_count_map_fit.fits
-   count_factor_map 3 S1063_count_factor_map_fit.fits
-   intrinsic_error 1.0 1 0.01 1.0
-   end
-```
-
-`Chandra` and `pixel_area` have been defined in the previous section. `bkg_map` and `count_map` are the background and observed count map. The former is added the initial count model while the latter refers to the data that we want to fit. The `count_factor_map` is the map detailed in the previous section that make the link between $\int n_e n_p dl$ and the photon count. We thus have three more keywords to set up the optimisation, with in first `optimisation` which can be 0 or 1 and represent a boolean to activate the computation of the likelihood. `optimisation_z` is the redshift of the gas modelled. Finally, `intrinsic_error` represent the systematic error and has the same syntax as an optimised parameter in the `potfile` section. The first floating value define its value, if its 0 a poisson likelihood will be computed if not the other if it is fixed. The following integer and floating values are defining the optimisation behavior and are the following:
-
-- `0 0.01 1.0` : First integer set to 0 means no optimisation and the two other values are ignored.
-- `1 min max` : Optimisation with a uniform prior, with the bound defined as here.
-- `3 mean std` : Optimisation with a gaussian prior.
-
-Once that section has been defined, the model can be optimised by the MCMC engine included in C code which is bayeSys or any other optimiser/sampler through the python interface. There are example of how to use these other methods in the directory `perl` in the lenstool directory. See the following files :
-- `dynamic_nested_sampler.py` : Example with `Ultranest` and `Dynesty` with the creation of the normal output files of lenstool
-- `pool_emcee_EnsembleSampler.py` : Example with `Emcee` with the creation of the `bayes.dat` and `burnin.dat` solely.
 
 At the end of the optimisation or at the production of a `chires.dat` file, the code will generate the three following maps:
 - `Xray_model_counts.fits`: Maps that has the same size has the imput maps and contains in each pixel the value of the best-fit count model.
@@ -260,10 +313,4 @@ Type of maps to be implemented in the future:
 -	...
 
 If the type of map that you would like to see is not implemented, you can contact us to see if we can put that in place.
-
-## Chandra data reduction and processing wrapper
-
-
-
-## Developement
 
