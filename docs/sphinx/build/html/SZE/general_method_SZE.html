@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sunyaev-Zel’dovich effect extension: Basics &mdash; Lenstool  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+  
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ICM Temperature models" href="../ICM_Te_models.html" />
+    <link rel="prev" title="Potfile" href="../X-ray/potfile_idPIE.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Lenstool
+          </a>
+              <div class="version">
+                8.5.1
+
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation of Lenstool</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../method.html">Method</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../strong_lensing.html">Strong Lensing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weak_lensing.html">Weak Lensing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image_reconstruction.html">Image reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../X-ray/X-ray.html">X-ray extension</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Sunyaev-Zel’dovich effect extension: Basics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#theoretical-preliminary">Theoretical preliminary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-it-works">How it works</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#density-profiles">Density profiles</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dpie-profile">dPIE Profile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#idpie-profile-sze">idPIE Profile</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#temperature-profiles">Temperature profiles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-of-potential">Example of <code class="docutils literal notranslate"><span class="pre">Potential</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sze-optimisation-parameters">SZE optimisation parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sze-optimisation">SZE Optimisation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sze-python-optimisation">SZE Python optimisation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#x-ray-compatibility">X-ray compatibility</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../ICM_Te_models.html">ICM Temperature models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../parameter_file.html">Parameter file: Section details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../InputOutput.html">Input/Output files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Supported_pot.html">Supported Potentials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pywrap.html">Python wrapper</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Lenstool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../method.html">Method</a> &raquo;</li>
+      <li>Sunyaev-Zel’dovich effect extension: Basics</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/SZE/general_method_SZE.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="sunyaev-zeldovich-effect-extension-basics">
+<h1>Sunyaev-Zel’dovich effect extension: Basics<a class="headerlink" href="#sunyaev-zeldovich-effect-extension-basics" title="Link to this heading"></a></h1>
+<p>Since the work of <a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2023arXiv230110907B/abstract">Beauchesne et al. 2023</a>
+, Lenstool is able to use X-ray data to model the intra-cluster gas (see <a class="reference internal" href="../X-ray/X-ray.html"><span class="doc">X-ray extension</span></a>).
+In a similar fashion, we can use the Sunyaev-Zel’dovich (SZ) effect, observed in submillimetre frequencies, to constrain the properties of the intra-cluster medium (ICM).
+This SZ effect (SZE) is can be added to the <code class="docutils literal notranslate"><span class="pre">lenstool</span></code> parameter file by adding one section, and selecting the SZE-bright potential with keyword <code class="docutils literal notranslate"><span class="pre">SZE</span></code>.</p>
+<section id="theoretical-preliminary">
+<span id="theoreticalpreliminary"></span><h2>Theoretical preliminary<a class="headerlink" href="#theoretical-preliminary" title="Link to this heading"></a></h2>
+<p>The CMB photons are permanently bathing the Universe. As a result, they can occasionally interact with physical objects at an observable scale.
+The thermal, non-relativistic, hot electrons of the ICM create the condition for an inverse Compton scattering: in a spectral band-width of CMB photons, one can observe the broadening of the band due to the Doppler effect.
+Therefore, <cite>cold</cite> or <cite>hot</cite> spots in CMB surveys such as <em>Planck</em> or ACT (Atacama Cosmology Telescope) may reveal the presence of the ICM associated with galaxy clusters.
+This effect was first described in <a class="reference external" href="https://link.springer.com/article/10.1007/BF00653471">Sunyaev and Zel’dovich 1970a</a>, <a class="reference external" href="https://link.springer.com/article/10.1007/BF00653472">b</a>.</p>
+<p>Given a CMB temperature
+<img class="math" src="../_images/math/192257054bf36c3ba246ec19100a66e7f5894bc5.png" alt="T_r \simeq 2.726"/> K today, we introduce the reduced frequency is defined as:</p>
+<div class="math">
+<p><img src="../_images/math/e67e728db15d9679ee1d80e9bcf2fc5eaafb5a75.png" alt="x = \frac{h \nu}{k_B T_r},"/></p>
+</div><p>where
+<img class="math" src="../_images/math/344ef8221981e3df78cb7876dc9b1c8c53fbf46e.png" alt="k_B"/> is the Boltzmann constant,
+<img class="math" src="../_images/math/4c120f773ab4e1c59ad2bd44aae969ce24dd190a.png" alt="h"/> is the Planck constant and
+<img class="math" src="../_images/math/14eb89266154200b9c81dcfc3bd058638fa221bf.png" alt="\nu"/> is the measured frequency.
+We also introduce the Compton parameter
+<img class="math" src="../_images/math/1b5e577d6216dca3af7d87aa122a0b9b360d6cb3.png" alt="y"/>:</p>
+<div class="math">
+<p><img src="../_images/math/aa95ed5e6ad2d82facbb2ea999cd58a45bcb367a.png" alt="y = \frac{k_B \sigma_T}{m_e c^2} \int n_e T_e \mathrm{d}l,"/></p>
+</div><p>where
+<img class="math" src="../_images/math/b95070f004fb198bf38186002f2cae83c434d8a3.png" alt="m_e"/> the electron mass,
+<img class="math" src="../_images/math/d520a12f1579170834c32ad5f656de081bbb36fe.png" alt="c"/> the celerity of light,
+<img class="math" src="../_images/math/1f9a7781ba17b6c215504bcb42018036c420fb07.png" alt="\sigma_T"/> the Thomson cross-section,
+<img class="math" src="../_images/math/13af008a4fd5becfa43736ebf9a15c461fa2efae.png" alt="n_e"/> the ICM electron number density,
+<img class="math" src="../_images/math/a0828774159ba5b4c0027330b9c60d2b3284384b.png" alt="T_e"/> the ICM electron temperature and
+<img class="math" src="../_images/math/620894b78d080c0f6a546b592bf19d763d81aeee.png" alt="\int \mathrm{d}l"/> the integral over the line-of-sight.</p>
+<p>We can also define the electron optical depth
+<img class="math" src="../_images/math/96c9df632411cdedb0ee308824d5dfcff96040e8.png" alt="\tau_e"/>:</p>
+<div class="math">
+<p><img src="../_images/math/e54c0f881e9590eaf7d347a60f484ab239a55c45.png" alt="\tau_e = \int \sigma_T n_e \mathrm{d}l."/></p>
+</div><p>We can now write the SZE temperature contrast:</p>
+<div class="math">
+<p><img src="../_images/math/8fe6f4e3a27e40fa85870be83f7c0abbc436da2c.png" alt="\Theta_r = \frac{\Delta T}{T_r} = \frac{(e^x - 1)^2}{x^4 e^x} \frac{\Delta I}{I_0} = \left[ x \coth \left( \frac{x}{2} \right) - 4 \right] y,"/></p>
+</div><p>where
+<img class="math" src="../_images/math/d0841c4e0c913272e6d3c526795eb12870ec0eb5.png" alt="\Delta T = T - T_r"/> is the SZE spectral temperature contrast,
+<img class="math" src="../_images/math/2258f900290127102246de7b408018919b356ead.png" alt="\Delta I"/> is the SZE spectral intensity shift and
+<img class="math" src="../_images/math/adcd782280d325715f28dea464d7791b13dfe769.png" alt="I_0"/> the spectral intensity of the CMB.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>WARNING: Please notice that this only describes the thermal SZ effect (tSZE). The kinematic and polarisation SZE are a priori much fainter, but may create offsets in the data.</p>
+</div>
+</section>
+<section id="how-it-works">
+<span id="howitworks"></span><h2>How it works<a class="headerlink" href="#how-it-works" title="Link to this heading"></a></h2>
+<p>This extension to <code class="docutils literal notranslate"><span class="pre">lenstool</span></code> computes a map of
+<img class="math" src="../_images/math/1b5e577d6216dca3af7d87aa122a0b9b360d6cb3.png" alt="y"/> for a potential, which allows to constraint the shape of the gas haloes with the SZE data maps, and to produce the related quantities as map.
+For now, only the dPIE and idPIE
+<img class="math" src="../_images/math/13af008a4fd5becfa43736ebf9a15c461fa2efae.png" alt="n_e"/> potentials are implemented.
+A temperature
+<img class="math" src="../_images/math/a0828774159ba5b4c0027330b9c60d2b3284384b.png" alt="T_e"/> map can be given as an input, or we can use different polytropic temperatue laws (detailed in the <a class="reference internal" href="#temperature-profiles"><span class="std std-ref">Temperature profiles</span></a> section).</p>
+</section>
+<section id="density-profiles">
+<span id="id1"></span><h2>Density profiles<a class="headerlink" href="#density-profiles" title="Link to this heading"></a></h2>
+<section id="dpie-profile">
+<span id="dpie-profile-sze"></span><h3>dPIE Profile<a class="headerlink" href="#dpie-profile" title="Link to this heading"></a></h3>
+<p>The ICM corresponding to the dPIE profile (see <a class="reference internal" href="../Supported_pot.html"><span class="doc">Supported Potentials</span></a>) for the SZE simply describes the gas density as a dPIE, independant of any other parameter. Therefore, it uses the same description as other dPIE potentials.</p>
+</section>
+<section id="idpie-profile-sze">
+<span id="idpie-profile"></span><h3>idPIE Profile<a class="headerlink" href="#idpie-profile-sze" title="Link to this heading"></a></h3>
+<p>See section <a class="reference internal" href="../X-ray/usage.html"><span class="doc">idPIE profile description</span></a>.</p>
+</section>
+</section>
+<section id="temperature-profiles">
+<span id="id2"></span><h2>Temperature profiles<a class="headerlink" href="#temperature-profiles" title="Link to this heading"></a></h2>
+<p>See section <a class="reference internal" href="../ICM_Te_models.html"><span class="doc">ICM Temperature models</span></a>.</p>
+</section>
+<section id="example-of-potential">
+<span id="example-potential"></span><h2>Example of <code class="docutils literal notranslate"><span class="pre">Potential</span></code><a class="headerlink" href="#example-of-potential" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">potential</span></code> keyword presents two additional parameters: <code class="docutils literal notranslate"><span class="pre">SZE</span></code> and <code class="docutils literal notranslate"><span class="pre">Gas_fraction</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SZE</span></code>, <code class="docutils literal notranslate"><span class="pre">bool</span></code>: 1 if dPIE SZE-bright, 2 for idPIE SZE-bright, 0 otherwise. Default: 0.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Gas_fraction</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>: Fraction of gas (multiplying the density, between 0 and 1). Default: 1.</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">potential O1</span>
+<span class="go">        profile          81</span>
+<span class="go">        SZE              1</span>
+<span class="go">        Gas_fraction     1.</span>
+<span class="go">        x_centre         0.</span>
+<span class="go">        y_centre         0.</span>
+<span class="go">        ellipticity      0.5</span>
+<span class="go">        angle_pos        0.</span>
+<span class="go">        core_radius_kpc  100</span>
+<span class="go">        cut_radius_kpc   2500.</span>
+<span class="go">        v_disp           1000.</span>
+<span class="go">        z_lens           0.3</span>
+<span class="go">        end</span>
+<span class="go">limit O1</span>
+<span class="go">        x_centre         1 -10. 5. 0.01</span>
+<span class="go">        cut_radius_kpc   1 500. 10000. 100.</span>
+<span class="go">        end</span>
+</pre></div>
+</div>
+</section>
+<section id="sze-optimisation-parameters">
+<span id="sze-optimisation-block"></span><h2>SZE optimisation parameters<a class="headerlink" href="#sze-optimisation-parameters" title="Link to this heading"></a></h2>
+<p>This SZE extension adds a <code class="docutils literal notranslate"><span class="pre">lenstool</span></code> keyword to the parameter file, to input the specific parameters.
+Three maps must be provided, in order to compute the observed Compton parameter
+<img class="math" src="../_images/math/1b5e577d6216dca3af7d87aa122a0b9b360d6cb3.png" alt="y"/>:</p>
+<ul class="simple">
+<li><p>Contrast Temperature map <code class="docutils literal notranslate"><span class="pre">SZE_map</span></code> in the submillimetre spectrum, measuring the SZE effect.</p></li>
+<li><p>Standard deviation of the measured contrast Temperature map <code class="docutils literal notranslate"><span class="pre">std_map</span></code>.</p></li>
+<li><p>Temperature map <code class="docutils literal notranslate"><span class="pre">Temperature_map</span></code> of the ICM of the cluster. This is the temperature of the cluster, not of the scattered CMB photons. This map can be replaced by an analytical temperature model (see <code class="docutils literal notranslate"><span class="pre">Temp0</span></code> and <code class="docutils literal notranslate"><span class="pre">Jz_array</span></code>).</p></li>
+</ul>
+<p>We give an example of the <code class="docutils literal notranslate"><span class="pre">SZE</span></code> section:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">SZE</span>
+<span class="go">        pixel_area      0.00833333</span>
+<span class="go">        Optimisation    1</span>
+<span class="go">        Optimisation_z  0.4</span>
+<span class="go">        Temp0           13.4                            # keV</span>
+<span class="go">        Jz_array        1 polyE Jz_polyE_z0.4000.csv    # &#39;polyE&#39; is the default.</span>
+<span class="go">        Gauss_stat_norm     252.2                       # = N_PIX_SZ/N_IM_SL  (for instance)</span>
+<span class="go">        psf             3 ACT_PSFmap.fits</span>
+<span class="go">        frequency       150.                            # GHz</span>
+<span class="go">        SZE_map         3 f150_map_filtered_0.05.fits</span>
+<span class="go">        std_map         6 f150_ivar.fits</span>
+<span class="go">        beam            1 s16_pa2_f150_nohwp_night_beam_profile_jitter.txt</span>
+<span class="go">        model_type      0</span>
+<span class="go">        end</span>
+</pre></div>
+</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">frequency</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>: frequency of measurement the SZE map, in <img class="math" src="../_images/math/b012c4caca0b31370acb23f392f0a2fe67e3adcc.png" alt="\mathrm{GHz}"/>. Default: 0. Note: several frequencies (from a same telescope) can be input together as <code class="docutils literal notranslate"><span class="pre">{float1,float2}</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SZE_map</span></code>, <code class="docutils literal notranslate"><span class="pre">int</span></code>: 1 if the map is in Compton parameter <img class="math" src="../_images/math/1b5e577d6216dca3af7d87aa122a0b9b360d6cb3.png" alt="y"/>, 2 for a CMB temperature contrast in <img class="math" src="../_images/math/e8504d3dfd1a246c53224cd8ddb69b13a3ea7432.png" alt="\mathrm{K}"/>, 3 for a CMB temperature in <img class="math" src="../_images/math/4814e8afc1e8e2634d03fb5f420a5faf25cdb78d.png" alt="\mu \mathrm{K}"/>, 0 to switch off. Default: 0. <code class="docutils literal notranslate"><span class="pre">string</span></code>: Path of the temperature contrast map. Note: several maps (from a same telescope, with the same <code class="docutils literal notranslate"><span class="pre">int</span></code> unit) can be input together as <code class="docutils literal notranslate"><span class="pre">{string1,string2}</span></code>.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>TO DO: multiple maps with a same command.</p>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Std_map</span></code>, <code class="docutils literal notranslate"><span class="pre">int</span></code>: 1 if the map is in Compton parameter <img class="math" src="../_images/math/1b5e577d6216dca3af7d87aa122a0b9b360d6cb3.png" alt="y"/>, 2 for a CMB temperature contrast in <img class="math" src="../_images/math/e8504d3dfd1a246c53224cd8ddb69b13a3ea7432.png" alt="\mathrm{K}"/>, 3 for a CMB temperature in <img class="math" src="../_images/math/4814e8afc1e8e2634d03fb5f420a5faf25cdb78d.png" alt="\mu \mathrm{K}"/>, 6 for a map in inverse variance in <img class="math" src="../_images/math/e435377d1a13d1286ce5b24994ae8ad899c05f18.png" alt="\mu \mathrm{K}^{-2}"/>, 0 to switch off. Default: 0. <code class="docutils literal notranslate"><span class="pre">string</span></code>: Path of the measured standard deviation of the temperature contrast. Note: several maps (from a same telescope, with the same <code class="docutils literal notranslate"><span class="pre">int</span></code> unit) can be input together as <code class="docutils literal notranslate"><span class="pre">{string1,string2}</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Temperature_map</span></code>, <code class="docutils literal notranslate"><span class="pre">int</span></code>: 1 if the ICM temperature map is in <img class="math" src="../_images/math/e8504d3dfd1a246c53224cd8ddb69b13a3ea7432.png" alt="\mathrm{K}"/>, 2 if the map is in <img class="math" src="../_images/math/018b5fcbe2ad474a4a4e31c9ce2195f48a629ce8.png" alt="\mathrm{keV}"/>, 0 to switch off. Default: 0. <code class="docutils literal notranslate"><span class="pre">string</span></code>: Path of the measured ICM electron temperature map <img class="math" src="../_images/math/a0828774159ba5b4c0027330b9c60d2b3284384b.png" alt="T_e"/>. If <code class="docutils literal notranslate"><span class="pre">int</span></code> is not 0, this overrides any analytical temperature model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pixel_area</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>: pixel size for all maps (must be identical), in <img class="math" src="../_images/math/fc26d0313a5535795fdcd1fe5d22f405d2bee2d1.png" alt="\mathrm{deg}"/>. Default: 1.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Optimisation</span></code>, <code class="docutils literal notranslate"><span class="pre">bool</span></code>: 1 or 0 to activate/deactivate the SZE optimisation, through likelihood optimisation. Default: 0.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Optimisation_z</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>: redshift of the ICM. Default: 0.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Temp0</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>: pivot temperature in <img class="math" src="../_images/math/018b5fcbe2ad474a4a4e31c9ce2195f48a629ce8.png" alt="\mathrm{keV}"/>, in case of an analytical ICM temperature model. Default: 0. For more details, see <a class="reference internal" href="#temperature-profiles"><span class="std std-ref">Temperature profiles</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Jz_array</span></code>, <code class="docutils literal notranslate"><span class="pre">bool</span></code>: 1 or 0 to compute/not compute the <img class="math" src="../_images/math/8d178598e810d6381f6d6875c9c5aa2cd4a76f0d.png" alt="\mathcal{J}_z"/> array, necessary to use a hydrostatic <code class="docutils literal notranslate"><span class="pre">idPIE</span></code> <img class="math" src="../_images/math/13af008a4fd5becfa43736ebf9a15c461fa2efae.png" alt="n_e"/> ICM density profile (see <a class="reference internal" href="#idpie-profile-sze"><span class="std std-ref">idPIE Profile</span></a>). Default: 0. <code class="docutils literal notranslate"><span class="pre">string</span></code>: temperature model (see <a class="reference internal" href="#temperature-profiles"><span class="std std-ref">Temperature profiles</span></a>). Default: <code class="docutils literal notranslate"><span class="pre">polyE</span></code>. <code class="docutils literal notranslate"><span class="pre">string</span></code>: name of the output array. If the array is not computed (<code class="docutils literal notranslate"><span class="pre">0</span></code>), this array must already exist, if the user is using idPIE profiles (keyword <code class="docutils literal notranslate"><span class="pre">SZE</span> <span class="pre">2</span></code>, in combination with <code class="docutils literal notranslate"><span class="pre">profile</span> <span class="pre">81</span></code> in <a class="reference internal" href="#example-potential"><span class="std std-ref">Example of Potential</span></a>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Gauss_stat_norm</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>: Normalisation of the log-likelihood of the SZE. For instance, setting this parameter to 10 multiplies the SZE Gaussian log-likelihood by a factor 1/10. Default: 1.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">psf</span></code>, TO DO</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">beam</span></code>, <code class="docutils literal notranslate"><span class="pre">bool</span></code>: 1 if there is a dispersion beam to take into account in the maps, 0 otherwise. Default: 0. <code class="docutils literal notranslate"><span class="pre">string</span></code>: filename of the beam.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model_type</span></code>, <code class="docutils literal notranslate"><span class="pre">int</span></code>: 0 for a simple Gaussian model, where the model std is considered to be 0. 1 for a model std equal to the model SZE value itself. Default: 0. (TO DO.)</p></li>
+</ul>
+</section>
+<section id="sze-optimisation">
+<span id="id3"></span><h2>SZE Optimisation<a class="headerlink" href="#sze-optimisation" title="Link to this heading"></a></h2>
+<p>The optimisation is performed through a Monte Carlo method, with the Markov Chains Monte Carlo engine <a class="reference external" href="(https://www.inference.org.uk/bayesys/">bayeSys</a> implemented in the <code class="docutils literal notranslate"><span class="pre">Lenstool</span></code> C code or through any optimiser with the Python wrapper of the <code class="docutils literal notranslate"><span class="pre">Lenstool</span></code> C library. The Gaussian log-likelihood writes:</p>
+<div class="math">
+<p><img src="../_images/math/f2abc9b438ebc770051a801ee60330dea7d753f7.png" alt="\ln \mathcal{L}_{\rm Gauss} = - \frac{1}{2} \sum_{i} \left[ \ln \sigma_i^2 + \ln 2 \pi + \left(\frac{M_i -  C_i}{\sigma_i} \right)^2 \right],"/></p>
+</div><p>where:</p>
+<ul class="simple">
+<li><p><img class="math" src="../_images/math/86810cecefe160a038ea1bf18596df24b14c6731.png" alt="M_i"/> is the model value in the <img class="math" src="../_images/math/5aa339d4daf45a810dda332e3c80a0698e526e04.png" alt="i"/>-th pixel,</p></li>
+<li><p><img class="math" src="../_images/math/113ecc79d1fabbf0ca98becf9d3728be649e9cc7.png" alt="C_i"/> is the detected value in the <img class="math" src="../_images/math/5aa339d4daf45a810dda332e3c80a0698e526e04.png" alt="i"/>-th pixel (provided through <code class="docutils literal notranslate"><span class="pre">SZE_map</span></code>) and</p></li>
+<li><p><img class="math" src="../_images/math/e08876b8d4da4e902c0c1f892d0cd3181c9cf25e.png" alt="\sigma_i"/> is the standard deviation in the <img class="math" src="../_images/math/5aa339d4daf45a810dda332e3c80a0698e526e04.png" alt="i"/>-th pixel. If <code class="docutils literal notranslate"><span class="pre">model_type</span> <span class="pre">=</span> <span class="pre">0</span></code>, it is simply the value <img class="math" src="../_images/math/3c069b4b6e5752d8d2956f88be8734eac0a39eee.png" alt="\sigma_{C, i}"/> provided through <code class="docutils literal notranslate"><span class="pre">Std_map</span></code>. If <code class="docutils literal notranslate"><span class="pre">model_type</span> <span class="pre">=</span> <span class="pre">1</span></code>, then <img class="math" src="../_images/math/c718a1980c80b350df65807d4dc6a61c4126518b.png" alt="\sigma_i^2 = \sigma_{C, i}^2 + M_i^2"/>.</p></li>
+</ul>
+</section>
+<section id="sze-python-optimisation">
+<span id="python-optimisation-sze"></span><h2>SZE Python optimisation<a class="headerlink" href="#sze-python-optimisation" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>TO DO</p>
+</div>
+</section>
+<section id="x-ray-compatibility">
+<span id="xray-compatibility"></span><h2>X-ray compatibility<a class="headerlink" href="#x-ray-compatibility" title="Link to this heading"></a></h2>
+<p>As the ICM observed through X-ray and SZE is the same baryonic medium, the parameters used to describe both should be identical (Temparature model, density profile, etc.).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>TO DO: TO COMPLETE. The following is just the X-ray template to adapt.</p>
+</div>
+<p>At the end of the optimisation or at the production of a <cite>chires.dat</cite> file, the code will generate the three following maps:
+- <cite>Xray_model_counts.fits</cite>: Maps that has the same size has the imput maps and contains in each pixel the value of the best-fit count model.
+- <cite>Xray_residual_counts.fits</cite> : Same as before, but with the residual (i.e. Data-model)
+- <cite>Xray_loglikelihood_pix.fits</cite> : Same as before, but each pixel contains the value of the loglikelihood associated.</p>
+<p>These allows you to see the best-fit count model and see which part of the field are badly/betterly reproduced. These map can be created for other models than the best as long as you have a parameter file for them by using the usual lenstool method to produce map, which is by specifying them in the <cite>runmode</cite> section with the following lines:
+- <cite>X-ray 2 0 z_lens Xray_model_counts.fits</cite>
+- <cite>X-ray 3 0 z_lens Xray_residual_counts.fits</cite>
+- <cite>X-ray 4 0 z_lens Xray_loglikelihood_pix.fits</cite></p>
+<p>These lines have to be used one by one, as lenstool does not have the hability to create multiple maps of the same keywords at the same time. Here, the size of the maps are defined by the input maps, so the integer related to the number of pixel per row and column is <cite>0</cite>.</p>
+<p>In addition, other quantity related to the best-fit model can be found in the <cite>chires.dat</cite>  that contains will contains the usual lines associated with the other likelihood defined such as the lensing one. Here is an example of the X-ray lines:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">chi</span> <span class="pre">X-ray</span> <span class="pre">surface</span> <span class="pre">brightness</span>
+<span class="pre">N_pixel</span>&#160;&#160;&#160; <span class="pre">16900</span>
+<span class="pre">Cash_Statistic</span>&#160;&#160;&#160; <span class="pre">-437152.56002</span>
+<span class="pre">Cstat</span>&#160;&#160;&#160; <span class="pre">4661.77537</span>
+<span class="pre">log(likelihood)</span>&#160;&#160;&#160; <span class="pre">-33189.73608</span>
+<span class="pre">Monte</span> <span class="pre">Carlo</span> <span class="pre">estimation</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">quality</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">fit:</span> <span class="pre">Mean:</span> <span class="pre">-32915.46507</span> <span class="pre">Std:</span> <span class="pre">87.35700</span>
+<span class="pre">Interval</span> <span class="pre">1</span> <span class="pre">sigma:</span> <span class="pre">min</span> <span class="pre">-&gt;</span> <span class="pre">-33002.06100</span> <span class="pre">||max</span> <span class="pre">-&gt;</span> <span class="pre">-32829.06987</span>
+<span class="pre">Interval</span> <span class="pre">3</span> <span class="pre">sigma:</span> <span class="pre">min</span> <span class="pre">-&gt;</span> <span class="pre">-33177.52215</span> <span class="pre">||max</span> <span class="pre">-&gt;</span> <span class="pre">-32648.07052</span>
+<span class="pre">Interval</span> <span class="pre">5</span> <span class="pre">sigma:</span> <span class="pre">min</span> <span class="pre">-&gt;</span> <span class="pre">-33255.71946</span> <span class="pre">||max</span> <span class="pre">-&gt;</span> <span class="pre">-32599.59211</span>
+<span class="pre">`</span></code></p>
+<p>Where <cite>N_pixel</cite> contains the total number of pixel, the  <cite>Cash_Statistic</cite> is equal to $-2timeslogleft(mathcal{L}right)$ (Correct definition if $sigma_{X}=0$). The <cite>Cstat</cite> is defined as follows:
+$text{Cstat}=sum^{rm N_{pixel} }_{rm i} 2(M_i-D_i+D_ilogleft(frac{D_i}{M_i}right))$
+It is similar to the one implemented in Xspec or Sherpa. In case $M_i=0$, we replace the previous term in the sum by $2 D_i$. We added these two other likelihoods to provide a comparison with other X-ray fitting software. These lines also contains the results of the goodness of fit procedure presented in [Beauchesne+23](<a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2023arXiv230110907B/abstract">https://ui.adsabs.harvard.edu/abs/2023arXiv230110907B/abstract</a>). The idea of this procedure is to see if the observed data are likely to be produced by the count model, ideally we would build such distribution by using the full posterior however for computing time reason we only use the best-fit model. Hence, we are sampling in each pixels $100000$ realisation of the associated distribution which is a Poisson distribution or the Poisson-Gamma mixture. The number of counts in the pixel is the mean of the Poisson distribution for the earlier when it is the mean of the Gamma distribution in the latter. This distribution have $sigma_{X}$ as standard deviation and the random variate defined is then the mean of the Poisson distribution of the mixture. We then compute the likelihood associated with each of the sample and extract the following information:
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">Monte</span> <span class="pre">Carlo</span> <span class="pre">estimation</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">quality</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">fit:</span> <span class="pre">Mean:</span> <span class="pre">Sample</span> <span class="pre">mean</span> <span class="pre">Std:</span> <span class="pre">Sample</span> <span class="pre">standard</span> <span class="pre">deviation</span>
+<span class="pre">Interval</span> <span class="pre">1</span> <span class="pre">sigma:</span> <span class="pre">min</span> <span class="pre">-&gt;</span> <span class="pre">percentile</span> <span class="pre">16%</span> <span class="pre">||max</span> <span class="pre">-&gt;</span> <span class="pre">percentile</span> <span class="pre">84%</span>
+<span class="pre">Interval</span> <span class="pre">3</span> <span class="pre">sigma:</span> <span class="pre">min</span> <span class="pre">-&gt;</span> <span class="pre">percentile</span> <span class="pre">.135%</span> <span class="pre">||max</span> <span class="pre">-&gt;</span> <span class="pre">percentile</span> <span class="pre">99.865%</span>
+<span class="pre">Interval</span> <span class="pre">5</span> <span class="pre">sigma:</span> <span class="pre">min</span> <span class="pre">-&gt;</span> <span class="pre">percentile</span> <span class="pre">.0000286%</span> <span class="pre">||max</span> <span class="pre">-&gt;</span> <span class="pre">percentile</span> <span class="pre">99.9999713%</span>
+<span class="pre">`</span></code></p>
+<p>From this information, you can see how likely the model will produce the observed data and set up a threshold for your own analysis and see how much you should complexify your model. To make an analogy with a gaussian likelihood, this criteria is computing an equivalent to the $chi^2sim1$ which does not exist for Poisson-like likelihood. Indeed,  the value would be changing for each different case.</p>
+<p>## Data product implemented</p>
+<p>For now, there are not much maps that can be produced by more will come as the extension is used. To create a map, here is the syntax to add in the <cite>runmode</cite>:
+<a href="#id4"><span class="problematic" id="id5">``</span></a>`
+runmode</p>
+<blockquote>
+<div><p>X-ray type N_pix z name_file
+end</p>
+</div></blockquote>
+<p><a href="#id6"><span class="problematic" id="id7">``</span></a>`
+<cite>type</cite> (integer) is the type of map that you can produce, <cite>N_pix</cite> the number of pixel per column and row, <cite>z</cite> the redshift for which you would like to compute the map (that plane need to have some X-ray potential to not return only $0$) and finally the name of the fits file you want to create. Here are the type of map you can do:
+-       $0$: Do nothing
+-       $1$: Map of the mass model ($int rho_{gas}^2$) times the map provided through the <cite>Emissivity_map</cite> keyword in the <cite>X-ray</cite> section. If the cooling function is provided, you will obtain the surface brightness. It can be used to create a count map by providing the <cite>count_factor_map</cite> in the previous keyword, the difference with <cite>type</cite> $2$ is that the map is interpolated to be computed at the defined resolution with a bilinear interpolation.
+-       $2$: Count model with the same size as the input data map
+-       $3$: residual map with the same size as the input data map
+-       $4$: Loglikelihood map with the same size as the input data map</p>
+<p>Type of maps to be implemented in the future:
+-       Map of the projected gas mass
+-       Map of the projected gas fraction
+-       …</p>
+<p>If the type of map that you would like to see is not implemented, you can contact us to see if we can put that in place.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../X-ray/potfile_idPIE.html" class="btn btn-neutral float-left" title="Potfile" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../ICM_Te_models.html" class="btn btn-neutral float-right" title="ICM Temperature models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Lenstool group.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

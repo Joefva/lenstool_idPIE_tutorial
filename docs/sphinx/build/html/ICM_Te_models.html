@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ICM Temperature models &mdash; Lenstool  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+  
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorial" href="tutorial.html" />
+    <link rel="prev" title="Tutorial" href="SZE/tutorial_idpie.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Lenstool
+          </a>
+              <div class="version">
+                8.5.1
+
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation of Lenstool</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="method.html">Method</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="strong_lensing.html">Strong Lensing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="weak_lensing.html">Weak Lensing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_reconstruction.html">Image reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="X-ray/X-ray.html">X-ray extension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SZE/SZE.html">Sunyaev-Zel’dovich effect extension</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ICM Temperature models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="parameter_file.html">Parameter file: Section details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="InputOutput.html">Input/Output files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Supported_pot.html">Supported Potentials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pywrap.html">Python wrapper</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Lenstool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="method.html">Method</a> &raquo;</li>
+      <li>ICM Temperature models</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/ICM_Te_models.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="icm-temperature-models">
+<h1>ICM Temperature models<a class="headerlink" href="#icm-temperature-models" title="Link to this heading"></a></h1>
+<p>If no temperature map is provided, then it is necessary to provide a temperature model in order to compute the different ICM observables (X-ray surface brightness, SZ effect temperature contrast, etc.). For purely lensing, this is not necessary.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Temp0</span></code> is the pivot temperature model, eq. (17) in
+<a class="reference external" href="https://arxiv.org/abs/2309.07076">Allingham 2024</a>:
+<img class="math" src="_images/math/42f056a59aee38a3d4aec26f91281d0037cdf2fe.png" alt="T_0(z) = T_{500,c} (z) T_{\rm ref}"/>.
+It may be computed using routine <code class="docutils literal notranslate"><span class="pre">predT</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">predT0 &lt;redshift&gt; &lt;model_type&gt; &lt;M_500,c&gt;</span>
+</pre></div>
+</div>
+<p>where the mass
+<img class="math" src="_images/math/96c6326cada6077c28a747f544e864cbba55c84c.png" alt="M_{500,c}"/> is in
+<img class="math" src="_images/math/ff0e573cc61eb74d35f469b1124988be4aeaaffb.png" alt="M_{\odot}"/>, and the <code class="docutils literal notranslate"><span class="pre">&lt;model_type&gt;</span></code> corresponds to the regression used for
+<img class="math" src="_images/math/a239fbcc905bcf1e47bf813641b02f218dadc49a.png" alt="P_e (n_e)"/>. By default, use <code class="docutils literal notranslate"><span class="pre">polyEv1</span></code> for the latter.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Jz_array</span></code> indicates how to compute the Jz function, relating the potential to the ICM density
+<img class="math" src="_images/math/13af008a4fd5becfa43736ebf9a15c461fa2efae.png" alt="n_e"/>.
+It takes three arguments:</p>
+<ul class="simple">
+<li><p>An integer. <code class="docutils literal notranslate"><span class="pre">0</span></code>: do not perform the computation. <code class="docutils literal notranslate"><span class="pre">1</span></code>: perform it.</p></li>
+<li><p>A string for the model type. By default, use <code class="docutils literal notranslate"><span class="pre">polyE</span></code>. Other option is <code class="docutils literal notranslate"><span class="pre">polyA</span></code>, which should be more up-to-date.</p></li>
+<li><p>A second string for the name of the output array. If the array is not computed (<code class="docutils literal notranslate"><span class="pre">0</span></code>), this array must already exist.</p></li>
+</ul>
+<p>The different temperature models are listed here:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">polyEv1</span></code>: uses the reduction of a polytropic temperature distribution, with a varying index. Reduction over 12 X-COP clusters. See parameters values in the table below.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">polyAv1</span></code>: uses the reduction of a polytropic temperature distribution, with a varying index. Reduction over 12 X-COP clusters, and 3 strong lensing clusters’ <em>XMM-Newton</em> spectrocopic data.  See parameters values in the table below.</p></li>
+</ul>
+<p>The polytropic index model writes:</p>
+<div class="math">
+<p><img src="_images/math/4bf94b1eb077b3e87e339981bc7893db9c4b2bdb.png" alt="T_e &amp;= \eta_T T_{500,c} \left( \frac{n_e E(z)^{-2}}{\eta_n} \right)^{\Gamma (n_e) - 1},"/></p>
+</div><p>where
+<img class="math" src="_images/math/8b9b106974cfedc259e03cd8a3aaf500c719c76e.png" alt="E(z) = H(z)/H_0"/> is the scaled Hubble factor at a cluster redshift
+<img class="math" src="_images/math/8d051150f8669295ecdbe92367941012175a824d.png" alt="z"/>.
+Assuming the polytropic index
+<img class="math" src="_images/math/e7003fd3463f843ee1e53385878369f078d362ad.png" alt="\Gamma"/> to vary with the ICM density,</p>
+<div class="math">
+<p><img src="_images/math/eb23a44eab10fd757063368ad4ee1eb8fa086b97.png" alt="\Gamma (n_e) &amp;= \Gamma_0 \left[ 1 + \Gamma_S \arctan \left( \ln \frac{n_e E(z)^{-2}}{\eta_n} \right) \right],"/></p>
+</div><p>where</p>
+<div class="math">
+<p><img src="_images/math/cc9b7233cd1c6eeef44bb46e79e9065656bba947.png" alt="\eta_T = (1e6*3.426e-3/8.85)*(\eta_P/\eta_n)."/></p>
+</div><p>We specify the parameters of different models in the table below.</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">ICM Temperature model parameters</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 18.8%" />
+<col style="width: 18.8%" />
+<col style="width: 18.8%" />
+<col style="width: 18.8%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Id</p></th>
+<th class="head"><p><img class="math" src="_images/math/5cfdf13895edabde0615033917621bb79851349c.png" alt="\eta_P"/></p></th>
+<th class="head"><p><img class="math" src="_images/math/0db1aea66821d1a427808b2f483f6e28650aaa1e.png" alt="\eta_n"/> [cm <img class="math" src="_images/math/26b9e45cabb4f7237f3c2cea08b46ad4f33363f1.png" alt="^{-3}"/>]</p></th>
+<th class="head"><p><img class="math" src="_images/math/4d23670792972a3fa977d8438e721794c8e2119c.png" alt="\Gamma_0"/></p></th>
+<th class="head"><p><img class="math" src="_images/math/73233eaf885f6b1f7ac16eaba1a38a4de82f8c4f.png" alt="\Gamma_S"/></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">polyEv1</span></code></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">polyAv1</span></code></p></td>
+<td><p>4.61</p></td>
+<td><p><img class="math" src="_images/math/3b68a2cd9c4b8656aca2fa2afd2c3510802a034d.png" alt="1.54\times 10^{-3}"/></p></td>
+<td><p>1.02</p></td>
+<td><p>-0.15</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="SZE/tutorial_idpie.html" class="btn btn-neutral float-left" title="Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tutorial.html" class="btn btn-neutral float-right" title="Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Lenstool group.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,5 +1,9 @@
-SZE extension: Basics
-==========================
+Sunyaev-Zel’dovich effect extension: Basics
+============================================
+
+.. note::
+
+	This is ongoing work in Lenstool, but not yet fully working.
 
 Since the work of `Beauchesne et al. 2023 <https://ui.adsabs.harvard.edu/abs/2023arXiv230110907B/abstract>`_
 , Lenstool is able to use X-ray data to model the intra-cluster gas (see :doc:`../X-ray/X-ray`). 
@@ -55,7 +59,7 @@ We can now write the SZE temperature contrast:
 
 .. math::
 
-   \Theta_r = \frac{\Delta T}{T_r} = \frac{(e^x - 1)^2}{x^4 e^x} \frac{\Delta I}{I_0} \left[ x \coth \left( \frac{x}{2} \right) - 4 \right] y,
+   \Theta_r = \frac{\Delta T}{T_r} = \frac{(e^x - 1)^2}{x^4 e^x} \frac{\Delta I}{I_0} = \left[ x \coth \left( \frac{x}{2} \right) - 4 \right] y,
 
 where 
 :math:`\Delta T = T - T_r` is the SZE spectral temperature contrast, 
@@ -93,7 +97,7 @@ Density profiles
 dPIE Profile
 ~~~~~~~~~~~~~~~
 
-The ICM corresponding to the dPIE profile (see :ref:`supported_potentials`) for the SZE simply describes the gas density as a dPIE, independant of any other parameter. Therefore, it uses the same description as other dPIE potentials.
+The ICM corresponding to the dPIE profile (see :doc:`../Supported_pot`) for the SZE simply describes the gas density as a dPIE, independant of any other parameter. Therefore, it uses the same description as other dPIE potentials.
 
 .. _idPIE_profile_SZE:
 
@@ -165,11 +169,11 @@ We give an example of the ``SZE`` section:
 		Optimisation_z  0.4
 		Temp0           13.4                            # keV
 		Jz_array        1 polyE Jz_polyE_z0.4000.csv    # 'polyE' is the default.
-		Gauss_stat_norm     252.2                           # = N_PIX_X/N_IM_SL  (for instance)
+		Gauss_stat_norm     252.2                       # = N_PIX_SZ/N_IM_SL  (for instance)
 		psf             3 ACT_PSFmap.fits
 		frequency       150.                            # GHz
-		SZE_map         3 f150_map_filtered_0.05.fits       # '6' here for temperature contrast in microKelvins
-		std_map         6 f150_ivar.fits     # '6' for inverse variance, in muK^-2
+		SZE_map         3 f150_map_filtered_0.05.fits
+		std_map         6 f150_ivar.fits
 		beam            1 s16_pa2_f150_nohwp_night_beam_profile_jitter.txt
 		model_type      0
 		end
@@ -248,7 +252,9 @@ As the ICM observed through X-ray and SZE is the same baryonic medium, the param
 
 
 
-.. To complete
+.. note::
+	
+	TO DO: TO COMPLETE. The following is just the X-ray template to adapt.
 
 
 

@@ -8,5 +8,5 @@ Method
    weak_lensing
    image_reconstruction
    X-ray/X-ray
-   SZE/SZE
+   SZE/general_method_SZE
    ICM_Te_models

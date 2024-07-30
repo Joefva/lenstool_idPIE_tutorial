@@ -14,14 +14,14 @@ build:
     # nodejs: "19"
     # rust: "1.64"
     # golang: "1.19"
-  jobs:
-    pre_create_environment:
-      - echo "Command run at 'pre_create_environment' step"
-      - export LENSTOOL_JA_DIR=/home/joseph/Software/Lenstool_JA
-      - export LD_LIBRARY_PATH=$LENSTOOL_JA_DIR/lib:$LD_LIBRARY_PATH
-      - export PYTHONPATH="${PYTHONPATH}:${LENSTOOL_JA_DIR}"
-      - export CODESDIR=/home/joseph/Work/Codes
-      - export PYTHONPATH="${PYTHONPATH}:${CODESDIR}"
+  #jobs:
+  #  pre_create_environment:
+  #    - echo "Command run at 'pre_create_environment' step"
+  #    - export LENSTOOL_JA_DIR=/home/joseph/Software/Lenstool_JA
+  #    - export LD_LIBRARY_PATH=$LENSTOOL_JA_DIR/lib:$LD_LIBRARY_PATH
+  #    - export PYTHONPATH="${PYTHONPATH}:${LENSTOOL_JA_DIR}"
+  #    - export CODESDIR=/home/joseph/Work/Codes
+  #    - export PYTHONPATH="${PYTHONPATH}:${CODESDIR}"
     #post_build:
     #  - echo "Running post-build commands."
     #  - bash docs/fix_table_links.sh _readthedocs/html/api_reference.html
@@ -44,8 +44,5 @@ sphinx:
 python:
   install:
     - requirements: requirements.txt
-    
-#env:
-#  PYTHONPATH:
-#    - /home/joseph/Software/Lenstool_JA
+
 

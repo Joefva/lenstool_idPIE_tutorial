@@ -3,6 +3,8 @@ Supported Potentials
 
 .. The list below gives you the potential identification number, and a link to its description.
 
+.. _supported_potentials:
+
 .. toctree::
 	:maxdepth: 1
 
@@ -28,8 +30,9 @@ Supported Potentials
    | dPIE              | 81   | :math:`\rho_0 \left[1 + \left(\frac{r}{a} \right)^2 \right]^{-1} \left[ 1 + \left(\frac{r}{s} \right)^2 \right]^{-1}` |
    +-------------------+------+-----------------------------------------------------------------------------------------------------------------------+
 
+.. note::
 
-To continue
+   To continue
 
 
 .. 
