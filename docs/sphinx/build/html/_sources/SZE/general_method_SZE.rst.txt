@@ -1,6 +1,10 @@
 Sunyaev-Zel’dovich effect extension: Basics
 ============================================
 
+.. note::
+
+	This is ongoing work in Lenstool, but not yet fully working.
+
 Since the work of `Beauchesne et al. 2023 <https://ui.adsabs.harvard.edu/abs/2023arXiv230110907B/abstract>`_
 , Lenstool is able to use X-ray data to model the intra-cluster gas (see :doc:`../X-ray/X-ray`). 
 In a similar fashion, we can use the Sunyaev-Zel'dovich (SZ) effect, observed in submillimetre frequencies, to constrain the properties of the intra-cluster medium (ICM). 
